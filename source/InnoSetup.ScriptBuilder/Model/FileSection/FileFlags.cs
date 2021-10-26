@@ -3,7 +3,7 @@
     using System;
 
     [Flags]
-    public enum FileSectionFlags : ulong
+    public enum FileFlags : ulong
     {
         _32bit = 0x01,
         _64bit = 0x2,

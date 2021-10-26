@@ -6,11 +6,11 @@
     using Model;
     using Model.SetupSection;
 
-    public class SetupBuilder : BuilderBase<SetupBuilder, SetupHeader>, ISetupBuilder, IBuilder
+    public class SetupBuilder : SectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder, IBuilder
     {
         public SetupBuilder Create(string appName)
         {
-            Data = new SetupHeader();
+            Data = new SetupSection();
             return AppName(appName);
         }
 
@@ -65,8 +65,8 @@
         public SetupBuilder NumUninstallRunEntries(int value) => SetPropertyValue(value);
         public SetupBuilder BackColor(long value) => SetPropertyValue(value);
         public SetupBuilder BackColor2(long value) => SetPropertyValue(value);
-        public SetupBuilder DirExistsWarning(YesNoAuto value) => SetPropertyValue(value);
-        public SetupBuilder ShowLanguageDialog(YesNoAuto value) => SetPropertyValue(value);
+        public SetupBuilder DirExistsWarning(YesNo value) => SetPropertyValue(value);
+        public SetupBuilder ShowLanguageDialog(YesNo value) => SetPropertyValue(value);
         public SetupBuilder UninstallLogMode(UninstallLogMode value) => SetPropertyValue(value);
         public SetupBuilder WizardImageAlphaFormat(WizardImageAlphaFormat value) => SetPropertyValue(value);
         public SetupBuilder WizardSizePercentX(int value) => SetPropertyValue(value);
@@ -74,8 +74,8 @@
         public SetupBuilder ExtraDiskSpaceRequired(long value) => SetPropertyValue(value);
         public SetupBuilder SlicesPerDisk(int value) => SetPropertyValue(value);
         public SetupBuilder UninstallDisplaySize(long value) => SetPropertyValue(value);
-        public SetupBuilder DisableDirPage(YesNoAuto value) => SetPropertyValue(value);
-        public SetupBuilder DisableProgramGroupPage(YesNoAuto value) => SetPropertyValue(value);
+        public SetupBuilder DisableDirPage(YesNo value) => SetPropertyValue(value);
+        public SetupBuilder DisableProgramGroupPage(YesNo value) => SetPropertyValue(value);
         public SetupBuilder PrivilegesRequired(PrivilegesRequired value) => SetPropertyValue(value);
 
         public SetupBuilder PrivilegesRequiredOverridesAllowed(SetupPrivilegesRequiredOverrides value) =>

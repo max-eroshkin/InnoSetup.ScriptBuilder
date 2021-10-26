@@ -1,6 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder.Model.SetupSection
 {
-    public class SetupHeader
+    public class SetupSection
     {
         public string AppName { get; set; }
 
@@ -106,9 +106,9 @@
 
         public long? BackColor2 { get; set; }
 
-        public YesNoAuto? DirExistsWarning { get; set; }
+        public YesNo? DirExistsWarning { get; set; }
 
-        public YesNoAuto? ShowLanguageDialog { get; set; }
+        public YesNo? ShowLanguageDialog { get; set; }
 
         public UninstallLogMode? UninstallLogMode { get; set; }
 
@@ -124,9 +124,9 @@
 
         public long? UninstallDisplaySize { get; set; }
 
-        public YesNoAuto? DisableDirPage { get; set; }
+        public YesNo? DisableDirPage { get; set; }
 
-        public YesNoAuto? DisableProgramGroupPage { get; set; }
+        public YesNo? DisableProgramGroupPage { get; set; }
 
         public PrivilegesRequired? PrivilegesRequired { get; set; }
 

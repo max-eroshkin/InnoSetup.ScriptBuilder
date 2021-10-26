@@ -7,7 +7,7 @@
     using System.Reflection;
     using Model.FileSection;
 
-    public class FileEntryBuilder : BuilderBase<FileEntryBuilder, FileEntry>, IFileEntryBuilder, IBuilder
+    public class FileEntryBuilder : SectionBuilderBase<FileEntryBuilder, FileEntry>, IFileEntryBuilder, IBuilder
     {
         private List<FileEntry> _entryList;
 
@@ -35,7 +35,7 @@
             return this;
         }
 
-        public FileEntryBuilder Flags(FileSectionFlags value) => SetPropertyValue(value);
+        public FileEntryBuilder Flags(FileFlags value) => SetPropertyValue(value);
 
         public void Write(TextWriter writer)
         {

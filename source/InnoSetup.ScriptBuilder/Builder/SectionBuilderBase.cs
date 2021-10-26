@@ -3,7 +3,7 @@
     using System;
     using System.Runtime.CompilerServices;
 
-    public abstract class BuilderBase<TBuilder, TData>
+    public abstract class SectionBuilderBase<TBuilder, TData>
         where TData : class
         where TBuilder : class
     {
@@ -14,7 +14,7 @@
             return SetPropertyValue(Data, name, value);
         }
 
-        protected TBuilder SetPropertyValue(object instance, string method, object value)
+        private TBuilder SetPropertyValue(object instance, string method, object value)
         {
             var propertyName = method;
             var type = instance.GetType();

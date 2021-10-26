@@ -1,6 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder.Model
 {
-    public enum YesNoAuto
+    public enum YesNo
     {
         Auto,
         Yes,

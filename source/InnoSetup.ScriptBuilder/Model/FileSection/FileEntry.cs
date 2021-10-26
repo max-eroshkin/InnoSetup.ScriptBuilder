@@ -22,6 +22,6 @@
 
         public List<GroupPermission> Permissions { get; set; }
 
-        public FileSectionFlags? Flags { get; set; }
+        public FileFlags? Flags { get; set; }
     }
 }
