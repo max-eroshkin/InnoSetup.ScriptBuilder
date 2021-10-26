@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoSetup.ScriptBuilder", "source\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj", "{C071B6E4-5C15-4E55-A9B3-59517490CA47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderTests", "source\BuilderTests\BuilderTests.csproj", "{071FFF7E-83EE-489F-AF94-05660B6E8B60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C071B6E4-5C15-4E55-A9B3-59517490CA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C071B6E4-5C15-4E55-A9B3-59517490CA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C071B6E4-5C15-4E55-A9B3-59517490CA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C071B6E4-5C15-4E55-A9B3-59517490CA47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{071FFF7E-83EE-489F-AF94-05660B6E8B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071FFF7E-83EE-489F-AF94-05660B6E8B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071FFF7E-83EE-489F-AF94-05660B6E8B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{071FFF7E-83EE-489F-AF94-05660B6E8B60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
