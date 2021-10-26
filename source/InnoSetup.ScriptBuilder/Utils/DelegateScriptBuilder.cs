@@ -1,8 +1,7 @@
-﻿using System;
-using InnoSetup.ScriptBuilder.Builder;
-
-namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder
 {
+    using System;
+
     public class DelegateScriptBuilder : ScriptBuilderBase
     {
         public DelegateScriptBuilder(Action<ScriptBuilderBase> config)
@@ -10,6 +9,5 @@ namespace InnoSetup.ScriptBuilder
             _ = config ?? throw new ArgumentNullException(nameof(config), "config cannot be null");
             config(this);
         }
-        
     }
 }

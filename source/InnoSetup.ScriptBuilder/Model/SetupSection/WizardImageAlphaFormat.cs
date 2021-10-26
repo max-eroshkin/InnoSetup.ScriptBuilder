@@ -1,7 +1,9 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder.Model.SetupSection
 {
     public enum WizardImageAlphaFormat
     {
-        Ignored, Defined, Premultiplied
+        Ignored,
+        Defined,
+        Premultiplied
     }
 }

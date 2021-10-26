@@ -1,8 +1,11 @@
 ﻿using InnoSetup.ScriptBuilder;
-using InnoSetup.ScriptBuilder.Builder;
 
 namespace BuilderTests
 {
+    using InnoSetup.ScriptBuilder.Model;
+    using InnoSetup.ScriptBuilder.Model.FileSection;
+    using InnoSetup.ScriptBuilder.Model.SetupSection;
+
     public class TestScriptBuilderBuilder : ScriptBuilderBase
     {
         public TestScriptBuilderBuilder()

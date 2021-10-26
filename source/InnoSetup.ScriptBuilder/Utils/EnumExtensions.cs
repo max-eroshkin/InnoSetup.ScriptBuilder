@@ -1,12 +1,11 @@
-﻿using System;
-using System.Reflection;
-using System.Text;
-
-namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder
 {
+    using System;
+    using System.Text;
+
     public static class EnumExtensions
     {
-        const string Separator = " ";
+        private const string Separator = " ";
 
         public static string GetString(this Enum e)
         {
@@ -40,7 +39,7 @@ namespace InnoSetup.ScriptBuilder
             }
 
             return str.ToString();
-            
+
             static bool IsExactlyOneBitSet(int x) => x != 0 && (x & (x - 1)) == 0;
         }
     }

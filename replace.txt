@@ -1,0 +1,6 @@
+    public (\w+\??) (\w+) \{ get\; set\; \}
+    public Setup $2($1 value) => SetPropertyValue(MethodBase.GetCurrentMethod(), value);
+
+    
+public (\w+)\?? (\w+) \{ get\; set\; \}
+public FileEntryBuilder $2($1 value) => SetPropertyValue(MethodBase.GetCurrentMethod(), value);

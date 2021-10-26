@@ -1,31 +1,19 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-
-namespace InnoSetup.ScriptBuilder.Builder
+﻿namespace InnoSetup.ScriptBuilder
 {
-    //public (\w+\??) (\w+) \{ get\; set\; \}
-    //public Setup $2($1 value) => SetPropertyValue(MethodBase.GetCurrentMethod(), value);
-    public interface ISetupBuilder
-    {
-        SetupBuilder Create(string appName);
-    }
-
-    public interface IBuilder
-    {
-        void Write(TextWriter writer);
-    }
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using Model;
+    using Model.SetupSection;
 
     public class SetupBuilder : BuilderBase<SetupBuilder, SetupHeader>, ISetupBuilder, IBuilder
     {
         public SetupBuilder Create(string appName)
         {
+            Data = new SetupHeader();
             return AppName(appName);
         }
 
-        private SetupBuilder AppName(string value) => SetPropertyValue(value);
         public SetupBuilder AppVerName(string value) => SetPropertyValue(value);
         public SetupBuilder AppId(string value) => SetPropertyValue(value);
         public SetupBuilder AppCopyright(string value) => SetPropertyValue(value);
@@ -89,7 +77,10 @@ namespace InnoSetup.ScriptBuilder.Builder
         public SetupBuilder DisableDirPage(YesNoAuto value) => SetPropertyValue(value);
         public SetupBuilder DisableProgramGroupPage(YesNoAuto value) => SetPropertyValue(value);
         public SetupBuilder PrivilegesRequired(PrivilegesRequired value) => SetPropertyValue(value);
-        public SetupBuilder PrivilegesRequiredOverridesAllowed(SetupPrivilegesRequiredOverrides value) => SetPropertyValue(value);
+
+        public SetupBuilder PrivilegesRequiredOverridesAllowed(SetupPrivilegesRequiredOverrides value) =>
+            SetPropertyValue(value);
+
         public SetupBuilder Options(SetupOption value) => SetPropertyValue(value);
         public SetupBuilder OutputDir(string value) => SetPropertyValue(value);
         public SetupBuilder OutputBaseFilename(string value) => SetPropertyValue(value);
@@ -98,21 +89,24 @@ namespace InnoSetup.ScriptBuilder.Builder
 
         public void Write(TextWriter writer)
         {
-            _ = _data ?? throw new IssBuilderException("[Setup] section not created");
+            _ = Data ?? throw new IssBuilderException("[Setup] section not created");
             writer.WriteLine("[Setup]");
             WriteProperties(writer);
         }
 
+        private SetupBuilder AppName(string value) => SetPropertyValue(value);
+
         private void WriteProperties(TextWriter writer)
         {
-            var type = _data.GetType();
+            var type = Data.GetType();
             var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
             // text props
             foreach (PropertyInfo info in properties)
             {
-                var value = info.GetValue(_data);
-                if (value is null) continue;
+                var value = info.GetValue(Data);
+                if (value is null)
+                    continue;
 
                 switch (value)
                 {

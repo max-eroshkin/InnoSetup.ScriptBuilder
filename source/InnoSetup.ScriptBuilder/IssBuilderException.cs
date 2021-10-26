@@ -1,16 +1,16 @@
 ﻿#nullable enable
-using System;
-
 namespace InnoSetup.ScriptBuilder
 {
+    using System;
+
     public class IssBuilderException : Exception
     {
         public IssBuilderException()
         {
         }
-        
+
         public IssBuilderException(string? message)
-            :base(message)
+            : base(message)
         {
         }
 

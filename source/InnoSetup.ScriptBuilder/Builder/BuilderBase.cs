@@ -1,16 +1,15 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-
-namespace InnoSetup.ScriptBuilder.Builder
+﻿namespace InnoSetup.ScriptBuilder
 {
+    using System;
+    using System.Runtime.CompilerServices;
+
     public abstract class BuilderBase<TBuilder, TData>
-        where TData : class, new() 
+        where TData : class
         where TBuilder : class
     {
-        protected TData _data;
-        protected TData Data => _data ??= new TData();
+        protected TData Data { get; set; }
 
-        protected TBuilder SetPropertyValue(object value, [CallerMemberName ] string name = null)
+        protected TBuilder SetPropertyValue(object value, [CallerMemberName] string name = null)
         {
             return SetPropertyValue(Data, name, value);
         }

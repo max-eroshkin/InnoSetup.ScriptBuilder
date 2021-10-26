@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-
-namespace InnoSetup.ScriptBuilder.Builder
+﻿namespace InnoSetup.ScriptBuilder
 {
-    public interface IFileEntryBuilder
-    {
-        FileEntryBuilder CreateEntry(string source, string destDir);
-    }
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using Model.FileSection;
 
     public class FileEntryBuilder : BuilderBase<FileEntryBuilder, FileEntry>, IFileEntryBuilder, IBuilder
     {
@@ -18,15 +14,13 @@ namespace InnoSetup.ScriptBuilder.Builder
         public FileEntryBuilder CreateEntry(string source, string destDir)
         {
             _entryList ??= new List<FileEntry>();
-            _entryList.Add(_data = new FileEntry());
+            _entryList.Add(Data = new FileEntry());
             Source(source);
             DestDir(destDir);
 
             return this;
         }
 
-        private FileEntryBuilder Source(string value) => SetPropertyValue(value);
-        private FileEntryBuilder DestDir(string value) => SetPropertyValue(value);
         public FileEntryBuilder DestName(string value) => SetPropertyValue(value);
         public FileEntryBuilder Attribs(AttribsFlags value) => SetPropertyValue(value);
         public FileEntryBuilder FontInstall(string value) => SetPropertyValue(value);
@@ -53,6 +47,9 @@ namespace InnoSetup.ScriptBuilder.Builder
             }
         }
 
+        private FileEntryBuilder Source(string value) => SetPropertyValue(value);
+        private FileEntryBuilder DestDir(string value) => SetPropertyValue(value);
+
         private void WriteEntry(TextWriter writer, FileEntry entry)
         {
             WriteProperties(writer, entry);
@@ -68,7 +65,8 @@ namespace InnoSetup.ScriptBuilder.Builder
             foreach (PropertyInfo info in properties)
             {
                 var value = info.GetValue(entry);
-                if (value is null) continue;
+                if (value is null)
+                    continue;
 
                 switch (value)
                 {
@@ -119,8 +117,4 @@ namespace InnoSetup.ScriptBuilder.Builder
             writer.Write($"{info.Name}: {value}; ");
         }
     }
-
-
-    //public (\w+)\?? (\w+) \{ get\; set\; \}
-    //public FileEntryBuilder $2($1 value) => SetPropertyValue(MethodBase.GetCurrentMethod(), value);
 }

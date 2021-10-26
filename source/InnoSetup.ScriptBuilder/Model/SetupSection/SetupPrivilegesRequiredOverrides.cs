@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder.Model.SetupSection
 {
+    using System;
+
     [Flags]
     public enum SetupPrivilegesRequiredOverrides
     {

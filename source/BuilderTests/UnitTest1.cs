@@ -4,6 +4,10 @@ using Xunit;
 
 namespace BuilderTests
 {
+    using InnoSetup.ScriptBuilder.Model;
+    using InnoSetup.ScriptBuilder.Model.FileSection;
+    using InnoSetup.ScriptBuilder.Model.SetupSection;
+
     public class UnitTest1
     {
         [Fact]

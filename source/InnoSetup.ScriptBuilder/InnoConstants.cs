@@ -32,11 +32,7 @@
         /// <summary>
         /// On 64-bit Windows, the directory containing 64-bit system files. On 32-bit Windows, the directory containing 32-bit system files.
         /// </summary>
-        /// <example>
-        /// 
-        /// </example>
         public const string SysNative = "{sysnative}";
-
 
         /// <summary>
         /// On 64-bit Windows, the system's SysWOW64 directory, typically "C:\WINDOWS\SysWOW64". This is the actual directory in which 32-bit system files reside. On 32-bit Windows, 32-bit system files do not reside in a separate SysWOW64 directory, so this constant will resolve to the same directory as {sys} if used there.
@@ -46,7 +42,6 @@
         /// </remarks>>
         public const string SysWow64 = "{syswow64}";
 
-
         /// <summary>
         /// The directory in which the Setup files are located.
         /// </summary>
@@ -54,7 +49,6 @@
         /// f you used {src}\MYPROG.EXE on an entry and the user is installing from "S:\", Setup will translate it to "S:\MYPROG.EXE".
         /// </example>
         public const string Src = "{src}";
-
 
         /// <summary>
         /// System Drive. The drive Windows is installed on, typically "C:". This directory constant is equivalent to the SystemDrive environment variable.
@@ -65,7 +59,6 @@
         /// Program Files. The path of the system's Program Files directory. {commonpf} is equivalent to {commonpf32} unless the install is running in 64-bit install mode, in which case it is equivalent to {commonpf64}.
         /// </summary>
         public const string ProgramFiles = "{commonpf}";
-
 
         /// <summary>
         /// 32-bit Program Files. The path of the system's 32-bit Program Files directory, typically "C:\Program Files" on 32-bit Windows and "C:\Program Files (x86)" on 64-bit Windows.
@@ -86,7 +79,6 @@
         /// 32-bit Common Files. The path of the system's 32-bit Common Files directory, typically "C:\Program Files\Common Files" on 32-bit Windows and "C:\Program Files (x86)\Common Files" on 64-bit Windows.
         /// </summary>
         public const string CommonFiles32 = "{commoncf32}";
-
 
         /// <summary>
         /// 64-bit Windows only: 64-bit Common Files. The path of the system's 64-bit Common Files directory, typically "C:\Program Files\Common Files". An exception will be raised if an attempt is made to expand this constant on 32-bit Windows.

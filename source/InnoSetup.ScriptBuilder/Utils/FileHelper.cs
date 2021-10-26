@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
-using InnoSetup.ScriptBuilder.Builder;
-
-namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder
 {
+    using System;
+    using System.IO;
+
     public static class FileHelper
     {
         public static void Build<TBuilder>(string path)
@@ -11,12 +10,13 @@ namespace InnoSetup.ScriptBuilder
         {
             Build(typeof(TBuilder), path);
         }
-        
+
         public static void Build(Type builderType, string path)
         {
             var builder = (ScriptBuilderBase)Activator.CreateInstance(builderType);
             Build(builder, path);
-        }        
+        }
+
         public static void Build(ScriptBuilderBase builder, string path)
         {
             using var writer = new StreamWriter(path, false);

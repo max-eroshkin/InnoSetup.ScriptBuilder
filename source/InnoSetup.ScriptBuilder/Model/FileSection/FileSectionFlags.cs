@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder.Model.FileSection
 {
+    using System;
+
     [Flags]
     public enum FileSectionFlags : ulong
     {
