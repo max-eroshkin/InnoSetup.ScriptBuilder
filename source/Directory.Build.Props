@@ -21,14 +21,14 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <Company>pik-group.com</Company>
+        <Company>Reactive BIM</Company>
         <Authors>Reactive BIM</Authors>
-        <Product>RxBim</Product>
+        <Product>InnoSetup Script Builder</Product>
         <Copyright>Copyright ©2021 Reactive BIM</Copyright>
-        <PackageTags>BIM Plugin Framework</PackageTags>
+        <PackageTags>InnoSetup Builder RxBIM</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageProjectUrl>https://github.com/ReactiveBIM/RxBim</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/ReactiveBIM/RxBim.git</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder</PackageProjectUrl>
+        <RepositoryUrl>https://github.com:ReactiveBIM/InnoSetup.ScriptBuilder.git</RepositoryUrl>
         <NoPackageAnalysis>true</NoPackageAnalysis>
     </PropertyGroup>
 
