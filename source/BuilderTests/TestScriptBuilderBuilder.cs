@@ -21,6 +21,11 @@ namespace BuilderTests
             
             Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
                 .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
+            Files.CreateEntry(source: @"bin\fsfsa", destDir: InnoConstants.App)
+                .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs)
+                .Parameter("AuxParameter1", "123", false)
+                .Parameter("AuxParameter2", "123-6", true)
+                .Parameter("AuxParameter3", Sids.System);
             Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
             Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: @"{autofonts}")
                 .FontInstall("Graphik LCG")

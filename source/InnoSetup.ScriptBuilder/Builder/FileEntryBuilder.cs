@@ -5,6 +5,7 @@
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using Model;
     using Model.FileSection;
 
     public class FileEntryBuilder : SectionBuilderBase<FileEntryBuilder, FileEntry>, IFileEntryBuilder, IBuilder
@@ -53,7 +54,19 @@
         private void WriteEntry(TextWriter writer, FileEntry entry)
         {
             WriteProperties(writer, entry);
+            WriteAux(writer, entry);
             writer.WriteLine();
+        }
+
+        private void WriteAux(TextWriter writer, FileEntry entry)
+        {
+            foreach (var tuple in entry.Aux)
+            {
+                if (tuple.Value.value is null)
+                    continue;
+                
+                WriteParameter(writer, tuple.Key, tuple.Value.value, tuple.Value.needQuotes);
+            }
         }
 
         private void WriteProperties(TextWriter writer, FileEntry entry)
@@ -61,60 +74,67 @@
             var type = entry.GetType();
             var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            // text props
             foreach (PropertyInfo info in properties)
             {
+                var parameterName = info.Name;
                 var value = info.GetValue(entry);
                 if (value is null)
                     continue;
 
-                switch (value)
-                {
-                    case string str:
-                        WriteString(writer, info, str);
-                        break;
-                    case Enum enumValue:
-                        WriteEnum(writer, info, enumValue);
-                        break;
-                    case int number:
-                        WriteValue(writer, info, number);
-                        break;
-                    case uint number:
-                        WriteValue(writer, info, number);
-                        break;
-                    case long number:
-                        WriteValue(writer, info, number);
-                        break;
-                    case ulong number:
-                        WriteValue(writer, info, number);
-                        break;
-                    case List<GroupPermission> permissions:
-                        WritePermissions(writer, info, permissions);
-                        break;
-                    default: continue;
-                }
+                WriteParameter(writer, parameterName, value);
             }
         }
 
-        private void WritePermissions(TextWriter writer, PropertyInfo info, List<GroupPermission> value)
+        private void WriteParameter(TextWriter writer, string parameter, object value, bool needQuotes = true)
+        {
+            switch (value)
+            {
+                case string str:
+                    WriteString(writer, parameter, str, needQuotes);
+                    break;
+                case Enum enumValue:
+                    WriteEnum(writer, parameter, enumValue);
+                    break;
+                case int number:
+                    WriteValue(writer, parameter, number);
+                    break;
+                case uint number:
+                    WriteValue(writer, parameter, number);
+                    break;
+                case long number:
+                    WriteValue(writer, parameter, number);
+                    break;
+                case ulong number:
+                    WriteValue(writer, parameter, number);
+                    break;
+                case List<GroupPermission> permissions:
+                    WritePermissions(writer, parameter, permissions);
+                    break;
+            }
+        }
+
+        private void WritePermissions(TextWriter writer, string parameter, List<GroupPermission> value)
         {
             var val = string.Join(" ", value.Select(x => $"{x.Group.GetString()}-{x.Permission.GetString()}"));
-            writer.Write($"{info.Name}: {val}; ");
+            writer.Write($"{parameter}: {val}; ");
         }
 
-        private void WriteEnum(TextWriter writer, PropertyInfo info, Enum value)
+        private void WriteEnum(TextWriter writer, string parameter, Enum value)
         {
-            writer.Write($"{info.Name}: {value.GetString()}; ");
+            writer.Write($"{parameter}: {value.GetString()}; ");
         }
 
-        private void WriteString(TextWriter writer, PropertyInfo info, string value)
+        private void WriteString(TextWriter writer, string parameter, string value, bool needQuotes = true)
         {
-            writer.Write($"{info.Name}: \"{value.Replace("\"", "\"\"")}\"; ");
+            if (needQuotes)
+                writer.Write($"{parameter}: \"{value.Replace("\"", "\"\"")}\"; ");
+            else
+                writer.Write($"{parameter}: {value}; ");
         }
 
-        private void WriteValue<T>(TextWriter writer, PropertyInfo info, T value)
+        private void WriteValue<T>(TextWriter writer, string parameter, T value)
         {
-            writer.Write($"{info.Name}: {value}; ");
+            writer.Write($"{parameter}: {value}; ");
         }
     }
 }

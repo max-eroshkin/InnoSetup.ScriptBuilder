@@ -2,12 +2,26 @@
 {
     using System;
     using System.Runtime.CompilerServices;
+    using Model;
+    using Model.FileSection;
 
     public abstract class SectionBuilderBase<TBuilder, TData>
-        where TData : class
+        where TData : ModelBase
         where TBuilder : class
     {
         protected TData Data { get; set; }
+
+        public TBuilder Parameter(string name, string value, bool needQuotes = true)
+        {
+            Data.Aux.Add(name, (value, needQuotes));
+            return this as TBuilder;
+        }
+
+        public TBuilder Parameter(string name, object value)
+        {
+            Data.Aux.Add(name, (value, false));
+            return this as TBuilder;
+        }
 
         protected TBuilder SetPropertyValue(object value, [CallerMemberName] string name = null)
         {

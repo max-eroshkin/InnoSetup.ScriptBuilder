@@ -1,6 +1,8 @@
 ﻿namespace InnoSetup.ScriptBuilder.Model.SetupSection
 {
-    public class SetupSection
+    using FileSection;
+
+    public class SetupSection : ModelBase
     {
         public string AppName { get; set; }
 
