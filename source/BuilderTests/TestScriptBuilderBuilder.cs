@@ -3,6 +3,7 @@
 namespace BuilderTests
 {
     using InnoSetup.ScriptBuilder.Model;
+    using InnoSetup.ScriptBuilder.Model.ComponentSection;
     using InnoSetup.ScriptBuilder.Model.FileSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
 
@@ -39,6 +40,8 @@ namespace BuilderTests
                 .AddPermission(Sids.System, Permissions.ReadExec)
                 .AddPermission(Sids.Users, Permissions.Modify)
                 .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
+
+            Components.CreateEntry("Files", "File component").Flags(ComponentFlags.Fixed);
         }
     }
 }

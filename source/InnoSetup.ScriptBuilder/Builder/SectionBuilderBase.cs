@@ -2,13 +2,13 @@
 {
     using System;
     using System.Runtime.CompilerServices;
-    using Model;
     using Model.FileSection;
 
     public abstract class SectionBuilderBase<TBuilder, TData>
         where TData : ModelBase
         where TBuilder : class
     {
+        public abstract string SectionName { get; }
         protected TData Data { get; set; }
 
         public TBuilder Parameter(string name, string value, bool needQuotes = true)

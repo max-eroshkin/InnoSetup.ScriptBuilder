@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class FileEntry : ModelBase
+    public class FileEntry : ParameterSectionEntryBase
     {
         public string Source { get; set; }
 

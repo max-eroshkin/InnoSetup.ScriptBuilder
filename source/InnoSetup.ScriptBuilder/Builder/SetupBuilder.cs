@@ -1,6 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using System;
     using System.IO;
     using System.Reflection;
     using Model;
@@ -8,6 +7,7 @@
 
     public class SetupBuilder : SectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder, IBuilder
     {
+        public override string SectionName => "Setup";
         public SetupBuilder Create(string appName)
         {
             Data = new SetupSection();
@@ -90,7 +90,7 @@
         public void Write(TextWriter writer)
         {
             _ = Data ?? throw new IssBuilderException("[Setup] section not created");
-            writer.WriteLine("[Setup]");
+            writer.WriteLine($"[{SectionName}]");
             WriteProperties(writer);
             WriteAux(writer);
         }
