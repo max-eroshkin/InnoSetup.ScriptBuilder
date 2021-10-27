@@ -8,6 +8,7 @@
         private readonly SetupBuilder _setup = new ();
         private readonly FilesBuilder _files = new ();
         private readonly ComponentsBuilder _components = new ();
+        private readonly RegistryBuilder _registry = new ();
 
         public ISetupBuilder Setup => _setup;
 
@@ -15,13 +16,16 @@
 
         public IComponentEntryBuilder Components => _components;
 
+        public IRegistryBuilder Registry => _registry;
+
         public GenericSections Sections { get; } = new ();
 
         public void Write(TextWriter writer)
         {
             _setup.Write(writer);
-            _files.Write(writer);
             _components.Write(writer);
+            _files.Write(writer);
+            _registry.Write(writer);
             Sections.Write(writer);
         }
 

@@ -14,7 +14,7 @@
             if (Data is null)
                 return;
 
-            writer.WriteLine($"[{SectionName}]");
+            writer.WriteLine($"\n[{SectionName}]");
             WriteProperties(writer);
             WriteAux(writer);
         }

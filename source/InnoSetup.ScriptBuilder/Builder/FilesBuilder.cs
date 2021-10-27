@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Model.FileSection;
-
+    
     public class FilesBuilder : ParameterSectionBuilderBase<FilesBuilder, FileEntry>, IFileEntryBuilder
     {
         public override string SectionName => "Files";
@@ -23,6 +23,8 @@
         public FilesBuilder ExternalSize(string value) => SetPropertyValue(value);
         public FilesBuilder StrongAssemblyName(string value) => SetPropertyValue(value);
         public FilesBuilder Flags(FileFlags value) => SetPropertyValue(value);
+        public FilesBuilder Components(FileFlags value) => SetPropertyValue(value);
+        public FilesBuilder Tasks(FileFlags value) => SetPropertyValue(value);
 
         public FilesBuilder AddPermission(Sids group, Permissions permission)
         {
