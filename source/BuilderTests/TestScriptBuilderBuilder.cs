@@ -7,11 +7,11 @@ namespace BuilderTests
     using InnoSetup.ScriptBuilder.Model.FileSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
 
-    public class TestScriptBuilderBuilder : ScriptBuilderBase
+    public class TestScriptBuilderBuilder : IssBuilder
     {
         public TestScriptBuilderBuilder()
         {
-            Setup.Create("BimTools.Support")
+            /*Setup.Create("BimTools.Support")
                 .AppVersion("1.2.5.1634640046")
                 .DefaultDirName(@"{userappdata}\Autodesk\Revit\Addins\2019\SupportTools")
                 .PrivilegesRequired(PrivilegesRequired.Lowest)
@@ -42,10 +42,15 @@ namespace BuilderTests
                 .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
 
             Components
-                .CreateEntry("Files", "File component").Flags(ComponentFlags.Fixed);
+                .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
 
             Sections.CreateParameterSection("Registry")
-                .CreateEntry().Parameter("Version", "123.56", false).Parameter("Component", "Files");
+                .CreateEntry().Parameter("Version", "123.56", false).Parameter("Component", "main");
+
+            Sections.CreateKeyValueSection("Messages")
+                .CreateEntry()
+                .Parameter("BeveledLabel", @"Inno Setup")
+                .Parameter("HelpTextNote", @"/PORTABLE=1%nEnable portable mode.");*/
         }
     }
 }

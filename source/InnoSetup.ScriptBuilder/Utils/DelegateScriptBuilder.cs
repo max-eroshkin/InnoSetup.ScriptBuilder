@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class DelegateScriptBuilder : ScriptBuilderBase
+    public class DelegateScriptBuilder : IssBuilder
     {
-        public DelegateScriptBuilder(Action<ScriptBuilderBase> config)
+        public DelegateScriptBuilder(Action<IssBuilder> config)
         {
             _ = config ?? throw new ArgumentNullException(nameof(config), "config cannot be null");
             config(this);

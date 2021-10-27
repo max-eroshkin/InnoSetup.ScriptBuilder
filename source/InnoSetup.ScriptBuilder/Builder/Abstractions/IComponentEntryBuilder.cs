@@ -2,6 +2,6 @@
 {
     public interface IComponentEntryBuilder
     {
-        ComponentEntryBuilder CreateEntry(string name, string description);
+        ComponentsBuilder CreateEntry(string name, string description);
     }
 }

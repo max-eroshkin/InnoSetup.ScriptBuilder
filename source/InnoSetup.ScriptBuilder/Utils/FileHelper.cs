@@ -6,24 +6,24 @@
     public static class FileHelper
     {
         public static void Build<TBuilder>(string path)
-            where TBuilder : ScriptBuilderBase, new()
+            where TBuilder : IssBuilder, new()
         {
             Build(typeof(TBuilder), path);
         }
 
         public static void Build(Type builderType, string path)
         {
-            var builder = (ScriptBuilderBase)Activator.CreateInstance(builderType);
+            var builder = (IssBuilder)Activator.CreateInstance(builderType);
             Build(builder, path);
         }
 
-        public static void Build(ScriptBuilderBase builder, string path)
+        public static void Build(IssBuilder builder, string path)
         {
             using var writer = new StreamWriter(path, false);
             builder.Write(writer);
         }
 
-        public static void Build(Action<ScriptBuilderBase> config, string path)
+        public static void Build(Action<IssBuilder> config, string path)
         {
             Build(new DelegateScriptBuilder(config), path);
         }

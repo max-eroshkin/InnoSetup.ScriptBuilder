@@ -1,16 +1,14 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using System.IO;
-    using System.Reflection;
     using Model;
     using Model.SetupSection;
 
-    public class SetupBuilder : SectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder, IBuilder
+    public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder
     {
         public override string SectionName => "Setup";
         public SetupBuilder Create(string appName)
         {
-            Data = new SetupSection();
+            CreateEntryInternal();
             return AppName(appName);
         }
 
@@ -87,43 +85,6 @@
         public SetupBuilder OutputManifestFile(string value) => SetPropertyValue(value);
         public SetupBuilder SetupIconFile(string value) => SetPropertyValue(value);
 
-        public void Write(TextWriter writer)
-        {
-            writer.WriteLine($"[{SectionName}]");
-            WriteProperties(writer);
-            WriteAux(writer);
-        }
-
         private SetupBuilder AppName(string value) => SetPropertyValue(value);
-
-        private void WriteProperties(TextWriter writer)
-        {
-            var type = Data.GetType();
-            var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (PropertyInfo info in properties)
-            {
-                var value = info.GetValue(Data);
-                if (value is null)
-                    continue;
-                
-                var str = value.GetString();
-                if (str is not null)
-                    writer.WriteLine($"{info.Name}={str}");
-            }
-        }
-        
-        private void WriteAux(TextWriter writer)
-        {
-            foreach (var parameter in Data.Aux)
-            {
-                if (parameter.Value.value is null)
-                    continue;
-                
-                var str = parameter.Value.value.GetString(parameter.Value.needQuotes);
-                if (str is not null)
-                    writer.WriteLine($"{parameter.Key}={str}");
-            }
-        }
     }
 }

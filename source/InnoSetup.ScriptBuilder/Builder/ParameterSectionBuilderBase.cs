@@ -5,7 +5,7 @@
     using System.Reflection;
     using Model.FileSection;
 
-    public abstract class ParameterSectionBuilder<TBuilder, TData> : SectionBuilderBase<TBuilder, TData>, IBuilder
+    public abstract class ParameterSectionBuilderBase<TBuilder, TData> : SectionBuilderBase<TBuilder, TData>, IBuilder
         where TData : ParameterSectionEntryBase, new()
         where TBuilder : class
     {
