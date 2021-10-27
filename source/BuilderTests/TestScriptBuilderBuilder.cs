@@ -41,7 +41,11 @@ namespace BuilderTests
                 .AddPermission(Sids.Users, Permissions.Modify)
                 .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
 
-            Components.CreateEntry("Files", "File component").Flags(ComponentFlags.Fixed);
+            Components
+                .CreateEntry("Files", "File component").Flags(ComponentFlags.Fixed);
+
+            Sections.CreateParameterSection("Registry")
+                .CreateEntry().Parameter("Version", "123.56", false).Parameter("Component", "Files");
         }
     }
 }

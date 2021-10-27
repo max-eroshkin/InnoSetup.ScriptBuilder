@@ -89,7 +89,6 @@
 
         public void Write(TextWriter writer)
         {
-            _ = Data ?? throw new IssBuilderException("[Setup] section not created");
             writer.WriteLine($"[{SectionName}]");
             WriteProperties(writer);
             WriteAux(writer);
