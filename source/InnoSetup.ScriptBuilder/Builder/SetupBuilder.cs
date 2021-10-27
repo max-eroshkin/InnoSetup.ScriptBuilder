@@ -92,6 +92,7 @@
             _ = Data ?? throw new IssBuilderException("[Setup] section not created");
             writer.WriteLine("[Setup]");
             WriteProperties(writer);
+            WriteAux(writer);
         }
 
         private SetupBuilder AppName(string value) => SetPropertyValue(value);
@@ -101,51 +102,29 @@
             var type = Data.GetType();
             var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            // text props
             foreach (PropertyInfo info in properties)
             {
                 var value = info.GetValue(Data);
                 if (value is null)
                     continue;
-
-                switch (value)
-                {
-                    case string str:
-                        WriteString(writer, info, str);
-                        break;
-                    case Enum enumValue:
-                        WriteEnum(writer, info, enumValue);
-                        break;
-                    case int number:
-                        WriteValue(writer, info, number);
-                        break;
-                    case uint number:
-                        WriteValue(writer, info, number);
-                        break;
-                    case long number:
-                        WriteValue(writer, info, number);
-                        break;
-                    case ulong number:
-                        WriteValue(writer, info, number);
-                        break;
-                    default: continue;
-                }
+                
+                var str = value.GetString();
+                if (str is not null)
+                    writer.WriteLine($"{info.Name}={str}");
             }
         }
-
-        private void WriteEnum(TextWriter writer, PropertyInfo info, Enum value)
+        
+        private void WriteAux(TextWriter writer)
         {
-            writer.WriteLine($"{info.Name}={value.GetString()}");
-        }
-
-        private void WriteString(TextWriter writer, PropertyInfo info, string value)
-        {
-            writer.WriteLine($"{info.Name}=\"{value.Replace("\"", "\"\"")}\"");
-        }
-
-        private void WriteValue<T>(TextWriter writer, PropertyInfo info, T value)
-        {
-            writer.WriteLine($"{info.Name}={value}");
+            foreach (var parameter in Data.Aux)
+            {
+                if (parameter.Value.value is null)
+                    continue;
+                
+                var str = parameter.Value.value.GetString(parameter.Value.needQuotes);
+                if (str is not null)
+                    writer.WriteLine($"{parameter.Key}={str}");
+            }
         }
     }
 }

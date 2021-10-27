@@ -17,7 +17,8 @@ namespace BuilderTests
                 .OutputBaseFilename("BimTools.Support_2021_1.2.5.1634640046")
                 .SetupIconFile("trayIcon.ico")
                 .UninstallDisplayIcon("trayIcon.ico")
-                .DisableDirPage(YesNo.Yes);
+                .DisableDirPage(YesNo.Yes)
+                .Parameter("AuxParam", "1.2.546", false);
             
             Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
                 .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);

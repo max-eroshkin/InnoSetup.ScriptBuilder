@@ -1,11 +1,8 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Reflection;
-    using Model;
     using Model.FileSection;
 
     public class FileEntryBuilder : SectionBuilderBase<FileEntryBuilder, FileEntry>, IFileEntryBuilder, IBuilder
@@ -58,17 +55,6 @@
             writer.WriteLine();
         }
 
-        private void WriteAux(TextWriter writer, FileEntry entry)
-        {
-            foreach (var tuple in entry.Aux)
-            {
-                if (tuple.Value.value is null)
-                    continue;
-                
-                WriteParameter(writer, tuple.Key, tuple.Value.value, tuple.Value.needQuotes);
-            }
-        }
-
         private void WriteProperties(TextWriter writer, FileEntry entry)
         {
             var type = entry.GetType();
@@ -76,65 +62,27 @@
 
             foreach (PropertyInfo info in properties)
             {
-                var parameterName = info.Name;
                 var value = info.GetValue(entry);
                 if (value is null)
                     continue;
 
-                WriteParameter(writer, parameterName, value);
+                var str = value.GetString();
+                if (str is not null)
+                    writer.Write($"{info.Name}: {str}; ");
             }
         }
 
-        private void WriteParameter(TextWriter writer, string parameter, object value, bool needQuotes = true)
+        private void WriteAux(TextWriter writer, FileEntry entry)
         {
-            switch (value)
+            foreach (var parameter in entry.Aux)
             {
-                case string str:
-                    WriteString(writer, parameter, str, needQuotes);
-                    break;
-                case Enum enumValue:
-                    WriteEnum(writer, parameter, enumValue);
-                    break;
-                case int number:
-                    WriteValue(writer, parameter, number);
-                    break;
-                case uint number:
-                    WriteValue(writer, parameter, number);
-                    break;
-                case long number:
-                    WriteValue(writer, parameter, number);
-                    break;
-                case ulong number:
-                    WriteValue(writer, parameter, number);
-                    break;
-                case List<GroupPermission> permissions:
-                    WritePermissions(writer, parameter, permissions);
-                    break;
+                if (parameter.Value.value is null)
+                    continue;
+                
+                var str = parameter.Value.value.GetString(parameter.Value.needQuotes);
+                if (str is not null)
+                    writer.Write($"{parameter.Key}: {str}; ");
             }
-        }
-
-        private void WritePermissions(TextWriter writer, string parameter, List<GroupPermission> value)
-        {
-            var val = string.Join(" ", value.Select(x => $"{x.Group.GetString()}-{x.Permission.GetString()}"));
-            writer.Write($"{parameter}: {val}; ");
-        }
-
-        private void WriteEnum(TextWriter writer, string parameter, Enum value)
-        {
-            writer.Write($"{parameter}: {value.GetString()}; ");
-        }
-
-        private void WriteString(TextWriter writer, string parameter, string value, bool needQuotes = true)
-        {
-            if (needQuotes)
-                writer.Write($"{parameter}: \"{value.Replace("\"", "\"\"")}\"; ");
-            else
-                writer.Write($"{parameter}: {value}; ");
-        }
-
-        private void WriteValue<T>(TextWriter writer, string parameter, T value)
-        {
-            writer.Write($"{parameter}: {value}; ");
         }
     }
 }
