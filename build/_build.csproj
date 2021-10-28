@@ -19,6 +19,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Nuke.Common" Version="5.2.1" />
+    <PackageReference Include="Tools.InnoSetup" Version="6.2.0" IncludeAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,7 +45,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ci" />
+    <ProjectReference Include="..\source\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
   </ItemGroup>
+<!--  <Target Name="CopyIsTools" BeforeTargets="Build">-->
+<!--    <Copy SourceFiles="${InnoSetupCompiler}" DestinationFolder="${TargetDir}" />-->
+<!--  </Target>-->
   
 </Project>
