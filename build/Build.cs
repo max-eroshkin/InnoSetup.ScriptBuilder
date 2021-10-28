@@ -22,17 +22,17 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 [CheckBuildProjectConfigurations]
 [UnsetVisualStudioEnvironmentVariables]
-/*[GitHubActions("CI",
+[GitHubActions("CI",
     GitHubActionsImage.WindowsLatest,
     OnPushBranches = new[] { DevelopBranch },
-    OnPullRequestBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(Test), nameof(ICompile.Compile) },
-    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PROJECTS" })]
+    OnPullRequestBranches = new[] { DevelopBranch, "feature/**" },
+    InvokedTargets = new[] { nameof(Test), nameof(IPublish.Publish) },
+    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
 [GitHubActions("Publish",
     GitHubActionsImage.WindowsLatest,
-    OnPushBranches = new[] { MasterBranch },
-    InvokedTargets = new[] { nameof(IPublish.Publish) },
-    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PROJECTS" })]*/
+    OnPushBranches = new[] { MasterBranch, "release/**" },
+    InvokedTargets = new[] { nameof(Test), nameof(IPublish.Publish) },
+    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
 partial class Build : NukeBuild,
     IHazSolution,
     IRestore,
@@ -64,6 +64,7 @@ partial class Build : NukeBuild,
 
     [UsedImplicitly]
     public Target Test => _ => _
+        .Before(Clean)
         .Executes(() =>
         {
             DotNetTest(settings => settings
@@ -72,7 +73,7 @@ partial class Build : NukeBuild,
         });
 
     public Target Inno => _ => _
-        //.DependsOn<IPack>()
+        .DependsOn<ICompile>()
         .Executes(() =>
         {
             var iss = TemporaryDirectory / "package.iss";
