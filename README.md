@@ -6,8 +6,8 @@ using C# fluent API.
 ![CI](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions/workflows/CI.yml/badge.svg)
 ![Nuget](https://img.shields.io/nuget/vpre/InnoSetup.ScriptBuilder?style=flat)
 
-##Getting started
-###Create builder
+## Getting started
+### Create builder
 To get the script looking like this
 ```iss
 [Setup]
@@ -78,13 +78,13 @@ var builder = BuilderUtils.CreateBuilder(builder =>
         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
 );
 ```
-##Getting results
-###String result
+## Getting results
+### String result
 ```c#
 var builder = new DemoBuilder();
 var result = builder.ToString();
 ```
-###Script file
+### Script file
 ```c#
 var builder = new DemoBuilder();
 builder.Build("demo.iss");
@@ -106,7 +106,7 @@ BuilderUtils.Build(
     }, 
     "demo.iss");
 ```
-##Not implemented sections and parameters
+## Not implemented sections and parameters
 If the section you want to insert is not implemented you can use `Sections.CreateKeyValueSection()`
 or `Sections.CreateParameterSection()` methods. 
 To insert not implemented parameters/directives of any kind of section use `Parameter()` method.
