@@ -1,6 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.FileSection;
+    using Model;
 
     public class KeyValueSection : ModelBase
     {

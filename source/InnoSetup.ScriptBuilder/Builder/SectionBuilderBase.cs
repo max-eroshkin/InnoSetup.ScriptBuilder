@@ -2,7 +2,7 @@
 {
     using System;
     using System.Runtime.CompilerServices;
-    using Model.FileSection;
+    using Model;
 
     public abstract class SectionBuilderBase<TBuilder, TData>
         where TData : ModelBase

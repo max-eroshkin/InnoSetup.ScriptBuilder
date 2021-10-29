@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		source\Directory.Build.Props = source\Directory.Build.Props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{7F0D61ED-5B52-4D98-833F-D92BF4FEF417}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 		{071FFF7E-83EE-489F-AF94-05660B6E8B60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E574AEDB-46E3-4F8A-97FC-F30B332C39E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E574AEDB-46E3-4F8A-97FC-F30B332C39E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0D61ED-5B52-4D98-833F-D92BF4FEF417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0D61ED-5B52-4D98-833F-D92BF4FEF417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0D61ED-5B52-4D98-833F-D92BF4FEF417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0D61ED-5B52-4D98-833F-D92BF4FEF417}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

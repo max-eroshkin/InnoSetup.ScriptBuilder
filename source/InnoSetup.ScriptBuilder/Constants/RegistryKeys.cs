@@ -1,30 +1,30 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.RegistrySection
+﻿namespace InnoSetup.ScriptBuilder
 {
     public enum RegistryKeys
     {
         /// <summary>
         /// HKEY_CURRENT_USER
         /// </summary>
-        Hkcu,
+        HKCU,
 
         /// <summary>
         /// HKEY_LOCAL_MACHINE
         /// </summary>
-        Hklm,
+        HKLM,
 
         /// <summary>
         /// HKEY_CLASSES_ROOT
         /// </summary>
-        Hkcr,
+        HKCR,
 
         /// <summary>
         /// HKEY_USERS
         /// </summary>
-        Hku,
+        HKU,
 
         /// <summary>
         /// HKEY_CURRENT_CONFIG
         /// </summary>
-        Hkcc,
+        HKCC,
     }
 }

@@ -29,6 +29,13 @@
             Sections.Write(writer);
         }
 
+        public override string ToString()
+        {
+            using var writer = new StringWriter();
+            Write(writer);
+            return writer.ToString();
+        }
+
         public class GenericSections
         {
             private readonly List<IBuilder> _builders = new ();
