@@ -1,12 +1,12 @@
 # InnoSetup.ScriptBuilder
 
-This package is intended to build InnoSetup script files (*.iss) 
-using C# fluent API.
+This package is intended to build Inno Setup script files (*.iss) 
+using C# fluent API. You can find the official Inno Setup documentation on [Inno Setup web site](https://jrsoftware.org/).
 
 ![CI](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions/workflows/CI.yml/badge.svg)
-![Nuget](https://img.shields.io/nuget/vpre/InnoSetup.ScriptBuilder?style=flat)
+![Nuget](https://img.shields.io/nuget/v/InnoSetup.ScriptBuilder)
 
-## Getting started
+## Examples
 ### Create builder
 To get the script looking like this
 ```iss
@@ -107,7 +107,7 @@ BuilderUtils.Build(
     "demo.iss");
 ```
 ## Not implemented sections and parameters
-If the section you want to insert is not implemented you can use `Sections.CreateKeyValueSection()`
+If the section you want to insert is not implemented you can use either `Sections.CreateKeyValueSection()`
 or `Sections.CreateParameterSection()` methods. 
 To insert not implemented parameters/directives of any kind of section use `Parameter()` method.
 ```c#
