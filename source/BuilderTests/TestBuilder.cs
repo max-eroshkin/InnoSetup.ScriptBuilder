@@ -2,15 +2,11 @@
 
 namespace BuilderTests
 {
-    using InnoSetup.ScriptBuilder.Model;
-    using InnoSetup.ScriptBuilder.Model.ComponentSection;
-    using InnoSetup.ScriptBuilder.Model.FileSection;
-    using InnoSetup.ScriptBuilder.Model.RegistrySection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
 
-    public class TestScriptBuilderBuilder : IssBuilder
+    public class TestBuilder : IssBuilder
     {
-        public TestScriptBuilderBuilder()
+        public TestBuilder()
         {
             Setup.Create("BimTools.Support")
                 .AppVersion("1.2.5.1634640046")
@@ -45,11 +41,16 @@ namespace BuilderTests
             Components
                 .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
 
-            Registry.CreateEntry(RegistryKeys.Hku, @"Software\My Company\My Program")
+            Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program")
                 .ValueName("Name").ValueType(ValueTypes.String).ValueData("Test app");
 
             Sections.CreateParameterSection("Registry")
-                .CreateEntry().Parameter("Version", "123.56", false).Parameter("Component", "main");
+                .CreateEntry()
+                    .Parameter("Root", RegistryKeys.HKU)
+                    .Parameter("Subkey", @"Software\My Company\My Program")
+                    .Parameter("ValueName", "Name")
+                    .Parameter("ValueType", ValueTypes.String)
+                    .Parameter("ValueData", "Test app");
 
             Sections.CreateKeyValueSection("Messages")
                 .CreateEntry()

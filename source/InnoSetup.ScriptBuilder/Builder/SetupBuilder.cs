@@ -1,6 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model;
     using Model.SetupSection;
 
     public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder

@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.ComponentSection
+﻿namespace InnoSetup.ScriptBuilder
 {
     using System;
 

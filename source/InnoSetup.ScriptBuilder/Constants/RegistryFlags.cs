@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.RegistrySection
+﻿namespace InnoSetup.ScriptBuilder
 {
     using System;
 

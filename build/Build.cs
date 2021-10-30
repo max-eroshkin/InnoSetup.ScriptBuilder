@@ -3,13 +3,10 @@ using System.Linq;
 using System.Text;
 using Bimlab.Nuke.Components;
 using InnoSetup.ScriptBuilder;
-using InnoSetup.ScriptBuilder.Model;
-using InnoSetup.ScriptBuilder.Model.FileSection;
 using InnoSetup.ScriptBuilder.Model.SetupSection;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
-using Nuke.Common.CI.SpaceAutomation;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -81,7 +78,7 @@ partial class Build : NukeBuild,
             var outDir = Solution.GetProject("InnoSetup.ScriptBuilder").Directory / "bin" /
                 From<IHazConfiguration>().Configuration / "netstandard2.0";
             
-            FileHelper.Build(s =>
+            BuilderUtils.Build(s =>
             {
                 var now = DateTime.UtcNow;
                 s.Setup.Create("InnoSetup Script Builder")

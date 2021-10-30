@@ -1,11 +1,8 @@
-using System.IO;
 using InnoSetup.ScriptBuilder;
 using Xunit;
 
 namespace BuilderTests
 {
-    using InnoSetup.ScriptBuilder.Model;
-    using InnoSetup.ScriptBuilder.Model.FileSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
 
     public class UnitTest1
@@ -13,16 +10,14 @@ namespace BuilderTests
         [Fact]
         public void Test1()
         {
-            var scriptBuilder = new TestScriptBuilderBuilder();
-            var writer = new StringWriter();
-            scriptBuilder.Write(writer);
-            var result = writer.ToString();
+            var scriptBuilder = new TestBuilder();
+            var result = scriptBuilder.ToString();
         }
 
         [Fact]
         public void Test2()
         {
-            FileHelper.Build(
+            BuilderUtils.Build(
                 c =>
                 {
                     c.Setup.Create("BimTools.Support")
