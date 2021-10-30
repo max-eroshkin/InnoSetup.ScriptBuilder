@@ -1,0 +1,4 @@
+
+public (\w+)\?? (\w+) \{ get\; set\; \}
+
+public ComponentEntryBuilder $2($1 value) => SetPropertyValue(value);

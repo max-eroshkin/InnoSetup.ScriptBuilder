@@ -1,0 +1,35 @@
+﻿<Project>
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+        <NoWarn>CS1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(MSBuildProjectName.EndsWith(`Tests`))' == 'True'">
+        <IsPackable>False</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(IsPackable)' != 'False'">
+        <CodeAnalysisRuleSet>..\..\stylecop.ruleset</CodeAnalysisRuleSet>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(IsPackable)' != 'False'">
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <Company>Reactive BIM</Company>
+        <Authors>Reactive BIM</Authors>
+        <Product>InnoSetup Script Builder</Product>
+        <Copyright>Copyright ©2021 Reactive BIM</Copyright>
+        <PackageTags>InnoSetup Builder RxBIM</PackageTags>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder</PackageProjectUrl>
+        <RepositoryUrl>https://github.com:ReactiveBIM/InnoSetup.ScriptBuilder.git</RepositoryUrl>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+    </PropertyGroup>
+
+</Project>
