@@ -74,6 +74,7 @@
         public SetupBuilder UninstallDisplaySize(long value) => SetPropertyValue(value);
         public SetupBuilder DisableDirPage(YesNo value) => SetPropertyValue(value);
         public SetupBuilder DisableProgramGroupPage(YesNo value) => SetPropertyValue(value);
+        public SetupBuilder DisableWelcomePage(YesNo value) => SetPropertyValue(value);
         public SetupBuilder PrivilegesRequired(PrivilegesRequired value) => SetPropertyValue(value);
 
         public SetupBuilder PrivilegesRequiredOverridesAllowed(SetupPrivilegesRequiredOverrides value) =>
@@ -84,6 +85,8 @@
         public SetupBuilder OutputBaseFilename(string value) => SetPropertyValue(value);
         public SetupBuilder OutputManifestFile(string value) => SetPropertyValue(value);
         public SetupBuilder SetupIconFile(string value) => SetPropertyValue(value);
+        public SetupBuilder WizardImageFile(string value) => SetPropertyValue(value);
+        public SetupBuilder WizardSmallImageFile(string value) => SetPropertyValue(value);
 
         private SetupBuilder AppName(string value) => SetPropertyValue(value);
     }

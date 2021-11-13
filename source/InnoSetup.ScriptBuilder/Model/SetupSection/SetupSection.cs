@@ -130,6 +130,8 @@
 
         public YesNo? DisableProgramGroupPage { get; set; }
 
+        public YesNo? DisableWelcomePage { get; set; }
+
         public PrivilegesRequired? PrivilegesRequired { get; set; }
 
         public SetupPrivilegesRequiredOverrides? PrivilegesRequiredOverridesAllowed { get; set; }
@@ -143,6 +145,10 @@
         public string OutputManifestFile { get; set; }
 
         public string SetupIconFile { get; set; }
+
+        public string WizardImageFile { get; set; }
+
+        public string WizardSmallImageFile { get; set; }
 
         // public string AllowCancelDuringInstall { get; set; }
         // public string AllowNetworkDrive { get; set; }
@@ -171,7 +177,6 @@
         // public string DisableReadyMemo { get; set; }
         // public string DisableReadyPage { get; set; }
         // public string DisableStartupPrompt { get; set; }
-        // public string DisableWelcomePage { get; set; }
         // public string DiskClusterSize { get; set; }
         // public string DiskSliceSize { get; set; }
         // public string DiskSpanning { get; set; }
@@ -249,11 +254,9 @@
         // public string WindowStartMaximized { get; set; }
         // public string WindowVisible { get; set; }
         // public string WizardImageBackColor { get; set; }
-        // public string WizardImageFile { get; set; }
         // public string WizardImageStretch { get; set; }
         // public string WizardResizable { get; set; }
         // public string WizardSmallImageBackColor { get; set; }
-        // public string WizardSmallImageFile { get; set; }
         // public string WizardSizePercent { get; set; }
         // public string WizardStyle { get; set; }
     }
