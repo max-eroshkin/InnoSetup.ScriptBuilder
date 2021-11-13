@@ -42,6 +42,7 @@
         public SetupBuilder ChangesAssociations(string value) => SetPropertyValue(value);
         public SetupBuilder InfoBeforeText(string value) => SetPropertyValue(value);
         public SetupBuilder LicenseText(string value) => SetPropertyValue(value);
+        public SetupBuilder LicenseFile(string value) => SetPropertyValue(value);
         public SetupBuilder InfoAfterText(string value) => SetPropertyValue(value);
         public SetupBuilder CompiledCodeText(string value) => SetPropertyValue(value);
         public SetupBuilder NumLanguageEntries(int value) => SetPropertyValue(value);

@@ -66,6 +66,8 @@
 
         public string LicenseText { get; set; }
 
+        public string LicenseFile { get; set; }
+
         public string InfoAfterText { get; set; }
 
         public string CompiledCodeText { get; set; }
@@ -181,7 +183,6 @@
         // public string InfoBeforeFile { get; set; }
         // public string InternalCompressLevel { get; set; }
         // public string LanguageDetectionMethod { get; set; }
-        // public string LicenseFile { get; set; }
         // public string LZMAAlgorithm { get; set; }
         // public string LZMABlockSize { get; set; }
         // public string LZMADictionarySize { get; set; }
