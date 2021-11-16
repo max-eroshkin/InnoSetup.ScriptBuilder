@@ -6,18 +6,18 @@
     {
         public override string SectionName => "Languages";
 
-        public LanguagesBuilder CreateEntry(string name, string messageFile)
+        public LanguagesBuilder CreateEntry(string name, string messagesFile)
         {
             CreateEntryInternal();
             Name(name);
-            MessageFile(messageFile);
+            MessagesFile(messagesFile);
             return this;
         }
 
+        public LanguagesBuilder LicenseFile(string value) => SetPropertyValue(value);
+        public LanguagesBuilder InfoAfterFile(string value) => SetPropertyValue(value);
+        public LanguagesBuilder InfoBeforeFile(string value) => SetPropertyValue(value);
         private LanguagesBuilder Name(string value) => SetPropertyValue(value);
-        private LanguagesBuilder MessageFile(string value) => SetPropertyValue(value);
-        private LanguagesBuilder LicenseFile(string value) => SetPropertyValue(value);
-        private LanguagesBuilder InfoAfterFile(string value) => SetPropertyValue(value);
-        private LanguagesBuilder InfoBeforeFile(string value) => SetPropertyValue(value);
+        private LanguagesBuilder MessagesFile(string value) => SetPropertyValue(value);
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ILanguageEntryBuilder
     {
-        LanguagesBuilder CreateEntry(string name, string messageFile);
+        LanguagesBuilder CreateEntry(string name, string messagesFile);
     }
 }
