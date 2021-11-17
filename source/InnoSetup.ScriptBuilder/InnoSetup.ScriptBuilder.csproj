@@ -7,6 +7,6 @@
   <PropertyGroup>
     <Description>InnoSetup Script Builder</Description>
     <PackageId>InnoSetup.ScriptBuilder</PackageId>
-    <Version>0.1.2</Version>
+    <Version>0.1.1-dev001</Version>
   </PropertyGroup>
 </Project>
