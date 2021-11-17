@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <RootNamespace>InnoSetup.ScriptBuilder</RootNamespace>
-    </PropertyGroup>
-    <PropertyGroup>
-        <Description>InnoSetup Script Builder</Description>
-        <PackageId>InnoSetup.ScriptBuilder</PackageId>
-        <Version>0.1.1</Version>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>InnoSetup.ScriptBuilder</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Description>InnoSetup Script Builder</Description>
+    <PackageId>InnoSetup.ScriptBuilder</PackageId>
+    <Version>0.1.2</Version>
+  </PropertyGroup>
 </Project>
