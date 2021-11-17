@@ -1,7 +1,8 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-public interface IComponentsAndTasksBuilder<TBuilder>
+﻿namespace InnoSetup.ScriptBuilder
 {
-    TBuilder Components(string value);
-    TBuilder Tasks(string value);
+    public interface IComponentsAndTasksBuilder<TBuilder>
+    {
+        TBuilder Components(string value);
+        TBuilder Tasks(string value);
+    }
 }

@@ -1,6 +1,6 @@
 ﻿<Project>
     <PropertyGroup>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>9</LangVersion>
         <NoWarn>CS1591</NoWarn>
     </PropertyGroup>
 
