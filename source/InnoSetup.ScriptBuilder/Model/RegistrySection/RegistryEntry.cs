@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using FileSection;
 
-    public class RegistryEntry : ParameterSectionEntryBase
+    public class RegistryEntry : ParameterSectionEntryBase, IHazComponentsAndTasks
     {
         public RegistryKeys? Root { get; set; }
 

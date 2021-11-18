@@ -4,7 +4,10 @@
     using Model.FileSection;
     using Model.RegistrySection;
 
-    public class RegistryBuilder : ParameterSectionBuilderBase<RegistryBuilder, RegistryEntry>, IRegistryBuilder
+    public class RegistryBuilder : 
+        ParameterSectionBuilderBase<RegistryBuilder, RegistryEntry>,
+        IRegistryBuilder,
+        IComponentsAndTasksBuilder<RegistryBuilder>
     {
         public override string SectionName => "Registry";
 

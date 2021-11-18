@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class FileEntry : ParameterSectionEntryBase
+    public class FileEntry : ParameterSectionEntryBase, IHazComponentsAndTasks
     {
         public string Source { get; set; }
 
