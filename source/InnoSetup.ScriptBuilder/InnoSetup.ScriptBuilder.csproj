@@ -7,6 +7,10 @@
   <PropertyGroup>
     <Description>InnoSetup Script Builder</Description>
     <PackageId>InnoSetup.ScriptBuilder</PackageId>
-    <Version>0.1.1-dev001</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>0.1.1</Version>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
