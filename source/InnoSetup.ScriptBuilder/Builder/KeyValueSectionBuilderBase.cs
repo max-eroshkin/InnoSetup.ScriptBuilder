@@ -49,10 +49,10 @@
         {
             foreach (var parameter in Data.Aux)
             {
-                if (parameter.Value.value is null)
+                if (parameter.Value.Value is null)
                     continue;
 
-                var str = parameter.Value.value.GetString(parameter.Value.needQuotes);
+                var str = parameter.Value.Value.GetString(parameter.Value.NeedQuotes);
                 if (str is not null)
                     writer.WriteLine($"{parameter.Key}={str}");
             }

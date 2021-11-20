@@ -4,6 +4,6 @@
 
     public abstract class ModelBase
     {
-        public Dictionary<string, (object value, bool needQuotes)> Aux { get; } = new ();
+        public Dictionary<string, (object Value, bool NeedQuotes)> Aux { get; } = new();
     }
 }
