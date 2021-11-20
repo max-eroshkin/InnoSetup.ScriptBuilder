@@ -5,11 +5,11 @@
 
     public abstract class IssBuilder : IBuilder
     {
-        private readonly SetupBuilder _setup = new ();
-        private readonly FilesBuilder _files = new ();
-        private readonly ComponentsBuilder _components = new ();
-        private readonly RegistryBuilder _registry = new ();
-        private readonly LanguagesBuilder _languages = new ();
+        private readonly SetupBuilder _setup = new();
+        private readonly FilesBuilder _files = new();
+        private readonly ComponentsBuilder _components = new();
+        private readonly RegistryBuilder _registry = new();
+        private readonly LanguagesBuilder _languages = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -21,7 +21,24 @@
 
         public ILanguageEntryBuilder Languages => _languages;
 
-        public GenericSections Sections { get; } = new ();
+        /* Sections to implement
+            Types
+            Tasks
+            Dirs
+            Icons
+            Ini
+            InstallDelete
+            CustomMessages
+            Messages
+            LangOptions
+            Run
+            UninstallDelete
+            UninstallRun
+            
+            Code
+         */
+
+        public GenericSections Sections { get; } = new();
 
         public void Write(TextWriter writer)
         {
@@ -42,7 +59,7 @@
 
         public class GenericSections
         {
-            private readonly List<IBuilder> _builders = new ();
+            private readonly List<IBuilder> _builders = new();
 
             public IGenericParameterSectionBuilder CreateParameterSection(string name)
             {
