@@ -3,19 +3,25 @@ using Xunit;
 
 namespace BuilderTests
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text.RegularExpressions;
+    using FluentAssertions;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
 
-    public class UnitTest1
+    public class BuilderTests
     {
         [Fact]
-        public void Test1()
+        public void WriteString()
         {
             var scriptBuilder = new TestBuilder();
             var result = scriptBuilder.ToString();
+            result.Should().NotBeEmpty();
         }
 
         [Fact]
-        public void Test2()
+        public void WriteFile()
         {
             BuilderUtils.Build(
                 c =>
@@ -45,6 +51,25 @@ namespace BuilderTests
                         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
                 },
                 "test_build.iss");
+        }
+        
+        [Fact]
+        public void NamingConsistency()
+        {
+            var builder = BuilderUtils.CreateBuilder(_ => { });
+            var builderType = builder.GetType();
+            var builderProperties = builderType
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(x => x.PropertyType.Name.EndsWith("Builder"))
+                .ToList();
+
+            foreach (var property in builderProperties)
+            {
+                var sectionBuilder = property.GetValue(builder);
+                var nameProperty = sectionBuilder.GetType().GetProperty("SectionName");
+                var name = nameProperty.GetValue(sectionBuilder);
+                name.Should().Be(property.Name);
+            }
         }
     }
 }

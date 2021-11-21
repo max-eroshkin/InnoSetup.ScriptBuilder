@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using Model.FileSection;
 
@@ -13,10 +14,10 @@
             {
                 string str => GetString(str, needQuotes),
                 Enum enumValue => GetString(enumValue),
-                int number => number.ToString(),
-                uint number => number.ToString(),
-                long number => number.ToString(),
-                ulong number => number.ToString(),
+                int number => number.ToString(NumberFormatInfo.InvariantInfo),
+                uint number => number.ToString(NumberFormatInfo.InvariantInfo),
+                long number => number.ToString(NumberFormatInfo.InvariantInfo),
+                ulong number => number.ToString(NumberFormatInfo.InvariantInfo),
                 List<GroupPermission> permissions => GetString(permissions),
                 _ => null
             };

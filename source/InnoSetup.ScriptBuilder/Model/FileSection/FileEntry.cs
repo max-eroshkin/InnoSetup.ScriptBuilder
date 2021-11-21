@@ -1,5 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder.Model.FileSection
 {
+    using System;
     using System.Collections.Generic;
 
     public class FileEntry : ParameterSectionEntryBase, IHazComponentsAndTasks
@@ -16,7 +17,7 @@
 
         public string Excludes { get; set; }
 
-        public string ExternalSize { get; set; }
+        public long ExternalSize { get; set; }
 
         public string StrongAssemblyName { get; set; }
 
