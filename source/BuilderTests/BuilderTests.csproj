@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
+        <ProjectReference Include="..\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
     </ItemGroup>
 
 </Project>

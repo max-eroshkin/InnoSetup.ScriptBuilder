@@ -10,6 +10,7 @@
         private readonly ComponentsBuilder _components = new();
         private readonly RegistryBuilder _registry = new();
         private readonly LanguagesBuilder _languages = new();
+        private readonly DirsBuilder _dirs = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -21,10 +22,11 @@
 
         public ILanguageEntryBuilder Languages => _languages;
 
+        public IDirsBuilder Dirs => _dirs;
+
         /* Sections to implement
             Types
             Tasks
-            Dirs
             Icons
             Ini
             InstallDelete
@@ -45,6 +47,7 @@
             _setup.Write(writer);
             _components.Write(writer);
             _languages.Write(writer);
+            _dirs.Write(writer);
             _files.Write(writer);
             _registry.Write(writer);
             Sections.Write(writer);

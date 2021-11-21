@@ -4,10 +4,11 @@
     using System.Linq;
     using System.Text.RegularExpressions;
     using FluentAssertions;
-    using InnoSetup.ScriptBuilder.Model.ComponentSection;
+    using InnoSetup.ScriptBuilder.Model.DirsSection;
+    using InnoSetup.ScriptBuilder.Model.FileSection;
     using Xunit;
 
-    public class ComponentsTests
+    public class DirsSectionTests
     {
         [Fact]
         public void Entry()
@@ -16,22 +17,23 @@
 
             iss.Should().NotBeEmpty();
             var sections = TestUtils.GetSections(iss).ToList();
-            var section = sections.First(x => x.Name == "Components");
+            var section = sections.First(x => x.Name == "Dirs");
 
             var parameters = TestUtils.ParseParameters(section.Entries[0]);
 
             parameters.Should()
-                .ContainAllKeys<ComponentEntry>()
+                .ContainAllKeys<DirEntry>()
                 .And.BeEquivalentTo(new Dictionary<string, string>
                 {
                     { "Name", "\"Name\"" },
-                    { "Description", "\"Description\"" },
-                    { "ExtraDiskSpaceRequired", "123456" },
-                    { "Types", "\"Types\"" },
+                    { "Components", "\"Components\"" },
+                    { "Tasks", "\"Tasks\"" },
                     { "Languages", "\"Languages\"" },
                     { "MinVersion", "\"MinVersion\"" },
                     { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
-                    { "Flags", "fixed exclusive" },
+                    { "Permissions", "service-full admins-modify" },
+                    { "Flags", "uninsalwaysuninstall" },
+                    { "Attribs", "hidden system" },
                 });
         }
 
@@ -42,7 +44,7 @@
 
             iss.Should().NotBeEmpty();
             var sections = TestUtils.GetSections(iss).ToList();
-            var section = sections.FirstOrDefault(x => x.Name == "Components");
+            var section = sections.FirstOrDefault(x => x.Name == "Dirs");
             section.Should().NotBeNull();
             var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
             section.Entries.Should()

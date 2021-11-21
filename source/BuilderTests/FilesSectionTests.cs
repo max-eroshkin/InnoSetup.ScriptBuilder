@@ -9,22 +9,6 @@
 
     public class FilesSectionTests
     {
-        
-        [Fact]
-        public void Section()
-        {
-            var iss = new TestBuilder().ToString();
-           
-            iss.Should().NotBeEmpty();
-            var sections = TestUtils.GetSections(iss).ToList();
-            var section = sections.FirstOrDefault(x => x.Name == "Files");
-            section.Should().NotBeNull();
-            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
-            section.Entries.Should()
-                .HaveCount(2)
-                .And.OnlyContain(x => entryRegex.IsMatch(x));
-        }
-        
         [Fact]
         public void Entry()
         {
@@ -33,9 +17,9 @@
             iss.Should().NotBeEmpty();
             var sections = TestUtils.GetSections(iss).ToList();
             var section = sections.First(x => x.Name == "Files");
-            
+
             var parameters = TestUtils.ParseParameters(section.Entries[0]);
-            
+
             parameters.Should()
                 .ContainAllKeys<FileEntry>()
                 .And.BeEquivalentTo(new Dictionary<string, string>
@@ -56,6 +40,21 @@
                     { "Flags", "sign" },
                     { "Attribs", "readonly system" },
                 });
+        }
+
+        [Fact]
+        public void Section()
+        {
+            var iss = new TestBuilder().ToString();
+
+            iss.Should().NotBeEmpty();
+            var sections = TestUtils.GetSections(iss).ToList();
+            var section = sections.FirstOrDefault(x => x.Name == "Files");
+            section.Should().NotBeNull();
+            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
+            section.Entries.Should()
+                .HaveCount(2)
+                .And.OnlyContain(x => entryRegex.IsMatch(x));
         }
     }
 }
