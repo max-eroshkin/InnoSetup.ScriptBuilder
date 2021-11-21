@@ -4,7 +4,7 @@
     using Model.FileSection;
 
     public class FilesBuilder :
-        ParameterSectionBuilderBase<FilesBuilder, FileEntry>,
+        CommonParameterSectionBuilderBase<FilesBuilder, FileEntry>,
         IFileEntryBuilder,
         IComponentsAndTasksBuilder<FilesBuilder>
     {

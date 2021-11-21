@@ -1,9 +1,8 @@
 ﻿namespace InnoSetup.ScriptBuilder.Model.FileSection
 {
-    using System;
     using System.Collections.Generic;
 
-    public class FileEntry : ParameterSectionEntryBase, IHazComponentsAndTasks
+    public class FileEntry : CommonParameterSectionEntryBase, IHazComponentsAndTasks
     {
         public string Source { get; set; }
 
