@@ -38,8 +38,20 @@ namespace BuilderTests
             Components
                 .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
 
-            Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program")
-                .ValueName("Name").ValueType(ValueTypes.String).ValueData("Test app");
+            Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
+                .ValueName("ValueName")
+                .ValueType(ValueTypes.String)
+                .ValueData("ValueData")
+                .Flags(RegistryFlags.CreateValueIfDoesntExist | RegistryFlags.NoError)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .AddPermission(Sids.Service, Permissions.Full)
+                .AddPermission(Sids.Admins, Permissions.Modify);
+            Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program");
+
 
             Sections.CreateParameterSection("Registry")
                 .CreateEntry()
