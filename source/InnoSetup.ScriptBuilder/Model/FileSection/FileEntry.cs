@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class FileEntry : ParameterSectionEntryBase, IHazComponentsAndTasks
+    public class FileEntry : CommonParameterSectionEntryBase, IHazComponentsAndTasks
     {
         public string Source { get; set; }
 
@@ -16,7 +16,7 @@
 
         public string Excludes { get; set; }
 
-        public string ExternalSize { get; set; }
+        public long ExternalSize { get; set; }
 
         public string StrongAssemblyName { get; set; }
 

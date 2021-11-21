@@ -5,7 +5,7 @@
     using Model.RegistrySection;
 
     public class RegistryBuilder : 
-        ParameterSectionBuilderBase<RegistryBuilder, RegistryEntry>,
+        CommonParameterSectionBuilderBase<RegistryBuilder, RegistryEntry>,
         IRegistryBuilder,
         IComponentsAndTasksBuilder<RegistryBuilder>
     {

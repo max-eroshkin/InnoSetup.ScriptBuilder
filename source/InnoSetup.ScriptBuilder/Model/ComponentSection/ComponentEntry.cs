@@ -2,7 +2,7 @@
 {
     using FileSection;
 
-    public class ComponentEntry : ParameterSectionEntryBase
+    public class ComponentEntry : CommonParameterSectionEntryBase
     {
         public string Name { get; set; }
 

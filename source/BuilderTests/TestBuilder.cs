@@ -18,31 +18,54 @@ namespace BuilderTests
                 .DisableDirPage(YesNo.Yes)
                 .Parameter("AuxParam", "1.2.546", false);
             
-            Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
-                .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
-            Files.CreateEntry(source: @"bin\fsfsa", destDir: InnoConstants.App)
-                .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs)
-                .Parameter("AuxParameter1", "123", false)
-                .Parameter("AuxParameter2", "123-6", true)
-                .Parameter("AuxParameter3", Sids.System);
+            Files.CreateEntry("Source", "DestDir")
+                .DestName("DestName")
+                .Attribs(AttribsFlags.System | AttribsFlags.Readonly)
+                .FontInstall("FontInstall")
+                .Excludes("Excludes")
+                .ExternalSize(123456)
+                .StrongAssemblyName("StrongAssemblyName")
+                .Flags(FileFlags.Sign | FileFlags.Sign)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .AddPermission(Sids.Service, Permissions.Full)
+                .AddPermission(Sids.Admins, Permissions.Modify);
             Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
-            Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: @"{autofonts}")
-                .FontInstall("Graphik LCG")
-                .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
-            Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: @"{autofonts}")
-                .FontInstall("Graphik LCG")
-                .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
-            Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-gfjfjfj.ttf", destDir: @"{autofonts}")
-                .FontInstall("Graphik 111")
-                .AddPermission(Sids.System, Permissions.ReadExec)
-                .AddPermission(Sids.Users, Permissions.Modify)
-                .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
 
+            Components
+                .CreateEntry("Name", "Description")
+                .Types("Types")
+                .ExtraDiskSpaceRequired(123456)
+                .Flags(ComponentFlags.Fixed | ComponentFlags.Exclusive)
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
             Components
                 .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
 
-            Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program")
-                .ValueName("Name").ValueType(ValueTypes.String).ValueData("Test app");
+            Languages.CreateEntry("Name", "MessagesFile")
+                .LicenseFile("LicenseFile")
+                .InfoAfterFile("InfoAfterFile")
+                .InfoBeforeFile("InfoBeforeFile");
+            Languages.CreateEntry("Name", "MessageFile");
+
+            Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
+                .ValueName("ValueName")
+                .ValueType(ValueTypes.String)
+                .ValueData("ValueData")
+                .Flags(RegistryFlags.CreateValueIfDoesntExist | RegistryFlags.NoError)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .AddPermission(Sids.Service, Permissions.Full)
+                .AddPermission(Sids.Admins, Permissions.Modify);
+            Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program");
+
 
             Sections.CreateParameterSection("Registry")
                 .CreateEntry()

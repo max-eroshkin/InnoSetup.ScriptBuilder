@@ -4,7 +4,7 @@
     using Model.FileSection;
 
     public class FilesBuilder :
-        ParameterSectionBuilderBase<FilesBuilder, FileEntry>,
+        CommonParameterSectionBuilderBase<FilesBuilder, FileEntry>,
         IFileEntryBuilder,
         IComponentsAndTasksBuilder<FilesBuilder>
     {
@@ -23,7 +23,7 @@
         public FilesBuilder Attribs(AttribsFlags value) => SetPropertyValue(value);
         public FilesBuilder FontInstall(string value) => SetPropertyValue(value);
         public FilesBuilder Excludes(string value) => SetPropertyValue(value);
-        public FilesBuilder ExternalSize(string value) => SetPropertyValue(value);
+        public FilesBuilder ExternalSize(long value) => SetPropertyValue(value);
         public FilesBuilder StrongAssemblyName(string value) => SetPropertyValue(value);
         public FilesBuilder Flags(FileFlags value) => SetPropertyValue(value);
         public FilesBuilder Components(string value) => SetPropertyValue(value);

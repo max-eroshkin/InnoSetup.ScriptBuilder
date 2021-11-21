@@ -1,7 +1,7 @@
 ﻿namespace InnoSetup.ScriptBuilder.Model.LanguageSection
 {
     using FileSection;
-    public class LanguageEntry : ParameterSectionEntryBase
+    public class LanguageEntry : ModelBase
     {
         public string Name { get; set; }
 

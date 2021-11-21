@@ -3,18 +3,14 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
-    using Model.FileSection;
+    using Model;
 
     public abstract class ParameterSectionBuilderBase<TBuilder, TData> : SectionBuilderBase<TBuilder, TData>, IBuilder
-        where TData : ParameterSectionEntryBase, new()
         where TBuilder : class
+        where TData : ModelBase, new()
     {
         private List<TData> _entryList;
 
-        public TBuilder Languages(string value) => SetPropertyValue(value);
-        public TBuilder MinVersion(string value) => SetPropertyValue(value);
-        public TBuilder OnlyBelowVersion(string value) => SetPropertyValue(value);
-        
         public void Write(TextWriter writer)
         {
             if (_entryList?.Count > 0)

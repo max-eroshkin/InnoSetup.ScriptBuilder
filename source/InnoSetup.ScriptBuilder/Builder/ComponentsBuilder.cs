@@ -2,7 +2,7 @@
 {
     using Model.ComponentSection;
 
-    public class ComponentsBuilder : ParameterSectionBuilderBase<ComponentsBuilder, ComponentEntry>, IComponentEntryBuilder
+    public class ComponentsBuilder : CommonParameterSectionBuilderBase<ComponentsBuilder, ComponentEntry>, IComponentEntryBuilder
     {
         public override string SectionName => "Components";
 
