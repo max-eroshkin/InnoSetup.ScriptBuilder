@@ -36,6 +36,14 @@ namespace BuilderTests
             Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
 
             Components
+                .CreateEntry("Name", "Description")
+                .Types("Types")
+                .ExtraDiskSpaceRequired(123456)
+                .Flags(ComponentFlags.Fixed | ComponentFlags.Exclusive)
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Components
                 .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
 
             Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
