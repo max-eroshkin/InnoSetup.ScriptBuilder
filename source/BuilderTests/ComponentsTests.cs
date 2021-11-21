@@ -10,21 +10,6 @@
     public class ComponentsTests
     {
         [Fact]
-        public void Section()
-        {
-            var iss = new TestBuilder().ToString();
-
-            iss.Should().NotBeEmpty();
-            var sections = TestUtils.GetSections(iss).ToList();
-            var section = sections.FirstOrDefault(x => x.Name == "Components");
-            section.Should().NotBeNull();
-            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
-            section.Entries.Should()
-                .HaveCount(2)
-                .And.OnlyContain(x => entryRegex.IsMatch(x));
-        }
-
-        [Fact]
         public void Entry()
         {
             var iss = new TestBuilder().ToString();
@@ -48,6 +33,21 @@
                     { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
                     { "Flags", "fixed exclusive" },
                 });
+        }
+
+        [Fact]
+        public void Section()
+        {
+            var iss = new TestBuilder().ToString();
+
+            iss.Should().NotBeEmpty();
+            var sections = TestUtils.GetSections(iss).ToList();
+            var section = sections.FirstOrDefault(x => x.Name == "Components");
+            section.Should().NotBeNull();
+            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
+            section.Entries.Should()
+                .HaveCount(2)
+                .And.OnlyContain(x => entryRegex.IsMatch(x));
         }
     }
 }

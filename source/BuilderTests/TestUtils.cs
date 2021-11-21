@@ -10,8 +10,8 @@
 
     internal static class TestUtils
     {
-        private static readonly Regex SectionNamePattern = new(@"\[(\w+)\]");
         public const string ParameterSectionEntryPattern = @"^((\w+)\: ([^\;]+)\;\s?)+";
+        private static readonly Regex SectionNamePattern = new(@"\[(\w+)\]");
 
         public static List<SectionInfo> GetSections(string iss)
         {

@@ -1,7 +1,6 @@
-﻿using InnoSetup.ScriptBuilder;
-
-namespace BuilderTests
+﻿namespace BuilderTests
 {
+    using InnoSetup.ScriptBuilder;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
 
     public class TestBuilder : IssBuilder
@@ -17,7 +16,7 @@ namespace BuilderTests
                 .UninstallDisplayIcon("trayIcon.ico")
                 .DisableDirPage(YesNo.Yes)
                 .Parameter("AuxParam", "1.2.546", false);
-            
+
             Files.CreateEntry("Source", "DestDir")
                 .DestName("DestName")
                 .Attribs(AttribsFlags.System | AttribsFlags.Readonly)
@@ -66,14 +65,13 @@ namespace BuilderTests
                 .AddPermission(Sids.Admins, Permissions.Modify);
             Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program");
 
-
             Sections.CreateParameterSection("Registry")
                 .CreateEntry()
-                    .Parameter("Root", RegistryKeys.HKU)
-                    .Parameter("Subkey", @"Software\My Company\My Program")
-                    .Parameter("ValueName", "Name")
-                    .Parameter("ValueType", ValueTypes.String)
-                    .Parameter("ValueData", "Test app");
+                .Parameter("Root", RegistryKeys.HKU)
+                .Parameter("Subkey", @"Software\My Company\My Program")
+                .Parameter("ValueName", "Name")
+                .Parameter("ValueType", ValueTypes.String)
+                .Parameter("ValueData", "Test app");
 
             Sections.CreateKeyValueSection("Messages")
                 .CreateEntry()
