@@ -47,6 +47,7 @@
             _setup.Write(writer);
             _components.Write(writer);
             _languages.Write(writer);
+            _dirs.Write(writer);
             _files.Write(writer);
             _registry.Write(writer);
             Sections.Write(writer);

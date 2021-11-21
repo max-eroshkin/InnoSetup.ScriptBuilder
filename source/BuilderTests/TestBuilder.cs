@@ -45,6 +45,18 @@
             Components
                 .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
 
+            Dirs.CreateEntry("Name")
+                .Attribs(AttribsFlags.System | AttribsFlags.Hidden)
+                .Flags(DirFlags.UninsAlwaysUninstall)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .AddPermission(Sids.Service, Permissions.Full)
+                .AddPermission(Sids.Admins, Permissions.Modify);
+            Dirs.CreateEntry("Name");
+
             Languages.CreateEntry("Name", "MessagesFile")
                 .LicenseFile("LicenseFile")
                 .InfoAfterFile("InfoAfterFile")
