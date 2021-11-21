@@ -46,6 +46,12 @@ namespace BuilderTests
             Components
                 .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
 
+            Languages.CreateEntry("Name", "MessagesFile")
+                .LicenseFile("LicenseFile")
+                .InfoAfterFile("InfoAfterFile")
+                .InfoBeforeFile("InfoBeforeFile");
+            Languages.CreateEntry("Name", "MessageFile");
+
             Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
                 .ValueName("ValueName")
                 .ValueType(ValueTypes.String)
