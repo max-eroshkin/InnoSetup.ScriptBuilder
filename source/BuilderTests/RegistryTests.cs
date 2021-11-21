@@ -9,22 +9,6 @@
 
     public class RegistryTests
     {
-        
-        [Fact]
-        public void Section()
-        {
-            var iss = new TestBuilder().ToString();
-           
-            iss.Should().NotBeEmpty();
-            var sections = TestUtils.GetSections(iss).ToList();
-            var section = sections.FirstOrDefault(x => x.Name == "Registry");
-            section.Should().NotBeNull();
-            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
-            section.Entries.Should()
-                .HaveCount(2)
-                .And.OnlyContain(x => entryRegex.IsMatch(x));
-        }
-        
         [Fact]
         public void Entry()
         {
@@ -33,9 +17,9 @@
             iss.Should().NotBeEmpty();
             var sections = TestUtils.GetSections(iss).ToList();
             var section = sections.First(x => x.Name == "Registry");
-            
+
             var parameters = TestUtils.ParseParameters(section.Entries[0]);
-            
+
             parameters.Should()
                 .ContainAllKeys<RegistryEntry>()
                 .And.BeEquivalentTo(new Dictionary<string, string>
@@ -53,6 +37,21 @@
                     { "Permissions", "service-full admins-modify" },
                     { "Flags", "createvalueifdoesntexist noerror" },
                 });
+        }
+
+        [Fact]
+        public void Section()
+        {
+            var iss = new TestBuilder().ToString();
+
+            iss.Should().NotBeEmpty();
+            var sections = TestUtils.GetSections(iss).ToList();
+            var section = sections.FirstOrDefault(x => x.Name == "Registry");
+            section.Should().NotBeNull();
+            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
+            section.Entries.Should()
+                .HaveCount(2)
+                .And.OnlyContain(x => entryRegex.IsMatch(x));
         }
     }
 }
