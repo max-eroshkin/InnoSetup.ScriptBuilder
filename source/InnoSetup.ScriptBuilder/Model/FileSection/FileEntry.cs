@@ -16,7 +16,7 @@
 
         public string Excludes { get; set; }
 
-        public long ExternalSize { get; set; }
+        public long? ExternalSize { get; set; }
 
         public string StrongAssemblyName { get; set; }
 
