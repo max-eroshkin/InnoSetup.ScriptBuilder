@@ -98,6 +98,9 @@
                 .Languages("Languages")
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion");
+            Run.CreateEntry("FileName");
+            
+            UninstallRun.CreateEntry("FileName");
 
             Sections.CreateParameterSection("Registry")
                 .CreateEntry()

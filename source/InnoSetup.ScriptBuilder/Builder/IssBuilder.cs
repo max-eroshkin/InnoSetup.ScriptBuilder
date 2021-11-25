@@ -12,7 +12,8 @@
         private readonly LanguagesBuilder _languages = new();
         private readonly DirsBuilder _dirs = new();
         private readonly TypesBuilder _types = new();
-        private readonly RunBuilder _run = new();
+        private readonly RunBuilder _run = new("Run");
+        private readonly RunBuilder _uninstallRun = new("UninstallRun");
 
         public ISetupBuilder Setup => _setup;
 
@@ -25,8 +26,12 @@
         public ILanguageEntryBuilder Languages => _languages;
 
         public IDirsBuilder Dirs => _dirs;
+
         public ITypesBuilder Types => _types;
+
         public IRunBuilder Run => _run;
+
+        public IRunBuilder UninstallRun => _uninstallRun;
 
         /* Sections to implement
             Tasks
@@ -37,7 +42,6 @@
             Messages
             LangOptions
             UninstallDelete
-            UninstallRun
             
             Code
          */
@@ -54,6 +58,7 @@
             _files.Write(writer);
             _registry.Write(writer);
             _run.Write(writer);
+            _uninstallRun.Write(writer);
             Sections.Write(writer);
         }
 

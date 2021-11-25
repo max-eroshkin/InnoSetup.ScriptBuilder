@@ -7,8 +7,13 @@
         IRunBuilder,
         IComponentsAndTasksBuilder<RunBuilder>
     {
-        public override string SectionName => "Run";
-        
+        public RunBuilder(string sectionName)
+        {
+            SectionName = sectionName;
+        }
+
+        public override string SectionName { get; }
+
         public RunBuilder CreateEntry(string fileName)
         {
             CreateEntryInternal();
@@ -34,7 +39,7 @@
         public RunBuilder Components(string value) => SetPropertyValue(value);
 
         public RunBuilder Tasks(string value) => SetPropertyValue(value);
-        
+
         private RunBuilder FileName(string value) => SetPropertyValue(value);
     }
 }
