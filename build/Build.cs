@@ -61,7 +61,7 @@ partial class Build : NukeBuild,
 
     [UsedImplicitly]
     public Target Test => _ => _
-        .Before(Clean)
+        .Before<IRestore>()
         .Executes(() =>
         {
             DotNetTest(settings => settings
