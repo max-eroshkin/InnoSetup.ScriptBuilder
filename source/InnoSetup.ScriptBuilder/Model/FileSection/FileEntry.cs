@@ -23,7 +23,9 @@
         public List<GroupPermission> Permissions { get; set; }
 
         public FileFlags? Flags { get; set; }
+
         public string Components { get; set; }
+
         public string Tasks { get; set; }
     }
 }
