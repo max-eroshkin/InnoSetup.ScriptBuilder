@@ -11,6 +11,7 @@
         private readonly RegistryBuilder _registry = new();
         private readonly LanguagesBuilder _languages = new();
         private readonly DirsBuilder _dirs = new();
+        private readonly TypesBuilder _types = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -23,6 +24,7 @@
         public ILanguageEntryBuilder Languages => _languages;
 
         public IDirsBuilder Dirs => _dirs;
+        public ITypesBuilder Types => _types;
 
         /* Sections to implement
             Types
@@ -46,6 +48,7 @@
         {
             _setup.Write(writer);
             _components.Write(writer);
+            _types.Write(writer);
             _languages.Write(writer);
             _dirs.Write(writer);
             _files.Write(writer);
