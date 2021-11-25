@@ -5,7 +5,7 @@
     [Flags]
     public enum RunFlags
     {
-        _32bit = 0x01,
+        _32bit = 1,
         _64bit = 1 << 1,
         NoWait = 1 << 2,
         WaitUntilIdle = 1 << 3,

@@ -17,7 +17,7 @@
         public RunBuilder CreateEntry(string fileName)
         {
             CreateEntryInternal();
-            FileName(fileName);
+            Filename(fileName);
 
             return this;
         }
@@ -40,6 +40,6 @@
 
         public RunBuilder Tasks(string value) => SetPropertyValue(value);
 
-        private RunBuilder FileName(string value) => SetPropertyValue(value);
+        private RunBuilder Filename(string value) => SetPropertyValue(value);
     }
 }

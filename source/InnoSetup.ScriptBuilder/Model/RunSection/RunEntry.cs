@@ -2,7 +2,7 @@
 {
     public class RunEntry : CommonParameterSectionEntryBase, IHazComponentsAndTasks
     {
-        public string FileName { get; set; }
+        public string Filename { get; set; }
 
         public string Description { get; set; }
 

@@ -27,7 +27,7 @@
                 .ContainAllKeys<RunEntry>()
                 .And.BeEquivalentTo(new Dictionary<string, string>
                 {
-                    { "FileName", "\"FileName\"" },
+                    { "Filename", "\"FileName\"" },
                     { "Description", "\"Description\"" },
                     { "Parameters", "\"Parameters\"" },
                     { "WorkingDir", "\"WorkingDir\"" },
