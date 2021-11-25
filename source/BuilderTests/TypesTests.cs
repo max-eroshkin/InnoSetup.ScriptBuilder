@@ -4,7 +4,6 @@
     using System.Linq;
     using System.Text.RegularExpressions;
     using FluentAssertions;
-    using InnoSetup.ScriptBuilder.Model.ComponentSection;
     using InnoSetup.ScriptBuilder.Model.TypesSection;
     using Xunit;
 

@@ -5,7 +5,6 @@
     using System.Text.RegularExpressions;
     using FluentAssertions;
     using InnoSetup.ScriptBuilder.Model.DirsSection;
-    using InnoSetup.ScriptBuilder.Model.FileSection;
     using Xunit;
 
     public class DirsSectionTests
