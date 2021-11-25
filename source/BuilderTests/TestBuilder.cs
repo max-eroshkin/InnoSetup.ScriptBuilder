@@ -2,6 +2,7 @@
 {
     using InnoSetup.ScriptBuilder;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
+    using InnoSetup.ScriptBuilder.Model.TypesSection;
 
     public class TestBuilder : IssBuilder
     {
@@ -42,8 +43,15 @@
                 .Languages("Languages")
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion");
-            Components
-                .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
+            Components.CreateEntry("main", "Main Files");
+
+            Types
+                .CreateEntry("Name", "Description")
+                .Flags(TypeFlags.IsCustom)
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Types.CreateEntry("Name", "Description");
 
             Dirs.CreateEntry("Name")
                 .Attribs(AttribsFlags.System | AttribsFlags.Hidden)
