@@ -1,6 +1,7 @@
 ﻿namespace BuilderTests
 {
     using InnoSetup.ScriptBuilder;
+    using InnoSetup.ScriptBuilder.Model.RunSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
     using InnoSetup.ScriptBuilder.Model.TypesSection;
 
@@ -84,6 +85,22 @@
                 .AddPermission(Sids.Service, Permissions.Full)
                 .AddPermission(Sids.Admins, Permissions.Modify);
             Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program");
+            Run.CreateEntry("FileName")
+                .Description("Description")
+                .WorkingDir("WorkingDir")
+                .StatusMsg("StatusMsg")
+                .RunOnceId("RunOnceId")
+                .Parameters("Parameters")
+                .Verb("Verb")
+                .Flags(RunFlags._64bit | RunFlags.RunHidden)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Run.CreateEntry("FileName");
+            
+            UninstallRun.CreateEntry("FileName");
 
             Sections.CreateParameterSection("Registry")
                 .CreateEntry()
