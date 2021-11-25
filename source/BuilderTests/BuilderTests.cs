@@ -30,7 +30,7 @@ namespace BuilderTests
             }
         }
 
-        [Fact(Skip = "will unskipped soon")]
+        [Fact]
         public void ModelAllPropertiesNullable()
         {
             var baseType = typeof(ModelBase);

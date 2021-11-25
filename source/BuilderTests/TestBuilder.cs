@@ -1,6 +1,7 @@
 ﻿namespace BuilderTests
 {
     using InnoSetup.ScriptBuilder;
+    using InnoSetup.ScriptBuilder.Model.IconsSection;
     using InnoSetup.ScriptBuilder.Model.RunSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
     using InnoSetup.ScriptBuilder.Model.TypesSection;
@@ -65,6 +66,23 @@
                 .AddPermission(Sids.Service, Permissions.Full)
                 .AddPermission(Sids.Admins, Permissions.Modify);
             Dirs.CreateEntry("Name");
+            
+            Icons.CreateEntry("Name", "Filename")
+                .Parameters("Parameters")
+                .WorkingDir("WorkingDir")
+                .Comment("Comment")
+                .HotKey("HotKey")
+                .IconFilename("IconFilename")
+                .IconIndex(11)
+                .AppUserModelID("AppUserModelID")
+                .AppUserModelToastActivatorCLSID("AppUserModelToastActivatorCLSID")
+                .Flags(IconFlags.UninsNeverUninstall | IconFlags.CloseOnExit)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Icons.CreateEntry("Name", "Filename");
 
             Languages.CreateEntry("Name", "MessagesFile")
                 .LicenseFile("LicenseFile")

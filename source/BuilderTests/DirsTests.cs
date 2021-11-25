@@ -1,26 +1,23 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.RegistrySection;
+    using InnoSetup.ScriptBuilder.Model.DirsSection;
 
-    public class RegistryTests : ParameterSectionTestsBase<RegistryEntry>
+    public class DirsTests : ParameterSectionTestsBase<DirEntry>
     {
-        protected override string SectionName => "Registry";
+        protected override string SectionName => "Dirs";
 
         protected override Dictionary<string, string> ReferenceData => new()
         {
-            { "Root", "hkcu" },
-            { "Subkey", "\"Subkey\"" },
-            { "ValueName", "\"ValueName\"" },
-            { "ValueType", "string" },
-            { "ValueData", "\"ValueData\"" },
+            { "Name", "\"Name\"" },
             { "Components", "\"Components\"" },
             { "Tasks", "\"Tasks\"" },
             { "Languages", "\"Languages\"" },
             { "MinVersion", "\"MinVersion\"" },
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
             { "Permissions", "service-full admins-modify" },
-            { "Flags", "createvalueifdoesntexist noerror" },
+            { "Flags", "uninsalwaysuninstall" },
+            { "Attribs", "hidden system" },
         };
     }
 }
