@@ -1,7 +1,10 @@
 ﻿namespace BuilderTests
 {
     using InnoSetup.ScriptBuilder;
+    using InnoSetup.ScriptBuilder.Model.IconsSection;
+    using InnoSetup.ScriptBuilder.Model.RunSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
+    using InnoSetup.ScriptBuilder.Model.TypesSection;
 
     public class TestBuilder : IssBuilder
     {
@@ -42,8 +45,15 @@
                 .Languages("Languages")
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion");
-            Components
-                .CreateEntry("main", "Main Files").Types("full compact custom").Flags(ComponentFlags.Fixed);
+            Components.CreateEntry("main", "Main Files");
+
+            Types
+                .CreateEntry("Name", "Description")
+                .Flags(TypeFlags.IsCustom)
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Types.CreateEntry("Name", "Description");
 
             Dirs.CreateEntry("Name")
                 .Attribs(AttribsFlags.System | AttribsFlags.Hidden)
@@ -56,6 +66,23 @@
                 .AddPermission(Sids.Service, Permissions.Full)
                 .AddPermission(Sids.Admins, Permissions.Modify);
             Dirs.CreateEntry("Name");
+            
+            Icons.CreateEntry("Name", "Filename")
+                .Parameters("Parameters")
+                .WorkingDir("WorkingDir")
+                .Comment("Comment")
+                .HotKey("HotKey")
+                .IconFilename("IconFilename")
+                .IconIndex(11)
+                .AppUserModelID("AppUserModelID")
+                .AppUserModelToastActivatorCLSID("AppUserModelToastActivatorCLSID")
+                .Flags(IconFlags.UninsNeverUninstall | IconFlags.CloseOnExit)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Icons.CreateEntry("Name", "Filename");
 
             Languages.CreateEntry("Name", "MessagesFile")
                 .LicenseFile("LicenseFile")
@@ -76,6 +103,22 @@
                 .AddPermission(Sids.Service, Permissions.Full)
                 .AddPermission(Sids.Admins, Permissions.Modify);
             Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program");
+            Run.CreateEntry("FileName")
+                .Description("Description")
+                .WorkingDir("WorkingDir")
+                .StatusMsg("StatusMsg")
+                .RunOnceId("RunOnceId")
+                .Parameters("Parameters")
+                .Verb("Verb")
+                .Flags(RunFlags._64bit | RunFlags.RunHidden)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Run.CreateEntry("FileName");
+            
+            UninstallRun.CreateEntry("FileName");
 
             Sections.CreateParameterSection("Registry")
                 .CreateEntry()

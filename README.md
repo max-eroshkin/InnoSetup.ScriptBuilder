@@ -1,7 +1,7 @@
 # InnoSetup.ScriptBuilder
 
 This package is intended to build Inno Setup script files (*.iss) 
-using C# fluent API. You can find the official Inno Setup documentation on [Inno Setup web site](https://jrsoftware.org/).
+using C# fluent API. You can find the official Inno Setup documentation on [Inno Setup web site](https://jrsoftware.org/ishelp/).
 
 [![CI](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions/workflows/CI.yml/badge.svg)](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions)
 [![Release](https://img.shields.io/nuget/v/InnoSetup.ScriptBuilder?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/InnoSetup.ScriptBuilder)

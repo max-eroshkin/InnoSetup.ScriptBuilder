@@ -11,6 +11,10 @@
         private readonly RegistryBuilder _registry = new();
         private readonly LanguagesBuilder _languages = new();
         private readonly DirsBuilder _dirs = new();
+        private readonly TypesBuilder _types = new();
+        private readonly RunBuilder _run = new("Run");
+        private readonly IconsBuilder _icons = new();
+        private readonly RunBuilder _uninstallRun = new("UninstallRun");
 
         public ISetupBuilder Setup => _setup;
 
@@ -24,18 +28,22 @@
 
         public IDirsBuilder Dirs => _dirs;
 
+        public ITypesBuilder Types => _types;
+
+        public IRunBuilder Run => _run;
+
+        public IIconBuilder Icons => _icons;
+
+        public IRunBuilder UninstallRun => _uninstallRun;
+
         /* Sections to implement
-            Types
             Tasks
-            Icons
             Ini
             InstallDelete
             CustomMessages
             Messages
             LangOptions
-            Run
             UninstallDelete
-            UninstallRun
             
             Code
          */
@@ -46,10 +54,14 @@
         {
             _setup.Write(writer);
             _components.Write(writer);
+            _types.Write(writer);
             _languages.Write(writer);
             _dirs.Write(writer);
             _files.Write(writer);
+            _icons.Write(writer);
             _registry.Write(writer);
+            _run.Write(writer);
+            _uninstallRun.Write(writer);
             Sections.Write(writer);
         }
 

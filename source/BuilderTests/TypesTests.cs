@@ -1,22 +1,20 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.ComponentSection;
+    using InnoSetup.ScriptBuilder.Model.TypesSection;
 
-    public class ComponentsTests : ParameterSectionTestsBase<ComponentEntry>
+    public class TypesTests : ParameterSectionTestsBase<TypeEntry>
     {
-        protected override string SectionName => "Components";
+        protected override string SectionName => "Types";
 
         protected override Dictionary<string, string> ReferenceData => new()
         {
             { "Name", "\"Name\"" },
             { "Description", "\"Description\"" },
-            { "ExtraDiskSpaceRequired", "123456" },
-            { "Types", "\"Types\"" },
+            { "Flags", "iscustom" },
             { "Languages", "\"Languages\"" },
             { "MinVersion", "\"MinVersion\"" },
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
-            { "Flags", "fixed exclusive" },
         };
     }
 }

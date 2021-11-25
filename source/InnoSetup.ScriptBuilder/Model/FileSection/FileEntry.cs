@@ -16,14 +16,16 @@
 
         public string Excludes { get; set; }
 
-        public long ExternalSize { get; set; }
+        public long? ExternalSize { get; set; }
 
         public string StrongAssemblyName { get; set; }
 
         public List<GroupPermission> Permissions { get; set; }
 
         public FileFlags? Flags { get; set; }
+
         public string Components { get; set; }
+
         public string Tasks { get; set; }
     }
 }
