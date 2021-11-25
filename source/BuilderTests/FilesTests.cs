@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using InnoSetup.ScriptBuilder.Model.FileSection;
 
-    public class FilesSectionTests : ParameterSectionTestsBase<FileEntry>
+    public class FilesTests : ParameterSectionTestsBase<FileEntry>
     {
         protected override string SectionName => "Files";
 

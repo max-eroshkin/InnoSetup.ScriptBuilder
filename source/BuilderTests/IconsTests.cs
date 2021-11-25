@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using InnoSetup.ScriptBuilder.Model.IconsSection;
 
-    public class IconsSectionTests : ParameterSectionTestsBase<IconEntry>
+    public class IconsTests : ParameterSectionTestsBase<IconEntry>
     {
         protected override string SectionName => "Icons";
 
