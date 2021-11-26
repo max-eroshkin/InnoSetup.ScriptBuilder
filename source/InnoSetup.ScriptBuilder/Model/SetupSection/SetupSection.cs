@@ -150,21 +150,36 @@
 
         public string WizardSmallImageFile { get; set; }
 
-        // public string AllowCancelDuringInstall { get; set; }
-        // public string AllowNetworkDrive { get; set; }
-        // public string AllowNoIcons { get; set; }
-        // public string AllowRootDirectory { get; set; }
-        // public string AllowUNCPath { get; set; }
-        // public string AlwaysRestart { get; set; }
-        // public string AlwaysShowComponentsList { get; set; }
-        // public string AlwaysShowDirOnReadyPage { get; set; }
-        // public string AlwaysShowGroupOnReadyPage { get; set; }
-        // public string AlwaysUsePersonalGroup { get; set; }
-        // public string AppendDefaultDirName { get; set; }
-        // public string AppendDefaultGroupName { get; set; }
-        // public string ArchitecturesAllowed { get; set; }
-        // public string ArchitecturesInstallIn64BitMode { get; set; }
-        // public string ASLRCompatible { get; set; }
+        public YesNo? AllowCancelDuringInstall { get; set; }
+
+        public YesNo? AllowNetworkDrive { get; set; }
+
+        public YesNo? AllowNoIcons { get; set; }
+
+        public YesNo? AllowRootDirectory { get; set; }
+
+        public YesNo? AllowUNCPath { get; set; }
+
+        public YesNo? AlwaysRestart { get; set; }
+
+        public YesNo? AlwaysShowComponentsList { get; set; }
+
+        public YesNo? AlwaysShowDirOnReadyPage { get; set; }
+
+        public YesNo? AlwaysShowGroupOnReadyPage { get; set; }
+
+        public YesNo? AlwaysUsePersonalGroup { get; set; }
+
+        public YesNo? AppendDefaultDirName { get; set; }
+
+        public YesNo? AppendDefaultGroupName { get; set; }
+
+        public Architectures? ArchitecturesAllowed { get; set; }
+
+        public ArchitecturesInstallIn64BitMode? ArchitecturesInstallIn64BitMode { get; set; }
+
+        public YesNo? ASLRCompatible { get; set; }
+
         // public string BackColorDirection { get; set; }
         // public string BackSolid { get; set; }
         // public string CloseApplications { get; set; }
