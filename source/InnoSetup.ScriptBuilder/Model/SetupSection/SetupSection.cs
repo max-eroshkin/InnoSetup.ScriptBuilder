@@ -238,32 +238,54 @@
 
         public YesNo? LZMAUseSeparateProcess { get; set; }
 
-        // public string MergeDuplicateFiles { get; set; }
-        // public string MessagesFile { get; set; }
-        // public string MinVersion { get; set; }
-        // public string MissingMessagesWarning { get; set; }
-        // public string MissingRunOnceIdsWarning { get; set; }
-        // public string NotRecognizedMessagesWarning { get; set; }
-        // public string OnlyBelowVersion { get; set; }
-        // public string Output { get; set; }
-        // public string Password { get; set; }
-        // public string PrivilegesRequired { get; set; }
-        // public string ReserveBytes { get; set; }
-        // public string RestartApplications { get; set; }
-        // public string RestartIfNeededByRun { get; set; }
-        // public string SetupLogging { get; set; }
-        // public string ShowComponentSizes { get; set; }
-        // public string ShowTasksTreeLines { get; set; }
-        // public string ShowUndisplayableLanguages { get; set; }
-        // public string SignedUninstaller { get; set; }
-        // public string SignedUninstallerDir { get; set; }
-        // public string SignTool { get; set; }
-        // public string SignToolMinimumTimeBetween { get; set; }
-        // public string SignToolRetryCount { get; set; }
-        // public string SignToolRetryDelay { get; set; }
-        // public string SignToolRunMinimized { get; set; }
-        // public string SolidCompression { get; set; }
-        // public string SourceDir { get; set; }
+        public YesNo? MergeDuplicateFiles { get; set; }
+
+        public string MinVersion { get; set; }
+
+        public YesNo? MissingMessagesWarning { get; set; }
+
+        public YesNo? MissingRunOnceIdsWarning { get; set; }
+
+        public YesNo? NotRecognizedMessagesWarning { get; set; }
+
+        public string OnlyBelowVersion { get; set; }
+
+        public YesNo? Output { get; set; }
+
+        public string Password { get; set; }
+
+        public uint? ReserveBytes { get; set; }
+
+        public YesNo? RestartApplications { get; set; }
+
+        public YesNo? RestartIfNeededByRun { get; set; }
+
+        public YesNo? SetupLogging { get; set; }
+
+        public YesNo? ShowComponentSizes { get; set; }
+
+        public YesNo? ShowTasksTreeLines { get; set; }
+
+        public YesNo? ShowUndisplayableLanguages { get; set; }
+
+        public YesNo? SignedUninstaller { get; set; }
+
+        public string SignedUninstallerDir { get; set; }
+
+        public string SignTool { get; set; }
+
+        public uint? SignToolMinimumTimeBetween { get; set; }
+
+        public uint? SignToolRetryCount { get; set; }
+
+        public uint? SignToolRetryDelay { get; set; }
+
+        public YesNo? SignToolRunMinimized { get; set; }
+
+        public YesNo? SolidCompression { get; set; }
+
+        public string SourceDir { get; set; }
+
         // public string TerminalServicesAware { get; set; }
         // public string TimeStampRounding { get; set; }
         // public string TimeStampsInUTC { get; set; }
