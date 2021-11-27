@@ -52,15 +52,15 @@
 
         public string CreateUninstallRegKey { get; set; }
 
-        public string Uninstallable { get; set; }
+        public YesNo? Uninstallable { get; set; }
 
         public string CloseApplicationsFilter { get; set; }
 
         public string SetupMutex { get; set; }
 
-        public string ChangesEnvironment { get; set; }
+        public YesNo? ChangesEnvironment { get; set; }
 
-        public string ChangesAssociations { get; set; }
+        public YesNo? ChangesAssociations { get; set; }
 
         public string InfoBeforeText { get; set; }
 
@@ -150,114 +150,208 @@
 
         public string WizardSmallImageFile { get; set; }
 
-        // public string AllowCancelDuringInstall { get; set; }
-        // public string AllowNetworkDrive { get; set; }
-        // public string AllowNoIcons { get; set; }
-        // public string AllowRootDirectory { get; set; }
-        // public string AllowUNCPath { get; set; }
-        // public string AlwaysRestart { get; set; }
-        // public string AlwaysShowComponentsList { get; set; }
-        // public string AlwaysShowDirOnReadyPage { get; set; }
-        // public string AlwaysShowGroupOnReadyPage { get; set; }
-        // public string AlwaysUsePersonalGroup { get; set; }
-        // public string AppendDefaultDirName { get; set; }
-        // public string AppendDefaultGroupName { get; set; }
-        // public string ArchitecturesAllowed { get; set; }
-        // public string ArchitecturesInstallIn64BitMode { get; set; }
-        // public string ASLRCompatible { get; set; }
-        // public string BackColorDirection { get; set; }
-        // public string BackSolid { get; set; }
-        // public string CloseApplications { get; set; }
-        // public string Compression { get; set; }
-        // public string CompressionThreads { get; set; }
-        // public string CreateAppDir { get; set; }
-        // public string DefaultDialogFontName { get; set; }
-        // public string DEPCompatible { get; set; }
-        // public string DisableFinishedPage { get; set; }
-        // public string DisableReadyMemo { get; set; }
-        // public string DisableReadyPage { get; set; }
-        // public string DisableStartupPrompt { get; set; }
-        // public string DiskClusterSize { get; set; }
-        // public string DiskSliceSize { get; set; }
-        // public string DiskSpanning { get; set; }
-        // public string DontMergeDuplicateFiles { get; set; }
-        // public string EnableDirDoesntExistWarning { get; set; }
-        // public string Encryption { get; set; }
-        // public string FlatComponentsList { get; set; }
-        // public string InfoAfterFile { get; set; }
-        // public string InfoBeforeFile { get; set; }
-        // public string InternalCompressLevel { get; set; }
-        // public string LanguageDetectionMethod { get; set; }
-        // public string LZMAAlgorithm { get; set; }
-        // public string LZMABlockSize { get; set; }
-        // public string LZMADictionarySize { get; set; }
-        // public string LZMAMatchFinder { get; set; }
-        // public string LZMANumBlockThreads { get; set; }
-        // public string LZMANumFastBytes { get; set; }
-        // public string LZMAUseSeparateProcess { get; set; }
-        // public string MergeDuplicateFiles { get; set; }
-        // public string MessagesFile { get; set; }
-        // public string MinVersion { get; set; }
-        // public string MissingMessagesWarning { get; set; }
-        // public string MissingRunOnceIdsWarning { get; set; }
-        // public string NotRecognizedMessagesWarning { get; set; }
-        // public string OnlyBelowVersion { get; set; }
-        // public string Output { get; set; }
-        // public string Password { get; set; }
-        // public string PrivilegesRequired { get; set; }
-        // public string ReserveBytes { get; set; }
-        // public string RestartApplications { get; set; }
-        // public string RestartIfNeededByRun { get; set; }
-        // public string SetupLogging { get; set; }
-        // public string ShowComponentSizes { get; set; }
-        // public string ShowTasksTreeLines { get; set; }
-        // public string ShowUndisplayableLanguages { get; set; }
-        // public string SignedUninstaller { get; set; }
-        // public string SignedUninstallerDir { get; set; }
-        // public string SignTool { get; set; }
-        // public string SignToolMinimumTimeBetween { get; set; }
-        // public string SignToolRetryCount { get; set; }
-        // public string SignToolRetryDelay { get; set; }
-        // public string SignToolRunMinimized { get; set; }
-        // public string SolidCompression { get; set; }
-        // public string SourceDir { get; set; }
-        // public string TerminalServicesAware { get; set; }
-        // public string TimeStampRounding { get; set; }
-        // public string TimeStampsInUTC { get; set; }
-        // public string TouchDate { get; set; }
-        // public string TouchTime { get; set; }
-        // public string UpdateUninstallLogAppName { get; set; }
-        // public string UninstallIconFile { get; set; }
-        // public string UninstallRestartComputer { get; set; }
-        // public string UninstallStyle { get; set; }
-        // public string UsedUserAreasWarning { get; set; }
-        // public string UsePreviousAppDir { get; set; }
-        // public string UsePreviousGroup { get; set; }
-        // public string UsePreviousLanguage { get; set; }
-        // public string UsePreviousPrivileges { get; set; }
-        // public string UsePreviousSetupType { get; set; }
-        // public string UsePreviousTasks { get; set; }
-        // public string UsePreviousUserInfo { get; set; }
-        // public string UseSetupLdr { get; set; }
-        // public string UserInfoPage { get; set; }
-        // public string VersionInfoCompany { get; set; }
-        // public string VersionInfoCopyright { get; set; }
-        // public string VersionInfoDescription { get; set; }
-        // public string VersionInfoOriginalFileName { get; set; }
-        // public string VersionInfoProductName { get; set; }
-        // public string VersionInfoProductVersion { get; set; }
-        // public string VersionInfoProductTextVersion { get; set; }
-        // public string VersionInfoTextVersion { get; set; }
-        // public string VersionInfoVersion { get; set; }
-        // public string WindowResizable { get; set; }
-        // public string WindowShowCaption { get; set; }
-        // public string WindowStartMaximized { get; set; }
-        // public string WindowVisible { get; set; }
-        // public string WizardImageBackColor { get; set; }
-        // public string WizardImageStretch { get; set; }
-        // public string WizardResizable { get; set; }
-        // public string WizardSmallImageBackColor { get; set; }
-        // public string WizardSizePercent { get; set; }
-        // public string WizardStyle { get; set; }
+        public YesNo? AllowCancelDuringInstall { get; set; }
+
+        public YesNo? AllowNetworkDrive { get; set; }
+
+        public YesNo? AllowNoIcons { get; set; }
+
+        public YesNo? AllowRootDirectory { get; set; }
+
+        public YesNo? AllowUNCPath { get; set; }
+
+        public YesNo? AlwaysRestart { get; set; }
+
+        public YesNo? AlwaysShowComponentsList { get; set; }
+
+        public YesNo? AlwaysShowDirOnReadyPage { get; set; }
+
+        public YesNo? AlwaysShowGroupOnReadyPage { get; set; }
+
+        public YesNo? AlwaysUsePersonalGroup { get; set; }
+
+        public YesNo? AppendDefaultDirName { get; set; }
+
+        public YesNo? AppendDefaultGroupName { get; set; }
+
+        public Architectures? ArchitecturesAllowed { get; set; }
+
+        public ArchitecturesInstallIn64BitMode? ArchitecturesInstallIn64BitMode { get; set; }
+
+        public YesNo? ASLRCompatible { get; set; }
+
+        public BackColorDirection? BackColorDirection { get; set; }
+
+        public YesNo? BackSolid { get; set; }
+
+        public CloseApplications? CloseApplications { get; set; }
+
+        public string Compression { get; set; }
+
+        public uint? CompressionThreads { get; set; }
+
+        public YesNo? CreateAppDir { get; set; }
+
+        public string DefaultDialogFontName { get; set; }
+
+        public YesNo? DEPCompatible { get; set; }
+
+        public YesNo? DisableFinishedPage { get; set; }
+
+        public YesNo? DisableReadyMemo { get; set; }
+
+        public YesNo? DisableReadyPage { get; set; }
+
+        public YesNo? DisableStartupPrompt { get; set; }
+
+        public uint? DiskClusterSize { get; set; }
+
+        public uint? DiskSliceSize { get; set; }
+
+        public YesNo? DiskSpanning { get; set; }
+
+        public YesNo? EnableDirDoesntExistWarning { get; set; }
+
+        public YesNo? Encryption { get; set; }
+
+        public YesNo? FlatComponentsList { get; set; }
+
+        public string InfoAfterFile { get; set; }
+
+        public string InfoBeforeFile { get; set; }
+
+        public string InternalCompressLevel { get; set; }
+
+        public LanguageDetectionMethod? LanguageDetectionMethod { get; set; }
+
+        public uint? LZMAAlgorithm { get; set; }
+
+        public uint? LZMABlockSize { get; set; }
+
+        public uint? LZMADictionarySize { get; set; }
+
+        public LzmaMatchFinder? LZMAMatchFinder { get; set; }
+
+        public uint? LZMANumBlockThreads { get; set; }
+
+        public uint? LZMANumFastBytes { get; set; }
+
+        public YesNo? LZMAUseSeparateProcess { get; set; }
+
+        public YesNo? MergeDuplicateFiles { get; set; }
+
+        public string MinVersion { get; set; }
+
+        public YesNo? MissingMessagesWarning { get; set; }
+
+        public YesNo? MissingRunOnceIdsWarning { get; set; }
+
+        public YesNo? NotRecognizedMessagesWarning { get; set; }
+
+        public string OnlyBelowVersion { get; set; }
+
+        public YesNo? Output { get; set; }
+
+        public string Password { get; set; }
+
+        public uint? ReserveBytes { get; set; }
+
+        public YesNo? RestartApplications { get; set; }
+
+        public YesNo? RestartIfNeededByRun { get; set; }
+
+        public YesNo? SetupLogging { get; set; }
+
+        public YesNo? ShowComponentSizes { get; set; }
+
+        public YesNo? ShowTasksTreeLines { get; set; }
+
+        public YesNo? ShowUndisplayableLanguages { get; set; }
+
+        public YesNo? SignedUninstaller { get; set; }
+
+        public string SignedUninstallerDir { get; set; }
+
+        public string SignTool { get; set; }
+
+        public uint? SignToolMinimumTimeBetween { get; set; }
+
+        public uint? SignToolRetryCount { get; set; }
+
+        public uint? SignToolRetryDelay { get; set; }
+
+        public YesNo? SignToolRunMinimized { get; set; }
+
+        public YesNo? SolidCompression { get; set; }
+
+        public string SourceDir { get; set; }
+
+        public YesNo? TerminalServicesAware { get; set; }
+
+        public uint? TimeStampRounding { get; set; }
+
+        public YesNo? TimeStampsInUTC { get; set; }
+
+        public string TouchDate { get; set; }
+
+        public string TouchTime { get; set; }
+
+        public YesNo? UpdateUninstallLogAppName { get; set; }
+
+        public YesNo? UninstallRestartComputer { get; set; }
+
+        public YesNo? UsedUserAreasWarning { get; set; }
+
+        public YesNo? UsePreviousAppDir { get; set; }
+
+        public YesNo? UsePreviousGroup { get; set; }
+
+        public YesNo? UsePreviousLanguage { get; set; }
+
+        public YesNo? UsePreviousPrivileges { get; set; }
+
+        public YesNo? UsePreviousSetupType { get; set; }
+
+        public YesNo? UsePreviousTasks { get; set; }
+
+        public YesNo? UsePreviousUserInfo { get; set; }
+
+        public YesNo? UseSetupLdr { get; set; }
+
+        public YesNo? UserInfoPage { get; set; }
+
+        public string VersionInfoCompany { get; set; }
+
+        public string VersionInfoCopyright { get; set; }
+
+        public string VersionInfoDescription { get; set; }
+
+        public string VersionInfoOriginalFileName { get; set; }
+
+        public string VersionInfoProductName { get; set; }
+
+        public string VersionInfoProductVersion { get; set; }
+
+        public string VersionInfoProductTextVersion { get; set; }
+
+        public string VersionInfoTextVersion { get; set; }
+
+        public string VersionInfoVersion { get; set; }
+
+        public YesNo? WindowResizable { get; set; }
+
+        public YesNo? WindowShowCaption { get; set; }
+
+        public YesNo? WindowStartMaximized { get; set; }
+
+        public YesNo? WindowVisible { get; set; }
+
+        public YesNo? WizardImageStretch { get; set; }
+
+        public YesNo? WizardResizable { get; set; }
+
+        public string WizardSizePercent { get; set; }
+
+        public WizardStyle? WizardStyle { get; set; }
     }
 }

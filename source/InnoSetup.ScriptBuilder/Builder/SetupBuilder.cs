@@ -35,11 +35,11 @@
         public SetupBuilder AppComments(string value) => SetPropertyValue(value);
         public SetupBuilder AppModifyPath(string value) => SetPropertyValue(value);
         public SetupBuilder CreateUninstallRegKey(string value) => SetPropertyValue(value);
-        public SetupBuilder Uninstallable(string value) => SetPropertyValue(value);
+        public SetupBuilder Uninstallable(YesNo value) => SetPropertyValue(value);
         public SetupBuilder CloseApplicationsFilter(string value) => SetPropertyValue(value);
         public SetupBuilder SetupMutex(string value) => SetPropertyValue(value);
-        public SetupBuilder ChangesEnvironment(string value) => SetPropertyValue(value);
-        public SetupBuilder ChangesAssociations(string value) => SetPropertyValue(value);
+        public SetupBuilder ChangesEnvironment(YesNo value) => SetPropertyValue(value);
+        public SetupBuilder ChangesAssociations(YesNo value) => SetPropertyValue(value);
         public SetupBuilder InfoBeforeText(string value) => SetPropertyValue(value);
         public SetupBuilder LicenseText(string value) => SetPropertyValue(value);
         public SetupBuilder LicenseFile(string value) => SetPropertyValue(value);
@@ -87,6 +87,210 @@
         public SetupBuilder SetupIconFile(string value) => SetPropertyValue(value);
         public SetupBuilder WizardImageFile(string value) => SetPropertyValue(value);
         public SetupBuilder WizardSmallImageFile(string value) => SetPropertyValue(value);
+        
+        public SetupBuilder AllowCancelDuringInstall(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AllowNetworkDrive(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AllowNoIcons(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AllowRootDirectory(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AllowUNCPath(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AlwaysRestart(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AlwaysShowComponentsList(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AlwaysShowDirOnReadyPage(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AlwaysShowGroupOnReadyPage(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AlwaysUsePersonalGroup(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AppendDefaultDirName(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder AppendDefaultGroupName(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder ArchitecturesAllowed(Architectures value) => SetPropertyValue(value);
+
+        public SetupBuilder ArchitecturesInstallIn64BitMode(ArchitecturesInstallIn64BitMode value) => SetPropertyValue(value);
+
+        public SetupBuilder ASLRCompatible(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder BackColorDirection(BackColorDirection value) => SetPropertyValue(value);
+
+        public SetupBuilder BackSolid(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder CloseApplications(CloseApplications value) => SetPropertyValue(value);
+
+        public SetupBuilder Compression(string value) => SetPropertyValue(value);
+
+        public SetupBuilder CompressionThreads(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder CreateAppDir(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder DefaultDialogFontName(string value) => SetPropertyValue(value);
+
+        public SetupBuilder DEPCompatible(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder DisableFinishedPage(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder DisableReadyMemo(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder DisableReadyPage(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder DisableStartupPrompt(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder DiskClusterSize(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder DiskSliceSize(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder DiskSpanning(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder EnableDirDoesntExistWarning(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder Encryption(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder FlatComponentsList(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder InfoAfterFile(string value) => SetPropertyValue(value);
+
+        public SetupBuilder InfoBeforeFile(string value) => SetPropertyValue(value);
+
+        public SetupBuilder InternalCompressLevel(string value) => SetPropertyValue(value);
+
+        public SetupBuilder LanguageDetectionMethod(LanguageDetectionMethod value) => SetPropertyValue(value);
+
+        public SetupBuilder LZMAAlgorithm(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder LZMABlockSize(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder LZMADictionarySize(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder LZMAMatchFinder(LzmaMatchFinder value) => SetPropertyValue(value);
+
+        public SetupBuilder LZMANumBlockThreads(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder LZMANumFastBytes(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder LZMAUseSeparateProcess(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder MergeDuplicateFiles(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder MinVersion(string value) => SetPropertyValue(value);
+
+        public SetupBuilder MissingMessagesWarning(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder MissingRunOnceIdsWarning(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder NotRecognizedMessagesWarning(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder OnlyBelowVersion(string value) => SetPropertyValue(value);
+
+        public SetupBuilder Output(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder Password(string value) => SetPropertyValue(value);
+
+        public SetupBuilder ReserveBytes(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder RestartApplications(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder RestartIfNeededByRun(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder SetupLogging(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder ShowComponentSizes(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder ShowTasksTreeLines(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder ShowUndisplayableLanguages(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder SignedUninstaller(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder SignedUninstallerDir(string value) => SetPropertyValue(value);
+
+        public SetupBuilder SignTool(string value) => SetPropertyValue(value);
+
+        public SetupBuilder SignToolMinimumTimeBetween(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder SignToolRetryCount(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder SignToolRetryDelay(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder SignToolRunMinimized(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder SolidCompression(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder SourceDir(string value) => SetPropertyValue(value);
+
+        public SetupBuilder TerminalServicesAware(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder TimeStampRounding(uint value) => SetPropertyValue(value);
+
+        public SetupBuilder TimeStampsInUTC(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder TouchDate(string value) => SetPropertyValue(value);
+
+        public SetupBuilder TouchTime(string value) => SetPropertyValue(value);
+
+        public SetupBuilder UpdateUninstallLogAppName(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UninstallRestartComputer(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsedUserAreasWarning(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsePreviousAppDir(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsePreviousGroup(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsePreviousLanguage(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsePreviousPrivileges(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsePreviousSetupType(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsePreviousTasks(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UsePreviousUserInfo(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UseSetupLdr(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder UserInfoPage(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoCompany(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoCopyright(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoDescription(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoOriginalFileName(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoProductName(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoProductVersion(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoProductTextVersion(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoTextVersion(string value) => SetPropertyValue(value);
+
+        public SetupBuilder VersionInfoVersion(string value) => SetPropertyValue(value);
+
+        public SetupBuilder WindowResizable(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder WindowShowCaption(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder WindowStartMaximized(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder WindowVisible(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder WizardImageStretch(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder WizardResizable(YesNo value) => SetPropertyValue(value);
+
+        public SetupBuilder WizardSizePercent(string value) => SetPropertyValue(value);
+
+        public SetupBuilder WizardStyle(WizardStyle value) => SetPropertyValue(value);
 
         private SetupBuilder AppName(string value) => SetPropertyValue(value);
     }
