@@ -38,8 +38,8 @@
         public SetupBuilder Uninstallable(string value) => SetPropertyValue(value);
         public SetupBuilder CloseApplicationsFilter(string value) => SetPropertyValue(value);
         public SetupBuilder SetupMutex(string value) => SetPropertyValue(value);
-        public SetupBuilder ChangesEnvironment(string value) => SetPropertyValue(value);
-        public SetupBuilder ChangesAssociations(string value) => SetPropertyValue(value);
+        public SetupBuilder ChangesEnvironment(YesNo value) => SetPropertyValue(value);
+        public SetupBuilder ChangesAssociations(YesNo value) => SetPropertyValue(value);
         public SetupBuilder InfoBeforeText(string value) => SetPropertyValue(value);
         public SetupBuilder LicenseText(string value) => SetPropertyValue(value);
         public SetupBuilder LicenseFile(string value) => SetPropertyValue(value);

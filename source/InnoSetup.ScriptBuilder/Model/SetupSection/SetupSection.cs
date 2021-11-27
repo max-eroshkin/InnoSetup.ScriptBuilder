@@ -58,9 +58,9 @@
 
         public string SetupMutex { get; set; }
 
-        public string ChangesEnvironment { get; set; }
+        public YesNo? ChangesEnvironment { get; set; }
 
-        public string ChangesAssociations { get; set; }
+        public YesNo? ChangesAssociations { get; set; }
 
         public string InfoBeforeText { get; set; }
 
@@ -180,12 +180,18 @@
 
         public YesNo? ASLRCompatible { get; set; }
 
-        // public string BackColorDirection { get; set; }
-        // public string BackSolid { get; set; }
-        // public string CloseApplications { get; set; }
-        // public string Compression { get; set; }
-        // public string CompressionThreads { get; set; }
-        // public string CreateAppDir { get; set; }
+        public BackColorDirection? BackColorDirection { get; set; }
+
+        public YesNo? BackSolid { get; set; }
+
+        public CloseApplications? CloseApplications { get; set; }
+
+        public string Compression { get; set; }
+
+        public uint? CompressionThreads { get; set; }
+
+        public YesNo? CreateAppDir { get; set; }
+        
         // public string DefaultDialogFontName { get; set; }
         // public string DEPCompatible { get; set; }
         // public string DisableFinishedPage { get; set; }
