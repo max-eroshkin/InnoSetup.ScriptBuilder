@@ -191,19 +191,29 @@
         public uint? CompressionThreads { get; set; }
 
         public YesNo? CreateAppDir { get; set; }
-        
-        // public string DefaultDialogFontName { get; set; }
-        // public string DEPCompatible { get; set; }
-        // public string DisableFinishedPage { get; set; }
-        // public string DisableReadyMemo { get; set; }
-        // public string DisableReadyPage { get; set; }
-        // public string DisableStartupPrompt { get; set; }
-        // public string DiskClusterSize { get; set; }
-        // public string DiskSliceSize { get; set; }
-        // public string DiskSpanning { get; set; }
-        // public string DontMergeDuplicateFiles { get; set; }
-        // public string EnableDirDoesntExistWarning { get; set; }
-        // public string Encryption { get; set; }
+
+        public string DefaultDialogFontName { get; set; }
+
+        public YesNo? DEPCompatible { get; set; }
+
+        public YesNo? DisableFinishedPage { get; set; }
+
+        public YesNo? DisableReadyMemo { get; set; }
+
+        public YesNo? DisableReadyPage { get; set; }
+
+        public YesNo? DisableStartupPrompt { get; set; }
+
+        public uint? DiskClusterSize { get; set; }
+
+        public uint? DiskSliceSize { get; set; }
+
+        public YesNo? DiskSpanning { get; set; }
+
+        public YesNo? EnableDirDoesntExistWarning { get; set; }
+
+        public YesNo? Encryption { get; set; }
+
         // public string FlatComponentsList { get; set; }
         // public string InfoAfterFile { get; set; }
         // public string InfoBeforeFile { get; set; }
