@@ -35,7 +35,7 @@
         public SetupBuilder AppComments(string value) => SetPropertyValue(value);
         public SetupBuilder AppModifyPath(string value) => SetPropertyValue(value);
         public SetupBuilder CreateUninstallRegKey(string value) => SetPropertyValue(value);
-        public SetupBuilder Uninstallable(string value) => SetPropertyValue(value);
+        public SetupBuilder Uninstallable(YesNo value) => SetPropertyValue(value);
         public SetupBuilder CloseApplicationsFilter(string value) => SetPropertyValue(value);
         public SetupBuilder SetupMutex(string value) => SetPropertyValue(value);
         public SetupBuilder ChangesEnvironment(YesNo value) => SetPropertyValue(value);

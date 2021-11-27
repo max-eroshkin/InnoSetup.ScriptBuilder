@@ -52,7 +52,7 @@
 
         public string CreateUninstallRegKey { get; set; }
 
-        public string Uninstallable { get; set; }
+        public YesNo? Uninstallable { get; set; }
 
         public string CloseApplicationsFilter { get; set; }
 
@@ -286,43 +286,72 @@
 
         public string SourceDir { get; set; }
 
-        // public string TerminalServicesAware { get; set; }
-        // public string TimeStampRounding { get; set; }
-        // public string TimeStampsInUTC { get; set; }
-        // public string TouchDate { get; set; }
-        // public string TouchTime { get; set; }
-        // public string UpdateUninstallLogAppName { get; set; }
-        // public string UninstallIconFile { get; set; }
-        // public string UninstallRestartComputer { get; set; }
-        // public string UninstallStyle { get; set; }
-        // public string UsedUserAreasWarning { get; set; }
-        // public string UsePreviousAppDir { get; set; }
-        // public string UsePreviousGroup { get; set; }
-        // public string UsePreviousLanguage { get; set; }
-        // public string UsePreviousPrivileges { get; set; }
-        // public string UsePreviousSetupType { get; set; }
-        // public string UsePreviousTasks { get; set; }
-        // public string UsePreviousUserInfo { get; set; }
-        // public string UseSetupLdr { get; set; }
-        // public string UserInfoPage { get; set; }
-        // public string VersionInfoCompany { get; set; }
-        // public string VersionInfoCopyright { get; set; }
-        // public string VersionInfoDescription { get; set; }
-        // public string VersionInfoOriginalFileName { get; set; }
-        // public string VersionInfoProductName { get; set; }
-        // public string VersionInfoProductVersion { get; set; }
-        // public string VersionInfoProductTextVersion { get; set; }
-        // public string VersionInfoTextVersion { get; set; }
-        // public string VersionInfoVersion { get; set; }
-        // public string WindowResizable { get; set; }
-        // public string WindowShowCaption { get; set; }
-        // public string WindowStartMaximized { get; set; }
-        // public string WindowVisible { get; set; }
-        // public string WizardImageBackColor { get; set; }
-        // public string WizardImageStretch { get; set; }
-        // public string WizardResizable { get; set; }
-        // public string WizardSmallImageBackColor { get; set; }
-        // public string WizardSizePercent { get; set; }
-        // public string WizardStyle { get; set; }
+        public YesNo? TerminalServicesAware { get; set; }
+
+        public uint? TimeStampRounding { get; set; }
+
+        public YesNo? TimeStampsInUTC { get; set; }
+
+        public string TouchDate { get; set; }
+
+        public string TouchTime { get; set; }
+
+        public YesNo? UpdateUninstallLogAppName { get; set; }
+
+        public YesNo? UninstallRestartComputer { get; set; }
+
+        public YesNo? UsedUserAreasWarning { get; set; }
+
+        public YesNo? UsePreviousAppDir { get; set; }
+
+        public YesNo? UsePreviousGroup { get; set; }
+
+        public YesNo? UsePreviousLanguage { get; set; }
+
+        public YesNo? UsePreviousPrivileges { get; set; }
+
+        public YesNo? UsePreviousSetupType { get; set; }
+
+        public YesNo? UsePreviousTasks { get; set; }
+
+        public YesNo? UsePreviousUserInfo { get; set; }
+
+        public YesNo? UseSetupLdr { get; set; }
+
+        public YesNo? UserInfoPage { get; set; }
+
+        public string VersionInfoCompany { get; set; }
+
+        public string VersionInfoCopyright { get; set; }
+
+        public string VersionInfoDescription { get; set; }
+
+        public string VersionInfoOriginalFileName { get; set; }
+
+        public string VersionInfoProductName { get; set; }
+
+        public string VersionInfoProductVersion { get; set; }
+
+        public string VersionInfoProductTextVersion { get; set; }
+
+        public string VersionInfoTextVersion { get; set; }
+
+        public string VersionInfoVersion { get; set; }
+
+        public YesNo? WindowResizable { get; set; }
+
+        public YesNo? WindowShowCaption { get; set; }
+
+        public YesNo? WindowStartMaximized { get; set; }
+
+        public YesNo? WindowVisible { get; set; }
+
+        public YesNo? WizardImageStretch { get; set; }
+
+        public YesNo? WizardResizable { get; set; }
+
+        public string WizardSizePercent { get; set; }
+
+        public WizardStyle? WizardStyle { get; set; }
     }
 }
