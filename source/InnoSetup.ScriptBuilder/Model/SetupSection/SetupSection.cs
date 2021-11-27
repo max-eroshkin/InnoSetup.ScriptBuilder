@@ -214,18 +214,30 @@
 
         public YesNo? Encryption { get; set; }
 
-        // public string FlatComponentsList { get; set; }
-        // public string InfoAfterFile { get; set; }
-        // public string InfoBeforeFile { get; set; }
-        // public string InternalCompressLevel { get; set; }
-        // public string LanguageDetectionMethod { get; set; }
-        // public string LZMAAlgorithm { get; set; }
-        // public string LZMABlockSize { get; set; }
-        // public string LZMADictionarySize { get; set; }
-        // public string LZMAMatchFinder { get; set; }
-        // public string LZMANumBlockThreads { get; set; }
-        // public string LZMANumFastBytes { get; set; }
-        // public string LZMAUseSeparateProcess { get; set; }
+        public YesNo? FlatComponentsList { get; set; }
+
+        public string InfoAfterFile { get; set; }
+
+        public string InfoBeforeFile { get; set; }
+
+        public string InternalCompressLevel { get; set; }
+
+        public LanguageDetectionMethod? LanguageDetectionMethod { get; set; }
+
+        public uint? LZMAAlgorithm { get; set; }
+
+        public uint? LZMABlockSize { get; set; }
+
+        public uint? LZMADictionarySize { get; set; }
+
+        public LzmaMatchFinder? LZMAMatchFinder { get; set; }
+
+        public uint? LZMANumBlockThreads { get; set; }
+
+        public uint? LZMANumFastBytes { get; set; }
+
+        public YesNo? LZMAUseSeparateProcess { get; set; }
+
         // public string MergeDuplicateFiles { get; set; }
         // public string MessagesFile { get; set; }
         // public string MinVersion { get; set; }
