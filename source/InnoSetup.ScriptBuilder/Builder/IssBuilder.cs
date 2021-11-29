@@ -15,6 +15,7 @@
         private readonly RunBuilder _run = new("Run");
         private readonly IconsBuilder _icons = new();
         private readonly RunBuilder _uninstallRun = new("UninstallRun");
+        private readonly CodeBuilder _code = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -35,6 +36,8 @@
         public IIconBuilder Icons => _icons;
 
         public IRunBuilder UninstallRun => _uninstallRun;
+
+        public CodeBuilder Code => _code;
 
         /* Sections to implement
             Tasks
@@ -63,6 +66,7 @@
             _run.Write(writer);
             _uninstallRun.Write(writer);
             Sections.Write(writer);
+            _code.Write(writer);
         }
 
         public override string ToString()
