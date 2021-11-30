@@ -16,6 +16,7 @@
         private readonly IconsBuilder _icons = new();
         private readonly RunBuilder _uninstallRun = new("UninstallRun");
         private readonly CodeBuilder _code = new();
+        private readonly TasksBuilder _tasks = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -37,6 +38,8 @@
 
         public IRunBuilder UninstallRun => _uninstallRun;
 
+        public ITasksBuilder Tasks => _tasks;
+
         public CodeBuilder Code => _code;
 
         /* Sections to implement
@@ -47,8 +50,6 @@
             Messages
             LangOptions
             UninstallDelete
-            
-            Code
          */
 
         public GenericSections Sections { get; } = new();
@@ -57,6 +58,7 @@
         {
             _setup.Write(writer);
             _components.Write(writer);
+            _tasks.Write(writer);
             _types.Write(writer);
             _languages.Write(writer);
             _dirs.Write(writer);
