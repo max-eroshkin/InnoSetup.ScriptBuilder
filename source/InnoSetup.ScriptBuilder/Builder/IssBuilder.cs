@@ -19,6 +19,8 @@
         private readonly TasksBuilder _tasks = new();
         private readonly DeleteBuilder _uninstallDelete = new("UninstallDelete");
         private readonly DeleteBuilder _installDelete = new("InstallDelete");
+        private readonly GenericKeyValueSectionBuilder _messages = new("Messages");
+        private readonly GenericKeyValueSectionBuilder _customMessages = new("CustomMessages");
 
         public ISetupBuilder Setup => _setup;
 
@@ -48,6 +50,9 @@
 
         public IDeleteBuilder InstallDelete => _installDelete;
 
+        public IGenericKeyValueSectionBuilder Messages => _messages;
+        public IGenericKeyValueSectionBuilder CustomMessages => _customMessages;
+
         /* Sections to implement
             Ini
             CustomMessages
@@ -64,6 +69,8 @@
             _tasks.Write(writer);
             _types.Write(writer);
             _languages.Write(writer);
+            _messages.Write(writer);
+            _customMessages.Write(writer);
             _dirs.Write(writer);
             _files.Write(writer);
             _icons.Write(writer);
