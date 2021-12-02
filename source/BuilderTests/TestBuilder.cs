@@ -1,6 +1,7 @@
 ﻿namespace BuilderTests
 {
     using InnoSetup.ScriptBuilder;
+    using InnoSetup.ScriptBuilder.Model.DeleteSection;
     using InnoSetup.ScriptBuilder.Model.IconsSection;
     using InnoSetup.ScriptBuilder.Model.RunSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
@@ -129,8 +130,11 @@
             Run.CreateEntry("FileName");
             
             UninstallRun.CreateEntry("FileName");
+            
+            UninstallDelete.CreateEntry(DeleteTypes.Files,"Name");
+            InstallDelete.CreateEntry(DeleteTypes.Files,"Name");
 
-            Sections.CreateParameterSection("Registry")
+            Sections.CreateParameterSection("UnimplementedParameterSection")
                 .CreateEntry()
                 .Parameter("Root", RegistryKeys.HKU)
                 .Parameter("Subkey", @"Software\My Company\My Program")
@@ -138,10 +142,12 @@
                 .Parameter("ValueType", ValueTypes.String)
                 .Parameter("ValueData", "Test app");
 
-            Sections.CreateKeyValueSection("Messages")
+            Sections.CreateKeyValueSection("UnimplementedKeyValueSection")
                 .CreateEntry()
                 .Parameter("BeveledLabel", @"Inno Setup")
                 .Parameter("HelpTextNote", @"/PORTABLE=1%nEnable portable mode.");
+
+            Code.CreateEntry("script");
         }
     }
 }

@@ -72,6 +72,8 @@
             _registry.Write(writer);
             _run.Write(writer);
             _uninstallRun.Write(writer);
+            _uninstallDelete.Write(writer);
+            _installDelete.Write(writer);
             Sections.Write(writer);
             _code.Write(writer);
         }
