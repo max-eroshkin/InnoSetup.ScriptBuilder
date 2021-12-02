@@ -55,8 +55,6 @@
 
         /* Sections to implement
             Ini
-            CustomMessages
-            Messages
             LangOptions
          */
 
