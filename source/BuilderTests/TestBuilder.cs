@@ -4,6 +4,7 @@
     using InnoSetup.ScriptBuilder.Model.IconsSection;
     using InnoSetup.ScriptBuilder.Model.RunSection;
     using InnoSetup.ScriptBuilder.Model.SetupSection;
+    using InnoSetup.ScriptBuilder.Model.TasksSection;
     using InnoSetup.ScriptBuilder.Model.TypesSection;
 
     public class TestBuilder : IssBuilder
@@ -46,6 +47,15 @@
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion");
             Components.CreateEntry("main", "Main Files");
+
+            Tasks.CreateEntry("Name", "Description")
+                .Components("Components")
+                .GroupDescription("GroupDescription")
+                .Flags(TaskFlags.CheckedOnce | TaskFlags.Restart)
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Tasks.CreateEntry("Name", "Description");
 
             Types
                 .CreateEntry("Name", "Description")
