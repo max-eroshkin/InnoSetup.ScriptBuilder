@@ -17,6 +17,8 @@
         private readonly RunBuilder _uninstallRun = new("UninstallRun");
         private readonly CodeBuilder _code = new();
         private readonly TasksBuilder _tasks = new();
+        private readonly DeleteBuilder _uninstallDelete = new("UninstallDelete");
+        private readonly DeleteBuilder _installDelete = new("InstallDelete");
 
         public ISetupBuilder Setup => _setup;
 
@@ -42,14 +44,15 @@
 
         public CodeBuilder Code => _code;
 
+        public IDeleteBuilder UninstallDelete => _uninstallDelete;
+
+        public IDeleteBuilder InstallDelete => _installDelete;
+
         /* Sections to implement
-            Tasks
             Ini
-            InstallDelete
             CustomMessages
             Messages
             LangOptions
-            UninstallDelete
          */
 
         public GenericSections Sections { get; } = new();
@@ -67,6 +70,8 @@
             _registry.Write(writer);
             _run.Write(writer);
             _uninstallRun.Write(writer);
+            _uninstallDelete.Write(writer);
+            _installDelete.Write(writer);
             Sections.Write(writer);
             _code.Write(writer);
         }
