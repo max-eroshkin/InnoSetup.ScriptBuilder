@@ -131,6 +131,12 @@
             
             UninstallRun.CreateEntry("FileName");
             
+            UninstallDelete.CreateEntry(DeleteTypes.Files,"Name")
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");;
             UninstallDelete.CreateEntry(DeleteTypes.Files,"Name");
             InstallDelete.CreateEntry(DeleteTypes.Files,"Name");
 

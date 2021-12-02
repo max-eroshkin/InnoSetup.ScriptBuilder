@@ -50,11 +50,9 @@
 
         /* Sections to implement
             Ini
-            InstallDelete
             CustomMessages
             Messages
             LangOptions
-            UninstallDelete
          */
 
         public GenericSections Sections { get; } = new();
