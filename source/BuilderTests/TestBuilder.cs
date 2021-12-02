@@ -140,6 +140,12 @@
             UninstallDelete.CreateEntry(DeleteTypes.Files,"Name");
             InstallDelete.CreateEntry(DeleteTypes.Files,"Name");
 
+            Messages.CreateEntry()
+                .Parameter("NextButton", "&Forward");
+            
+            CustomMessages.CreateEntry()
+                .Parameter("NextButton", "&Forward");
+
             Sections.CreateParameterSection("UnimplementedParameterSection")
                 .CreateEntry()
                 .Parameter("Root", RegistryKeys.HKU)
