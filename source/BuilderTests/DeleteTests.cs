@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Text.RegularExpressions;
     using FluentAssertions;
-    using InnoSetup.ScriptBuilder.Model.DeleteSection;
+    using InnoSetup.ScriptBuilder;
     using Xunit;
 
     public class DeleteTests : ParameterSectionTestsBase<DeleteEntry>

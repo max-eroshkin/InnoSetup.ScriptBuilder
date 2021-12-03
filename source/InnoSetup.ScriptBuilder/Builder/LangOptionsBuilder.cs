@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.LangOptionsSection;
-
     public class LangOptionsBuilder :
         KeyValueSectionBuilderBase<LangOptionsBuilder, LangOptionsSection>,
         ILangOptionsBuilder

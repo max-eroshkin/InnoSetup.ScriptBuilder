@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.RunSection;
-
     public class RunBuilder :
         CommonParameterSectionBuilderBase<RunBuilder, RunEntry>,
         IRunBuilder,

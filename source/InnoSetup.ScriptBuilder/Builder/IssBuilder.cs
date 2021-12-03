@@ -22,6 +22,7 @@
         private readonly GenericKeyValueSectionBuilder _messages = new("Messages");
         private readonly GenericKeyValueSectionBuilder _customMessages = new("CustomMessages");
         private readonly LangOptionsBuilder _langOptionsBuilder = new();
+        private readonly IniBuilder _ini = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -54,12 +55,9 @@
         public IDeleteBuilder InstallDelete => _installDelete;
 
         public IGenericKeyValueSectionBuilder Messages => _messages;
-        public IGenericKeyValueSectionBuilder CustomMessages => _customMessages;
+        public IIniBuilder INI => _ini;
 
-        /* Sections to implement
-            Ini
-            LangOptions
-         */
+        public IGenericKeyValueSectionBuilder CustomMessages => _customMessages;
 
         public GenericSections Sections { get; } = new();
 
@@ -81,6 +79,7 @@
             _uninstallRun.Write(writer);
             _uninstallDelete.Write(writer);
             _installDelete.Write(writer);
+            _ini.Write(writer);
             Sections.Write(writer);
             _code.Write(writer);
         }

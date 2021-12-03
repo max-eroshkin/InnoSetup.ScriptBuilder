@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using Bimlab.Nuke.Components;
 using InnoSetup.ScriptBuilder;
-using InnoSetup.ScriptBuilder.Model.SetupSection;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;

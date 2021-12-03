@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.TasksSection
+﻿namespace InnoSetup.ScriptBuilder
 {
     public class TaskEntry : CommonParameterSectionEntryBase
     {

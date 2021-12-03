@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model
+﻿namespace InnoSetup.ScriptBuilder
 {
     /// <summary>
     /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=commonparams">ISS documentation</a>.

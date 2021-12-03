@@ -2,7 +2,6 @@
 {
     using System;
     using System.Runtime.CompilerServices;
-    using Model;
 
     public abstract class SectionBuilderBase<TBuilder, TData>
         where TData : ModelBase

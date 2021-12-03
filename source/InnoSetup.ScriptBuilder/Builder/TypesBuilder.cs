@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.TypesSection;
-
     public class TypesBuilder : CommonParameterSectionBuilderBase<TypesBuilder, TypeEntry>, ITypesBuilder
     {
         public override string SectionName => "Types";

@@ -3,17 +3,19 @@
     using System.Collections.Generic;
     using InnoSetup.ScriptBuilder;
 
-    public class TasksTests: ParameterSectionTestsBase<TaskEntry>
+    public class IniTests: ParameterSectionTestsBase<IniEntry>
     {
-        protected override string SectionName => "Tasks";
+        protected override string SectionName => "INI";
 
         protected override Dictionary<string, string> ReferenceData => new()
         {
-            { "Name", "\"Name\"" },
-            { "Description", "\"Description\"" },
-            { "GroupDescription", "\"GroupDescription\"" },
+            { "Filename", "\"Filename\"" },
+            { "Section", "\"Section\"" },
+            { "Key", "\"Key\"" },
+            { "String", "\"String\"" },
+            { "Flags", "createkeyifdoesntexist uninsdeleteentry" },
             { "Components", "\"Components\"" },
-            { "Flags", "restart checkedonce" },
+            { "Tasks", "\"Tasks\"" },
             { "Languages", "\"Languages\"" },
             { "MinVersion", "\"MinVersion\"" },
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },

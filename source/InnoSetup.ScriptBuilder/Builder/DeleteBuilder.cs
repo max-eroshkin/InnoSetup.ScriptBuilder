@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.DeleteSection;
-
     public class DeleteBuilder :
         CommonParameterSectionBuilderBase<DeleteBuilder, DeleteEntry>,
         IDeleteBuilder,

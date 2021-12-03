@@ -5,8 +5,6 @@ namespace BuilderTests
     using System.Reflection;
     using FluentAssertions;
     using InnoSetup.ScriptBuilder;
-    using InnoSetup.ScriptBuilder.Model;
-    using InnoSetup.ScriptBuilder.Model.SetupSection;
     using Xunit;
 
     public class BuilderTests

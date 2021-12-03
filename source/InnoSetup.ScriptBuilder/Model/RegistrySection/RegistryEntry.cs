@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.RegistrySection
+﻿namespace InnoSetup.ScriptBuilder
 {
     using System.Collections.Generic;
-    using FileSection;
 
     public class RegistryEntry : CommonParameterSectionEntryBase, IHazComponentsAndTasks
     {

@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.DeleteSection
+﻿namespace InnoSetup.ScriptBuilder
 {
     public class DeleteEntry : CommonParameterSectionEntryBase, IHazComponentsAndTasks
     {

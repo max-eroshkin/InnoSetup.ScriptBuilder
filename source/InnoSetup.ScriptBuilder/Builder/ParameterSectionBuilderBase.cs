@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
-    using Model;
 
     public abstract class ParameterSectionBuilderBase<TBuilder, TData> : SectionBuilderBase<TBuilder, TData>, IBuilder
         where TBuilder : class

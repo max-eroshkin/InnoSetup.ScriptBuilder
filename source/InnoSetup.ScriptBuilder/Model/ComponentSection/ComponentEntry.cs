@@ -1,7 +1,5 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.ComponentSection
+﻿namespace InnoSetup.ScriptBuilder
 {
-    using FileSection;
-
     public class ComponentEntry : CommonParameterSectionEntryBase
     {
         public string Name { get; set; }

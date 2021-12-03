@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model
+﻿namespace InnoSetup.ScriptBuilder
 {
     using System.Collections.Generic;
 

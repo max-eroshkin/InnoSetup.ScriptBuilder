@@ -1,12 +1,6 @@
 ﻿namespace BuilderTests
 {
     using InnoSetup.ScriptBuilder;
-    using InnoSetup.ScriptBuilder.Model.DeleteSection;
-    using InnoSetup.ScriptBuilder.Model.IconsSection;
-    using InnoSetup.ScriptBuilder.Model.RunSection;
-    using InnoSetup.ScriptBuilder.Model.SetupSection;
-    using InnoSetup.ScriptBuilder.Model.TasksSection;
-    using InnoSetup.ScriptBuilder.Model.TypesSection;
 
     public class TestBuilder : IssBuilder
     {
@@ -102,6 +96,17 @@
             Languages.CreateEntry("Name", "MessageFile");
 
             LangOptions.Create().LanguageName("LanguageName");
+
+            INI.CreateEntry("Filename", "Section")
+                .String("String")
+                .Key("Key")
+                .Flags(IniFlags.UninsDeleteEntry | IniFlags.CreateKeyIfDoesntExist)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");;
+            INI.CreateEntry("Filename", "Section");
 
             Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
                 .ValueName("ValueName")

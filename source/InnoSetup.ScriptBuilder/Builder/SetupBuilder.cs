@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.SetupSection;
-
     public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder
     {
         public override string SectionName => "Setup";

@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.TasksSection;
-
     public class TasksBuilder :
         CommonParameterSectionBuilderBase<TasksBuilder, TaskEntry>,
         ITasksBuilder

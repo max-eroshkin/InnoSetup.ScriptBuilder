@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.LangOptionsSection
+﻿namespace InnoSetup.ScriptBuilder
 {
     public class LangOptionsSection : KeyValueSection
     {
