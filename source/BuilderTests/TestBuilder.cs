@@ -1,10 +1,6 @@
 ﻿namespace BuilderTests
 {
     using InnoSetup.ScriptBuilder;
-    using InnoSetup.ScriptBuilder.Model.IconsSection;
-    using InnoSetup.ScriptBuilder.Model.RunSection;
-    using InnoSetup.ScriptBuilder.Model.SetupSection;
-    using InnoSetup.ScriptBuilder.Model.TypesSection;
 
     public class TestBuilder : IssBuilder
     {
@@ -46,6 +42,15 @@
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion");
             Components.CreateEntry("main", "Main Files");
+
+            Tasks.CreateEntry("Name", "Description")
+                .Components("Components")
+                .GroupDescription("GroupDescription")
+                .Flags(TaskFlags.CheckedOnce | TaskFlags.Restart)
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");
+            Tasks.CreateEntry("Name", "Description");
 
             Types
                 .CreateEntry("Name", "Description")
@@ -90,6 +95,19 @@
                 .InfoBeforeFile("InfoBeforeFile");
             Languages.CreateEntry("Name", "MessageFile");
 
+            LangOptions.Create().LanguageName("LanguageName");
+
+            INI.CreateEntry("Filename", "Section")
+                .String("String")
+                .Key("Key")
+                .Flags(IniFlags.UninsDeleteEntry | IniFlags.CreateKeyIfDoesntExist)
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");;
+            INI.CreateEntry("Filename", "Section");
+
             Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
                 .ValueName("ValueName")
                 .ValueType(ValueTypes.String)
@@ -119,8 +137,23 @@
             Run.CreateEntry("FileName");
             
             UninstallRun.CreateEntry("FileName");
+            
+            UninstallDelete.CreateEntry(DeleteTypes.Files,"Name")
+                .Components("Components")
+                .Tasks("Tasks")
+                .Languages("Languages")
+                .MinVersion("MinVersion")
+                .OnlyBelowVersion("OnlyBelowVersion");;
+            UninstallDelete.CreateEntry(DeleteTypes.Files,"Name");
+            InstallDelete.CreateEntry(DeleteTypes.Files,"Name");
 
-            Sections.CreateParameterSection("Registry")
+            Messages.CreateEntry()
+                .Parameter("NextButton", "&Forward");
+            
+            CustomMessages.CreateEntry()
+                .Parameter("NextButton", "&Forward");
+
+            Sections.CreateParameterSection("UnimplementedParameterSection")
                 .CreateEntry()
                 .Parameter("Root", RegistryKeys.HKU)
                 .Parameter("Subkey", @"Software\My Company\My Program")
@@ -128,10 +161,12 @@
                 .Parameter("ValueType", ValueTypes.String)
                 .Parameter("ValueData", "Test app");
 
-            Sections.CreateKeyValueSection("Messages")
+            Sections.CreateKeyValueSection("UnimplementedKeyValueSection")
                 .CreateEntry()
                 .Parameter("BeveledLabel", @"Inno Setup")
                 .Parameter("HelpTextNote", @"/PORTABLE=1%nEnable portable mode.");
+
+            Code.CreateEntry("script");
         }
     }
 }

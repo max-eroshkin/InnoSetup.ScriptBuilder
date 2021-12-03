@@ -1,7 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
     using System.Collections.Generic;
-    using Model.FileSection;
 
     public class FilesBuilder :
         CommonParameterSectionBuilderBase<FilesBuilder, FileEntry>,

@@ -16,6 +16,13 @@
         private readonly IconsBuilder _icons = new();
         private readonly RunBuilder _uninstallRun = new("UninstallRun");
         private readonly CodeBuilder _code = new();
+        private readonly TasksBuilder _tasks = new();
+        private readonly DeleteBuilder _uninstallDelete = new("UninstallDelete");
+        private readonly DeleteBuilder _installDelete = new("InstallDelete");
+        private readonly GenericKeyValueSectionBuilder _messages = new("Messages");
+        private readonly GenericKeyValueSectionBuilder _customMessages = new("CustomMessages");
+        private readonly LangOptionsBuilder _langOptionsBuilder = new();
+        private readonly IniBuilder _ini = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -27,6 +34,8 @@
 
         public ILanguageEntryBuilder Languages => _languages;
 
+        public ILangOptionsBuilder LangOptions => _langOptionsBuilder;
+
         public IDirsBuilder Dirs => _dirs;
 
         public ITypesBuilder Types => _types;
@@ -37,19 +46,18 @@
 
         public IRunBuilder UninstallRun => _uninstallRun;
 
+        public ITasksBuilder Tasks => _tasks;
+
         public CodeBuilder Code => _code;
 
-        /* Sections to implement
-            Tasks
-            Ini
-            InstallDelete
-            CustomMessages
-            Messages
-            LangOptions
-            UninstallDelete
-            
-            Code
-         */
+        public IDeleteBuilder UninstallDelete => _uninstallDelete;
+
+        public IDeleteBuilder InstallDelete => _installDelete;
+
+        public IGenericKeyValueSectionBuilder Messages => _messages;
+        public IIniBuilder INI => _ini;
+
+        public IGenericKeyValueSectionBuilder CustomMessages => _customMessages;
 
         public GenericSections Sections { get; } = new();
 
@@ -57,14 +65,21 @@
         {
             _setup.Write(writer);
             _components.Write(writer);
+            _tasks.Write(writer);
             _types.Write(writer);
             _languages.Write(writer);
+            _langOptionsBuilder.Write(writer);
+            _messages.Write(writer);
+            _customMessages.Write(writer);
             _dirs.Write(writer);
             _files.Write(writer);
             _icons.Write(writer);
             _registry.Write(writer);
             _run.Write(writer);
             _uninstallRun.Write(writer);
+            _uninstallDelete.Write(writer);
+            _installDelete.Write(writer);
+            _ini.Write(writer);
             Sections.Write(writer);
             _code.Write(writer);
         }

@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.DirsSection
+﻿namespace InnoSetup.ScriptBuilder
 {
     using System.Collections.Generic;
-    using FileSection;
 
     public class DirEntry : CommonParameterSectionEntryBase, IHazComponentsAndTasks
     {

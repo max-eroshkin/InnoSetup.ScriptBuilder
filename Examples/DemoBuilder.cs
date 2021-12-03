@@ -1,7 +1,6 @@
 ﻿namespace Examples
 {
     using InnoSetup.ScriptBuilder;
-    using InnoSetup.ScriptBuilder.Model.SetupSection;
 
     public class DemoBuilder : IssBuilder
     {

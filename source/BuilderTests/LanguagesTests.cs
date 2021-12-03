@@ -1,7 +1,7 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.LanguageSection;
+    using InnoSetup.ScriptBuilder;
 
     public class LanguagesTests : ParameterSectionTestsBase<LanguageEntry>
     {

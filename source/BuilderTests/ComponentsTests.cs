@@ -1,7 +1,7 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.ComponentSection;
+    using InnoSetup.ScriptBuilder;
 
     public class ComponentsTests : ParameterSectionTestsBase<ComponentEntry>
     {

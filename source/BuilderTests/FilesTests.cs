@@ -1,7 +1,7 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.FileSection;
+    using InnoSetup.ScriptBuilder;
 
     public class FilesTests : ParameterSectionTestsBase<FileEntry>
     {

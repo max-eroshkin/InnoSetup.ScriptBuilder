@@ -1,8 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
     using System.Collections.Generic;
-    using Model.FileSection;
-    using Model.RegistrySection;
 
     public class RegistryBuilder : 
         CommonParameterSectionBuilderBase<RegistryBuilder, RegistryEntry>,

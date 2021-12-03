@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.LanguageSection;
-
     public class LanguagesBuilder : ParameterSectionBuilderBase<LanguagesBuilder, LanguageEntry>, ILanguageEntryBuilder
     {
         public override string SectionName => "Languages";

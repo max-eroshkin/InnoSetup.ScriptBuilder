@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.RunSection
+﻿namespace InnoSetup.ScriptBuilder
 {
     using System;
 

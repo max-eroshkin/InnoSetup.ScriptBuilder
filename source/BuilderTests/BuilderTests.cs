@@ -5,8 +5,6 @@ namespace BuilderTests
     using System.Reflection;
     using FluentAssertions;
     using InnoSetup.ScriptBuilder;
-    using InnoSetup.ScriptBuilder.Model;
-    using InnoSetup.ScriptBuilder.Model.SetupSection;
     using Xunit;
 
     public class BuilderTests
@@ -85,6 +83,29 @@ namespace BuilderTests
             var scriptBuilder = new TestBuilder();
             var result = scriptBuilder.ToString();
             result.Should().NotBeEmpty();
+        }
+
+        [Fact]
+        public void TestBuilderContainsAllAvailableSections()
+        {
+            var builder = new TestBuilder();
+            var builderType = builder.GetType();
+            var builderProperties = builderType
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(x => x.PropertyType.Name.EndsWith("Builder"))
+                .ToList();
+            
+            var iss = new TestBuilder().ToString();
+            var testBuilderSections = TestUtils.GetSections(iss).ToList();
+
+            var classSections = builderProperties.Select(x =>
+            {
+                var sectionBuilder = x.GetValue(builder);
+                var nameProperty = sectionBuilder.GetType().GetProperty("SectionName");
+                return (string)nameProperty.GetValue(sectionBuilder);
+            });
+
+            classSections.Should().OnlyContain(x => testBuilderSections.Any(t => t.Name == x));
         }
 
         private static bool IsNullable(Type type)

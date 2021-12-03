@@ -1,8 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
     using System.Collections.Generic;
-    using Model.DirsSection;
-    using Model.FileSection;
 
     public class DirsBuilder :
         CommonParameterSectionBuilderBase<DirsBuilder, DirEntry>,

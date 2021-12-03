@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder.Model.RunSection
+﻿namespace InnoSetup.ScriptBuilder
 {
     public class RunEntry : CommonParameterSectionEntryBase, IHazComponentsAndTasks
     {

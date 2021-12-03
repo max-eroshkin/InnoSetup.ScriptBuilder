@@ -1,7 +1,7 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.IconsSection;
+    using InnoSetup.ScriptBuilder;
 
     public class IconsTests : ParameterSectionTestsBase<IconEntry>
     {

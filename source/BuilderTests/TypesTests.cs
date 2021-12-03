@@ -1,7 +1,7 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.TypesSection;
+    using InnoSetup.ScriptBuilder;
 
     public class TypesTests : ParameterSectionTestsBase<TypeEntry>
     {

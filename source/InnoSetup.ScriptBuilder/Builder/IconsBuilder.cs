@@ -1,7 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using Model.IconsSection;
-
     public class IconsBuilder :
         CommonParameterSectionBuilderBase<IconsBuilder, IconEntry>,
         IIconBuilder,

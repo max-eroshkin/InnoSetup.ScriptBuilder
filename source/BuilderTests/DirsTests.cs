@@ -1,7 +1,7 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder.Model.DirsSection;
+    using InnoSetup.ScriptBuilder;
 
     public class DirsTests : ParameterSectionTestsBase<DirEntry>
     {
