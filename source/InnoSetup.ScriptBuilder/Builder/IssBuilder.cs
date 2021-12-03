@@ -21,6 +21,7 @@
         private readonly DeleteBuilder _installDelete = new("InstallDelete");
         private readonly GenericKeyValueSectionBuilder _messages = new("Messages");
         private readonly GenericKeyValueSectionBuilder _customMessages = new("CustomMessages");
+        private readonly LangOptionsBuilder _langOptionsBuilder = new();
 
         public ISetupBuilder Setup => _setup;
 
@@ -31,6 +32,8 @@
         public IRegistryBuilder Registry => _registry;
 
         public ILanguageEntryBuilder Languages => _languages;
+
+        public ILangOptionsBuilder LangOptions => _langOptionsBuilder;
 
         public IDirsBuilder Dirs => _dirs;
 
@@ -67,6 +70,7 @@
             _tasks.Write(writer);
             _types.Write(writer);
             _languages.Write(writer);
+            _langOptionsBuilder.Write(writer);
             _messages.Write(writer);
             _customMessages.Write(writer);
             _dirs.Write(writer);

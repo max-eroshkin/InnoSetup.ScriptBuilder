@@ -1,6 +1,6 @@
 ﻿namespace InnoSetup.ScriptBuilder.Model.SetupSection
 {
-    public class SetupSection : ModelBase
+    public class SetupSection : KeyValueSection
     {
         public string AppName { get; set; }
 

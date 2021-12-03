@@ -101,6 +101,8 @@
                 .InfoBeforeFile("InfoBeforeFile");
             Languages.CreateEntry("Name", "MessageFile");
 
+            LangOptions.Create().LanguageName("LanguageName");
+
             Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
                 .ValueName("ValueName")
                 .ValueType(ValueTypes.String)
