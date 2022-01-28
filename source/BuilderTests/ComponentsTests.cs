@@ -17,6 +17,7 @@
             { "MinVersion", "\"MinVersion\"" },
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
             { "Flags", "fixed exclusive" },
+            { "Check", "\"Check\"" },
         };
     }
 }

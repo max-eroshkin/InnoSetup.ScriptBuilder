@@ -15,6 +15,7 @@
         public LanguagesBuilder LicenseFile(string value) => SetPropertyValue(value);
         public LanguagesBuilder InfoAfterFile(string value) => SetPropertyValue(value);
         public LanguagesBuilder InfoBeforeFile(string value) => SetPropertyValue(value);
+        public LanguagesBuilder Check(string value) => SetPropertyValue(value);
         private LanguagesBuilder Name(string value) => SetPropertyValue(value);
         private LanguagesBuilder MessagesFile(string value) => SetPropertyValue(value);
     }

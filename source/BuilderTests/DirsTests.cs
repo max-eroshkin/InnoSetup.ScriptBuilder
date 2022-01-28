@@ -18,6 +18,7 @@
             { "Permissions", "service-full admins-modify" },
             { "Flags", "uninsalwaysuninstall" },
             { "Attribs", "hidden system" },
+            { "Check", "\"Check\"" },
         };
     }
 }

@@ -15,6 +15,7 @@
             { "Languages", "\"Languages\"" },
             { "MinVersion", "\"MinVersion\"" },
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
+            { "Check", "\"Check\"" },
         };
     }
 }

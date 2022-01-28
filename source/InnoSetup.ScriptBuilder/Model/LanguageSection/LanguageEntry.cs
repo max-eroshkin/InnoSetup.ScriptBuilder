@@ -11,5 +11,7 @@
         public string InfoAfterFile { get; set; }
 
         public string InfoBeforeFile { get; set; }
+
+        public string Check { get; set; }
     }
 }

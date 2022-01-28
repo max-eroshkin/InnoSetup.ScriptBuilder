@@ -1,6 +1,8 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    public class GenericParameterSectionBuilder : ParameterSectionBuilderBase<GenericParameterSectionBuilder, CommonParameterSectionEntryBase>, IGenericParameterSectionBuilder
+    public class GenericParameterSectionBuilder :
+        ParameterSectionBuilderBase<GenericParameterSectionBuilder, CommonParameterSectionEntryBase>,
+        IGenericParameterSectionBuilder
     {
         public GenericParameterSectionBuilder(string name)
         {
