@@ -14,6 +14,7 @@
             { "LicenseFile", "\"LicenseFile\"" },
             { "InfoAfterFile", "\"InfoAfterFile\"" },
             { "InfoBeforeFile", "\"InfoBeforeFile\"" },
+            { "Check", "\"Check\"" },
         };
     }
 }

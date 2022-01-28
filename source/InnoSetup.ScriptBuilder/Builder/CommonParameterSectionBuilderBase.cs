@@ -10,5 +10,6 @@
         public TBuilder Languages(string value) => SetPropertyValue(value);
         public TBuilder MinVersion(string value) => SetPropertyValue(value);
         public TBuilder OnlyBelowVersion(string value) => SetPropertyValue(value);
+        public TBuilder Check(string value) => SetPropertyValue(value);
     }
 }

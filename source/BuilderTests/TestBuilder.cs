@@ -30,7 +30,8 @@
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion")
                 .AddPermission(Sids.Service, Permissions.Full)
-                .AddPermission(Sids.Admins, Permissions.Modify);
+                .AddPermission(Sids.Admins, Permissions.Modify)
+                .Check("Check");
             Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
 
             Components
@@ -40,7 +41,8 @@
                 .Flags(ComponentFlags.Fixed | ComponentFlags.Exclusive)
                 .Languages("Languages")
                 .MinVersion("MinVersion")
-                .OnlyBelowVersion("OnlyBelowVersion");
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .Check("Check");
             Components.CreateEntry("main", "Main Files");
 
             Tasks.CreateEntry("Name", "Description")
@@ -49,7 +51,8 @@
                 .Flags(TaskFlags.CheckedOnce | TaskFlags.Restart)
                 .Languages("Languages")
                 .MinVersion("MinVersion")
-                .OnlyBelowVersion("OnlyBelowVersion");
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .Check("Check");
             Tasks.CreateEntry("Name", "Description");
 
             Types
@@ -57,7 +60,8 @@
                 .Flags(TypeFlags.IsCustom)
                 .Languages("Languages")
                 .MinVersion("MinVersion")
-                .OnlyBelowVersion("OnlyBelowVersion");
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .Check("Check");
             Types.CreateEntry("Name", "Description");
 
             Dirs.CreateEntry("Name")
@@ -69,7 +73,8 @@
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion")
                 .AddPermission(Sids.Service, Permissions.Full)
-                .AddPermission(Sids.Admins, Permissions.Modify);
+                .AddPermission(Sids.Admins, Permissions.Modify)
+                .Check("Check");
             Dirs.CreateEntry("Name");
             
             Icons.CreateEntry("Name", "Filename")
@@ -86,13 +91,15 @@
                 .Tasks("Tasks")
                 .Languages("Languages")
                 .MinVersion("MinVersion")
-                .OnlyBelowVersion("OnlyBelowVersion");
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .Check("Check");
             Icons.CreateEntry("Name", "Filename");
 
             Languages.CreateEntry("Name", "MessagesFile")
                 .LicenseFile("LicenseFile")
                 .InfoAfterFile("InfoAfterFile")
-                .InfoBeforeFile("InfoBeforeFile");
+                .InfoBeforeFile("InfoBeforeFile")
+                .Check("Check");
             Languages.CreateEntry("Name", "MessageFile");
 
             LangOptions.Create().LanguageName("LanguageName");
@@ -105,7 +112,8 @@
                 .Tasks("Tasks")
                 .Languages("Languages")
                 .MinVersion("MinVersion")
-                .OnlyBelowVersion("OnlyBelowVersion");;
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .Check("Check");
             INI.CreateEntry("Filename", "Section");
 
             Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
@@ -119,7 +127,8 @@
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion")
                 .AddPermission(Sids.Service, Permissions.Full)
-                .AddPermission(Sids.Admins, Permissions.Modify);
+                .AddPermission(Sids.Admins, Permissions.Modify)
+                .Check("Check");
             Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program");
             Run.CreateEntry("FileName")
                 .Description("Description")
@@ -133,7 +142,8 @@
                 .Tasks("Tasks")
                 .Languages("Languages")
                 .MinVersion("MinVersion")
-                .OnlyBelowVersion("OnlyBelowVersion");
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .Check("Check");
             Run.CreateEntry("FileName");
             
             UninstallRun.CreateEntry("FileName");
@@ -143,7 +153,8 @@
                 .Tasks("Tasks")
                 .Languages("Languages")
                 .MinVersion("MinVersion")
-                .OnlyBelowVersion("OnlyBelowVersion");;
+                .OnlyBelowVersion("OnlyBelowVersion")
+                .Check("Check");
             UninstallDelete.CreateEntry(DeleteTypes.Files,"Name");
             InstallDelete.CreateEntry(DeleteTypes.Files,"Name");
 

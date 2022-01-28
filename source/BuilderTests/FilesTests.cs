@@ -24,6 +24,7 @@
             { "Permissions", "service-full admins-modify" },
             { "Flags", "sign" },
             { "Attribs", "readonly system" },
+            { "Check", "\"Check\"" },
         };
     }
 }

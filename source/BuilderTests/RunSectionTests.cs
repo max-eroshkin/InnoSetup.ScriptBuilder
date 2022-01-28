@@ -26,6 +26,7 @@
             { "MinVersion", "\"MinVersion\"" },
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
             { "Flags", "64bit runhidden" },
+            { "Check", "\"Check\"" },
         };
 
         [Fact]

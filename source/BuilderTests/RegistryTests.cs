@@ -21,6 +21,7 @@
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
             { "Permissions", "service-full admins-modify" },
             { "Flags", "createvalueifdoesntexist noerror" },
+            { "Check", "\"Check\"" },
         };
     }
 }
