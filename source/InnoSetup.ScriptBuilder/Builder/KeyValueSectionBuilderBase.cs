@@ -38,7 +38,7 @@
                 if (value is null)
                     continue;
 
-                var str = value.GetString();
+                var str = value.GetString(false);
                 if (str is not null)
                     writer.WriteLine($"{info.Name}={str}");
             }
