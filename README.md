@@ -12,13 +12,13 @@ using C# fluent API. You can find the official Inno Setup documentation on [Inno
 To get the script looking like this
 ```iss
 [Setup]
-AppName="BimTools.Support"
-AppVersion="1.2.5.1634640046"
-DefaultDirName="{userappdata}\SupportTools"
+AppName=BimTools.Support
+AppVersion=1.2.5.1634640046
+DefaultDirName={userappdata}\SupportTools
 PrivilegesRequired=lowest
-OutputBaseFilename="Tools.Support_2021_1.2.5.1634640046"
-SetupIconFile="ToolsIcon.ico"
-UninstallDisplayIcon="ToolsIcon.ico"
+OutputBaseFilename=Tools.Support_2021_1.2.5.1634640046
+SetupIconFile=ToolsIcon.ico
+UninstallDisplayIcon=ToolsIcon.ico
 DisableDirPage=yes
 
 [Files]
