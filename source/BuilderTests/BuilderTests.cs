@@ -49,6 +49,13 @@ namespace BuilderTests
             BuilderUtils.Build(
                 c =>
                 {
+                    c.Directives
+                        .Define("var1", "15")
+                        .Include("file.iss")
+                        .Include("<file.iss>")
+                        .FreeText(";comments")
+                        .Undef("var1");
+                    
                     c.Setup.Create("BimTools.Support")
                         .AppVersion("1.2.5.1634640046")
                         .DefaultDirName(@"{userappdata}\Autodesk\Revit\Addins\2019\SupportTools")
