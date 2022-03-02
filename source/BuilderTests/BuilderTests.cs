@@ -112,7 +112,8 @@ namespace BuilderTests
                 return (string)nameProperty.GetValue(sectionBuilder);
             });
 
-            classSections.Should().OnlyContain(x => testBuilderSections.Any(t => t.Name == x));
+            classSections.Where(x => x != "Directives")
+                .Should().OnlyContain(x => testBuilderSections.Any(t => t.Name == x));
         }
 
         private static bool IsNullable(Type type)
