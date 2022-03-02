@@ -8,6 +8,8 @@
     {
         private readonly StringBuilder _builder = new();
 
+        public string SectionName => "Directives";
+
         public void Write(TextWriter writer)
         {
             if (_builder.Length > 0)
