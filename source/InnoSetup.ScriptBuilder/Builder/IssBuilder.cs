@@ -61,8 +61,11 @@
 
         public GenericSections Sections { get; } = new();
 
+        public DirectivesBuilder Directives { get; } = new();
+
         public void Write(TextWriter writer)
         {
+            Directives.Write(writer);
             _setup.Write(writer);
             _components.Write(writer);
             _tasks.Write(writer);

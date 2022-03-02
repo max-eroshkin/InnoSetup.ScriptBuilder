@@ -9,6 +9,7 @@
         Restart = 0x2,
         DisableNoUninstallWarning = 0x4,
         Exclusive = 0x8,
-        DontInheritCheck = 0x10
+        DontInheritCheck = 0x10,
+        CheckAbleAlone = 0x20
     }
 }
