@@ -5,9 +5,9 @@
     <RootNamespace>InnoSetup.ScriptBuilder</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
-    <Description>InnoSetup Script Builder</Description>
     <PackageId>InnoSetup.ScriptBuilder</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>This package is intended to build Inno Setup script files (*.iss) using C# fluent API.</Description>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />

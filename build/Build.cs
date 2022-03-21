@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bimlab.Nuke.Components;
@@ -75,33 +76,38 @@ partial class Build : NukeBuild,
             var iss = TemporaryDirectory / "package.iss";
             var userdata = (RelativePath)"{userappdata}";
             var outDir = Solution.GetProject("InnoSetup.ScriptBuilder").Directory / "bin" /
-                From<IHazConfiguration>().Configuration / "netstandard2.0";
-            
+                         From<IHazConfiguration>().Configuration / "netstandard2.0";
+
             BuilderUtils.Build(s =>
             {
                 var now = DateTime.UtcNow;
                 s.Setup.Create("InnoSetup Script Builder")
                     .AppVersion("0.1.0")
-                    .DefaultDirName( userdata / "IssBuilder")
+                    .DefaultDirName(userdata / "IssBuilder")
                     .PrivilegesRequired(PrivilegesRequired.Lowest)
                     .OutputBaseFilename($"InnoSetup.Builder_{now:yyyyMMdd}.{now:hhmm}")
                     .DisableDirPage(YesNo.Yes);
                 s.Files
-                    .CreateEntry(outDir / "*", InnoConstants.App).Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
+                    .CreateEntry(outDir / "*", InnoConstants.App)
+                    .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
             }, iss);
-            
+
             InnoSetupTasks.InnoSetup(config => config
                 .SetProcessToolPath(ToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
                 .SetScriptFile(iss)
                 .SetOutputDir(From<IPack>().ArtifactsDirectory));
         });
-    
+
     public Build()
     {
         Console.OutputEncoding = Encoding.UTF8;
     }
 
     static int Main() => Execute<Build>(x => x.From<IPublish>().List);
+
+   
+    public Configure<DotNetPackSettings> PackSettings => _ => _
+        .SetProperty("Copyright", $"Copyright ©{DateTime.UtcNow.Year} Reactive BIM");
 
     T From<T>()
         where T : INukeBuild
