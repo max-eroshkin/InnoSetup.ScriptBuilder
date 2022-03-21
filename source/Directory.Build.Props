@@ -21,10 +21,10 @@
     </ItemGroup>
 
     <PropertyGroup>
+        <Version>1.2.1</Version>
         <Company>Reactive BIM</Company>
         <Authors>Reactive BIM</Authors>
         <Product>InnoSetup Script Builder</Product>
-        <Copyright>Copyright ©2021 Reactive BIM</Copyright>
         <PackageTags>InnoSetup Builder RxBIM</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder</PackageProjectUrl>
