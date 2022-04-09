@@ -50,8 +50,8 @@ namespace BuilderTests
                 c =>
                 {
                     c.Directives
-                        .Define("var1", "15")
-                        .Include("file.iss")
+                        .Define("MyAppName", "My Program")
+                        .Include(@"c:\dir\file.iss")
                         .Include("<file.iss>")
                         .FreeText(";comments")
                         .Undef("var1");

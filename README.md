@@ -1,11 +1,21 @@
 # InnoSetup.ScriptBuilder
 
-This package is intended to build Inno Setup script files (*.iss) 
+[![CI](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions/workflows/CI.yml/badge.svg)](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions)
+[![NuGet](https://img.shields.io/nuget/v/InnoSetup.ScriptBuilder?logo=nuget&label=nuget)](https://www.nuget.org/packages/InnoSetup.ScriptBuilder)
+[![Downloads count](https://img.shields.io/nuget/dt/InnoSetup.ScriptBuilder?logo=nuget)](https://www.nuget.org/packages/InnoSetup.ScriptBuilder/absoluteLatest)
+
+This package is intended to build Inno Setup script files (*.iss)
 using C# fluent API. You can find the official Inno Setup documentation on [Inno Setup web site](https://jrsoftware.org/ishelp/).
 
-[![CI](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions/workflows/CI.yml/badge.svg)](https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder/actions)
-[![Release](https://img.shields.io/nuget/v/InnoSetup.ScriptBuilder?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/InnoSetup.ScriptBuilder)
-[![Latest](https://img.shields.io/nuget/vpre/InnoSetup.ScriptBuilder?logo=nuget&label=latest&color=yellow)](https://www.nuget.org/packages/InnoSetup.ScriptBuilder/absoluteLatest)
+## Installation
+.NET CLI
+```ps1
+dotnet add package InnoSetup.ScriptBuilder
+```
+Package Manager
+```ps1
+Install-Package InnoSetup.ScriptBuilder
+```
 
 ## Examples
 ### Create builder
@@ -107,9 +117,21 @@ BuilderUtils.Build(
     }, 
     "demo.iss");
 ```
+## Directives
+You can insert preprocessor directives at the beginning of your script using `Directives` section
+```cs
+Directives
+    .Define("MyAppName", "My Program")
+    .Include(@"c:\dir\file.iss")
+    .Include("<file.iss>")
+    .FreeText(";comments")
+    .Undef("var1");
+```
+Where `FreeText()` allows to insert any text to the script as is.
+
 ## Not implemented sections and parameters
 If the section you want to insert is not implemented you can use either `Sections.CreateKeyValueSection()`
-or `Sections.CreateParameterSection()` methods. 
+or `Sections.CreateParameterSection()` methods.
 To insert not implemented parameters/directives of any kind of section use `Parameter()` method.
 ```c#
 // for key-value sections
