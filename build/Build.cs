@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Bimlab.Nuke.Components;
@@ -49,6 +50,9 @@ partial class Build : NukeBuild,
 
     Solution IHazSolution.Solution => Solution;
 
+    AbsolutePath OutputDir = TemporaryDirectory / "output";
+    AbsolutePath IssPath = TemporaryDirectory / "setup.iss";
+
     [UsedImplicitly]
     Target Clean => _ => _
         .Before<IRestore>()
@@ -69,33 +73,64 @@ partial class Build : NukeBuild,
                 .SetConfiguration(From<IHazConfiguration>().Configuration));
         });
 
-    public Target Inno => _ => _
-        .DependsOn<ICompile>()
+    Target BuildScript => _ => _
+        .Description("Builds an iss script file.")
         .Executes(() =>
         {
-            var iss = TemporaryDirectory / "package.iss";
-            var userdata = (RelativePath)"{userappdata}";
-            var outDir = Solution.GetProject("InnoSetup.ScriptBuilder").Directory / "bin" /
-                         From<IHazConfiguration>().Configuration / "netstandard2.0";
-
-            BuilderUtils.Build(s =>
+            var programFiles = (RelativePath)InnoConstants.ProgramFiles64;
+            var group = (RelativePath)InnoConstants.Group;
+            var appDir = (RelativePath)InnoConstants.App;
+            
+            BuilderUtils.Build(builder =>
             {
                 var now = DateTime.UtcNow;
-                s.Setup.Create("InnoSetup Script Builder")
-                    .AppVersion("0.1.0")
-                    .DefaultDirName(userdata / "IssBuilder")
-                    .PrivilegesRequired(PrivilegesRequired.Lowest)
-                    .OutputBaseFilename($"InnoSetup.Builder_{now:yyyyMMdd}.{now:hhmm}")
-                    .DisableDirPage(YesNo.Yes);
-                s.Files
-                    .CreateEntry(outDir / "*", InnoConstants.App)
+                builder.Setup.Create("InnoSetup.ScriptBuilder Demo")
+                    .AppId("{{53A6910D-931A-4FD7-AAA3-DA94DCAD62B6}")
+                    .AppVersion("1.0.0")
+                    .DefaultDirName(programFiles / "IssBuilder Demo")
+                    .DefaultGroupName("InnoSetup ScriptBuilder Demo")
+                    .OutputBaseFilename($"InnoSetup.Builder.Demo_{now:yyyyMMdd}.{now:hhmm}")
+                    .ArchitecturesAllowed(Architectures.X64)
+                    .ArchitecturesInstallIn64BitMode(ArchitecturesInstallIn64BitMode.X64)
+                    .SolidCompression(YesNo.Yes)
+                    .Compression("lzma2")
+                    .DisableDirPage(YesNo.No)
+                    .DisableProgramGroupPage(YesNo.No);
+                
+                builder.Files
+                    .CreateEntry(OutputDir / "*", InnoConstants.App)
                     .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
-            }, iss);
-
+                
+                builder.Icons
+                    .CreateEntry(group / "InnoSetup.ScriptBuilder Demo", appDir / "DemoApp.exe");
+                
+                builder.Code.CreateEntry(File.ReadAllText(RootDirectory / "build" / "setup.pas"));
+            }, IssPath);
+            
+            Console.WriteLine(File.ReadAllText(IssPath));
+        });
+    
+    /// <summary>
+    /// Run <code>.\build.cmd build-setup</code> in the solution folder.
+    /// </summary>
+    public Target BuildSetup => _ => _
+        .Description("Builds a Demo app installation package.")
+        .DependsOn(PublishDemoApp, BuildScript)
+        .Executes(() =>
+        {
             InnoSetupTasks.InnoSetup(config => config
                 .SetProcessToolPath(ToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
-                .SetScriptFile(iss)
+                .SetScriptFile(IssPath)
                 .SetOutputDir(From<IPack>().ArtifactsDirectory));
+        });
+
+    Target PublishDemoApp => _ => _
+        .Executes(() =>
+        {
+            DotNetPublish(x => x
+                .SetConfiguration(From<IHazConfiguration>().Configuration)
+                .SetOutput(OutputDir)
+                .SetProject(Solution.GetProject("DemoApp")!.Path));
         });
 
     public Build()
