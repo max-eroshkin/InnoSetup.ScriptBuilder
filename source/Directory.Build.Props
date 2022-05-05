@@ -14,18 +14,18 @@
     </PropertyGroup>
 
     <ItemGroup Condition="'$(IsPackable)' != 'False'">
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.354">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
     <PropertyGroup>
-        <Version>1.2.1</Version>
+        <Version>1.2.2</Version>
         <Company>Reactive BIM</Company>
         <Authors>Reactive BIM</Authors>
         <Product>InnoSetup Script Builder</Product>
-        <PackageTags>InnoSetup Builder RxBIM</PackageTags>
+        <PackageTags>installer innosetup inno script builder</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder</PackageProjectUrl>
         <RepositoryUrl>https://github.com:ReactiveBIM/InnoSetup.ScriptBuilder.git</RepositoryUrl>
