@@ -2,8 +2,6 @@
 {
     public enum PrivilegesRequired
     {
-        None,
-        PowerUser,
         Admin,
         Lowest
     }
