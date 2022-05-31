@@ -1,5 +1,9 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿// ReSharper disable InconsistentNaming
+namespace InnoSetup.ScriptBuilder
 {
+    /// <summary>
+    /// Contains registry root keys.
+    /// </summary>
     public enum RegistryKeys
     {
         /// <summary>
@@ -26,5 +30,10 @@
         /// HKEY_CURRENT_CONFIG
         /// </summary>
         HKCC,
+
+        /// <summary>
+        /// Equals <see cref="HKLM"/> in administrative install mode, <see cref="HKCU"/> otherwise.
+        /// </summary>
+        HKA
     }
 }
