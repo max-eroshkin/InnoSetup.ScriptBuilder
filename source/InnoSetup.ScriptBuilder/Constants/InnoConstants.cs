@@ -762,7 +762,9 @@
                 string defaultValue = null)
             {
                 valueName ??= string.Empty;
-                var val = $"{key},{subkey},{valueName}";
+                var val = $"{key}\\{subkey}";
+                if (!string.IsNullOrWhiteSpace(valueName))
+                    val += "," + valueName;
                 if (!string.IsNullOrWhiteSpace(defaultValue))
                     val += "|" + defaultValue;
                 return $"{{reg:{val}}}";
