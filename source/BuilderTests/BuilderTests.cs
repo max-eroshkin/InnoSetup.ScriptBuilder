@@ -65,7 +65,7 @@ namespace BuilderTests
                         .UninstallDisplayIcon("trayIcon.ico")
                         .DisableDirPage(YesNo.Yes);
 
-                    c.Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
+                    c.Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.Directories.App)
                         .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
                     c.Files.CreateEntry(source: "SupportTools.addin",
                         destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
