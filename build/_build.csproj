@@ -6,7 +6,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RootNamespace></RootNamespace>
     <NoWarn>CS0649;CS0169</NoWarn>
-    <LangVersion>8</LangVersion>
+    <LangVersion>10</LangVersion>
     <IsPackable>false</IsPackable>
     <NukeTelemetryVersion>1</NukeTelemetryVersion>
   </PropertyGroup>

@@ -792,6 +792,22 @@
             }
 
             /// <summary>
+            /// Returns the constant of a function result from Code section.
+            /// </summary>
+            /// <param name="functionName">The name of the function from Code section.</param>
+            /// <remarks>
+            /// If you wish to include a comma, vertical bar ("|"), or closing brace ("}") inside the constant, you must
+            /// escape it via "%-encoding." Replace the character with a "%" character, followed by its two-digit hex code.
+            /// A comma is "%2c", a vertical bar is "%7c", and a closing brace is "%7d". If you want to include
+            /// an actual "%" character, use "%25".
+            /// </remarks>
+            /// <example>{code:GetItemName}</example>
+            public static string GetCodeResult(string functionName)
+            {
+                return $"{{code:{functionName}}}";
+            }
+
+            /// <summary>
             /// Returns the constant of the extracted drive letter and colon (e.g. "C:") from the specified path.
             /// In the case of a UNC path, it returns the server and share name (e.g. "\\SERVER\SHARE").
             /// </summary>
