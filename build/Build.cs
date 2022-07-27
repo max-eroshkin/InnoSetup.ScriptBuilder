@@ -18,7 +18,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [UnsetVisualStudioEnvironmentVariables]
 [GitHubActions("CI",
     GitHubActionsImage.WindowsLatest,
-    OnPushBranches = new[] { DevelopBranch },
+    OnPushBranches = new[] { DevelopBranch, "feature/**" },
     OnPullRequestBranches = new[] { DevelopBranch, "feature/**" },
     InvokedTargets = new[] { nameof(Test), nameof(IPublish.Publish) },
     ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
