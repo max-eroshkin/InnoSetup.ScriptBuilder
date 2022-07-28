@@ -27,6 +27,8 @@
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
             { "Flags", "64bit runhidden" },
             { "Check", "\"Check\"" },
+            { "BeforeInstall", "\"BeforeInstall\"" },
+            { "AfterInstall", "\"AfterInstall\"" },
         };
 
         [Fact]

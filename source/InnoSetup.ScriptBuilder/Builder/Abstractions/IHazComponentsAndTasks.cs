@@ -15,5 +15,9 @@
         /// A space separated list of task names.
         /// </summary>
         public string Tasks { get; set; }
+
+        public string BeforeInstall { get; set; }
+
+        public string AfterInstall { get; set; }
     }
 }

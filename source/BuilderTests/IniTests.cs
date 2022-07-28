@@ -20,6 +20,8 @@
             { "MinVersion", "\"MinVersion\"" },
             { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
             { "Check", "\"Check\"" },
+            { "BeforeInstall", "\"BeforeInstall\"" },
+            { "AfterInstall", "\"AfterInstall\"" },
         };
     }
 }
