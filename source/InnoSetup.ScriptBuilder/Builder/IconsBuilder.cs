@@ -38,6 +38,12 @@
 
         public IconsBuilder Tasks(string value) => SetPropertyValue(value);
 
+        /// <inheritdoc />
+        public IconsBuilder BeforeInstall(string value) => SetPropertyValue(value);
+
+        /// <inheritdoc />
+        public IconsBuilder AfterInstall(string value) => SetPropertyValue(value);
+
         private IconsBuilder Name(string value) => SetPropertyValue(value);
 
         private IconsBuilder Filename(string value) => SetPropertyValue(value);
