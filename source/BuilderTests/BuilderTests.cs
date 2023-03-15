@@ -21,8 +21,9 @@ namespace BuilderTests
 
             foreach (var property in builderProperties)
             {
-                var sectionBuilder = property.GetValue(builder);
-                var nameProperty = sectionBuilder.GetType().GetProperty("SectionName");
+                var sectionBuilder = property.GetValue(builder)!;
+                var nameProperty = sectionBuilder.GetType().GetProperty("SectionName") 
+                                   ?? throw new InvalidCastException($"Builder {sectionBuilder.GetType()} mast have SectionName");
                 var name = nameProperty.GetValue(sectionBuilder);
                 name.Should().Be(property.Name);
             }
