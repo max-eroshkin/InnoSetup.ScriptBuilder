@@ -22,6 +22,8 @@
             { "Permissions", "service-full admins-modify" },
             { "Flags", "createvalueifdoesntexist noerror" },
             { "Check", "\"Check\"" },
+            { "BeforeInstall", "\"BeforeInstall\"" },
+            { "AfterInstall", "\"AfterInstall\"" },
         };
     }
 }

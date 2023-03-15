@@ -25,6 +25,12 @@
         public IniBuilder Components(string value) => SetPropertyValue(value);
 
         public IniBuilder Tasks(string value) => SetPropertyValue(value);
+        
+        /// <inheritdoc />
+        public IniBuilder BeforeInstall(string value) => SetPropertyValue(value);
+
+        /// <inheritdoc />
+        public IniBuilder AfterInstall(string value) => SetPropertyValue(value);
 
         private IniBuilder Filename(string value) => SetPropertyValue(value);
 

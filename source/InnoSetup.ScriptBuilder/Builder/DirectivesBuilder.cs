@@ -35,6 +35,13 @@
             return this;
         }
 
+        public DirectivesBuilder DefineVariable(string variable, object experession)
+        {
+            _builder.AppendFormat("#define {0} {1}", variable, experession.GetString());
+            _builder.AppendLine();
+            return this;
+        }
+
         public DirectivesBuilder Undef(string variable)
         {
             _builder.AppendFormat("#undef {0}", variable);
