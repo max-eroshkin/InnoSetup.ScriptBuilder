@@ -50,7 +50,8 @@ namespace BuilderTests
                 c =>
                 {
                     c.Directives
-                        .Define("MyAppName", "My Program")
+                        .Define("MaxCount", "100")
+                        .DefineVariable("MyAppName", "My Program")
                         .Include(@"c:\dir\file.iss")
                         .Include("<file.iss>")
                         .FreeText(";comments")

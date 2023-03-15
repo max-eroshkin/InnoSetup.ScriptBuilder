@@ -24,6 +24,13 @@
         }
 
         [Fact]
+        public void GetCodeResult()
+        {
+            InnoConstants.Inno.GetCodeResult(@"functionName")
+                .Should().Be(@"{code:functionName}");
+        }
+
+        [Fact]
         public void GetEnvironmentVariable()
         {
             InnoConstants.Inno.GetEnvironmentVariable(@"COMSPEC")
