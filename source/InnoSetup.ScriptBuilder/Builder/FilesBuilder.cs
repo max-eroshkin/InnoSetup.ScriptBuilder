@@ -26,6 +26,13 @@
         public FilesBuilder StrongAssemblyName(string value) => SetPropertyValue(value);
         public FilesBuilder Flags(FileFlags value) => SetPropertyValue(value);
         public FilesBuilder Components(string value) => SetPropertyValue(value);
+
+        /// <inheritdoc />
+        public FilesBuilder BeforeInstall(string value) => SetPropertyValue(value);
+
+        /// <inheritdoc />
+        public FilesBuilder AfterInstall(string value) => SetPropertyValue(value);
+
         public FilesBuilder Tasks(string value) => SetPropertyValue(value);
 
         public FilesBuilder AddPermission(Sids group, Permissions permission)

@@ -31,7 +31,9 @@
                 .OnlyBelowVersion("OnlyBelowVersion")
                 .AddPermission(Sids.Service, Permissions.Full)
                 .AddPermission(Sids.Admins, Permissions.Modify)
-                .Check("Check");
+                .Check("Check")
+                .BeforeInstall("BeforeInstall")
+                .AfterInstall("AfterInstall");
             Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
 
             Components
@@ -74,7 +76,9 @@
                 .OnlyBelowVersion("OnlyBelowVersion")
                 .AddPermission(Sids.Service, Permissions.Full)
                 .AddPermission(Sids.Admins, Permissions.Modify)
-                .Check("Check");
+                .Check("Check")
+                .BeforeInstall("BeforeInstall")
+                .AfterInstall("AfterInstall");
             Dirs.CreateEntry("Name");
             
             Icons.CreateEntry("Name", "Filename")
@@ -92,7 +96,9 @@
                 .Languages("Languages")
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion")
-                .Check("Check");
+                .Check("Check")
+                .BeforeInstall("BeforeInstall")
+                .AfterInstall("AfterInstall");
             Icons.CreateEntry("Name", "Filename");
 
             Languages.CreateEntry("Name", "MessagesFile")
@@ -113,7 +119,9 @@
                 .Languages("Languages")
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion")
-                .Check("Check");
+                .Check("Check")
+                .BeforeInstall("BeforeInstall")
+                .AfterInstall("AfterInstall");
             INI.CreateEntry("Filename", "Section");
 
             Registry.CreateEntry(RegistryKeys.HKCU, "Subkey")
@@ -128,7 +136,9 @@
                 .OnlyBelowVersion("OnlyBelowVersion")
                 .AddPermission(Sids.Service, Permissions.Full)
                 .AddPermission(Sids.Admins, Permissions.Modify)
-                .Check("Check");
+                .Check("Check")
+                .BeforeInstall("BeforeInstall")
+                .AfterInstall("AfterInstall");
             Registry.CreateEntry(RegistryKeys.HKU, @"Software\My Company\My Program");
             Run.CreateEntry("FileName")
                 .Description("Description")
@@ -143,7 +153,9 @@
                 .Languages("Languages")
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion")
-                .Check("Check");
+                .Check("Check")
+                .BeforeInstall("BeforeInstall")
+                .AfterInstall("AfterInstall");
             Run.CreateEntry("FileName");
             
             UninstallRun.CreateEntry("FileName");
@@ -154,7 +166,9 @@
                 .Languages("Languages")
                 .MinVersion("MinVersion")
                 .OnlyBelowVersion("OnlyBelowVersion")
-                .Check("Check");
+                .Check("Check")
+                .BeforeInstall("BeforeInstall")
+                .AfterInstall("AfterInstall");
             UninstallDelete.CreateEntry(DeleteTypes.Files,"Name");
             InstallDelete.CreateEntry(DeleteTypes.Files,"Name");
 

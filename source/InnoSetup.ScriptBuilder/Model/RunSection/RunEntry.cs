@@ -21,5 +21,9 @@
         public string Components { get; set; }
 
         public string Tasks { get; set; }
+
+        public string BeforeInstall { get; set; }
+
+        public string AfterInstall { get; set; }
     }
 }

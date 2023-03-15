@@ -21,14 +21,14 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <Version>1.2.2</Version>
+        <Version>1.3.0-dev04</Version>
         <Company>Reactive BIM</Company>
         <Authors>Reactive BIM</Authors>
         <Product>InnoSetup Script Builder</Product>
         <PackageTags>installer innosetup inno script builder</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageProjectUrl>https://github.com/ReactiveBIM/InnoSetup.ScriptBuilder</PackageProjectUrl>
-        <RepositoryUrl>https://github.com:ReactiveBIM/InnoSetup.ScriptBuilder.git</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/max-eroshkin/InnoSetup.ScriptBuilder</PackageProjectUrl>
+        <RepositoryUrl>https://github.com:max-eroshkin/InnoSetup.ScriptBuilder.git</RepositoryUrl>
         <NoPackageAnalysis>true</NoPackageAnalysis>
     </PropertyGroup>
 

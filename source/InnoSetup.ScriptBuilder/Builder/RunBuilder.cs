@@ -38,6 +38,12 @@
 
         public RunBuilder Tasks(string value) => SetPropertyValue(value);
 
+        /// <inheritdoc />
+        public RunBuilder BeforeInstall(string value) => SetPropertyValue(value);
+
+        /// <inheritdoc />
+        public RunBuilder AfterInstall(string value) => SetPropertyValue(value);
+
         private RunBuilder Filename(string value) => SetPropertyValue(value);
     }
 }

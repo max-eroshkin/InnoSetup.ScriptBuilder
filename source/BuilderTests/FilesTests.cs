@@ -25,6 +25,8 @@
             { "Flags", "sign" },
             { "Attribs", "readonly system" },
             { "Check", "\"Check\"" },
+            { "BeforeInstall", "\"BeforeInstall\"" },
+            { "AfterInstall", "\"AfterInstall\"" },
         };
     }
 }

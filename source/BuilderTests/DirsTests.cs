@@ -19,6 +19,8 @@
             { "Flags", "uninsalwaysuninstall" },
             { "Attribs", "hidden system" },
             { "Check", "\"Check\"" },
+            { "BeforeInstall", "\"BeforeInstall\"" },
+            { "AfterInstall", "\"AfterInstall\"" },
         };
     }
 }
