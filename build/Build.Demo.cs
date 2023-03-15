@@ -37,6 +37,13 @@ partial class Build
                 builder.Files
                     .CreateEntry(OutputDir / "*", InnoConstants.Directories.App)
                     .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
+                
+                builder.Registry
+                    .CreateEntry(RegistryKeys.HKCU, @"SOFTWARE\Microsoft\Windows\CurrentVersion\InnoSetupDemoApp")
+                    .ValueName("DemoAppData")
+                    .ValueType(ValueTypes.String)
+                    .ValueData("Test Data")
+                    .Flags(RegistryFlags.UninsDeleteKey);
 
                 builder.Icons
                     .CreateEntry(group / "InnoSetup.ScriptBuilder Demo", appDir / "DemoApp.exe");
