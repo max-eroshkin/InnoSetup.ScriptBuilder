@@ -9,6 +9,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{D70841F3-8941-40BC-9D1C-9387FA4AED09}"
 	ProjectSection(SolutionItems) = preProject
 		source\Directory.Build.Props = source\Directory.Build.Props
+		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{7F0D61ED-5B52-4D98-833F-D92BF4FEF417}"
