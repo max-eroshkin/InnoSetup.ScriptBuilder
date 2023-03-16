@@ -108,7 +108,19 @@
                 .Check("Check");
             Languages.CreateEntry("Name", "MessageFile");
 
-            LangOptions.Create().LanguageName("LanguageName");
+            LangOptions.Create()
+                .LanguageName("LanguageName")
+                .DialogFontName("DialogFontName")
+                .DialogFontSize(1)
+                .WelcomeFontName("WelcomeFontName")
+                .WelcomeFontSize(2)
+                .TitleFontName("TitleFontName")
+                .TitleFontSize(3)
+                .CopyrightFontName("CopyrightFontName")
+                .CopyrightFontSize(4)
+                .RightToLeft(YesNo.Yes)
+                .LanguageID("en-us")
+                .LanguageCodePage(1111);
 
             INI.CreateEntry("Filename", "Section")
                 .String("String")
