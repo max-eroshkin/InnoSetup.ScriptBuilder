@@ -1,7 +1,9 @@
 namespace BuilderTests
 {
     using System;
+    using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Reflection;
     using FluentAssertions;
     using InnoSetup.ScriptBuilder;
@@ -22,11 +24,25 @@ namespace BuilderTests
             foreach (var property in builderProperties)
             {
                 var sectionBuilder = property.GetValue(builder)!;
-                var nameProperty = sectionBuilder.GetType().GetProperty("SectionName") 
-                                   ?? throw new InvalidCastException($"Builder {sectionBuilder.GetType()} mast have SectionName");
+                var nameProperty = sectionBuilder.GetType().GetProperty("SectionName")
+                                   ?? throw new InvalidCastException(
+                                       $"Builder {sectionBuilder.GetType()} mast have SectionName");
                 var name = nameProperty.GetValue(sectionBuilder);
                 name.Should().Be(property.Name);
             }
+        }
+
+        [Fact]
+        public void DoubleSectionCreationMustThrowIvalidOperation()
+        {
+            Action creation = () =>
+                BuilderUtils.CreateBuilder(c =>
+                {
+                    c.Setup.Create("Hello!");
+                    c.Setup.Create("Good bye!");
+                });
+
+            creation.Should().Throw<InvalidOperationException>();
         }
 
         [Fact]
@@ -47,16 +63,21 @@ namespace BuilderTests
         [Fact]
         public void WriteFile()
         {
+            const string issFilename = "test_build.iss";
+            if (File.Exists(issFilename))
+                File.Delete(issFilename);
+            
             BuilderUtils.Build(
                 c =>
                 {
-                    c.Directives
-                        .Define("MyAppName", "My Program")
+                    /*c.Directives
+                        .DefineVariable("MyAppName", "My Program")
+                        .Define("MyAppVersion", "100")
                         .Include(@"c:\dir\file.iss")
                         .Include("<file.iss>")
                         .FreeText(";comments")
-                        .Undef("var1");
-                    
+                        .Undef("var1");*/
+
                     c.Setup.Create("BimTools.Support")
                         .AppVersion("1.2.5.1634640046")
                         .DefaultDirName(@"{userappdata}\Autodesk\Revit\Addins\2019\SupportTools")
@@ -82,7 +103,11 @@ namespace BuilderTests
                         .AddPermission(Sids.Users, Permissions.Modify)
                         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
                 },
-                "test_build.iss");
+                issFilename);
+            
+            var fi = new FileInfo(issFilename);
+            fi.Exists.Should().BeTrue();
+            fi.Length.Should().BeGreaterThan(0);
         }
 
         [Fact]
@@ -102,7 +127,7 @@ namespace BuilderTests
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)
                 .Where(x => x.PropertyType.Name.EndsWith("Builder"))
                 .ToList();
-            
+
             var iss = new TestBuilder().ToString();
             var testBuilderSections = TestUtils.GetSections(iss).ToList();
 
