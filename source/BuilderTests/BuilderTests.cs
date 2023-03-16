@@ -61,7 +61,7 @@ namespace BuilderTests
         }
 
         [Fact]
-        public void WriteFile()
+        public void WriteFile1()
         {
             const string issFilename = "test_build.iss";
             if (File.Exists(issFilename))
@@ -70,14 +70,6 @@ namespace BuilderTests
             BuilderUtils.Build(
                 c =>
                 {
-                    /*c.Directives
-                        .DefineVariable("MyAppName", "My Program")
-                        .Define("MyAppVersion", "100")
-                        .Include(@"c:\dir\file.iss")
-                        .Include("<file.iss>")
-                        .FreeText(";comments")
-                        .Undef("var1");*/
-
                     c.Setup.Create("BimTools.Support")
                         .AppVersion("1.2.5.1634640046")
                         .DefaultDirName(@"{userappdata}\Autodesk\Revit\Addins\2019\SupportTools")
@@ -104,6 +96,34 @@ namespace BuilderTests
                         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
                 },
                 issFilename);
+            
+            var fi = new FileInfo(issFilename);
+            fi.Exists.Should().BeTrue();
+            fi.Length.Should().BeGreaterThan(0);
+        }
+  
+        [Fact]
+        public void WriteFile2()
+        {
+            const string issFilename = "test_build.iss";
+            if (File.Exists(issFilename))
+                File.Delete(issFilename);
+            
+            BuilderUtils.Build<TestBuilder>(issFilename);
+            
+            var fi = new FileInfo(issFilename);
+            fi.Exists.Should().BeTrue();
+            fi.Length.Should().BeGreaterThan(0);
+        }
+  
+        [Fact]
+        public void WriteFile3()
+        {
+            const string issFilename = "test_build.iss";
+            if (File.Exists(issFilename))
+                File.Delete(issFilename);
+            
+            BuilderUtils.Build(typeof(TestBuilder), issFilename);
             
             var fi = new FileInfo(issFilename);
             fi.Exists.Should().BeTrue();
