@@ -27,7 +27,7 @@
             var section = sections.FirstOrDefault(x => x.Name == SectionName);
             section.Should().NotBeNull();
             var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
-            section.Entries.Should()
+            section!.Entries.Should()
                 .HaveCount(2)
                 .And.OnlyContain(x => entryRegex.IsMatch(x));
         }
@@ -42,8 +42,8 @@
             var parameters = TestUtils.ParseParameters(section.Entries[0]);
 
             parameters.Should()
-                .ContainAllKeys<TModel>()
-                .And.BeEquivalentTo(ReferenceData);
+                .ContainAllKeys<TModel>().And
+                .BeEquivalentTo(ReferenceData);
         }
     }
 }

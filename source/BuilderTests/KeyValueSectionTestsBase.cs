@@ -44,10 +44,9 @@
                 .ToDictionary(x => x.Key, x => x.Value);
 
             parameters.Should()
+                .ContainAllKeys<TModel>().And
                 .BeEquivalentTo(ReferenceData);
 
-            parameters.Should()
-                .ContainAllKeys<TModel>();
         }
     }
 }

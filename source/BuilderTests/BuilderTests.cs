@@ -42,7 +42,7 @@ namespace BuilderTests
                     c.Setup.Create("Good bye!");
                 });
 
-            creation.Should().Throw<InvalidOperationException>();
+            creation.Should().Throw<IssBuilderException>();
         }
 
         [Fact]
