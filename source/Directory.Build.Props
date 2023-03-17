@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <Version>1.3.0-dev04</Version>
+        <Version>1.3.0-dev05</Version>
         <Company>Reactive BIM</Company>
         <Authors>Reactive BIM</Authors>
         <Product>InnoSetup Script Builder</Product>
@@ -29,6 +29,7 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/max-eroshkin/InnoSetup.ScriptBuilder</PackageProjectUrl>
         <RepositoryUrl>https://github.com:max-eroshkin/InnoSetup.ScriptBuilder.git</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <NoPackageAnalysis>true</NoPackageAnalysis>
     </PropertyGroup>
 

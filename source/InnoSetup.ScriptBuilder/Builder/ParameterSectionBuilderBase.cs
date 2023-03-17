@@ -19,7 +19,7 @@
                     WriteEntry(writer, entry);
             }
         }
-        
+
         protected TBuilder CreateEntryInternal()
         {
             _entryList ??= new List<TData>();
@@ -58,7 +58,7 @@
             {
                 if (parameter.Value.Value is null)
                     continue;
-                
+
                 var str = parameter.Value.Value.GetString(parameter.Value.NeedQuotes);
                 if (str is not null)
                     writer.Write($"{parameter.Key}: {str}; ");
