@@ -6,15 +6,15 @@
     using FluentAssertions;
     using Xunit;
 
-    public abstract class ParameterSectionTestsBase<TModel>
+    public abstract class KeyValueSectionTestsBase<TModel>
     {
         private readonly string _iss;
 
         protected abstract string SectionName { get; }
-        
+
         protected abstract Dictionary<string, string> ReferenceData { get; }
 
-        protected ParameterSectionTestsBase()
+        protected KeyValueSectionTestsBase()
         {
             _iss = new TestBuilder().ToString();
         }
@@ -26,12 +26,12 @@
             var sections = TestUtils.GetSections(_iss).ToList();
             var section = sections.FirstOrDefault(x => x.Name == SectionName);
             section.Should().NotBeNull();
-            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
-            section!.Entries.Should()
-                .HaveCount(2)
+            var entryRegex = new Regex(TestUtils.KeyValueSectionEntryPattern);
+            section.Entries.Should()
+                .HaveCountGreaterThan(0)
                 .And.OnlyContain(x => entryRegex.IsMatch(x));
         }
-        
+
         [Fact]
         public virtual void Entry()
         {
@@ -39,11 +39,14 @@
             var sections = TestUtils.GetSections(_iss).ToList();
             var section = sections.First(x => x.Name == SectionName);
 
-            var parameters = TestUtils.ParseParameters(section.Entries[0]);
+            var parameters = section.Entries
+                .Select(TestUtils.ParseKeyValue)
+                .ToDictionary(x => x.Key, x => x.Value);
 
             parameters.Should()
                 .ContainAllKeys<TModel>().And
                 .BeEquivalentTo(ReferenceData);
+
         }
     }
 }

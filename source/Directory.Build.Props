@@ -29,6 +29,7 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/max-eroshkin/InnoSetup.ScriptBuilder</PackageProjectUrl>
         <RepositoryUrl>https://github.com:max-eroshkin/InnoSetup.ScriptBuilder.git</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <NoPackageAnalysis>true</NoPackageAnalysis>
     </PropertyGroup>
 

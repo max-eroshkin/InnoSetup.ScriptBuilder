@@ -26,8 +26,8 @@
         [Fact]
         public void GetCodeResult()
         {
-            InnoConstants.Inno.GetCodeResult(@"functionName")
-                .Should().Be(@"{code:functionName}");
+            InnoConstants.Inno.GetCodeResult(@"function")
+                .Should().Be(@"{code:function}");
         }
 
         [Fact]

@@ -21,7 +21,7 @@
         protected TBuilder CreateEntryInternal()
         {
             if (Data is not null)
-                throw new InvalidOperationException($"Section {SectionName} already created");
+                throw new IssBuilderException($"Section {SectionName} already created");
 
             Data = new TData();
             return this as TBuilder;
