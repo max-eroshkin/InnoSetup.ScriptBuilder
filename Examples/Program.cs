@@ -24,7 +24,7 @@ namespace Examples
                 builder.Setup.Create("BimTools.Support")
                     .AppVersion("1.2.5.1634640046")
                     .DefaultDirName(@"{userappdata}\SupportTools");
-                builder.Files.CreateEntry(@"bin\*", InnoConstants.App)
+                builder.Files.CreateEntry(@"bin\*", InnoConstants.Directories.App)
                     .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
             });
             //new DemoBuilder();
@@ -56,7 +56,7 @@ namespace Examples
                     builder.Setup.Create("BimTools.Support")
                         .AppVersion("1.2.5.1634640046")
                         .DefaultDirName(@"{userappdata}\SupportTools");
-                    builder.Files.CreateEntry(@"bin\*", InnoConstants.App)
+                    builder.Files.CreateEntry(@"bin\*", InnoConstants.Directories.App)
                         .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
                 }, 
                 "inplace.iss");

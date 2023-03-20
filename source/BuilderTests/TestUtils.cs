@@ -12,6 +12,7 @@
     internal static class TestUtils
     {
         public const string ParameterSectionEntryPattern = @"^((\w+)\: ([^\;]+)\;\s?)+";
+        public const string KeyValueSectionEntryPattern = @"^(\w+)\=(.+)$";
         private static readonly Regex SectionNamePattern = new(@"\[(\w+)\]");
 
         public static List<SectionInfo> GetSections(string iss)
@@ -61,6 +62,14 @@
             Dictionary<string, string>
                 dictionary = matches.ToDictionary(x => x.Groups[1].Value, x => x.Groups[2].Value);
             return dictionary;
+        }
+        
+        public static KeyValuePair<string, string> ParseKeyValue(string entry)
+        {
+            var parameterPattern = new Regex(@"^(\w+)\=(.+)$");
+            var x = parameterPattern.Match(entry);
+            var result = new KeyValuePair<string, string>(x.Groups[1].Value, x.Groups[2].Value);
+            return result;
         }
 
         public static AndConstraint<GenericDictionaryAssertions<IDictionary<string, string>, string, string>>

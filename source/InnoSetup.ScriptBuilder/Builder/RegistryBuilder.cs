@@ -28,6 +28,12 @@
         public RegistryBuilder Components(string value) => SetPropertyValue(value);
         public RegistryBuilder Tasks(string value) => SetPropertyValue(value);
 
+        /// <inheritdoc />
+        public RegistryBuilder BeforeInstall(string value) => SetPropertyValue(value);
+
+        /// <inheritdoc />
+        public RegistryBuilder AfterInstall(string value) => SetPropertyValue(value);
+
         public RegistryBuilder AddPermission(Sids group, Permissions permission)
         {
             Data.Permissions ??= new List<GroupPermission>();

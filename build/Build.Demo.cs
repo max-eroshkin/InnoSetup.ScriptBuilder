@@ -14,9 +14,9 @@ partial class Build
         .Description("Builds an iss script file.")
         .Executes(() =>
         {
-            var programFiles = (RelativePath)InnoConstants.ProgramFiles64;
-            var group = (RelativePath)InnoConstants.Group;
-            var appDir = (RelativePath)InnoConstants.App;
+            var programFiles = (RelativePath)InnoConstants.Directories.ProgramFiles64;
+            var group = (RelativePath)InnoConstants.Shell.Group;
+            var appDir = (RelativePath)InnoConstants.Directories.App;
 
             BuilderUtils.Build(builder =>
             {
@@ -35,8 +35,15 @@ partial class Build
                     .DisableProgramGroupPage(YesNo.No);
 
                 builder.Files
-                    .CreateEntry(OutputDir / "*", InnoConstants.App)
+                    .CreateEntry(OutputDir / "*", InnoConstants.Directories.App)
                     .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
+                
+                builder.Registry
+                    .CreateEntry(RegistryKeys.HKCU, @"SOFTWARE\Microsoft\Windows\CurrentVersion\InnoSetupDemoApp")
+                    .ValueName("DemoAppData")
+                    .ValueType(ValueTypes.String)
+                    .ValueData("Test Data")
+                    .Flags(RegistryFlags.UninsDeleteKey);
 
                 builder.Icons
                     .CreateEntry(group / "InnoSetup.ScriptBuilder Demo", appDir / "DemoApp.exe");

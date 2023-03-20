@@ -21,6 +21,12 @@
         public DirsBuilder Flags(DirFlags value) => SetPropertyValue(value);
         public DirsBuilder Components(string value) => SetPropertyValue(value);
         public DirsBuilder Tasks(string value) => SetPropertyValue(value);
+        
+        /// <inheritdoc />
+        public DirsBuilder BeforeInstall(string value) => SetPropertyValue(value);
+
+        /// <inheritdoc />
+        public DirsBuilder AfterInstall(string value) => SetPropertyValue(value);
 
         public DirsBuilder AddPermission(Sids group, Permissions permission)
         {
