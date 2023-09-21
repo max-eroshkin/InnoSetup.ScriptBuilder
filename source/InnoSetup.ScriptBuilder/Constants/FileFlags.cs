@@ -28,7 +28,7 @@
         PromptIfolder = 0x100000,
         RecurseSubdirs = 0x200000,
         RegServer = 0x400000,
-        RegTypeLib = 0x80000,
+        RegTypeLib = 0x800000,
         ReplaceSameVersion = 0x1000000,
         RestartReplace = 0x2000000,
         SetNtfsCompression = 0x4000000,
