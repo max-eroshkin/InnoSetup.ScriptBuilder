@@ -31,7 +31,7 @@
         public static IEnumerable<object[]> GetFlagEnums()
         {
             return typeof(Architectures).Assembly.GetTypes()
-                .Where(x => x.IsEnum && x.GetCustomAttribute<FlagsAttribute?>() != null)
+                .Where(x => x.IsEnum && x.GetCustomAttribute<FlagsAttribute>() != null)
                 .Select(x => new object[] { x });
         }
     }
