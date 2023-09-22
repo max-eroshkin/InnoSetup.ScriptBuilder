@@ -21,8 +21,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <Version>1.3.0</Version>
-        <Company>Reactive BIM</Company>
+        <Version>1.3.1</Version>
         <Authors>Reactive BIM</Authors>
         <Product>InnoSetup Script Builder</Product>
         <PackageTags>installer innosetup inno script builder</PackageTags>
@@ -31,6 +30,9 @@
         <RepositoryUrl>https://github.com:max-eroshkin/InnoSetup.ScriptBuilder.git</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <NoPackageAnalysis>true</NoPackageAnalysis>
+        <PackageReleaseNotes>
+            Fixed "RegTypeLib value has the same value of OverwriteReadonly"
+        </PackageReleaseNotes>
     </PropertyGroup>
 
 </Project>

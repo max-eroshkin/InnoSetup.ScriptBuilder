@@ -14,7 +14,10 @@
   <ItemGroup>
     <PackageReference Include="BimLab.Nuke" Version="2023.1.0-dev02" />
     <PackageReference Include="Tools.InnoSetup" Version="6.2.2" IncludeAssets="All" />
-    <PackageReference Include="NuGet.CommandLine" Version="6.4.0"/>
+    <PackageReference Include="NuGet.CommandLine" Version="6.7.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
