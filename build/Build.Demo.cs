@@ -63,7 +63,7 @@ partial class Build
         .Executes(() =>
         {
             InnoSetupTasks.InnoSetup(config => config
-                .SetProcessToolPath(ToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
+                .SetProcessToolPath(NuGetToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe", "6.3.1"))
                 .SetScriptFile(IssPath)
                 .SetOutputDir(From<IPack>().ArtifactsDirectory));
         });
