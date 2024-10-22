@@ -34,7 +34,7 @@ partial class Build : NukeBuild, IPublish
     [Solution]
     public readonly Solution Solution;
 
-    Solution IHazSolution.Solution => Solution;
+    Solution IHasSolution.Solution => Solution;
 
     readonly AbsolutePath OutputDir = TemporaryDirectory / "output";
     readonly AbsolutePath IssPath = TemporaryDirectory / "setup.iss";
@@ -46,7 +46,7 @@ partial class Build : NukeBuild, IPublish
         {
             DotNetTest(settings => settings
                 .SetProjectFile(Solution.Path)
-                .SetConfiguration(From<IHazConfiguration>().Configuration));
+                .SetConfiguration(From<IHasConfiguration>().Configuration));
         });
 
     public Build()

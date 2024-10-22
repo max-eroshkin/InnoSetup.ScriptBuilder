@@ -298,6 +298,8 @@
 
         public YesNo? UpdateUninstallLogAppName { get; set; }
 
+        public YesNo? UninstallLogging { get; set; }
+
         public YesNo? UninstallRestartComputer { get; set; }
 
         public YesNo? UsedUserAreasWarning { get; set; }

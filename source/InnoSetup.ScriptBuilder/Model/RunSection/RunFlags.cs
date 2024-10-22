@@ -22,6 +22,7 @@
         WaitUntilTerminated = 1 << 14,
         RunAsOriginalUser = 1 << 15,
         RunAsCurrentUser = 1 << 16,
-        DontLogParameters = 1 << 17
+        DontLogParameters = 1 << 17,
+        LogOutput = 1 << 18,
     }
 }
