@@ -234,6 +234,8 @@
 
         public SetupBuilder UpdateUninstallLogAppName(YesNo value) => SetPropertyValue(value);
 
+        public SetupBuilder UninstallLogging(YesNo value) => SetPropertyValue(value);
+
         public SetupBuilder UninstallRestartComputer(YesNo value) => SetPropertyValue(value);
 
         public SetupBuilder UsedUserAreasWarning(YesNo value) => SetPropertyValue(value);

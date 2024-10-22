@@ -27,8 +27,8 @@ partial class Build
                     .DefaultDirName(programFiles / "IssBuilder Demo")
                     .DefaultGroupName("InnoSetup ScriptBuilder Demo")
                     .OutputBaseFilename($"InnoSetup.Builder.Demo_{now:yyyyMMdd}.{now:hhmm}")
-                    .ArchitecturesAllowed(Architectures.X64)
-                    .ArchitecturesInstallIn64BitMode(ArchitecturesInstallIn64BitMode.X64)
+                    .ArchitecturesAllowed(Architectures.X64Os)
+                    .ArchitecturesInstallIn64BitMode(ArchitecturesInstallIn64BitMode.X64Os)
                     .SolidCompression(YesNo.Yes)
                     .Compression("lzma2")
                     .DisableDirPage(YesNo.No)
@@ -63,7 +63,7 @@ partial class Build
         .Executes(() =>
         {
             InnoSetupTasks.InnoSetup(config => config
-                .SetProcessToolPath(ToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
+                .SetProcessToolPath(NuGetToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe", "6.3.1"))
                 .SetScriptFile(IssPath)
                 .SetOutputDir(From<IPack>().ArtifactsDirectory));
         });
