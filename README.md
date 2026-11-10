@@ -4,10 +4,11 @@
 [![NuGet](https://img.shields.io/nuget/v/InnoSetup.ScriptBuilder?logo=nuget&label=nuget)](https://www.nuget.org/packages/InnoSetup.ScriptBuilder)
 [![Downloads count](https://img.shields.io/nuget/dt/InnoSetup.ScriptBuilder?logo=nuget)](https://www.nuget.org/packages/InnoSetup.ScriptBuilder/absoluteLatest)
 
-This package is intended to build Inno Setup script files (*.iss)
-using C# fluent API. You can find the official Inno Setup documentation on [Inno Setup web site](https://jrsoftware.org/ishelp/).
+This package is intended to build Inno Setup script files (*.iss) using a C# fluent API.
+You can find the official Inno Setup documentation on the [Inno Setup website](https://jrsoftware.org).
 
 ## Installation
+
 .NET CLI
 ```ps1
 dotnet add package InnoSetup.ScriptBuilder
@@ -18,8 +19,10 @@ Install-Package InnoSetup.ScriptBuilder
 ```
 
 ## Examples
-### Create builder
-To get the script looking like this
+
+### Creating a Builder
+To generate a script that looks like this:
+
 ```iss
 [Setup]
 AppName=BimTools.Support
@@ -38,7 +41,8 @@ Source: "bin\Fonts\GraphikLCG-Medium.ttf"; DestDir: "{autofonts}"; Flags: onlyif
 Source: "bin\Fonts\GraphikLCG-Regular.ttf"; DestDir: "{autofonts}"; Flags: onlyifdestfileexists uninsneveruninstall; FontInstall: "Graphik LCG";
 ```
 
-inherit your builder class from `IssBuilder` base class
+Inherit your builder class from the `IssBuilder` base class:
+
 ```c#
 public class DemoBuilder : IssBuilder
 {
@@ -65,7 +69,9 @@ public class DemoBuilder : IssBuilder
     }
 }
 ```
-or use `BuilderUtils.CreateBuilder()`
+
+or use `BuilderUtils.CreateBuilder()`:
+
 ```c#
 var builder = BuilderUtils.CreateBuilder(builder =>
 {
@@ -87,15 +93,18 @@ var builder = BuilderUtils.CreateBuilder(builder =>
     builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: @"{autofonts}")
         .FontInstall("Graphik LCG")
         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
-);
+});
 ```
-## Getting results
-### String result
+
+## Getting Results
+
+### String Result
 ```c#
 var builder = new DemoBuilder();
 var result = builder.ToString();
 ```
-### Script file
+
+### Script File
 ```c#
 var builder = new DemoBuilder();
 builder.Build("demo.iss");
@@ -117,8 +126,11 @@ BuilderUtils.Build(
     }, 
     "demo.iss");
 ```
+
 ## Directives
-You can insert preprocessor directives at the beginning of your script using `Directives` section
+
+You can insert preprocessor directives at the beginning of your script using the `Directives` section:
+
 ```cs
 Directives
     .Define("MyAppName", "My Program")
@@ -127,20 +139,23 @@ Directives
     .FreeText(";comments")
     .Undef("var1");
 ```
-Where `FreeText()` allows to insert any text to the script as is.
 
-## Not implemented sections and parameters
-If the section you want to insert is not implemented you can use either `Sections.CreateKeyValueSection()`
-or `Sections.CreateParameterSection()` methods.
-To insert not implemented parameters/directives of any kind of section use `Parameter()` method.
+The `FreeText()` method allows you to insert any text into the script as is.
+
+## Custom Sections and Parameters
+
+If a section you want to insert is not implemented out of the box, you can use either the `Sections.CreateKeyValueSection()` or `Sections.CreateParameterSection()` methods.
+
+To insert unsupported parameters or directives into any type of section, use the `Parameter()` method:
+
 ```c#
-// for key-value sections
+// For key-value sections
 Sections.CreateKeyValueSection("Messages")
     .CreateEntry()
     .Parameter("BeveledLabel", @"Inno Setup")
     .Parameter("HelpTextNote", @"/PORTABLE=1%nEnable portable mode.");
     
-// for parameter sections
+// For parameter sections
 Sections.CreateParameterSection("Registry")
     .CreateEntry()
         .Parameter("Root", RegistryKeys.HKU)
