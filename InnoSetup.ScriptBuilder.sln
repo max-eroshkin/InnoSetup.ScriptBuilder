@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_build", "build\_build.cspr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{D70841F3-8941-40BC-9D1C-9387FA4AED09}"
 	ProjectSection(SolutionItems) = preProject
-		source\Directory.Build.Props = source\Directory.Build.Props
+		source\Directory.Build.props = source\Directory.Build.props
 		README.md = README.md
 	EndProjectSection
 EndProject
