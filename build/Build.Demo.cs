@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using Bimlab.Nuke.Components;
 using InnoSetup.ScriptBuilder;
-using Nuke.Common;
-using Nuke.Common.IO;
-using Nuke.Common.Tooling;
-using Nuke.Common.Tools.DotNet;
-using Nuke.Common.Tools.InnoSetup;
+using Fallout.Common;
+using Fallout.Common.IO;
+using Fallout.Common.Tooling;
+using Fallout.Common.Tools.DotNet;
+using Fallout.Common.Tools.InnoSetup;
 
 partial class Build
 {

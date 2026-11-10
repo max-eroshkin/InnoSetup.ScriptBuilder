@@ -3,14 +3,14 @@ using System.Linq;
 using System.Text;
 using Bimlab.Nuke.Components;
 using JetBrains.Annotations;
-using Nuke.Common;
-using Nuke.Common.CI.GitHubActions;
-using Nuke.Common.Execution;
-using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
-using Nuke.Common.Tools.DotNet;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
+using Fallout.Common;
+using Fallout.Common.CI.GitHubActions;
+using Fallout.Common.Execution;
+using Fallout.Common.IO;
+using Fallout.Solutions;
+using Fallout.Common.Tooling;
+using Fallout.Common.Tools.DotNet;
+using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 [UnsetVisualStudioEnvironmentVariables]
 [GitHubActions("CI",
@@ -26,7 +26,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
     OnPushBranches = new[] { MasterBranch, "release/**" },
     InvokedTargets = new[] { nameof(Test), nameof(IPublish.Publish) },
     ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
-partial class Build : NukeBuild, IPublish
+partial class Build : FalloutBuild, IPublish
 {
     const string MasterBranch = "master";
     const string DevelopBranch = "develop";
@@ -60,6 +60,6 @@ partial class Build : NukeBuild, IPublish
         .SetProperty("Copyright", $"Copyright ©{DateTime.UtcNow.Year} Reactive BIM");
 
     T From<T>()
-        where T : INukeBuild
+        where T : IFalloutBuild
         => (T)(object)this;
 }

@@ -268,8 +268,7 @@ out/
 .dockerignore
 !/_Profiles/*
 
-projectfiles.tar
-
-global.json
 .nuke/temp
 .nuke/build.schema.json
+.fallout/temp
+.fallout/build.schema.json
