@@ -1,16 +1,15 @@
 using System;
-using System.Linq;
 using System.Text;
-using Bimlab.Nuke.Components;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
-using Fallout.Solutions;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
+using Fallout.Solutions;
 using static Fallout.Common.Tools.DotNet.DotNetTasks;
+
+namespace Ci;
 
 [UnsetVisualStudioEnvironmentVariables]
 [GitHubActions("CI",
@@ -18,36 +17,31 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
     FetchDepth = 0,
     OnPushBranches = new[] { DevelopBranch, "feature/**" },
     OnPullRequestBranches = new[] { DevelopBranch, "feature/**" },
-    InvokedTargets = new[] { nameof(Test), nameof(IPublish.Publish) },
+    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPublish.Publish) },
     ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
 [GitHubActions("Publish",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
     OnPushBranches = new[] { MasterBranch, "release/**" },
-    InvokedTargets = new[] { nameof(Test), nameof(IPublish.Publish) },
+    InvokedTargets = new[] { nameof(ITest.Test), nameof(IPublish.Publish) },
     ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
-partial class Build : FalloutBuild, IPublish
+partial class Build : FalloutBuild, IPublish, ITest
 {
     const string MasterBranch = "master";
     const string DevelopBranch = "develop";
 
-    [Solution]
-    public readonly Solution Solution;
-
-    Solution IHasSolution.Solution => Solution;
-
     readonly AbsolutePath OutputDir = TemporaryDirectory / "output";
     readonly AbsolutePath IssPath = TemporaryDirectory / "setup.iss";
 
-    [UsedImplicitly]
+    /*[UsedImplicitly]
     public Target Test => _ => _
         .Before<IRestore>()
         .Executes(() =>
         {
             DotNetTest(settings => settings
-                .SetProjectFile(Solution.Path)
-                .SetConfiguration(From<IHasConfiguration>().Configuration));
-        });
+                .SetProjectFile(From<IHazSolution>().Solution.Path)
+                .SetConfiguration(From<IHazConfiguration>().Configuration));
+        });*/
 
     public Build()
     {
@@ -55,10 +49,7 @@ partial class Build : FalloutBuild, IPublish
     }
 
     static int Main() => Execute<Build>(x => x.BuildSetup);
-
-    public Configure<DotNetPackSettings> PackSettings => _ => _
-        .SetProperty("Copyright", $"Copyright ©{DateTime.UtcNow.Year} Reactive BIM");
-
+    
     T From<T>()
         where T : IFalloutBuild
         => (T)(object)this;

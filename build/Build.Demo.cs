@@ -1,12 +1,15 @@
 using System;
 using System.IO;
-using Bimlab.Nuke.Components;
-using InnoSetup.ScriptBuilder;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Tools.InnoSetup;
+using InnoSetup.ScriptBuilder;
+
+namespace Ci;
+
+using Fallout.Solutions;
 
 partial class Build
 {
@@ -75,6 +78,6 @@ partial class Build
             DotNetTasks.DotNetPublish(x => x
                 .SetConfiguration("Release")
                 .SetOutput(OutputDir)
-                .SetProject(Solution.GetProject("DemoApp")!.Path));
+                .SetProject(From<IHazSolution>().Solution.GetProject("DemoApp")!.Path));
         });
 }

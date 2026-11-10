@@ -22,7 +22,6 @@
 
     <PropertyGroup>
         <Version>6.3.0</Version>
-        <Authors>Reactive BIM</Authors>
         <Product>InnoSetup Script Builder</Product>
         <PackageTags>installer innosetup inno script builder</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
