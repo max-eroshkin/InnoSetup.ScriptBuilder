@@ -1,5 +1,6 @@
 ﻿namespace BuilderTests
 {
+    using System;
     using FluentAssertions;
     using InnoSetup.ScriptBuilder;
     using Xunit;
@@ -13,7 +14,9 @@
                     .CreateEntry("code1")
                     .CreateEntry("code2"))
                 .ToString();
-            iss.Should().Be("\r\n[Code]\r\ncode1\r\ncode2\r\n");
+            iss.Should().Be(
+                Environment.NewLine + "[Code]" + Environment.NewLine + "code1" + Environment.NewLine +
+                            "code2" + Environment.NewLine);
         }
     }
 }

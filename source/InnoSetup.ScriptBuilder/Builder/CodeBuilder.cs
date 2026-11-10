@@ -19,7 +19,8 @@
         {
             if (_data.Length == 0)
                 return;
-            writer.WriteLine($"\r\n[{SectionName}]");
+            writer.WriteLine();
+            writer.WriteLine($"[{SectionName}]");
             writer.Write(_data);
         }
     }

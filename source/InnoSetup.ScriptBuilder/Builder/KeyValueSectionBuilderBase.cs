@@ -13,7 +13,8 @@
             if (Data is null)
                 return;
 
-            writer.WriteLine($"\n[{SectionName}]");
+            writer.WriteLine();
+            writer.WriteLine($"[{SectionName}]");
             WriteProperties(writer);
             WriteAux(writer);
         }

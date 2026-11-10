@@ -14,7 +14,8 @@
         {
             if (_entryList?.Count > 0)
             {
-                writer.WriteLine($"\n[{SectionName}]");
+                writer.WriteLine();
+                writer.WriteLine($"[{SectionName}]");
                 foreach (var entry in _entryList)
                     WriteEntry(writer, entry);
             }
