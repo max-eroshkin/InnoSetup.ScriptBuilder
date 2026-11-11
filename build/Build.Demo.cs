@@ -10,6 +10,7 @@ using InnoSetup.ScriptBuilder;
 namespace Ci;
 
 using Fallout.Solutions;
+using Isotopes;
 
 partial class Build
 {

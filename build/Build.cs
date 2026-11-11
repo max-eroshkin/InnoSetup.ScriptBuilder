@@ -11,6 +11,8 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Ci;
 
+using Isotopes;
+
 [UnsetVisualStudioEnvironmentVariables]
 [GitHubActions("CI",
     GitHubActionsImage.WindowsLatest,
@@ -32,16 +34,6 @@ partial class Build : FalloutBuild, IPublish, ITest
 
     readonly AbsolutePath OutputDir = TemporaryDirectory / "output";
     readonly AbsolutePath IssPath = TemporaryDirectory / "setup.iss";
-
-    /*[UsedImplicitly]
-    public Target Test => _ => _
-        .Before<IRestore>()
-        .Executes(() =>
-        {
-            DotNetTest(settings => settings
-                .SetProjectFile(From<IHazSolution>().Solution.Path)
-                .SetConfiguration(From<IHazConfiguration>().Configuration));
-        });*/
 
     public Build()
     {
