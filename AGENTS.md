@@ -66,7 +66,7 @@ For one-off ISS parameters that have no typed model property, use `Parameter(nam
 
 - Block-scoped namespaces with `using` directives *inside* the namespace, 4 spaces for `.cs`.
 - Nullable reference types are off by default; only `IssBuilderException.cs` opts in with `#nullable enable`.
-- Public members carry no XML docs requirement (`CS1591` is suppressed), but anything mirroring an ISS directive/flag should link to `https://jrsoftware.org/ishelp/index.php?topic=<anchor>`.
+- Public members carry no XML docs requirement (`CS1591` is suppressed), but anything mirroring an ISS directive/flag should link to `https://jrsoftware.org/inno-setup/documentation/?topic=<anchor>`.
 - Deprecations are never deleted silently: mark with `[Obsolete("Removed in Inno Setup <version>: <replacement>")]` or `[Obsolete("Obsolete since Inno Setup <version>: <replacement>")]`, keep the member compilable, and keep it covered by `TestBuilder`/`ReferenceData`.
 - Do not "fix" output line endings or clean up `Environment.NewLine` usage in `CodeTests`/builders — generated ISS line endings are platform-dependent by design (the builders use `WriteLine`, and `CodeTests` compares against `Environment.NewLine`, so it passes on Linux too). The suite is **fully green locally** (86/86); treat any red test as a real regression, not an environment quirk.
 

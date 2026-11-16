@@ -5,7 +5,7 @@
     /// <summary>
     /// Represents a value of a <c>[Setup]</c> directive documented as
     /// <c>yes or no, or a scripted boolean expression</c>. See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setupsection">[Setup] section</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setupsection">[Setup] section</a>.
     /// </summary>
     /// <remarks>
     /// A <see cref="YesNo"/> value is written as <c>yes</c>/<c>no</c>/<c>auto</c>, while a string is written

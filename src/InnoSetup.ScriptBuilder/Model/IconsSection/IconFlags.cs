@@ -4,7 +4,7 @@
 
     /// <summary>
     /// Specifies the flags of an <c>[Icons]</c> entry.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=iconssection">[Icons] section</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=iconssection">[Icons] section</a>.
     /// </summary>
     [Flags]
     public enum IconFlags

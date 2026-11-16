@@ -3,7 +3,7 @@
     /// <summary>
     /// Specifies whether the alpha channel of <c>WizardImageFile</c> is used.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagealphaformat">WizardImageAlphaFormat</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardimagealphaformat">WizardImageAlphaFormat</a>.
     /// </summary>
     public enum WizardImageAlphaFormat
     {

@@ -8,7 +8,7 @@
     /// <remarks>
     /// Typical values are <c>enhanced/nopassword</c> or <c>pbkdf2/220000</c>. <see cref="ValueExtensions.GetString(Enum)"/>
     /// writes <see cref="Value"/> verbatim instead of applying the default lower-casing/underscore removal.
-    /// See <see href="https://jrsoftware.org/ishelp/index.php?topic=setupsection">[Setup] section</see>.
+    /// See <see href="https://jrsoftware.org/inno-setup/documentation/?topic=setupsection">[Setup] section</see>.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class IssValueAttribute : Attribute

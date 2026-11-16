@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Contains <a href="https://jrsoftware.org/ishelp/index.php?topic=consts">Inno Setup constants.</a>
+    /// Contains <a href="https://jrsoftware.org/inno-setup/documentation/?topic=consts">Inno Setup constants.</a>
     /// </summary>
     public static class InnoConstants
     {
