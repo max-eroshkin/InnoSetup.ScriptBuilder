@@ -6,7 +6,7 @@
 Правила работы:
 
 - один коммит = один раздел этого файла (`Коммит N`);
-- после каждого коммита: `dotnet build source/BuilderTests/BuilderTests.csproj` + `dotnet test source/BuilderTests/BuilderTests.csproj`;
+- после каждого коммита: `dotnet build tests/BuilderTests/BuilderTests.csproj` + `dotnet test tests/BuilderTests/BuilderTests.csproj`;
 - тесты локально полностью зелёные (86/86) — любое падение считать регрессией;
 - новые файлы — **UTF-8 with BOM**, usings внутри namespace (StyleCop `SA1200`/`SA1412` — Error);
 - все новые публичные члены — с XML-doc и ссылкой на `https://jrsoftware.org/ishelp/index.php?topic=...`;
@@ -21,18 +21,18 @@
 
 Цель: научиться печатать значения, которые нельзя вывести из имени члена enum, и типы с неявными преобразованиями. Публичный API секций на этом шаге **не** расширяется.
 
-- [ ] **1.1** Новый файл `source/InnoSetup.ScriptBuilder/Constants/IssValueAttribute.cs`
+- [ ] **1.1** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssValueAttribute.cs`
   - `[AttributeUsage(AttributeTargets.Field)] public sealed class IssValueAttribute : Attribute`
   - `public IssValueAttribute(string value)`, `public string Value { get; }`
   - Назначение: значения вида `enhanced/nopassword`, `pbkdf2/220000`.
 
-- [ ] **1.2** Переписать `source/InnoSetup.ScriptBuilder/Utils/ValueExtensions.cs` → `GetString(this Enum e)`
+- [ ] **1.2** Переписать `src/InnoSetup.ScriptBuilder/Utils/ValueExtensions.cs` → `GetString(this Enum e)`
   - разбить `e.ToString("g")` по `", "`;
   - для каждого токена: если у члена есть `IssValueAttribute` — взять `Value` как есть; иначе прежняя трансформация (`Replace("_", "")` + `ToLower()`);
   - закэшировать `(Type, memberName) -> string` (обычный `static Dictionary` под `lock` — `netstandard2.0`);
   - **не менять** поведение для `int`/`uint`/`long`/`ulong`/`string`/`List<GroupPermission>`.
 
-- [ ] **1.3** Новый файл `source/InnoSetup.ScriptBuilder/Constants/IssColor.cs`
+- [ ] **1.3** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssColor.cs`
   - `public readonly struct IssColor : IEquatable<IssColor>`, свойство `public string Value { get; }`, `ToString() => Value`;
   - `implicit operator IssColor(long)` и `(int)` → `"$" + значение как 6 hex-цифр` (`$bbggrr`, Delphi `TColor`);
   - `implicit operator IssColor(string)` → как есть (`"#fff"`, `"#rrggbb"`, `"cornflowerblue"`, `"none"`, `"window"`);
@@ -40,7 +40,7 @@
   - `static IssColor Named(string)` → имя без валидации;
   - статические `None`, `Window` + 16 базовых имён (black, maroon, green, olive, navy, purple, teal, gray, silver, red, lime, yellow, blue, fuchsia, aqua, white).
 
-- [ ] **1.4** Новый файл `source/InnoSetup.ScriptBuilder/Constants/IssYesNo.cs`
+- [ ] **1.4** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssYesNo.cs`
   - `public readonly struct IssYesNo`, `public string Value { get; }`, `ToString() => Value`;
   - `implicit operator IssYesNo(YesNo)` → `yes`/`no`/`auto` (через существующий `GetString`);
   - `implicit operator IssYesNo(string)` → как есть, **без кавычек** (scripted boolean expression, например `{code:IsSomething}`);
@@ -67,15 +67,15 @@
   - `FolderShortcut` (флаг `foldershortcut` удалён в Inno Setup 6.3.0) → `[Obsolete("Removed in Inno Setup 6.3")]`, бит `1 << 7` пометить как «не переиспользовать».
 
 - [ ] **1.9** Тесты
-  - новый `source/BuilderTests/ValueFormattingTests.cs`:
+  - новый `tests/BuilderTests/ValueFormattingTests.cs`:
     - `FileFlags.Sign | FileFlags._32bit` → `"sign 32bit"` (регресс на `_`-хендлинг);
     - `Permissions`, `Sids`, `RegistryKeys`, `DeleteTypes` — по одному представителю (регресс lower-case);
     - `IssColor`: `(long)255` → `"$0000ff"`, `"#fff"`, `"cornflowerblue"`, `IssColor.None`;
     - `IssYesNo`: `(YesNo)YesNo.Yes` → `"yes"`, `"{code:IsX}"` → как есть;
     - `IssValueAttribute` — на private тестовом enum + в `[Flags]`-комбинации.
-  - в `source/BuilderTests/BuilderTests.csproj` добавить `<NoWarn>$(NoWarn);CS0618</NoWarn>` (иначе `TestBuilder` не соберётся после 1.6).
+  - в `tests/BuilderTests/BuilderTests.csproj` добавить `<NoWarn>$(NoWarn);CS0618</NoWarn>` (иначе `TestBuilder` не соберётся после 1.6).
 
-- [ ] **1.10** `source/Directory.Build.props`: `PackageReleaseNotes` → `Upgraded to Inno Setup 7.1.1` (версию **не** менять до Коммита 6).
+- [ ] **1.10** `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj`: `PackageReleaseNotes` → `Upgraded to Inno Setup 7.1.1` (версию **не** менять до Коммита 6).
 
 ---
 
@@ -90,7 +90,7 @@
 
 - [ ] **2.3** `BuilderTests/ConstantTests.cs`: тесты значений `Auto.*` (все 14) и legacy-алиасов (8).
 
-- [ ] **2.4** `README.md` / `Examples/`: заменить литералы `"{autofonts}"`/`"{autopf}"` на `InnoConstants.Auto.*`.
+- [ ] **2.4** `README.md` / `examples/Examples/`: заменить литералы `"{autofonts}"`/`"{autopf}"` на `InnoConstants.Auto.*`.
 
 ---
 
@@ -189,7 +189,7 @@
 
 ## [ ] Коммит 6 — Документация, версия, AGENTS.md, приёмка
 
-- [ ] **6.1** `source/Directory.Build.props`: `<Version>7.1.1</Version>`, `PackageReleaseNotes` — перечислить breaking changes (`Encryption`, `UseSetupLdr`, `WizardStyle`, `WizardImageAlphaFormat`, `IssYesNo`).
+- [ ] **6.1** `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj`: `<Version>7.1.1</Version>`, `PackageReleaseNotes` — перечислить breaking changes (`Encryption`, `UseSetupLdr`, `WizardStyle`, `WizardImageAlphaFormat`, `IssYesNo`).
 
 - [ ] **6.2** `README.md` — раздел «Upgrading from 6.3»: таблица замен; примеры новых возможностей
   - `external download ignoreversion` + `Hash` / `DownloadUserName` / `DownloadPassword`;
@@ -199,19 +199,19 @@
   - `Encryption=full`, `SetupArchitecture=x64`;
   - `InnoConstants.Auto.*`.
 
-- [ ] **6.3** `Examples/` — обновить существующие примеры под новые константы/типы.
+- [ ] **6.3** `examples/Examples/` — обновить существующие примеры под новые константы/типы.
 
 - [ ] **6.4** `AGENTS.md` — привести в соответствие с реальностью
-  - `source/Directory.Build.props` — **уже** с маленькой `p`, `LangVersion=13`, трап про 7.3 неактуален;
+  - `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj` — **уже** с маленькой `p`, `LangVersion=13`, трап про 7.3 неактуален;
   - `BuilderTests` — **net10.0**, `global.json` → SDK `10.0.100`, `DOTNET_ROLL_FORWARD` не нужен;
   - добавить порядок `[ISSigKeys]` в `IssBuilder.Write()`;
   - правило: любой `[Obsolete]` — обязательно с версией Inno Setup и заменителем.
 
 - [ ] **6.5** Приёмка
-  - `dotnet build source/BuilderTests/BuilderTests.csproj` — без warning'ов (кроме `CS0618` в тестах);
-  - `dotnet test source/BuilderTests/BuilderTests.csproj` — зелёный, кроме известного `CodeTests` (CRLF);
-  - `dotnet pack source/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj -o /tmp/opencode/pack` — версия `7.1.1`, README внутри пакета;
-  - ручная сверка: `grep -rn "Obsolete(" source/InnoSetup.ScriptBuilder` — у каждого сообщения есть версия;
+  - `dotnet build tests/BuilderTests/BuilderTests.csproj` — без warning'ов (кроме `CS0618` в тестах);
+  - `dotnet test tests/BuilderTests/BuilderTests.csproj` — зелёный, кроме известного `CodeTests` (CRLF);
+  - `dotnet pack src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj -o /tmp/opencode/pack` — версия `7.1.1`, README внутри пакета;
+  - ручная сверка: `grep -rn "Obsolete(" src/InnoSetup.ScriptBuilder` — у каждого сообщения есть версия;
   - ручная сверка с `isetup.xml` (is-7_1_1): все 174 директивы `[Setup]` либо в модели, либо в obsolete-списке 4.2/1.6.
 
 ---

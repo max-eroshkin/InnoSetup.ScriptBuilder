@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>InnoSetup.ScriptBuilder</RootNamespace>
+    <Version>6.3.0</Version>
+    <Product>InnoSetup Script Builder</Product>
+    <PackageTags>installer innosetup inno script builder</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/max-eroshkin/InnoSetup.ScriptBuilder</PackageProjectUrl>
+    <RepositoryUrl>https://github.com:max-eroshkin/InnoSetup.ScriptBuilder.git</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <PackageReleaseNotes>
+      Upgraded to Inno Setup 6.3
+    </PackageReleaseNotes>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>InnoSetup.ScriptBuilder</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>This package is intended to build Inno Setup script files (*.iss) using C# fluent API.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

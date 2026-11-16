@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\source\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
+    <ProjectReference Include="..\src\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
   </ItemGroup>
   
 </Project>

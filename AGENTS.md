@@ -8,44 +8,37 @@ The library currently tracks **Inno Setup 6.3.0**; the migration to **7.1.1** is
 
 ## Layout
 
-- `source/InnoSetup.ScriptBuilder` — the package (`netstandard2.0`). `Builder/` is the public API (one builder per ISS section + `Abstractions/` interfaces), `Model/` holds per-section data classes, `Constants/` mirrors ISS enums/strings, `Utils/` has the entrypoints (`BuilderUtils`, `ValueExtensions`).
-- `source/BuilderTests` — xunit + FluentAssertions (`net10.0`). `TestBuilder.cs` is the single fixture that fills every section; most test classes just assert against its output.
-- `Examples/` — console project (`net10.0`) that references the library and mirrors the snippets in `README.md`. `README.md` is packed into the NuGet package (`PackageReadmeFile`), so README edits ship to consumers.
-- `DemoApp/` (WPF, `net10.0-windows`, `win-x64`, self-contained single file) is the *payload* installed by the demo setup, not a consumer of the library. It sets `EnableWindowsTargeting=true`, which is why it *compiles* on Linux, but it cannot be published/run here.
+- `src/InnoSetup.ScriptBuilder` — the package (`netstandard2.0`). `Builder/` is the public API (one builder per ISS section + `Abstractions/` interfaces), `Model/` holds per-section data classes, `Constants/` mirrors ISS enums/strings, `Utils/` has the entrypoints (`BuilderUtils`, `ValueExtensions`).
+- `tests/BuilderTests` — xunit + FluentAssertions (`net10.0`). `TestBuilder.cs` is the single fixture that fills every section; most test classes just assert against its output.
+- `examples/Examples/` — console project (`net10.0`) that references the library and mirrors the snippets in `README.md`. `README.md` is packed into the NuGet package (`PackageReadmeFile`), so README edits ship to consumers.
+- `examples/DemoApp/` (WPF, `net10.0-windows`, `win-x64`, self-contained single file) is the *payload* installed by the demo setup, not a consumer of the library. It sets `EnableWindowsTargeting=true`, which is why it *compiles* on Linux, but it cannot be published/run here.
 - `build/Build.cs`, `build/Build.Demo.cs` — **Fallout** (`Isotopes`) build orchestration, project `build/_build.csproj`. `build.sh` / `build.ps1` / `build.cmd` are thin wrappers around it. The tool is a local tool pinned in `.config/dotnet-tools.json` (`fallout.globaltool`).
-- `stylecop.ruleset` (136 rules), `source/Directory.Build.props` — build-wide settings; see *Conventions*.
 - `graphify-out/` — local knowledge-graph index, gitignored; ignore it unless asked about the codebase graph.
 
 ## Commands (Linux/macOS)
 
 ```bash
 # build library + tests
-dotnet build source/BuilderTests/BuilderTests.csproj
+dotnet build tests/BuilderTests/BuilderTests.csproj
 
 # run tests
-dotnet test source/BuilderTests/BuilderTests.csproj
+dotnet test tests/BuilderTests/BuilderTests.csproj
 
 # single test class
-dotnet test source/BuilderTests/BuilderTests.csproj --filter FullyQualifiedName~FilesTests
+dotnet test tests/BuilderTests/BuilderTests.csproj --filter FullyQualifiedName~FilesTests
 
 # whole solution — works on Linux: all four buildable projects compile (DemoApp too, see below)
-dotnet build InnoSetup.ScriptBuilder.sln
+dotnet build InnoSetup.ScriptBuilder.slnx
 
 # verify the package (README + version)
-dotnet pack source/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj -o /tmp/out
+dotnet pack src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj -o /tmp/out
 ```
 
 The Fallout build (`bash build.sh`, or `dotnet tool restore && dotnet fallout <Target>`) is **Windows-only** for real work: the default target `BuildSetup` publishes `DemoApp`, renders `setup.iss`, and then runs Inno Setup `ISCC.exe` from the `Tools.InnoSetup` package. `Test` and `Pack` are the only targets that make sense locally.
 
 ## Environment traps (verified, will bite you)
 
-- **Inno Setup version is pinned in two places** for the demo build: the `Tools.InnoSetup` `PackageReference` in `build/_build.csproj` and the `GetPackageExecutable("Tools.InnoSetup", "ISCC.exe", "<version>")` call in `build/Build.Demo.cs`. Bump both together.
-- **`source/Directory.Build.props` covers `source/**` only.** It sets `LangVersion=13`, `IsPackable=false` for the test project, the package `<Version>`, the StyleCop analyzer and the ruleset. Root-level projects (`Examples/`, `DemoApp/`, `build/`) do **not** import it, so they use the SDK-default `LangVersion` (14) and get no ruleset. `global.json` + that props file are the only places that decide SDK, language version and package version.
-- **StyleCop runs on Linux for the library only.** Verified: `SA1200` is raised as an *error* in `source/InnoSetup.ScriptBuilder`, while a probe file in `BuilderTests`/`Examples` produces nothing (`CodeAnalysisRuleSet` evaluates to empty for `IsPackable=false` projects). A green `dotnet build` therefore proves style compliance for `source/InnoSetup.ScriptBuilder` and nothing else.
-- New C# files under `source/` must be **UTF-8 with BOM** (`SA1412` is an error) and use usings *inside* the namespace (`SA1200` is an error). Existing `.cs` files are stored with CRLF; Markdown/JSON here are LF.
-- There is **no `.editorconfig`** at the repo root (`build/.editorconfig` covers the Fallout project only), so VS/Rider defaults differ from CI — trust the ruleset, not the IDE.
-- `global.json` pins SDK `10.0.100` with `rollForward: latestMinor` (verified running on `10.0.112`); tests target `net10.0`. No `DOTNET_ROLL_FORWARD` workaround is needed anymore.
-- **`Tools.InnoSetup` on NuGet tops out at `7.1.0`** (no `7.1.1`), even though the library targets Inno Setup `7.1.1`. That is fine — `ISCC` is only used for the demo installer, not to validate generated scripts. `source/Directory.Build.props` `<Version>` is the *package* version and stays independent (currently `6.3.0`); bump it there for every release.
+- The root `.editorconfig` is the single IDE-agnostic formatting source (`end_of_line = lf`, `insert_final_newline = false`, `csharp_using_directive_placement = inside_namespace`); `CodeStyle.DotSettings` / `Inspections.DotSettings` are the rider layers it is paired with. Only `build/.editorconfig` is scoped to the Fallout project.
 - Fallout-generated workflow files (`.github/workflows/CI.yml`, `Publish.yml`) carry an `<auto-generated>` banner: edit the `[GitHubActions]` attributes in `build/Build.cs` and regenerate instead of hand-editing:
   `dotnet fallout --generate-configuration GitHubActions_CI --host GitHubActions`.
 
@@ -71,7 +64,7 @@ For one-off ISS parameters that have no typed model property, use `Parameter(nam
 
 ## Conventions
 
-- Block-scoped namespaces with `using` directives *inside* the namespace, 4 spaces, CRLF for `.cs`. StyleCop ruleset above applies to the packable project only.
+- Block-scoped namespaces with `using` directives *inside* the namespace, 4 spaces for `.cs`.
 - Nullable reference types are off by default; only `IssBuilderException.cs` opts in with `#nullable enable`.
 - Public members carry no XML docs requirement (`CS1591` is suppressed), but anything mirroring an ISS directive/flag should link to `https://jrsoftware.org/ishelp/index.php?topic=<anchor>`.
 - Deprecations are never deleted silently: mark with `[Obsolete("Removed in Inno Setup <version>: <replacement>")]` or `[Obsolete("Obsolete since Inno Setup <version>: <replacement>")]`, keep the member compilable, and keep it covered by `TestBuilder`/`ReferenceData`.
@@ -81,5 +74,5 @@ For one-off ISS parameters that have no typed model property, use `Parameter(nam
 
 - `.github/workflows/CI.yml` and `Publish.yml` are **Fallout-generated** from the `[GitHubActions]` attributes in `build/Build.cs` (regenerate, don't hand-edit).
 - Gitflow: CI on `develop` and `feature/**`; NuGet publish on `master` and `release/**`. Both run `dotnet fallout Test Publish` on `windows-latest` with `NUGET_API_KEY` / `ALL_PACKAGES` secrets and upload `artifacts/packages`.
-- The package version is hard-coded in `source/Directory.Build.props` (`<Version>`) — bump it there for releases.
+- The package version is hard-coded in `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj` (`<Version>`) — bump it there for releases.
 - Default Fallout target is `BuildSetup` (publish `DemoApp` → build `.iss` → `ISCC.exe` → setup exe in `artifacts/`), Windows-only; `artifacts/` also holds previously produced demo installers.
