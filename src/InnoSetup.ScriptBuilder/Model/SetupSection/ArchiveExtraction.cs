@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Specifies the method of archive extraction used by the <see cref="FileFlags.ExtractArchive"/> flag and by
@@ -21,8 +21,7 @@ public enum ArchiveExtraction
     /// <summary>
     /// Uses <c>is7zxr.dll</c>; only supports <c>.7z</c> archives that are not password-protected.
     /// </summary>
-    [IssValue("enhanced/nopassword")]
-    EnhancedNoPassword,
+    [IssValue("enhanced/nopassword")] EnhancedNoPassword,
 
     /// <summary>
     /// Uses <c>is7zxa.dll</c>; only supports <c>.7z</c> archives, which may be password-protected.

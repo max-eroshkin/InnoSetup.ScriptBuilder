@@ -1,7 +1,5 @@
 namespace InnoSetup.ScriptBuilder;
 
-using System;
-
 [Flags]
 public enum TaskFlags
 {

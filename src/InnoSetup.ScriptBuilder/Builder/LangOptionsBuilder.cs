@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 public class LangOptionsBuilder :
     KeyValueSectionBuilderBase<LangOptionsBuilder, LangOptionsSection>,

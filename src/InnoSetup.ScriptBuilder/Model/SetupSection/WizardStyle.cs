@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Specifies the visual style and appearance of Setup and Uninstall, as set by the <c>WizardStyle</c>

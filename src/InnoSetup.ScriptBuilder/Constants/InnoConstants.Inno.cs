@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 public static partial class InnoConstants
 {

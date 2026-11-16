@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Specifies the precompiled files whose verification should be skipped, as set by the

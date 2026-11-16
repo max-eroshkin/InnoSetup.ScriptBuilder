@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Defines a key the compiler and Setup can use to verify files with the

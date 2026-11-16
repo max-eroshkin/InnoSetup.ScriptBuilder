@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=commonparams">ISS documentation.</a>

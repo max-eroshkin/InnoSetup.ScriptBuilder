@@ -1,4 +1,4 @@
-﻿namespace Examples;
+namespace Examples;
 
 using System;
 using InnoSetup.ScriptBuilder;

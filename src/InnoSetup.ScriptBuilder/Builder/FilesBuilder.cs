@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 using System.Collections.Generic;
 

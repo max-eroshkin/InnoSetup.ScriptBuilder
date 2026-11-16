@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Specifies the value of the <c>Encryption</c> directive.

@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 public class TasksBuilder :
     CommonParameterSectionBuilderBase<TasksBuilder, TaskEntry>,

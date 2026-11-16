@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Specifies the architecture of the Setup program itself, as set by the <c>SetupArchitecture</c> directive.

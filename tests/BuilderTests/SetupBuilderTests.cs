@@ -1,14 +1,48 @@
-﻿namespace BuilderTests;
+namespace BuilderTests;
 
 using System.IO;
 using System.Linq;
 
 public class SetupBuilderTests
 {
-    [Fact]
-    public void EncryptionKeyDerivationWithoutIterationsWritesPbkdf2()
+    private static string GetValue(Action<SetupBuilder> configure, string key)
     {
-        GetValue(x => x.EncryptionKeyDerivation(), "EncryptionKeyDerivation").Should().Be("pbkdf2");
+        var builder = new SetupBuilder();
+        configure(builder.Create("App"));
+
+        var writer = new StringWriter();
+        builder.Write(writer);
+
+        return writer.ToString()
+            .Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+            .Single(x => x.StartsWith($"{key}="))
+            .Substring(key.Length + 1);
+    }
+
+    [Fact]
+    public void ArchiveExtractionValuesMatchDocumentation()
+    {
+        ArchiveExtraction.Auto.GetString().Should().Be("auto");
+        ArchiveExtraction.Basic.GetString().Should().Be("basic");
+        ArchiveExtraction.EnhancedNoPassword.GetString().Should().Be("enhanced/nopassword");
+        ArchiveExtraction.Enhanced.GetString().Should().Be("enhanced");
+        ArchiveExtraction.Full.GetString().Should().Be("full");
+    }
+
+    [Fact]
+    public void DiskSliceSizeAccepts64BitSizes()
+    {
+        GetValue(x => x.DiskSliceSize(9223372036800000000), "DiskSliceSize").Should().Be("9223372036800000000");
+    }
+
+    [Fact]
+    public void EncryptionKeyDerivationWithIterationsOutsideRangeThrows()
+    {
+        Action zero = () => new SetupBuilder().Create("App").EncryptionKeyDerivation(0);
+        zero.Should().Throw<ArgumentOutOfRangeException>();
+
+        Action negative = () => new SetupBuilder().Create("App").EncryptionKeyDerivation(-1);
+        negative.Should().Throw<ArgumentOutOfRangeException>();
     }
 
     [Fact]
@@ -24,23 +58,9 @@ public class SetupBuilderTests
     }
 
     [Fact]
-    public void EncryptionKeyDerivationWithIterationsOutsideRangeThrows()
+    public void EncryptionKeyDerivationWithoutIterationsWritesPbkdf2()
     {
-        Action zero = () => new SetupBuilder().Create("App").EncryptionKeyDerivation(0);
-        zero.Should().Throw<ArgumentOutOfRangeException>();
-
-        Action negative = () => new SetupBuilder().Create("App").EncryptionKeyDerivation(-1);
-        negative.Should().Throw<ArgumentOutOfRangeException>();
-    }
-
-    [Fact]
-    public void ArchiveExtractionValuesMatchDocumentation()
-    {
-        ArchiveExtraction.Auto.GetString().Should().Be("auto");
-        ArchiveExtraction.Basic.GetString().Should().Be("basic");
-        ArchiveExtraction.EnhancedNoPassword.GetString().Should().Be("enhanced/nopassword");
-        ArchiveExtraction.Enhanced.GetString().Should().Be("enhanced");
-        ArchiveExtraction.Full.GetString().Should().Be("full");
+        GetValue(x => x.EncryptionKeyDerivation(), "EncryptionKeyDerivation").Should().Be("pbkdf2");
     }
 
     [Fact]
@@ -67,56 +87,12 @@ public class SetupBuilderTests
     }
 
     [Fact]
-    public void WizardStyleIsWritableAsFlags()
+    public void ScriptedBooleansAcceptYesNoValues()
     {
-        (WizardStyle.Modern | WizardStyle.Dark | WizardStyle.Dynamic).GetString()
-            .Should().Be("modern dark dynamic");
-
-        (WizardStyle.Classic | WizardStyle.Light | WizardStyle.Polar | WizardStyle.IncludeTitleBar).GetString()
-            .Should().Be("classic light polar includetitlebar");
-
-        (WizardStyle.Windows11 | WizardStyle.ExcludeLightButtons | WizardStyle.HideBevels).GetString()
-            .Should().Be("windows11 excludelightbuttons hidebevels");
-
-        WizardStyle.Slate.GetString().Should().Be("slate");
-        WizardStyle.Stellar.GetString().Should().Be("stellar");
-        WizardStyle.Zircon.GetString().Should().Be("zircon");
-    }
-
-    [Fact]
-    public void WizardColorsAreWrittenWithoutQuotes()
-    {
-        GetValue(x => x.WizardBackColor(17), "WizardBackColor").Should().Be("$000011");
-        GetValue(x => x.WizardBackColorDynamicDark("#fff"), "WizardBackColorDynamicDark").Should().Be("#fff");
-        GetValue(x => x.WizardImageBackColor(IssColor.Named("cornflowerblue")), "WizardImageBackColor")
-            .Should().Be("cornflowerblue");
-        GetValue(x => x.WizardSmallImageBackColor(IssColor.None), "WizardSmallImageBackColor").Should().Be("none");
-    }
-
-    [Fact]
-    public void SetupArchitectureValuesMatchDocumentation()
-    {
-        SetupArchitecture.X86.GetString().Should().Be("x86");
-        SetupArchitecture.X64.GetString().Should().Be("x64");
-
-        GetValue(x => x.SetupArchitecture(SetupArchitecture.X64), "SetupArchitecture").Should().Be("x64");
-    }
-
-    [Fact]
-    public void SetupLdrModeValuesMatchDocumentation()
-    {
-        SetupLdrMode.No.GetString().Should().Be("no");
-        SetupLdrMode.Yes.GetString().Should().Be("yes");
-        SetupLdrMode.X86.GetString().Should().Be("x86");
-        SetupLdrMode.X64.GetString().Should().Be("x64");
-
-        GetValue(x => x.UseSetupLdr(SetupLdrMode.X64), "UseSetupLdr").Should().Be("x64");
-    }
-
-    [Fact]
-    public void DiskSliceSizeAccepts64BitSizes()
-    {
-        GetValue(x => x.DiskSliceSize(9223372036800000000), "DiskSliceSize").Should().Be("9223372036800000000");
+        GetValue(x => x.Uninstallable(YesNo.Yes), "Uninstallable").Should().Be("yes");
+        GetValue(x => x.ChangesAssociations(YesNo.No), "ChangesAssociations").Should().Be("no");
+        GetValue(x => x.CreateUninstallRegKey(YesNo.Auto), "CreateUninstallRegKey").Should().Be("auto");
+        GetValue(x => x.UsePreviousTasks(YesNo.Yes), "UsePreviousTasks").Should().Be("yes");
     }
 
     [Fact]
@@ -143,25 +119,49 @@ public class SetupBuilderTests
     }
 
     [Fact]
-    public void ScriptedBooleansAcceptYesNoValues()
+    public void SetupArchitectureValuesMatchDocumentation()
     {
-        GetValue(x => x.Uninstallable(YesNo.Yes), "Uninstallable").Should().Be("yes");
-        GetValue(x => x.ChangesAssociations(YesNo.No), "ChangesAssociations").Should().Be("no");
-        GetValue(x => x.CreateUninstallRegKey(YesNo.Auto), "CreateUninstallRegKey").Should().Be("auto");
-        GetValue(x => x.UsePreviousTasks(YesNo.Yes), "UsePreviousTasks").Should().Be("yes");
+        SetupArchitecture.X86.GetString().Should().Be("x86");
+        SetupArchitecture.X64.GetString().Should().Be("x64");
+
+        GetValue(x => x.SetupArchitecture(SetupArchitecture.X64), "SetupArchitecture").Should().Be("x64");
     }
 
-    private static string GetValue(Action<SetupBuilder> configure, string key)
+    [Fact]
+    public void SetupLdrModeValuesMatchDocumentation()
     {
-        var builder = new SetupBuilder();
-        configure(builder.Create("App"));
+        SetupLdrMode.No.GetString().Should().Be("no");
+        SetupLdrMode.Yes.GetString().Should().Be("yes");
+        SetupLdrMode.X86.GetString().Should().Be("x86");
+        SetupLdrMode.X64.GetString().Should().Be("x64");
 
-        var writer = new StringWriter();
-        builder.Write(writer);
+        GetValue(x => x.UseSetupLdr(SetupLdrMode.X64), "UseSetupLdr").Should().Be("x64");
+    }
 
-        return writer.ToString()
-            .Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
-            .Single(x => x.StartsWith($"{key}="))
-            .Substring(key.Length + 1);
+    [Fact]
+    public void WizardColorsAreWrittenWithoutQuotes()
+    {
+        GetValue(x => x.WizardBackColor(17), "WizardBackColor").Should().Be("$000011");
+        GetValue(x => x.WizardBackColorDynamicDark("#fff"), "WizardBackColorDynamicDark").Should().Be("#fff");
+        GetValue(x => x.WizardImageBackColor(IssColor.Named("cornflowerblue")), "WizardImageBackColor")
+            .Should().Be("cornflowerblue");
+        GetValue(x => x.WizardSmallImageBackColor(IssColor.None), "WizardSmallImageBackColor").Should().Be("none");
+    }
+
+    [Fact]
+    public void WizardStyleIsWritableAsFlags()
+    {
+        (WizardStyle.Modern | WizardStyle.Dark | WizardStyle.Dynamic).GetString()
+            .Should().Be("modern dark dynamic");
+
+        (WizardStyle.Classic | WizardStyle.Light | WizardStyle.Polar | WizardStyle.IncludeTitleBar).GetString()
+            .Should().Be("classic light polar includetitlebar");
+
+        (WizardStyle.Windows11 | WizardStyle.ExcludeLightButtons | WizardStyle.HideBevels).GetString()
+            .Should().Be("windows11 excludelightbuttons hidebevels");
+
+        WizardStyle.Slate.GetString().Should().Be("slate");
+        WizardStyle.Stellar.GetString().Should().Be("stellar");
+        WizardStyle.Zircon.GetString().Should().Be("zircon");
     }
 }

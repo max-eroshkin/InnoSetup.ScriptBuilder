@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Specifies the direction of the <c>BackColor</c> gradient, which was removed in Inno Setup 6.4.

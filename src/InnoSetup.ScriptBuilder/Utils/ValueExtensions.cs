@@ -1,6 +1,5 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Reflection;
 
 public static class ValueExtensions
 {
-    private static readonly Dictionary<(Type Type, string MemberName), string> _enumValues = new();
+    private static readonly Dictionary<(Type Type, string MemberName), string> EnumValues = new();
 
-    private static readonly object _enumValuesLock = new object();
+    private static readonly object EnumValuesLock = new();
 
-    private static readonly string[] _flagSeparator = { ", " };
+    private static readonly string[] FlagSeparator = [", "];
 
     public static string GetString(this object value, bool needQuotes = true)
     {
@@ -44,7 +43,7 @@ public static class ValueExtensions
     /// <returns>The generated script value; members of a combined value are separated by a space.</returns>
     public static string GetString(this Enum e)
     {
-        var tokens = e.ToString("g").Split(_flagSeparator, StringSplitOptions.RemoveEmptyEntries);
+        var tokens = e.ToString("g").Split(FlagSeparator, StringSplitOptions.RemoveEmptyEntries);
 
         if (tokens.Length == 1)
             return GetEnumValue(e.GetType(), tokens[0]);
@@ -67,17 +66,17 @@ public static class ValueExtensions
 
     private static string GetEnumValue(Type type, string memberName)
     {
-        lock (_enumValuesLock)
+        lock (EnumValuesLock)
         {
-            if (_enumValues.TryGetValue((type, memberName), out var cached))
+            if (EnumValues.TryGetValue((type, memberName), out var cached))
                 return cached;
         }
 
         var value = ResolveEnumValue(type, memberName);
 
-        lock (_enumValuesLock)
+        lock (EnumValuesLock)
         {
-            _enumValues[(type, memberName)] = value;
+            EnumValues[(type, memberName)] = value;
         }
 
         return value;

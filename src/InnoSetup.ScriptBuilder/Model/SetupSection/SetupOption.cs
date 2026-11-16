@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Represents the removed <c>[Setup]</c> <c>Options</c> directive, which is superseded by individual

@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Contains <a href="https://jrsoftware.org/inno-setup/documentation/?topic=consts">Inno Setup constants.</a>

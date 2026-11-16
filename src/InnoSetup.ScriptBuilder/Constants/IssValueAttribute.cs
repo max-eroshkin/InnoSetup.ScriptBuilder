@@ -1,6 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
-
-using System;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Marks an <see cref="Enum"/> member whose Inno Setup representation cannot be derived from the member name.

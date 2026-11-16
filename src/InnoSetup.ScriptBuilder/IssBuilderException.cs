@@ -1,7 +1,5 @@
-﻿#nullable enable
+#nullable enable
 namespace InnoSetup.ScriptBuilder;
-
-using System;
 
 public class IssBuilderException : Exception
 {

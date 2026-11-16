@@ -1,6 +1,5 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
-using System;
 using System.Globalization;
 
 /// <summary>

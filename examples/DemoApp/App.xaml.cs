@@ -1,4 +1,4 @@
-﻿namespace DemoApp;
+namespace DemoApp;
 
 using System.Windows;
 

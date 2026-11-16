@@ -1,4 +1,4 @@
-﻿namespace BuilderTests;
+namespace BuilderTests;
 
 using System.Linq;
 

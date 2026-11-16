@@ -1,4 +1,4 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
 /// Specifies which type of Setup to create, as set by the <c>UseSetupLdr</c> directive. The

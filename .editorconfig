@@ -298,7 +298,7 @@ dotnet_code_quality.ca1852.ignore_internalsvisibleto = true
 # DotnetRules https://github.com/dotnet/docs/blob/main/docs/fundamentals/code-analysis/style-rules
 dotnet_diagnostic.ide0052.severity = error # Remove unread private member (IDE0052)
 dotnet_diagnostic.IDE0005.severity = suggestion # Remove unnecessary using directives (IDE0005)
-dotnet_diagnostic.IDE0073.severity = error # Require file header
+dotnet_diagnostic.IDE0073.severity = none # Require file header
 dotnet_diagnostic.IDE0130.severity = none # Require file header
 
 # https://learn.microsoft.com/ru-ru/dotnet/fundamentals/code-analysis/categories

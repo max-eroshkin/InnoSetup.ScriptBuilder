@@ -1,6 +1,5 @@
-﻿namespace InnoSetup.ScriptBuilder;
+namespace InnoSetup.ScriptBuilder;
 
-using System;
 using System.Runtime.CompilerServices;
 
 public abstract class SectionBuilderBase<TBuilder, TData>
