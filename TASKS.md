@@ -123,14 +123,14 @@
 
 ---
 
-## [ ] Коммит 4 — `[Setup]`: новые директивы 6.4–6.7 + перетипизация
+## [x] Коммит 4 — `[Setup]`: новые директивы 6.4–6.7 + перетипизация
 
-- [ ] **4.1** Новые enum-файлы
-  - `Model/SetupSection/ArchiveExtraction.cs`: `Auto, Basic, EnhancedNoPassword` (`[IssValue("enhanced/nopassword")]`), `EnhancedFull` (`[IssValue("enhanced/full")]`);
+- [x] **4.1** Новые enum-файлы
+  - `Model/SetupSection/ArchiveExtraction.cs`: `Auto, Basic, EnhancedNoPassword` (`[IssValue("enhanced/nopassword")]`), `Enhanced`, `Full`; (сверено с `isetup.xml` is-7_1_1: значения — `auto`, `basic`, `enhanced/nopassword`, `enhanced`, `full`, комбинации `enhanced/full` не существует)
   - `Model/SetupSection/PrecompiledFileVerifications.cs`: `[Flags]` — `Setup = 1 << 0`, `SetupCustomStyle = 1 << 1`, `SetupLdr = 1 << 2`, `Is7z = 1 << 3`, `IsBunzip = 1 << 4`, `IsUnzlib = 1 << 5`, `IsLzma = 1 << 6`;
   - `Model/SetupSection/EncryptionMode.cs`: `No, Yes, Full` (6.5.0, `full` = шифрование всей установки, пароль только `/PASSWORD=`).
 
-- [ ] **4.2** `Model/SetupSection/SetupSection.cs` — новые свойства
+- [x] **4.2** `Model/SetupSection/SetupSection.cs` — новые свойства
 
   | Свойство | Тип | Версия |
   |---|---|---|
@@ -150,17 +150,17 @@
   | `WizardStyleFile`, `WizardStyleFileDynamicDark` | `string` | 6.6 |
   | `AlwaysCreateUninstallIcon`, `DisableAppendDir`, `DontMergeDuplicateFiles`, `MessagesFile`, `UninstallIconFile`, `UninstallIconName`, `UninstallStyle` | `string`, все `[Obsolete]` | долг полноты obsolete-списка |
 
-- [ ] **4.3** Перетипизация существующих свойств
+- [x] **4.3** Перетипизация существующих свойств
   - `Encryption`: `YesNo?` → `EncryptionMode?` (breaking);
   - `WizardStyle` (`Model/SetupSection/WizardStyle.cs`) → `[Flags]`: `Classic = 1, Modern = 1 << 1, Light = 1 << 2, Dark = 1 << 3, Dynamic = 1 << 4, Polar = 1 << 5, Slate = 1 << 6, Stellar = 1 << 7, Windows11 = 1 << 8, Zircon = 1 << 9, ExcludeLightButtons = 1 << 10, ExcludeLightControls = 1 << 11, HideBevels = 1 << 12, IncludeTitleBar = 1 << 13`;
   - `WizardImageAlphaFormat.Ignored` → `None` (см. 1.7).
 
-- [ ] **4.4** `Builder/SetupBuilder.cs` — one-liner'ы на каждое новое свойство (имена = имена свойств) + хелперы
+- [x] **4.4** `Builder/SetupBuilder.cs` — one-liner'ы на каждое новое свойство (имена = имена свойств) + хелперы
   - `EncryptionKeyDerivation()` → `"pbkdf2"`;
   - `EncryptionKeyDerivation(int iterations)` → `"pbkdf2/<iterations>"` (валидация `1..2147483647`);
   - перегрузки для `IssColor`-свойств (`IssColor`, `long`, `string` — неявные преобразования покрывают, отдельные перегрузки не нужны, достаточно одного метода с `IssColor`).
 
-- [ ] **4.5** Тесты
+- [x] **4.5** Тесты
   - `TestBuilder.cs`: выставить все новые свойства (включая obsolete — они тоже проверяются рефлексией);
   - `SetupTests.ReferenceData`: +21 строка; значения: `Encryption` → `yes`, `WizardStyle` → `modern dark dynamic` (комбинация, проверяющая `[Flags]`), `WizardImageAlphaFormat` → `none`, цвета → `$000011`/`#fff`.
 

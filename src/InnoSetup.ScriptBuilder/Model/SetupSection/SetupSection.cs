@@ -58,6 +58,16 @@ public class SetupSection : KeyValueSection
 
     public string CloseApplicationsFilter { get; set; }
 
+    /// <summary>
+    /// A comma separated list of file name wildcards of files which should not be checked for being in use,
+    /// even if they match <see cref="CloseApplicationsFilter"/>. Added in Inno Setup 6.4.2.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_closeapplicationsfilterexcludes">
+    /// CloseApplicationsFilterExcludes
+    /// </a>.
+    /// </summary>
+    public string CloseApplicationsFilterExcludes { get; set; }
+
     public string SetupMutex { get; set; }
 
     public YesNo? ChangesEnvironment { get; set; }
@@ -132,6 +142,22 @@ public class SetupSection : KeyValueSection
 
     public long? UninstallDisplaySize { get; set; }
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 5.0.0, because Setup and Uninstall
+    /// are merged into a single executable.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstalliconfile">UninstallIconFile</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 5.0.0: a custom Uninstall icon can no longer be set")]
+    public string UninstallIconFile { get; set; }
+
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 3.0. Use the <c>{uninstallexe}</c> constant
+    /// in an <c>[Icons]</c> section entry to create an Uninstall icon.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstalliconname">UninstallIconName</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 3.0: use the {uninstallexe} constant in an [Icons] section entry instead")]
+    public string UninstallIconName { get; set; }
+
     public YesNo? DisableDirPage { get; set; }
 
     public YesNo? DisableProgramGroupPage { get; set; }
@@ -167,6 +193,17 @@ public class SetupSection : KeyValueSection
 
     public YesNo? AllowUNCPath { get; set; }
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 3.0. Use the <c>{uninstallexe}</c> constant
+    /// in an <c>[Icons]</c> section entry to create an Uninstall icon.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_alwayscreateuninstallicon">
+    /// AlwaysCreateUninstallIcon
+    /// </a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 3.0: use the {uninstallexe} constant in an [Icons] section entry instead")]
+    public string AlwaysCreateUninstallIcon { get; set; }
+
     public YesNo? AlwaysRestart { get; set; }
 
     public YesNo? AlwaysShowComponentsList { get; set; }
@@ -180,6 +217,13 @@ public class SetupSection : KeyValueSection
     public YesNo? AppendDefaultDirName { get; set; }
 
     public YesNo? AppendDefaultGroupName { get; set; }
+
+    /// <summary>
+    /// Specifies the method of archive extraction used by the <c>extractarchive</c> <c>[Files]</c> flag.
+    /// Added in Inno Setup 6.5; <see cref="ArchiveExtraction.Auto"/> was added in Inno Setup 7.0 and is the default.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_archiveextraction">ArchiveExtraction</a>.
+    /// </summary>
+    public ArchiveExtraction? ArchiveExtraction { get; set; }
 
     public Architectures? ArchitecturesAllowed { get; set; }
 
@@ -205,7 +249,24 @@ public class SetupSection : KeyValueSection
 
     public YesNo? DEPCompatible { get; set; }
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 4.1.2.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_disableappenddir">DisableAppendDir</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 4.1.2: this directive is no longer supported")]
+    public string DisableAppendDir { get; set; }
+
     public YesNo? DisableFinishedPage { get; set; }
+
+    /// <summary>
+    /// Specifies the precompiled files whose verification by the compiler should be skipped.
+    /// Added in Inno Setup 6.5.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_disableprecompiledfileverifications">
+    /// DisablePrecompiledFileVerifications
+    /// </a>.
+    /// </summary>
+    public PrecompiledFileVerifications? DisablePrecompiledFileVerifications { get; set; }
 
     public YesNo? DisableReadyMemo { get; set; }
 
@@ -219,9 +280,36 @@ public class SetupSection : KeyValueSection
 
     public YesNo? DiskSpanning { get; set; }
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 4.2.5.
+    /// <c>MergeDuplicateFiles=no</c> is equivalent to <c>DontMergeDuplicateFiles=yes</c>.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_dontmergeduplicatefiles">
+    /// DontMergeDuplicateFiles
+    /// </a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 4.2.5: use MergeDuplicateFiles=no instead")]
+    public string DontMergeDuplicateFiles { get; set; }
+
     public YesNo? EnableDirDoesntExistWarning { get; set; }
 
-    public YesNo? Encryption { get; set; }
+    /// <summary>
+    /// Specifies whether the installation is encrypted. <see cref="EncryptionMode.Full"/> was added in
+    /// Inno Setup 6.5.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryption">Encryption</a>.
+    /// </summary>
+    public EncryptionMode? Encryption { get; set; }
+
+    /// <summary>
+    /// Specifies the key derivation function used to derive the encryption key from <see cref="Password"/>:
+    /// <c>pbkdf2</c> or <c>pbkdf2/&lt;iterations&gt;</c>, where the default number of iterations is 220000.
+    /// Added in Inno Setup 6.4.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryptionkeyderivation">
+    /// EncryptionKeyDerivation
+    /// </a>.
+    /// </summary>
+    public string EncryptionKeyDerivation { get; set; }
 
     public YesNo? FlatComponentsList { get; set; }
 
@@ -249,6 +337,14 @@ public class SetupSection : KeyValueSection
 
     public YesNo? MergeDuplicateFiles { get; set; }
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 4.0.
+    /// Use the <c>[Languages]</c> section to specify a custom messages file.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_messagesfile">MessagesFile</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 4.0: use the [Languages] section instead")]
+    public string MessagesFile { get; set; }
+
     public string MinVersion { get; set; }
 
     public YesNo? MissingMessagesWarning { get; set; }
@@ -262,6 +358,13 @@ public class SetupSection : KeyValueSection
     public YesNo? Output { get; set; }
 
     public string Password { get; set; }
+
+    /// <summary>
+    /// Controls whether Setup attempts to enable Windows' RedirectionGuard mitigation on its own process.
+    /// Added in Inno Setup 6.7; defaults to <c>yes</c>.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_redirectionguard">RedirectionGuard</a>.
+    /// </summary>
+    public YesNo? RedirectionGuard { get; set; }
 
     public uint? ReserveBytes { get; set; }
 
@@ -311,6 +414,13 @@ public class SetupSection : KeyValueSection
     public YesNo? UninstallLogging { get; set; }
 
     public YesNo? UninstallRestartComputer { get; set; }
+
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 5.0.0.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstallstyle">UninstallStyle</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 5.0.0: this directive is no longer supported")]
+    public string UninstallStyle { get; set; }
 
     public YesNo? UsedUserAreasWarning { get; set; }
 
@@ -362,12 +472,149 @@ public class SetupSection : KeyValueSection
     [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
     public YesNo? WindowVisible { get; set; }
 
+    /// <summary>
+    /// Specifies the background color to use for wizard pages and all other windows such as the
+    /// <i>Select Language</i> dialog, in both Setup and Uninstall. Added in Inno Setup 6.7.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackcolor">WizardBackColor</a>.
+    /// </summary>
+    public IssColor? WizardBackColor { get; set; }
+
+    /// <summary>
+    /// Overrides <see cref="WizardBackColor"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
+    /// Windows is in dark mode. Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackcolordynamicdark">
+    /// WizardBackColorDynamicDark
+    /// </a>.
+    /// </summary>
+    public IssColor? WizardBackColorDynamicDark { get; set; }
+
+    /// <summary>
+    /// Specifies a custom image to display as the background of wizard pages in Setup, but not in Uninstall.
+    /// Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimagefile">WizardBackImageFile</a>.
+    /// </summary>
+    public string WizardBackImageFile { get; set; }
+
+    /// <summary>
+    /// Overrides <see cref="WizardBackImageFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
+    /// Windows is in dark mode. Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimagefiledynamicdark">
+    /// WizardBackImageFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public string WizardBackImageFileDynamicDark { get; set; }
+
+    /// <summary>
+    /// Specifies the opacity of the background wizard image, from <c>0</c> (fully transparent) to <c>255</c>
+    /// (fully opaque, the default). Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimageopacity">
+    /// WizardBackImageOpacity
+    /// </a>.
+    /// </summary>
+    public int? WizardBackImageOpacity { get; set; }
+
+    /// <summary>
+    /// Specifies the background color used to fill any unused or transparent space around
+    /// <see cref="WizardImageFile"/>; <c>none</c> keeps transparency.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagebackcolor">WizardImageBackColor</a>.
+    /// </summary>
+    public IssColor? WizardImageBackColor { get; set; }
+
+    /// <summary>
+    /// Overrides <see cref="WizardImageBackColor"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
+    /// Windows is in dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagebackcolordynamicdark">
+    /// WizardImageBackColorDynamicDark
+    /// </a>.
+    /// </summary>
+    public IssColor? WizardImageBackColorDynamicDark { get; set; }
+
+    /// <summary>
+    /// Overrides <see cref="WizardImageFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
+    /// Windows is in dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagefiledynamicdark">
+    /// WizardImageFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public string WizardImageFileDynamicDark { get; set; }
+
+    /// <summary>
+    /// Specifies the opacity of the wizard images, from <c>0</c> (fully transparent) to <c>255</c>
+    /// (fully opaque, the default). Added in Inno Setup 6.6.1.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimageopacity">WizardImageOpacity</a>.
+    /// </summary>
+    public int? WizardImageOpacity { get; set; }
+
     public YesNo? WizardImageStretch { get; set; }
+
+    /// <summary>
+    /// Specifies whether Setup and Uninstall keep the original aspect ratio of their windows when scaling
+    /// for DPI. Added in Inno Setup 6.6; defaults to <c>yes</c>.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardkeepaspectratio">WizardKeepAspectRatio</a>.
+    /// </summary>
+    public YesNo? WizardKeepAspectRatio { get; set; }
 
     [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
     public YesNo? WizardResizable { get; set; }
 
     public string WizardSizePercent { get; set; }
 
+    /// <summary>
+    /// Specifies the background color used to fill any unused or transparent space around
+    /// <see cref="WizardSmallImageFile"/>; <c>none</c> keeps transparency.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagebackcolor">
+    /// WizardSmallImageBackColor
+    /// </a>.
+    /// </summary>
+    public IssColor? WizardSmallImageBackColor { get; set; }
+
+    /// <summary>
+    /// Overrides <see cref="WizardSmallImageBackColor"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c>
+    /// mode and Windows is in dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagebackcolordynamicdark">
+    /// WizardSmallImageBackColorDynamicDark
+    /// </a>.
+    /// </summary>
+    public IssColor? WizardSmallImageBackColorDynamicDark { get; set; }
+
+    /// <summary>
+    /// Overrides <see cref="WizardSmallImageFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
+    /// Windows is in dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagefiledynamicdark">
+    /// WizardSmallImageFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public string WizardSmallImageFileDynamicDark { get; set; }
+
     public WizardStyle? WizardStyle { get; set; }
+
+    /// <summary>
+    /// Specifies a custom VCL Styles file (<c>.vsf</c>) to be used as the default style, or one of
+    /// <c>builtin:polar</c>, <c>builtin:slate</c>, <c>builtin:stellar</c> and <c>builtin:zircon</c>.
+    /// Added in Inno Setup 6.6.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstylefile">WizardStyleFile</a>.
+    /// </summary>
+    public string WizardStyleFile { get; set; }
+
+    /// <summary>
+    /// Overrides <see cref="WizardStyleFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
+    /// Windows is in dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstylefiledynamicdark">
+    /// WizardStyleFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public string WizardStyleFileDynamicDark { get; set; }
 }

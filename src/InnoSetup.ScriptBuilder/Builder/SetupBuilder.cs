@@ -1,6 +1,7 @@
 ﻿namespace InnoSetup.ScriptBuilder;
 
 using System;
+using System.Globalization;
 
 public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder
 {
@@ -38,6 +39,17 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     public SetupBuilder CreateUninstallRegKey(string value) => SetPropertyValue(value);
     public SetupBuilder Uninstallable(YesNo value) => SetPropertyValue(value);
     public SetupBuilder CloseApplicationsFilter(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// A comma separated list of file name wildcards of files which should not be checked for being in use,
+    /// even if they match <c>CloseApplicationsFilter</c>. Added in Inno Setup 6.4.2.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_closeapplicationsfilterexcludes">
+    /// CloseApplicationsFilterExcludes
+    /// </a>.
+    /// </summary>
+    public SetupBuilder CloseApplicationsFilterExcludes(string value) => SetPropertyValue(value);
+
     public SetupBuilder SetupMutex(string value) => SetPropertyValue(value);
     public SetupBuilder ChangesEnvironment(YesNo value) => SetPropertyValue(value);
     public SetupBuilder ChangesAssociations(YesNo value) => SetPropertyValue(value);
@@ -83,6 +95,23 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     public SetupBuilder ExtraDiskSpaceRequired(long value) => SetPropertyValue(value);
     public SetupBuilder SlicesPerDisk(int value) => SetPropertyValue(value);
     public SetupBuilder UninstallDisplaySize(long value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 5.0.0, because Setup and Uninstall
+    /// are merged into a single executable.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstalliconfile">UninstallIconFile</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 5.0.0: a custom Uninstall icon can no longer be set")]
+    public SetupBuilder UninstallIconFile(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 3.0. Use the <c>{uninstallexe}</c> constant
+    /// in an <c>[Icons]</c> section entry to create an Uninstall icon.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstalliconname">UninstallIconName</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 3.0: use the {uninstallexe} constant in an [Icons] section entry instead")]
+    public SetupBuilder UninstallIconName(string value) => SetPropertyValue(value);
+
     public SetupBuilder DisableDirPage(YesNo value) => SetPropertyValue(value);
     public SetupBuilder DisableProgramGroupPage(YesNo value) => SetPropertyValue(value);
     public SetupBuilder DisableWelcomePage(YesNo value) => SetPropertyValue(value);
@@ -111,6 +140,17 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
 
     public SetupBuilder AllowUNCPath(YesNo value) => SetPropertyValue(value);
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 3.0. Use the <c>{uninstallexe}</c> constant
+    /// in an <c>[Icons]</c> section entry to create an Uninstall icon.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_alwayscreateuninstallicon">
+    /// AlwaysCreateUninstallIcon
+    /// </a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 3.0: use the {uninstallexe} constant in an [Icons] section entry instead")]
+    public SetupBuilder AlwaysCreateUninstallIcon(string value) => SetPropertyValue(value);
+
     public SetupBuilder AlwaysRestart(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder AlwaysShowComponentsList(YesNo value) => SetPropertyValue(value);
@@ -124,6 +164,13 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     public SetupBuilder AppendDefaultDirName(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder AppendDefaultGroupName(YesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies the method of archive extraction used by the <c>extractarchive</c> <c>[Files]</c> flag.
+    /// Added in Inno Setup 6.5; <see cref="ArchiveExtraction.Auto"/> was added in Inno Setup 7.0 and is the default.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_archiveextraction">ArchiveExtraction</a>.
+    /// </summary>
+    public SetupBuilder ArchiveExtraction(ArchiveExtraction value) => SetPropertyValue(value);
 
     public SetupBuilder ArchitecturesAllowed(Architectures value) => SetPropertyValue(value);
 
@@ -150,7 +197,25 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
 
     public SetupBuilder DEPCompatible(YesNo value) => SetPropertyValue(value);
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 4.1.2.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_disableappenddir">DisableAppendDir</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 4.1.2: this directive is no longer supported")]
+    public SetupBuilder DisableAppendDir(string value) => SetPropertyValue(value);
+
     public SetupBuilder DisableFinishedPage(YesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies the precompiled files whose verification by the compiler should be skipped.
+    /// Added in Inno Setup 6.5.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_disableprecompiledfileverifications">
+    /// DisablePrecompiledFileVerifications
+    /// </a>.
+    /// </summary>
+    public SetupBuilder DisablePrecompiledFileVerifications(PrecompiledFileVerifications value) =>
+        SetPropertyValue(value);
 
     public SetupBuilder DisableReadyMemo(YesNo value) => SetPropertyValue(value);
 
@@ -164,9 +229,66 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
 
     public SetupBuilder DiskSpanning(YesNo value) => SetPropertyValue(value);
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 4.2.5.
+    /// <c>MergeDuplicateFiles=no</c> is equivalent to <c>DontMergeDuplicateFiles=yes</c>.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_dontmergeduplicatefiles">
+    /// DontMergeDuplicateFiles
+    /// </a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 4.2.5: use MergeDuplicateFiles=no instead")]
+    public SetupBuilder DontMergeDuplicateFiles(string value) => SetPropertyValue(value);
+
     public SetupBuilder EnableDirDoesntExistWarning(YesNo value) => SetPropertyValue(value);
 
-    public SetupBuilder Encryption(YesNo value) => SetPropertyValue(value);
+    /// <summary>
+    /// Specifies whether the installation is encrypted. <see cref="EncryptionMode.Full"/> was added in
+    /// Inno Setup 6.5.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryption">Encryption</a>.
+    /// </summary>
+    public SetupBuilder Encryption(EncryptionMode value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Uses the default PBKDF2-HMAC-SHA256 key derivation function with its default number of iterations
+    /// (220000), which is the same as <c>EncryptionKeyDerivation=pbkdf2</c>.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryptionkeyderivation">
+    /// EncryptionKeyDerivation
+    /// </a>.
+    /// </summary>
+    public SetupBuilder EncryptionKeyDerivation() => EncryptionKeyDerivation("pbkdf2");
+
+    /// <summary>
+    /// Uses the PBKDF2-HMAC-SHA256 key derivation function with the given number of iterations, which is
+    /// written as <c>pbkdf2/&lt;iterations&gt;</c>. Added in Inno Setup 6.4.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryptionkeyderivation">
+    /// EncryptionKeyDerivation
+    /// </a>.
+    /// </summary>
+    /// <param name="iterations">The number of iterations, 1 through 2147483647.</param>
+    /// <exception cref="ArgumentOutOfRangeException">The value is outside the 1-2147483647 range.</exception>
+    public SetupBuilder EncryptionKeyDerivation(int iterations)
+    {
+        if (iterations < 1)
+            throw new ArgumentOutOfRangeException(
+                nameof(iterations),
+                iterations,
+                "The number of iterations must be in the 1-2147483647 range.");
+
+        return EncryptionKeyDerivation($"pbkdf2/{iterations.ToString(CultureInfo.InvariantCulture)}");
+    }
+
+    /// <summary>
+    /// Uses the given key derivation function definition as-is, typically <c>pbkdf2</c> or
+    /// <c>pbkdf2/&lt;iterations&gt;</c>. Added in Inno Setup 6.4.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryptionkeyderivation">
+    /// EncryptionKeyDerivation
+    /// </a>.
+    /// </summary>
+    public SetupBuilder EncryptionKeyDerivation(string value) => SetPropertyValue(value);
 
     public SetupBuilder FlatComponentsList(YesNo value) => SetPropertyValue(value);
 
@@ -194,6 +316,14 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
 
     public SetupBuilder MergeDuplicateFiles(YesNo value) => SetPropertyValue(value);
 
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 4.0.
+    /// Use the <c>[Languages]</c> section to specify a custom messages file.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_messagesfile">MessagesFile</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 4.0: use the [Languages] section instead")]
+    public SetupBuilder MessagesFile(string value) => SetPropertyValue(value);
+
     public SetupBuilder MinVersion(string value) => SetPropertyValue(value);
 
     public SetupBuilder MissingMessagesWarning(YesNo value) => SetPropertyValue(value);
@@ -207,6 +337,13 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     public SetupBuilder Output(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder Password(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Controls whether Setup attempts to enable Windows' RedirectionGuard mitigation on its own process.
+    /// Added in Inno Setup 6.7; defaults to <c>yes</c>.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_redirectionguard">RedirectionGuard</a>.
+    /// </summary>
+    public SetupBuilder RedirectionGuard(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder ReserveBytes(uint value) => SetPropertyValue(value);
 
@@ -256,6 +393,13 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     public SetupBuilder UninstallLogging(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder UninstallRestartComputer(YesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// No longer supported: the directive is obsolete since Inno Setup 5.0.0.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstallstyle">UninstallStyle</a>.
+    /// </summary>
+    [Obsolete("Obsolete since Inno Setup 5.0.0: this directive is no longer supported")]
+    public SetupBuilder UninstallStyle(string value) => SetPropertyValue(value);
 
     public SetupBuilder UsedUserAreasWarning(YesNo value) => SetPropertyValue(value);
 
@@ -307,14 +451,156 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
     public SetupBuilder WindowVisible(YesNo value) => SetPropertyValue(value);
 
+    /// <summary>
+    /// Specifies the background color to use for wizard pages and all other windows such as the
+    /// <i>Select Language</i> dialog, in both Setup and Uninstall. Added in Inno Setup 6.7.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackcolor">WizardBackColor</a>.
+    /// </summary>
+    public SetupBuilder WizardBackColor(IssColor value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Overrides <c>WizardBackColor</c> when <c>WizardStyle</c> uses the <c>dynamic</c> mode and Windows is in
+    /// dark mode. Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackcolordynamicdark">
+    /// WizardBackColorDynamicDark
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardBackColorDynamicDark(IssColor value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies a custom image to display as the background of wizard pages in Setup, but not in Uninstall.
+    /// Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimagefile">WizardBackImageFile</a>.
+    /// </summary>
+    public SetupBuilder WizardBackImageFile(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Overrides <c>WizardBackImageFile</c> when <c>WizardStyle</c> uses the <c>dynamic</c> mode and Windows is in
+    /// dark mode. Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimagefiledynamicdark">
+    /// WizardBackImageFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardBackImageFileDynamicDark(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies the opacity of the background wizard image, from <c>0</c> (fully transparent) to <c>255</c>
+    /// (fully opaque, the default). Added in Inno Setup 6.7.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimageopacity">
+    /// WizardBackImageOpacity
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardBackImageOpacity(int value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies the background color used to fill any unused or transparent space around
+    /// <c>WizardImageFile</c>; <c>none</c> keeps transparency.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagebackcolor">WizardImageBackColor</a>.
+    /// </summary>
+    public SetupBuilder WizardImageBackColor(IssColor value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Overrides <c>WizardImageBackColor</c> when <c>WizardStyle</c> uses the <c>dynamic</c> mode and Windows is in
+    /// dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagebackcolordynamicdark">
+    /// WizardImageBackColorDynamicDark
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardImageBackColorDynamicDark(IssColor value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Overrides <c>WizardImageFile</c> when <c>WizardStyle</c> uses the <c>dynamic</c> mode and Windows is in
+    /// dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagefiledynamicdark">
+    /// WizardImageFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardImageFileDynamicDark(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies the opacity of the wizard images, from <c>0</c> (fully transparent) to <c>255</c>
+    /// (fully opaque, the default). Added in Inno Setup 6.6.1.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimageopacity">WizardImageOpacity</a>.
+    /// </summary>
+    public SetupBuilder WizardImageOpacity(int value) => SetPropertyValue(value);
+
     public SetupBuilder WizardImageStretch(YesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies whether Setup and Uninstall keep the original aspect ratio of their windows when scaling
+    /// for DPI. Added in Inno Setup 6.6; defaults to <c>yes</c>.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardkeepaspectratio">WizardKeepAspectRatio</a>.
+    /// </summary>
+    public SetupBuilder WizardKeepAspectRatio(YesNo value) => SetPropertyValue(value);
 
     [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
     public SetupBuilder WizardResizable(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder WizardSizePercent(string value) => SetPropertyValue(value);
 
+    /// <summary>
+    /// Specifies the background color used to fill any unused or transparent space around
+    /// <c>WizardSmallImageFile</c>; <c>none</c> keeps transparency.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagebackcolor">
+    /// WizardSmallImageBackColor
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardSmallImageBackColor(IssColor value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Overrides <c>WizardSmallImageBackColor</c> when <c>WizardStyle</c> uses the <c>dynamic</c> mode and Windows
+    /// is in dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagebackcolordynamicdark">
+    /// WizardSmallImageBackColorDynamicDark
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardSmallImageBackColorDynamicDark(IssColor value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Overrides <c>WizardSmallImageFile</c> when <c>WizardStyle</c> uses the <c>dynamic</c> mode and Windows is in
+    /// dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagefiledynamicdark">
+    /// WizardSmallImageFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardSmallImageFileDynamicDark(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies the visual style and appearance of Setup and Uninstall; combine the
+    /// <see cref="WizardStyle"/> members with <c>|</c>.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstyle">WizardStyle</a>.
+    /// </summary>
     public SetupBuilder WizardStyle(WizardStyle value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Specifies a custom VCL Styles file (<c>.vsf</c>) to be used as the default style, or one of
+    /// <c>builtin:polar</c>, <c>builtin:slate</c>, <c>builtin:stellar</c> and <c>builtin:zircon</c>.
+    /// Added in Inno Setup 6.6.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstylefile">WizardStyleFile</a>.
+    /// </summary>
+    public SetupBuilder WizardStyleFile(string value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Overrides <c>WizardStyleFile</c> when <c>WizardStyle</c> uses the <c>dynamic</c> mode and Windows is in
+    /// dark mode. Added in Inno Setup 6.6.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstylefiledynamicdark">
+    /// WizardStyleFileDynamicDark
+    /// </a>.
+    /// </summary>
+    public SetupBuilder WizardStyleFileDynamicDark(string value) => SetPropertyValue(value);
 
     private SetupBuilder AppName(string value) => SetPropertyValue(value);
 }

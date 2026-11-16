@@ -1,4 +1,4 @@
-namespace BuilderTests;
+﻿namespace BuilderTests;
 
 using System.Collections.Generic;
 
@@ -68,7 +68,7 @@ public class SetupTests : KeyValueSectionTestsBase<SetupSection>
         { "DirExistsWarning", "yes" },
         { "ShowLanguageDialog", "yes" },
         { "UninstallLogMode", "overwrite" },
-        { "WizardImageAlphaFormat", "premultiplied" },
+        { "WizardImageAlphaFormat", "none" },
         { "WizardSizePercentX", "19" },
         { "WizardSizePercentY", "20" },
         { "ExtraDiskSpaceRequired", "21" },
@@ -184,6 +184,33 @@ public class SetupTests : KeyValueSectionTestsBase<SetupSection>
         { "WizardImageStretch", "yes" },
         { "WizardResizable", "yes" },
         { "WizardSizePercent", "WizardSizePercent" },
-        { "WizardStyle", "modern" },
+        { "WizardStyle", "modern dark dynamic" },
+        { "AlwaysCreateUninstallIcon", "AlwaysCreateUninstallIcon" },
+        { "ArchiveExtraction", "enhanced/nopassword" },
+        { "CloseApplicationsFilterExcludes", "CloseApplicationsFilterExcludes" },
+        { "DisableAppendDir", "DisableAppendDir" },
+        { "DisablePrecompiledFileVerifications", "setup is7z" },
+        { "DontMergeDuplicateFiles", "yes" },
+        { "EncryptionKeyDerivation", "pbkdf2/220000" },
+        { "MessagesFile", "MessagesFile" },
+        { "RedirectionGuard", "yes" },
+        { "UninstallIconFile", "UninstallIconFile" },
+        { "UninstallIconName", "UninstallIconName" },
+        { "UninstallStyle", "UninstallStyle" },
+        { "WizardBackColor", "$000011" },
+        { "WizardBackColorDynamicDark", "#fff" },
+        { "WizardBackImageFile", "WizardBackImageFile" },
+        { "WizardBackImageFileDynamicDark", "WizardBackImageFileDynamicDark" },
+        { "WizardBackImageOpacity", "150" },
+        { "WizardImageBackColor", "$000011" },
+        { "WizardImageBackColorDynamicDark", "cornflowerblue" },
+        { "WizardImageFileDynamicDark", "WizardImageFileDynamicDark" },
+        { "WizardImageOpacity", "150" },
+        { "WizardKeepAspectRatio", "no" },
+        { "WizardSmallImageBackColor", "#fff" },
+        { "WizardSmallImageBackColorDynamicDark", "none" },
+        { "WizardSmallImageFileDynamicDark", "WizardSmallImageFileDynamicDark" },
+        { "WizardStyleFile", "WizardStyleFile" },
+        { "WizardStyleFileDynamicDark", "WizardStyleFileDynamicDark" },
     };
 }
