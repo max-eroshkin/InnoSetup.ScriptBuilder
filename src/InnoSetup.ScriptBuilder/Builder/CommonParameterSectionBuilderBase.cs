@@ -1,7 +1,7 @@
 ﻿namespace InnoSetup.ScriptBuilder;
 
 /// <summary>
-/// See <a href="https://jrsoftware.org/ishelp/index.php?topic=commonparams">ISS documentation.</a>
+/// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=commonparams">ISS documentation.</a>
 /// </summary>
 public abstract class
     CommonParameterSectionBuilderBase<TBuilder, TData> : ParameterSectionBuilderBase<TBuilder, TData>

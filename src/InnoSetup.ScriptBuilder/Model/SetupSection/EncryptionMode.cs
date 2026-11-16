@@ -2,7 +2,7 @@
 
 /// <summary>
 /// Specifies the value of the <c>Encryption</c> directive.
-/// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryption">Encryption</a>.
+/// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_encryption">Encryption</a>.
 /// </summary>
 public enum EncryptionMode
 {

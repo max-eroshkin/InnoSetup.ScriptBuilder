@@ -13,6 +13,9 @@ public class DemoBuilder : IssBuilder
             .OutputBaseFilename("Tools.Support_2021_1.2.5.1634640046")
             .SetupIconFile("ToolsIcon.ico")
             .UninstallDisplayIcon("ToolsIcon.ico")
+            .SetupArchitecture(SetupArchitecture.X64)
+            .WizardStyle(WizardStyle.Modern | WizardStyle.Dynamic)
+            .WizardImageBackColor(IssColor.None)
             .DisableDirPage(YesNo.Yes);
 
         Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.Directories.App)

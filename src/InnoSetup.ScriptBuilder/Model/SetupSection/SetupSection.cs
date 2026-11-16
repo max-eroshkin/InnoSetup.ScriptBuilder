@@ -56,14 +56,14 @@ public class SetupSection : KeyValueSection
     /// Controls whether Setup creates an entry in the <i>Add/Remove Programs</i> Control Panel applet.
     /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_createuninstallregkey">CreateUninstallRegKey</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_createuninstallregkey">CreateUninstallRegKey</a>.
     /// </summary>
     public IssYesNo? CreateUninstallRegKey { get; set; }
 
     /// <summary>
     /// Controls whether Inno Setup's automatic uninstaller is included in the installation.
     /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstallable">Uninstallable</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_uninstallable">Uninstallable</a>.
     /// </summary>
     public IssYesNo? Uninstallable { get; set; }
 
@@ -73,7 +73,7 @@ public class SetupSection : KeyValueSection
     /// A comma separated list of file name wildcards of files which should not be checked for being in use,
     /// even if they match <see cref="CloseApplicationsFilter"/>. Added in Inno Setup 6.4.2.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_closeapplicationsfilterexcludes">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_closeapplicationsfilterexcludes">
     /// CloseApplicationsFilterExcludes
     /// </a>.
     /// </summary>
@@ -85,14 +85,14 @@ public class SetupSection : KeyValueSection
     /// Controls whether Setup notifies other running applications that they should reload their
     /// environment variables from the registry at the end of the installation.
     /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_changesenvironment">ChangesEnvironment</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_changesenvironment">ChangesEnvironment</a>.
     /// </summary>
     public IssYesNo? ChangesEnvironment { get; set; }
 
     /// <summary>
     /// Controls whether Setup tells Explorer to refresh its file associations information at the end of the
     /// installation. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_changesassociations">ChangesAssociations</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_changesassociations">ChangesAssociations</a>.
     /// </summary>
     public IssYesNo? ChangesAssociations { get; set; }
 
@@ -167,7 +167,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// No longer supported: the directive is obsolete since Inno Setup 5.0.0, because Setup and Uninstall
     /// are merged into a single executable.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstalliconfile">UninstallIconFile</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_uninstalliconfile">UninstallIconFile</a>.
     /// </summary>
     [Obsolete("Obsolete since Inno Setup 5.0.0: a custom Uninstall icon can no longer be set")]
     public string UninstallIconFile { get; set; }
@@ -175,7 +175,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// No longer supported: the directive is obsolete since Inno Setup 3.0. Use the <c>{uninstallexe}</c> constant
     /// in an <c>[Icons]</c> section entry to create an Uninstall icon.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstalliconname">UninstallIconName</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_uninstalliconname">UninstallIconName</a>.
     /// </summary>
     [Obsolete("Obsolete since Inno Setup 3.0: use the {uninstallexe} constant in an [Icons] section entry instead")]
     public string UninstallIconName { get; set; }
@@ -219,7 +219,7 @@ public class SetupSection : KeyValueSection
     /// No longer supported: the directive is obsolete since Inno Setup 3.0. Use the <c>{uninstallexe}</c> constant
     /// in an <c>[Icons]</c> section entry to create an Uninstall icon.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_alwayscreateuninstallicon">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_alwayscreateuninstallicon">
     /// AlwaysCreateUninstallIcon
     /// </a>.
     /// </summary>
@@ -243,7 +243,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// Specifies the method of archive extraction used by the <c>extractarchive</c> <c>[Files]</c> flag.
     /// Added in Inno Setup 6.5; <see cref="ArchiveExtraction.Auto"/> was added in Inno Setup 7.0 and is the default.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_archiveextraction">ArchiveExtraction</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_archiveextraction">ArchiveExtraction</a>.
     /// </summary>
     public ArchiveExtraction? ArchiveExtraction { get; set; }
 
@@ -273,7 +273,7 @@ public class SetupSection : KeyValueSection
 
     /// <summary>
     /// No longer supported: the directive is obsolete since Inno Setup 4.1.2.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_disableappenddir">DisableAppendDir</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_disableappenddir">DisableAppendDir</a>.
     /// </summary>
     [Obsolete("Obsolete since Inno Setup 4.1.2: this directive is no longer supported")]
     public string DisableAppendDir { get; set; }
@@ -284,7 +284,7 @@ public class SetupSection : KeyValueSection
     /// Specifies the precompiled files whose verification by the compiler should be skipped.
     /// Added in Inno Setup 6.5.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_disableprecompiledfileverifications">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_disableprecompiledfileverifications">
     /// DisablePrecompiledFileVerifications
     /// </a>.
     /// </summary>
@@ -301,7 +301,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// Specifies the maximum number of bytes per disk slice (<c>Setup-*.bin</c> file): <c>262144</c> through
     /// <c>9223372036800000000</c>, or <c>max</c>. The upper limit was raised in Inno Setup 7.0 for 64-bit Setup.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_diskslicesize">DiskSliceSize</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_diskslicesize">DiskSliceSize</a>.
     /// </summary>
     public ulong? DiskSliceSize { get; set; }
 
@@ -311,7 +311,7 @@ public class SetupSection : KeyValueSection
     /// No longer supported: the directive is obsolete since Inno Setup 4.2.5.
     /// <c>MergeDuplicateFiles=no</c> is equivalent to <c>DontMergeDuplicateFiles=yes</c>.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_dontmergeduplicatefiles">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_dontmergeduplicatefiles">
     /// DontMergeDuplicateFiles
     /// </a>.
     /// </summary>
@@ -323,7 +323,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// Specifies whether the installation is encrypted. <see cref="EncryptionMode.Full"/> was added in
     /// Inno Setup 6.5.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryption">Encryption</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_encryption">Encryption</a>.
     /// </summary>
     public EncryptionMode? Encryption { get; set; }
 
@@ -332,7 +332,7 @@ public class SetupSection : KeyValueSection
     /// <c>pbkdf2</c> or <c>pbkdf2/&lt;iterations&gt;</c>, where the default number of iterations is 220000.
     /// Added in Inno Setup 6.4.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_encryptionkeyderivation">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_encryptionkeyderivation">
     /// EncryptionKeyDerivation
     /// </a>.
     /// </summary>
@@ -367,7 +367,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// No longer supported: the directive is obsolete since Inno Setup 4.0.
     /// Use the <c>[Languages]</c> section to specify a custom messages file.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_messagesfile">MessagesFile</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_messagesfile">MessagesFile</a>.
     /// </summary>
     [Obsolete("Obsolete since Inno Setup 4.0: use the [Languages] section instead")]
     public string MessagesFile { get; set; }
@@ -389,7 +389,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// Controls whether Setup attempts to enable Windows' RedirectionGuard mitigation on its own process.
     /// Added in Inno Setup 6.7; defaults to <c>yes</c>.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_redirectionguard">RedirectionGuard</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_redirectionguard">RedirectionGuard</a>.
     /// </summary>
     public YesNo? RedirectionGuard { get; set; }
 
@@ -403,7 +403,7 @@ public class SetupSection : KeyValueSection
     /// Specifies the architecture of the Setup program itself: <c>x86</c> (the default) or <c>x64</c>.
     /// Added in Inno Setup 7.0.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_setuparchitecture">SetupArchitecture</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_setuparchitecture">SetupArchitecture</a>.
     /// </summary>
     public SetupArchitecture? SetupArchitecture { get; set; }
 
@@ -452,7 +452,7 @@ public class SetupSection : KeyValueSection
 
     /// <summary>
     /// No longer supported: the directive is obsolete since Inno Setup 5.0.0.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstallstyle">UninstallStyle</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_uninstallstyle">UninstallStyle</a>.
     /// </summary>
     [Obsolete("Obsolete since Inno Setup 5.0.0: this directive is no longer supported")]
     public string UninstallStyle { get; set; }
@@ -462,14 +462,14 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// Controls whether Setup reuses the installation directory of a previous installation as the default
     /// directory. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usepreviousappdir">UsePreviousAppDir</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_usepreviousappdir">UsePreviousAppDir</a>.
     /// </summary>
     public IssYesNo? UsePreviousAppDir { get; set; }
 
     /// <summary>
     /// Controls whether Setup reuses the Start menu folder name of a previous installation as the default.
     /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usepreviousgroup">UsePreviousGroup</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_usepreviousgroup">UsePreviousGroup</a>.
     /// </summary>
     public IssYesNo? UsePreviousGroup { get; set; }
 
@@ -481,14 +481,14 @@ public class SetupSection : KeyValueSection
     /// Controls whether Setup reuses the setup type and component settings of a previous installation as the
     /// defaults. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioussetuptype">UsePreviousSetupType</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_useprevioussetuptype">UsePreviousSetupType</a>.
     /// </summary>
     public IssYesNo? UsePreviousSetupType { get; set; }
 
     /// <summary>
     /// Controls whether Setup reuses the task settings of a previous installation as the defaults.
     /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioustasks">UsePreviousTasks</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_useprevioustasks">UsePreviousTasks</a>.
     /// </summary>
     public IssYesNo? UsePreviousTasks { get; set; }
 
@@ -496,14 +496,14 @@ public class SetupSection : KeyValueSection
     /// Controls whether Setup reuses the name, organization and serial number entered previously as the
     /// default user information. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioususerinfo">UsePreviousUserInfo</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_useprevioususerinfo">UsePreviousUserInfo</a>.
     /// </summary>
     public IssYesNo? UsePreviousUserInfo { get; set; }
 
     /// <summary>
     /// Tells the compiler which type of Setup to create. The <c>x86</c> and <c>x64</c> values were added in
     /// Inno Setup 6.7; when not set, the value matches <see cref="SetupArchitecture"/>.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usesetupldr">UseSetupLdr</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_usesetupldr">UseSetupLdr</a>.
     /// </summary>
     public SetupLdrMode? UseSetupLdr { get; set; }
 
@@ -542,7 +542,7 @@ public class SetupSection : KeyValueSection
     /// <summary>
     /// Specifies the background color to use for wizard pages and all other windows such as the
     /// <i>Select Language</i> dialog, in both Setup and Uninstall. Added in Inno Setup 6.7.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackcolor">WizardBackColor</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardbackcolor">WizardBackColor</a>.
     /// </summary>
     public IssColor? WizardBackColor { get; set; }
 
@@ -550,7 +550,7 @@ public class SetupSection : KeyValueSection
     /// Overrides <see cref="WizardBackColor"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
     /// Windows is in dark mode. Added in Inno Setup 6.7.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackcolordynamicdark">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardbackcolordynamicdark">
     /// WizardBackColorDynamicDark
     /// </a>.
     /// </summary>
@@ -560,7 +560,7 @@ public class SetupSection : KeyValueSection
     /// Specifies a custom image to display as the background of wizard pages in Setup, but not in Uninstall.
     /// Added in Inno Setup 6.7.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimagefile">WizardBackImageFile</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardbackimagefile">WizardBackImageFile</a>.
     /// </summary>
     public string WizardBackImageFile { get; set; }
 
@@ -568,7 +568,7 @@ public class SetupSection : KeyValueSection
     /// Overrides <see cref="WizardBackImageFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
     /// Windows is in dark mode. Added in Inno Setup 6.7.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimagefiledynamicdark">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardbackimagefiledynamicdark">
     /// WizardBackImageFileDynamicDark
     /// </a>.
     /// </summary>
@@ -578,7 +578,7 @@ public class SetupSection : KeyValueSection
     /// Specifies the opacity of the background wizard image, from <c>0</c> (fully transparent) to <c>255</c>
     /// (fully opaque, the default). Added in Inno Setup 6.7.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardbackimageopacity">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardbackimageopacity">
     /// WizardBackImageOpacity
     /// </a>.
     /// </summary>
@@ -588,7 +588,7 @@ public class SetupSection : KeyValueSection
     /// Specifies the background color used to fill any unused or transparent space around
     /// <see cref="WizardImageFile"/>; <c>none</c> keeps transparency.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagebackcolor">WizardImageBackColor</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardimagebackcolor">WizardImageBackColor</a>.
     /// </summary>
     public IssColor? WizardImageBackColor { get; set; }
 
@@ -596,7 +596,7 @@ public class SetupSection : KeyValueSection
     /// Overrides <see cref="WizardImageBackColor"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
     /// Windows is in dark mode. Added in Inno Setup 6.6.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagebackcolordynamicdark">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardimagebackcolordynamicdark">
     /// WizardImageBackColorDynamicDark
     /// </a>.
     /// </summary>
@@ -606,7 +606,7 @@ public class SetupSection : KeyValueSection
     /// Overrides <see cref="WizardImageFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
     /// Windows is in dark mode. Added in Inno Setup 6.6.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimagefiledynamicdark">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardimagefiledynamicdark">
     /// WizardImageFileDynamicDark
     /// </a>.
     /// </summary>
@@ -616,7 +616,7 @@ public class SetupSection : KeyValueSection
     /// Specifies the opacity of the wizard images, from <c>0</c> (fully transparent) to <c>255</c>
     /// (fully opaque, the default). Added in Inno Setup 6.6.1.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardimageopacity">WizardImageOpacity</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardimageopacity">WizardImageOpacity</a>.
     /// </summary>
     public int? WizardImageOpacity { get; set; }
 
@@ -626,7 +626,7 @@ public class SetupSection : KeyValueSection
     /// Specifies whether Setup and Uninstall keep the original aspect ratio of their windows when scaling
     /// for DPI. Added in Inno Setup 6.6; defaults to <c>yes</c>.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardkeepaspectratio">WizardKeepAspectRatio</a>.
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardkeepaspectratio">WizardKeepAspectRatio</a>.
     /// </summary>
     public YesNo? WizardKeepAspectRatio { get; set; }
 
@@ -639,7 +639,7 @@ public class SetupSection : KeyValueSection
     /// Specifies the background color used to fill any unused or transparent space around
     /// <see cref="WizardSmallImageFile"/>; <c>none</c> keeps transparency.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagebackcolor">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardsmallimagebackcolor">
     /// WizardSmallImageBackColor
     /// </a>.
     /// </summary>
@@ -649,7 +649,7 @@ public class SetupSection : KeyValueSection
     /// Overrides <see cref="WizardSmallImageBackColor"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c>
     /// mode and Windows is in dark mode. Added in Inno Setup 6.6.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagebackcolordynamicdark">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardsmallimagebackcolordynamicdark">
     /// WizardSmallImageBackColorDynamicDark
     /// </a>.
     /// </summary>
@@ -659,7 +659,7 @@ public class SetupSection : KeyValueSection
     /// Overrides <see cref="WizardSmallImageFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
     /// Windows is in dark mode. Added in Inno Setup 6.6.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardsmallimagefiledynamicdark">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardsmallimagefiledynamicdark">
     /// WizardSmallImageFileDynamicDark
     /// </a>.
     /// </summary>
@@ -671,7 +671,7 @@ public class SetupSection : KeyValueSection
     /// Specifies a custom VCL Styles file (<c>.vsf</c>) to be used as the default style, or one of
     /// <c>builtin:polar</c>, <c>builtin:slate</c>, <c>builtin:stellar</c> and <c>builtin:zircon</c>.
     /// Added in Inno Setup 6.6.
-    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstylefile">WizardStyleFile</a>.
+    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardstylefile">WizardStyleFile</a>.
     /// </summary>
     public string WizardStyleFile { get; set; }
 
@@ -679,7 +679,7 @@ public class SetupSection : KeyValueSection
     /// Overrides <see cref="WizardStyleFile"/> when <see cref="WizardStyle"/> uses the <c>dynamic</c> mode and
     /// Windows is in dark mode. Added in Inno Setup 6.6.
     /// See
-    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstylefiledynamicdark">
+    /// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardstylefiledynamicdark">
     /// WizardStyleFileDynamicDark
     /// </a>.
     /// </summary>

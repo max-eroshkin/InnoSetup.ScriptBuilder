@@ -38,7 +38,7 @@ public static class ValueExtensions
     /// Every member of a combined ([Flags]) value is translated separately: members marked with
     /// <see cref="IssValueAttribute"/> are written verbatim (for example <c>enhanced/nopassword</c>),
     /// while all other members are lowercased and have their underscores removed.
-    /// See <see href="https://jrsoftware.org/ishelp/index.php?topic=setupsection">[Setup] section</see>.
+    /// See <see href="https://jrsoftware.org/inno-setup/documentation/?topic=setupsection">[Setup] section</see>.
     /// </remarks>
     /// <param name="e">The enum value to convert.</param>
     /// <returns>The generated script value; members of a combined value are separated by a space.</returns>

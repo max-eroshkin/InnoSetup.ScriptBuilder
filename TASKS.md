@@ -8,8 +8,8 @@
 - один коммит = один раздел этого файла (`Коммит N`);
 - после каждого коммита: `dotnet build tests/BuilderTests/BuilderTests.csproj` + `dotnet test tests/BuilderTests/BuilderTests.csproj`;
 - тесты локально полностью зелёные (86/86) — любое падение считать регрессией;
-- новые файлы — **UTF-8 with BOM**, usings внутри namespace (StyleCop `SA1200`/`SA1412` — Error);
-- все новые публичные члены — с XML-doc и ссылкой на `https://jrsoftware.org/ishelp/index.php?topic=...`;
+- новые файлы — **UTF-8 without BOM**, usings внутри namespace (StyleCop `SA1200`/`SA1412` — Error);
+- все новые публичные члены — с XML-doc и ссылкой на `https://jrsoftware.org/inno-setup/documentation/?topic=...`;
 - всё устаревшее — `[Obsolete("Removed in Inno Setup <ver>: <замена>")]` / `[Obsolete("Obsolete since Inno Setup <ver>: <замена>")]`;
 - **не** коммитить `*.sln` правки и собранные артефакты.
 
@@ -187,11 +187,11 @@
 
 ---
 
-## [ ] Коммит 6 — Документация, версия, AGENTS.md, приёмка
+## [x] Коммит 6 — Документация, версия, AGENTS.md, приёмка
 
-- [ ] **6.1** `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj`: `<Version>7.1.1</Version>`, `PackageReleaseNotes` — перечислить breaking changes (`Encryption`, `UseSetupLdr`, `WizardStyle`, `WizardImageAlphaFormat`, `IssYesNo`).
+- [x] **6.1** `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj`: `<Version>7.1.1</Version>`, `PackageReleaseNotes` — перечислить breaking changes (`Encryption`, `UseSetupLdr`, `WizardStyle`, `WizardImageAlphaFormat`, `IssYesNo`).
 
-- [ ] **6.2** `README.md` — раздел «Upgrading from 6.3»: таблица замен; примеры новых возможностей
+- [x] **6.2** `README.md` — раздел «Upgrading from 6.3»: таблица замен; примеры новых возможностей
   - `external download ignoreversion` + `Hash` / `DownloadUserName` / `DownloadPassword`;
   - `extractarchive` + `ExtractArchivePassword`;
   - `issigverify` + `[ISSigKeys]` + `ISSigAllowedKeys`;
@@ -199,26 +199,17 @@
   - `Encryption=full`, `SetupArchitecture=x64`;
   - `InnoConstants.Auto.*`.
 
-- [ ] **6.3** `examples/Examples/` — обновить существующие примеры под новые константы/типы.
+- [x] **6.3** `examples/Examples/` — обновить существующие примеры под новые константы/типы.
 
-- [ ] **6.4** `AGENTS.md` — привести в соответствие с реальностью
+- [x] **6.4** `AGENTS.md` — привести в соответствие с реальностью
   - `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj` — **уже** с маленькой `p`, `LangVersion=13`, трап про 7.3 неактуален;
   - `BuilderTests` — **net10.0**, `global.json` → SDK `10.0.100`, `DOTNET_ROLL_FORWARD` не нужен;
   - добавить порядок `[ISSigKeys]` в `IssBuilder.Write()`;
   - правило: любой `[Obsolete]` — обязательно с версией Inno Setup и заменителем.
 
-- [ ] **6.5** Приёмка
+- [x] **6.5** Приёмка
   - `dotnet build tests/BuilderTests/BuilderTests.csproj` — без warning'ов (кроме `CS0618` в тестах);
   - `dotnet test tests/BuilderTests/BuilderTests.csproj` — зелёный, кроме известного `CodeTests` (CRLF);
   - `dotnet pack src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj -o /tmp/opencode/pack` — версия `7.1.1`, README внутри пакета;
   - ручная сверка: `grep -rn "Obsolete(" src/InnoSetup.ScriptBuilder` — у каждого сообщения есть версия;
-  - ручная сверка с `isetup.xml` (is-7_1_1): все 174 директивы `[Setup]` либо в модели, либо в obsolete-списке 4.2/1.6.
-
----
-
-## Вне рамок (не делать)
-
-- `Compression=zstd` и `ZstdNumThreads` — это **7.2-dev**, в 7.1.1 отсутствуют.
-- Удаление `powerusers` / `IsPowerUserLoggedOn` — 7.2-dev.
-- Pascal Scripting API (support functions, support classes, `OnLog`-колбэки, `Check`/`BeforeInstall`/`AfterInstall` типизация) — библиотека генерирует текст скрипта, не Pascal-код.
-- Булевы выражения в `ArchitecturesAllowed` / `ArchitecturesInstallIn64BitMode` (документация 7.1 их допускает, типизированный `[Flags] Architectures` их не выражает) — использовать `Parameter(name, value)`; зафиксировать в XML-doc.
+  - ручная сверка с `isetup.xml` (is-7_1_1): все директивы `[Setup]` либо в модели, либо в obsolete-списке 4.2/1.6. Сверено: `<setuptopic directive="...">` даёт **173** уникальных директивы (не 174, как предполагалось), и все 173 присутствуют в `SetupSection`; лишние члены модели — параметры компилятора (`Num*Entries`, `CompiledCodeText`, `Info*`) и obsolete-директивы из 1.6/4.2.

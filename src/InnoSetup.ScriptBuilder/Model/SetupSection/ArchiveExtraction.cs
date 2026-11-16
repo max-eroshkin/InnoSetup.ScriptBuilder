@@ -3,7 +3,7 @@
 /// <summary>
 /// Specifies the method of archive extraction used by the <see cref="FileFlags.ExtractArchive"/> flag and by
 /// the <c>ExtractArchive</c> support function.
-/// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_archiveextraction">ArchiveExtraction</a>.
+/// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_archiveextraction">ArchiveExtraction</a>.
 /// </summary>
 public enum ArchiveExtraction
 {

@@ -6,7 +6,7 @@ using System;
 /// Specifies the precompiled files whose verification should be skipped, as set by the
 /// <c>DisablePrecompiledFileVerifications</c> directive. Combine the members with <c>|</c>.
 /// See
-/// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_disableprecompiledfileverifications">
+/// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_disableprecompiledfileverifications">
 /// DisablePrecompiledFileVerifications
 /// </a>.
 /// </summary>

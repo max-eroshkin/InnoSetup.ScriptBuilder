@@ -4,7 +4,7 @@
 /// Specifies the architecture of the Setup program itself, as set by the <c>SetupArchitecture</c> directive.
 /// Added in Inno Setup 7.0.
 /// See
-/// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_setuparchitecture">SetupArchitecture</a>.
+/// <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_setuparchitecture">SetupArchitecture</a>.
 /// </summary>
 public enum SetupArchitecture
 {

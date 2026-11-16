@@ -6,7 +6,7 @@ using System;
 /// Specifies the visual style and appearance of Setup and Uninstall, as set by the <c>WizardStyle</c>
 /// directive. Combine the base styles, the appearance modes, the built-in custom styles and the modifiers
 /// with <c>|</c>, for example <c>WizardStyle.Modern | WizardStyle.Dark | WizardStyle.Dynamic</c>.
-/// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_wizardstyle">WizardStyle</a>.
+/// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=setup_wizardstyle">WizardStyle</a>.
 /// </summary>
 [Flags]
 public enum WizardStyle
