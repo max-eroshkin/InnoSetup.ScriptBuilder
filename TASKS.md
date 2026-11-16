@@ -166,22 +166,22 @@
 
 ---
 
-## [ ] Коммит 5 — `[Setup]`: 7.0 + scripted booleans
+## [x] Коммит 5 — `[Setup]`: 7.0 + scripted booleans
 
-- [ ] **5.1** `Model/SetupSection/SetupArchitecture.cs` : `X86, X64` (default `x86`); свойство `SetupArchitecture?` в `SetupSection`.
+- [x] **5.1** `Model/SetupSection/SetupArchitecture.cs` : `X86, X64` (default `x86`); свойство `SetupArchitecture?` в `SetupSection`.
 
-- [ ] **5.2** `Model/SetupSection/SetupLdrMode.cs` : `No, Yes, X86, X64`; `SetupSection.UseSetupLdr`: `YesNo?` → `SetupLdrMode?` (breaking, 6.7.0).
+- [x] **5.2** `Model/SetupSection/SetupLdrMode.cs` : `No, Yes, X86, X64`; `SetupSection.UseSetupLdr`: `YesNo?` → `SetupLdrMode?` (breaking, 6.7.0).
 
-- [ ] **5.3** `SetupSection.DiskSliceSize`: `uint?` → `ulong?` (7.0 поднял предел до `9223372036800000000` для 64-bit Setup).
+- [x] **5.3** `SetupSection.DiskSliceSize`: `uint?` → `ulong?` (7.0 поднял предел до `9223372036800000000` для 64-bit Setup).
 
-- [ ] **5.4** Scripted boolean expressions — перевод 9 свойств на `IssYesNo?`
+- [x] **5.4** Scripted boolean expressions — перевод 9 свойств на `IssYesNo?`
   - `Uninstallable`, `ChangesAssociations`, `ChangesEnvironment`, `UsePreviousAppDir`, `UsePreviousGroup`, `UsePreviousSetupType`, `UsePreviousTasks`, `UsePreviousUserInfo`;
   - `CreateUninstallRegKey`: `string` → `IssYesNo?`.
 
-- [ ] **5.5** Проверить компиляцию неявных преобразований на nullable: `Uninstallable(YesNo.Yes)` и `Uninstallable("{code:IsX}")`
+- [x] **5.5** Проверить компиляцию неявных преобразований на nullable: `Uninstallable(YesNo.Yes)` и `Uninstallable("{code:IsX}")`
   - если C# не выводит `YesNo → IssYesNo?` — добавить в `SetupBuilder` перегрузки `Uninstallable(YesNo)` / `Uninstallable(string)` и т.п. для всех 9 свойств.
 
-- [ ] **5.6** Тесты
+- [x] **5.6** Тесты
   - `EnumTests` автоматически проверит уникальность битов новых `[Flags]` (`PrecompiledFileVerifications`, `WizardStyle`);
   - `TestBuilder.cs` + `SetupTests.ReferenceData`: `SetupArchitecture` → `x64`, `UseSetupLdr` → `x64`, `DiskSliceSize` → большое значение, одно из yes/no-свойств → `{code:IsSomething}` (проверка отсутствия кавычек).
 

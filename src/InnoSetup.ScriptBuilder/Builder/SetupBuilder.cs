@@ -36,8 +36,22 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     public SetupBuilder AppContact(string value) => SetPropertyValue(value);
     public SetupBuilder AppComments(string value) => SetPropertyValue(value);
     public SetupBuilder AppModifyPath(string value) => SetPropertyValue(value);
-    public SetupBuilder CreateUninstallRegKey(string value) => SetPropertyValue(value);
-    public SetupBuilder Uninstallable(YesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Controls whether Setup creates an entry in the <i>Add/Remove Programs</i> Control Panel applet.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_createuninstallregkey">CreateUninstallRegKey</a>.
+    /// </summary>
+    public SetupBuilder CreateUninstallRegKey(IssYesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Controls whether Inno Setup's automatic uninstaller is included in the installation.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstallable">Uninstallable</a>.
+    /// </summary>
+    public SetupBuilder Uninstallable(IssYesNo value) => SetPropertyValue(value);
+
     public SetupBuilder CloseApplicationsFilter(string value) => SetPropertyValue(value);
 
     /// <summary>
@@ -51,8 +65,22 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
     public SetupBuilder CloseApplicationsFilterExcludes(string value) => SetPropertyValue(value);
 
     public SetupBuilder SetupMutex(string value) => SetPropertyValue(value);
-    public SetupBuilder ChangesEnvironment(YesNo value) => SetPropertyValue(value);
-    public SetupBuilder ChangesAssociations(YesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Controls whether Setup notifies other running applications that they should reload their
+    /// environment variables from the registry at the end of the installation. Accepts <c>yes</c>, <c>no</c>
+    /// or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_changesenvironment">ChangesEnvironment</a>.
+    /// </summary>
+    public SetupBuilder ChangesEnvironment(IssYesNo value) => SetPropertyValue(value);
+
+    /// <summary>
+    /// Controls whether Setup tells Explorer to refresh its file associations information at the end of the
+    /// installation. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_changesassociations">ChangesAssociations</a>.
+    /// </summary>
+    public SetupBuilder ChangesAssociations(IssYesNo value) => SetPropertyValue(value);
+
     public SetupBuilder InfoBeforeText(string value) => SetPropertyValue(value);
     public SetupBuilder LicenseText(string value) => SetPropertyValue(value);
     public SetupBuilder LicenseFile(string value) => SetPropertyValue(value);
@@ -225,7 +253,12 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
 
     public SetupBuilder DiskClusterSize(uint value) => SetPropertyValue(value);
 
-    public SetupBuilder DiskSliceSize(uint value) => SetPropertyValue(value);
+    /// <summary>
+    /// Specifies the maximum number of bytes per disk slice (<c>Setup-*.bin</c> file): <c>262144</c> through
+    /// <c>9223372036800000000</c>. The upper limit was raised in Inno Setup 7.0 for 64-bit Setup.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_diskslicesize">DiskSliceSize</a>.
+    /// </summary>
+    public SetupBuilder DiskSliceSize(ulong value) => SetPropertyValue(value);
 
     public SetupBuilder DiskSpanning(YesNo value) => SetPropertyValue(value);
 
@@ -351,6 +384,14 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
 
     public SetupBuilder RestartIfNeededByRun(YesNo value) => SetPropertyValue(value);
 
+    /// <summary>
+    /// Specifies the architecture of the Setup program itself: <c>x86</c> (the default) or <c>x64</c>.
+    /// Added in Inno Setup 7.0.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_setuparchitecture">SetupArchitecture</a>.
+    /// </summary>
+    public SetupBuilder SetupArchitecture(SetupArchitecture value) => SetPropertyValue(value);
+
     public SetupBuilder SetupLogging(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder ShowComponentSizes(YesNo value) => SetPropertyValue(value);
@@ -403,21 +444,53 @@ public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSectio
 
     public SetupBuilder UsedUserAreasWarning(YesNo value) => SetPropertyValue(value);
 
-    public SetupBuilder UsePreviousAppDir(YesNo value) => SetPropertyValue(value);
+    /// <summary>
+    /// Controls whether Setup reuses the installation directory of a previous installation as the default
+    /// directory. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usepreviousappdir">UsePreviousAppDir</a>.
+    /// </summary>
+    public SetupBuilder UsePreviousAppDir(IssYesNo value) => SetPropertyValue(value);
 
-    public SetupBuilder UsePreviousGroup(YesNo value) => SetPropertyValue(value);
+    /// <summary>
+    /// Controls whether Setup reuses the Start menu folder name of a previous installation as the default.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usepreviousgroup">UsePreviousGroup</a>.
+    /// </summary>
+    public SetupBuilder UsePreviousGroup(IssYesNo value) => SetPropertyValue(value);
 
     public SetupBuilder UsePreviousLanguage(YesNo value) => SetPropertyValue(value);
 
     public SetupBuilder UsePreviousPrivileges(YesNo value) => SetPropertyValue(value);
 
-    public SetupBuilder UsePreviousSetupType(YesNo value) => SetPropertyValue(value);
+    /// <summary>
+    /// Controls whether Setup reuses the setup type and component settings of a previous installation as the
+    /// defaults. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioussetuptype">UsePreviousSetupType</a>.
+    /// </summary>
+    public SetupBuilder UsePreviousSetupType(IssYesNo value) => SetPropertyValue(value);
 
-    public SetupBuilder UsePreviousTasks(YesNo value) => SetPropertyValue(value);
+    /// <summary>
+    /// Controls whether Setup reuses the task settings of a previous installation as the defaults. Accepts
+    /// <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioustasks">UsePreviousTasks</a>.
+    /// </summary>
+    public SetupBuilder UsePreviousTasks(IssYesNo value) => SetPropertyValue(value);
 
-    public SetupBuilder UsePreviousUserInfo(YesNo value) => SetPropertyValue(value);
+    /// <summary>
+    /// Controls whether Setup reuses the name, organization and serial number entered previously as the
+    /// default user information. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioususerinfo">UsePreviousUserInfo</a>.
+    /// </summary>
+    public SetupBuilder UsePreviousUserInfo(IssYesNo value) => SetPropertyValue(value);
 
-    public SetupBuilder UseSetupLdr(YesNo value) => SetPropertyValue(value);
+    /// <summary>
+    /// Tells the compiler which type of Setup to create. The <c>x86</c> and <c>x64</c> values were added in
+    /// Inno Setup 6.7; when not set, the value matches <c>SetupArchitecture</c>.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usesetupldr">UseSetupLdr</a>.
+    /// </summary>
+    public SetupBuilder UseSetupLdr(SetupLdrMode value) => SetPropertyValue(value);
 
     public SetupBuilder UserInfoPage(YesNo value) => SetPropertyValue(value);
 

@@ -52,9 +52,20 @@ public class SetupSection : KeyValueSection
 
     public string AppModifyPath { get; set; }
 
-    public string CreateUninstallRegKey { get; set; }
+    /// <summary>
+    /// Controls whether Setup creates an entry in the <i>Add/Remove Programs</i> Control Panel applet.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_createuninstallregkey">CreateUninstallRegKey</a>.
+    /// </summary>
+    public IssYesNo? CreateUninstallRegKey { get; set; }
 
-    public YesNo? Uninstallable { get; set; }
+    /// <summary>
+    /// Controls whether Inno Setup's automatic uninstaller is included in the installation.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_uninstallable">Uninstallable</a>.
+    /// </summary>
+    public IssYesNo? Uninstallable { get; set; }
 
     public string CloseApplicationsFilter { get; set; }
 
@@ -70,9 +81,20 @@ public class SetupSection : KeyValueSection
 
     public string SetupMutex { get; set; }
 
-    public YesNo? ChangesEnvironment { get; set; }
+    /// <summary>
+    /// Controls whether Setup notifies other running applications that they should reload their
+    /// environment variables from the registry at the end of the installation.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_changesenvironment">ChangesEnvironment</a>.
+    /// </summary>
+    public IssYesNo? ChangesEnvironment { get; set; }
 
-    public YesNo? ChangesAssociations { get; set; }
+    /// <summary>
+    /// Controls whether Setup tells Explorer to refresh its file associations information at the end of the
+    /// installation. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_changesassociations">ChangesAssociations</a>.
+    /// </summary>
+    public IssYesNo? ChangesAssociations { get; set; }
 
     public string InfoBeforeText { get; set; }
 
@@ -276,7 +298,12 @@ public class SetupSection : KeyValueSection
 
     public uint? DiskClusterSize { get; set; }
 
-    public uint? DiskSliceSize { get; set; }
+    /// <summary>
+    /// Specifies the maximum number of bytes per disk slice (<c>Setup-*.bin</c> file): <c>262144</c> through
+    /// <c>9223372036800000000</c>, or <c>max</c>. The upper limit was raised in Inno Setup 7.0 for 64-bit Setup.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_diskslicesize">DiskSliceSize</a>.
+    /// </summary>
+    public ulong? DiskSliceSize { get; set; }
 
     public YesNo? DiskSpanning { get; set; }
 
@@ -372,6 +399,14 @@ public class SetupSection : KeyValueSection
 
     public YesNo? RestartIfNeededByRun { get; set; }
 
+    /// <summary>
+    /// Specifies the architecture of the Setup program itself: <c>x86</c> (the default) or <c>x64</c>.
+    /// Added in Inno Setup 7.0.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_setuparchitecture">SetupArchitecture</a>.
+    /// </summary>
+    public SetupArchitecture? SetupArchitecture { get; set; }
+
     public YesNo? SetupLogging { get; set; }
 
     public YesNo? ShowComponentSizes { get; set; }
@@ -424,21 +459,53 @@ public class SetupSection : KeyValueSection
 
     public YesNo? UsedUserAreasWarning { get; set; }
 
-    public YesNo? UsePreviousAppDir { get; set; }
+    /// <summary>
+    /// Controls whether Setup reuses the installation directory of a previous installation as the default
+    /// directory. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usepreviousappdir">UsePreviousAppDir</a>.
+    /// </summary>
+    public IssYesNo? UsePreviousAppDir { get; set; }
 
-    public YesNo? UsePreviousGroup { get; set; }
+    /// <summary>
+    /// Controls whether Setup reuses the Start menu folder name of a previous installation as the default.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usepreviousgroup">UsePreviousGroup</a>.
+    /// </summary>
+    public IssYesNo? UsePreviousGroup { get; set; }
 
     public YesNo? UsePreviousLanguage { get; set; }
 
     public YesNo? UsePreviousPrivileges { get; set; }
 
-    public YesNo? UsePreviousSetupType { get; set; }
+    /// <summary>
+    /// Controls whether Setup reuses the setup type and component settings of a previous installation as the
+    /// defaults. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioussetuptype">UsePreviousSetupType</a>.
+    /// </summary>
+    public IssYesNo? UsePreviousSetupType { get; set; }
 
-    public YesNo? UsePreviousTasks { get; set; }
+    /// <summary>
+    /// Controls whether Setup reuses the task settings of a previous installation as the defaults.
+    /// Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioustasks">UsePreviousTasks</a>.
+    /// </summary>
+    public IssYesNo? UsePreviousTasks { get; set; }
 
-    public YesNo? UsePreviousUserInfo { get; set; }
+    /// <summary>
+    /// Controls whether Setup reuses the name, organization and serial number entered previously as the
+    /// default user information. Accepts <c>yes</c>, <c>no</c> or a scripted boolean expression.
+    /// See
+    /// <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_useprevioususerinfo">UsePreviousUserInfo</a>.
+    /// </summary>
+    public IssYesNo? UsePreviousUserInfo { get; set; }
 
-    public YesNo? UseSetupLdr { get; set; }
+    /// <summary>
+    /// Tells the compiler which type of Setup to create. The <c>x86</c> and <c>x64</c> values were added in
+    /// Inno Setup 6.7; when not set, the value matches <see cref="SetupArchitecture"/>.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=setup_usesetupldr">UseSetupLdr</a>.
+    /// </summary>
+    public SetupLdrMode? UseSetupLdr { get; set; }
 
     public YesNo? UserInfoPage { get; set; }
 

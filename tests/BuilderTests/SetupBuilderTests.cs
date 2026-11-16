@@ -93,6 +93,64 @@ public class SetupBuilderTests
         GetValue(x => x.WizardSmallImageBackColor(IssColor.None), "WizardSmallImageBackColor").Should().Be("none");
     }
 
+    [Fact]
+    public void SetupArchitectureValuesMatchDocumentation()
+    {
+        SetupArchitecture.X86.GetString().Should().Be("x86");
+        SetupArchitecture.X64.GetString().Should().Be("x64");
+
+        GetValue(x => x.SetupArchitecture(SetupArchitecture.X64), "SetupArchitecture").Should().Be("x64");
+    }
+
+    [Fact]
+    public void SetupLdrModeValuesMatchDocumentation()
+    {
+        SetupLdrMode.No.GetString().Should().Be("no");
+        SetupLdrMode.Yes.GetString().Should().Be("yes");
+        SetupLdrMode.X86.GetString().Should().Be("x86");
+        SetupLdrMode.X64.GetString().Should().Be("x64");
+
+        GetValue(x => x.UseSetupLdr(SetupLdrMode.X64), "UseSetupLdr").Should().Be("x64");
+    }
+
+    [Fact]
+    public void DiskSliceSizeAccepts64BitSizes()
+    {
+        GetValue(x => x.DiskSliceSize(9223372036800000000), "DiskSliceSize").Should().Be("9223372036800000000");
+    }
+
+    [Fact]
+    public void ScriptedBooleansAreWrittenWithoutQuotes()
+    {
+        var scripted = new (Action<SetupBuilder> Configure, string Key, string Value)[]
+        {
+            (x => x.Uninstallable("{code:IsX}"), "Uninstallable", "{code:IsX}"),
+            (x => x.ChangesAssociations("{code:IsX}"), "ChangesAssociations", "{code:IsX}"),
+            (x => x.ChangesEnvironment("{code:IsX}"), "ChangesEnvironment", "{code:IsX}"),
+            (x => x.UsePreviousAppDir("{code:IsX}"), "UsePreviousAppDir", "{code:IsX}"),
+            (x => x.UsePreviousGroup("{code:IsX}"), "UsePreviousGroup", "{code:IsX}"),
+            (x => x.UsePreviousSetupType("{code:IsX}"), "UsePreviousSetupType", "{code:IsX}"),
+            (x => x.UsePreviousTasks("{code:IsX}"), "UsePreviousTasks", "{code:IsX}"),
+            (x => x.UsePreviousUserInfo("{code:IsX}"), "UsePreviousUserInfo", "{code:IsX}"),
+            (
+                x => x.CreateUninstallRegKey("not IsTaskSelected('portablemode')"),
+                "CreateUninstallRegKey",
+                "not IsTaskSelected('portablemode')")
+        };
+
+        foreach (var (configure, key, value) in scripted)
+            GetValue(configure, key).Should().Be(value);
+    }
+
+    [Fact]
+    public void ScriptedBooleansAcceptYesNoValues()
+    {
+        GetValue(x => x.Uninstallable(YesNo.Yes), "Uninstallable").Should().Be("yes");
+        GetValue(x => x.ChangesAssociations(YesNo.No), "ChangesAssociations").Should().Be("no");
+        GetValue(x => x.CreateUninstallRegKey(YesNo.Auto), "CreateUninstallRegKey").Should().Be("auto");
+        GetValue(x => x.UsePreviousTasks(YesNo.Yes), "UsePreviousTasks").Should().Be("yes");
+    }
+
     private static string GetValue(Action<SetupBuilder> configure, string key)
     {
         var builder = new SetupBuilder();
