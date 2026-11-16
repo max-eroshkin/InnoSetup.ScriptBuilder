@@ -1,9 +1,8 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum UninstallLogMode
 {
-    public enum UninstallLogMode
-    {
-        Append,
-        New,
-        Overwrite
-    }
+    Append,
+    New,
+    Overwrite
 }

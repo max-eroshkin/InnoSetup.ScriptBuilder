@@ -1,13 +1,12 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum ValueTypes
 {
-    public enum ValueTypes
-    {
-        None,
-        String,
-        ExpandSz,
-        MultiSz,
-        DWord,
-        QWord,
-        Binary,
-    }
+    None,
+    String,
+    ExpandSz,
+    MultiSz,
+    DWord,
+    QWord,
+    Binary,
 }

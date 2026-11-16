@@ -1,15 +1,14 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public class GroupPermission
 {
-    public class GroupPermission
+    public GroupPermission(Sids group, Permissions permission)
     {
-        public GroupPermission(Sids group, Permissions permission)
-        {
-            Group = group;
-            Permission = permission;
-        }
-
-        public Sids Group { get; }
-
-        public Permissions Permission { get; }
+        Group = group;
+        Permission = permission;
     }
+
+    public Sids Group { get; }
+
+    public Permissions Permission { get; }
 }

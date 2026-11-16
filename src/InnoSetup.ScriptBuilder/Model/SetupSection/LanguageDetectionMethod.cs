@@ -1,9 +1,8 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum LanguageDetectionMethod
 {
-    public enum LanguageDetectionMethod
-    {
-        UiLanguage,
-        Locale,
-        None
-    }
+    UiLanguage,
+    Locale,
+    None
 }

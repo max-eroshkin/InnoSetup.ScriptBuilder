@@ -1,8 +1,7 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum PrivilegesRequired
 {
-    public enum PrivilegesRequired
-    {
-        Admin,
-        Lowest
-    }
+    Admin,
+    Lowest
 }

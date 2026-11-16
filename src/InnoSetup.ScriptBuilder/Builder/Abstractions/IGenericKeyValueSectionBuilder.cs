@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IGenericKeyValueSectionBuilder
 {
-    public interface IGenericKeyValueSectionBuilder
-    {
-        GenericKeyValueSectionBuilder CreateEntry();
-    }
+    GenericKeyValueSectionBuilder CreateEntry();
 }

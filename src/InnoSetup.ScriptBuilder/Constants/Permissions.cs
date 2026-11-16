@@ -1,12 +1,11 @@
-﻿namespace InnoSetup.ScriptBuilder
-{
-    using System;
+﻿namespace InnoSetup.ScriptBuilder;
 
-    [Flags]
-    public enum Permissions
-    {
-        ReadExec = 1,
-        Modify = 2,
-        Full = 4
-    }
+using System;
+
+[Flags]
+public enum Permissions
+{
+    ReadExec = 1,
+    Modify = 2,
+    Full = 4
 }

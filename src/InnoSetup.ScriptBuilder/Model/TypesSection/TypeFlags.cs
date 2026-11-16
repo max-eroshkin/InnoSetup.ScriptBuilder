@@ -1,10 +1,9 @@
-﻿namespace InnoSetup.ScriptBuilder
-{
-    using System;
+﻿namespace InnoSetup.ScriptBuilder;
 
-    [Flags]
-    public enum TypeFlags
-    {
-        IsCustom = 0x01
-    }
+using System;
+
+[Flags]
+public enum TypeFlags
+{
+    IsCustom = 0x01
 }

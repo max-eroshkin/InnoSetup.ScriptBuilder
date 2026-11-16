@@ -1,17 +1,16 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum Sids
 {
-    public enum Sids
-    {
-        Admins,
-        AuthUsers,
-        CreatorOwner,
-        Everyone,
-        Guests,
-        IisiUsrs,
-        NetworkService,
-        PowerUsers,
-        Service,
-        System,
-        Users
-    }
+    Admins,
+    AuthUsers,
+    CreatorOwner,
+    Everyone,
+    Guests,
+    IisiUsrs,
+    NetworkService,
+    PowerUsers,
+    Service,
+    System,
+    Users
 }

@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IGenericParameterSectionBuilder
 {
-    public interface IGenericParameterSectionBuilder
-    {
-        GenericParameterSectionBuilder CreateEntry();
-    }
+    GenericParameterSectionBuilder CreateEntry();
 }

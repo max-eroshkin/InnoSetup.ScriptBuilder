@@ -1,20 +1,19 @@
-﻿namespace BuilderTests
+﻿namespace BuilderTests;
+
+using System.Collections.Generic;
+
+public class TypesTests : ParameterSectionTestsBase<TypeEntry>
 {
-    using System.Collections.Generic;
+    protected override string SectionName => "Types";
 
-    public class TypesTests : ParameterSectionTestsBase<TypeEntry>
+    protected override Dictionary<string, string> ReferenceData => new()
     {
-        protected override string SectionName => "Types";
-
-        protected override Dictionary<string, string> ReferenceData => new()
-        {
-            { "Name", "\"Name\"" },
-            { "Description", "\"Description\"" },
-            { "Flags", "iscustom" },
-            { "Languages", "\"Languages\"" },
-            { "MinVersion", "\"MinVersion\"" },
-            { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
-            { "Check", "\"Check\"" },
-        };
-    }
+        { "Name", "\"Name\"" },
+        { "Description", "\"Description\"" },
+        { "Flags", "iscustom" },
+        { "Languages", "\"Languages\"" },
+        { "MinVersion", "\"MinVersion\"" },
+        { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
+        { "Check", "\"Check\"" },
+    };
 }

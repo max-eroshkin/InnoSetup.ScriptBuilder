@@ -1,7 +1,6 @@
-namespace InnoSetup.ScriptBuilder
+namespace InnoSetup.ScriptBuilder;
+
+public interface IFileEntryBuilder
 {
-    public interface IFileEntryBuilder
-    {
-        FilesBuilder CreateEntry(string source, string destDir);
-    }
+    FilesBuilder CreateEntry(string source, string destDir);
 }

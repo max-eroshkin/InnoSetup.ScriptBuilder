@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IComponentEntryBuilder
 {
-    public interface IComponentEntryBuilder
-    {
-        ComponentsBuilder CreateEntry(string name, string description);
-    }
+    ComponentsBuilder CreateEntry(string name, string description);
 }

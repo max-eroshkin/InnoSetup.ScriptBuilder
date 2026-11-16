@@ -1,8 +1,7 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum WizardStyle
 {
-    public enum WizardStyle
-    {
-        Classic,
-        Modern
-    }
+    Classic,
+    Modern
 }

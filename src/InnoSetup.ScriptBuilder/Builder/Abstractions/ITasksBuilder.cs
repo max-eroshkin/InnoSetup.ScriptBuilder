@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface ITasksBuilder
 {
-    public interface ITasksBuilder
-    {
-        TasksBuilder CreateEntry(string name, string description);
-    }
+    TasksBuilder CreateEntry(string name, string description);
 }

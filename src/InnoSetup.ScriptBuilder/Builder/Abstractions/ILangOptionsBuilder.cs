@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface ILangOptionsBuilder
 {
-    public interface ILangOptionsBuilder
-    {
-        LangOptionsBuilder Create();
-    }
+    LangOptionsBuilder Create();
 }

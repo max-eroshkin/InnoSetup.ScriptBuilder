@@ -1,9 +1,8 @@
-﻿namespace InnoSetup.ScriptBuilder
-{
-    using System.IO;
+﻿namespace InnoSetup.ScriptBuilder;
 
-    public interface IBuilder
-    {
-        void Write(TextWriter writer);
-    }
+using System.IO;
+
+public interface IBuilder
+{
+    void Write(TextWriter writer);
 }

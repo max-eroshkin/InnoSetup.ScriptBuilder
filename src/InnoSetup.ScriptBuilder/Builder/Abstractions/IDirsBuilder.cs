@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IDirsBuilder
 {
-    public interface IDirsBuilder
-    {
-        DirsBuilder CreateEntry(string name);
-    }
+    DirsBuilder CreateEntry(string name);
 }

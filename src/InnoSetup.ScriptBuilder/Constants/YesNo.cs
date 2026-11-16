@@ -1,9 +1,8 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum YesNo
 {
-    public enum YesNo
-    {
-        Auto,
-        Yes,
-        No
-    }
+    Auto,
+    Yes,
+    No
 }

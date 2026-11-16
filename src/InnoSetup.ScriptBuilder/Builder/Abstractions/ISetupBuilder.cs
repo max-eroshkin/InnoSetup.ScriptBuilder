@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface ISetupBuilder
 {
-    public interface ISetupBuilder
-    {
-        SetupBuilder Create(string appName);
-    }
+    SetupBuilder Create(string appName);
 }

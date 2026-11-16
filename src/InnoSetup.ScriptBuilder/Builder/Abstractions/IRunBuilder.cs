@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IRunBuilder
 {
-    public interface IRunBuilder
-    {
-        RunBuilder CreateEntry(string fileName);
-    }
+    RunBuilder CreateEntry(string fileName);
 }

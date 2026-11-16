@@ -1,17 +1,16 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public class LanguageEntry : ModelBase
 {
-    public class LanguageEntry : ModelBase
-    {
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public string MessagesFile { get; set; }
+    public string MessagesFile { get; set; }
 
-        public string LicenseFile { get; set; }
+    public string LicenseFile { get; set; }
 
-        public string InfoAfterFile { get; set; }
+    public string InfoAfterFile { get; set; }
 
-        public string InfoBeforeFile { get; set; }
+    public string InfoBeforeFile { get; set; }
 
-        public string Check { get; set; }
-    }
+    public string Check { get; set; }
 }

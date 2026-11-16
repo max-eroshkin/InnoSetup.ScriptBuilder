@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IIconBuilder
 {
-    public interface IIconBuilder
-    {
-        IconsBuilder CreateEntry(string name, string filename);
-    }
+    IconsBuilder CreateEntry(string name, string filename);
 }

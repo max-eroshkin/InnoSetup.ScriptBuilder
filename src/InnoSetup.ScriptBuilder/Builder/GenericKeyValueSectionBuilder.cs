@@ -1,18 +1,17 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public class GenericKeyValueSectionBuilder :
+    KeyValueSectionBuilderBase<GenericKeyValueSectionBuilder, KeyValueSection>, IGenericKeyValueSectionBuilder
 {
-    public class GenericKeyValueSectionBuilder :
-        KeyValueSectionBuilderBase<GenericKeyValueSectionBuilder, KeyValueSection>, IGenericKeyValueSectionBuilder
+    public GenericKeyValueSectionBuilder(string name)
     {
-        public GenericKeyValueSectionBuilder(string name)
-        {
-            SectionName = name;
-        }
+        SectionName = name;
+    }
 
-        public override string SectionName { get; }
+    public override string SectionName { get; }
 
-        public GenericKeyValueSectionBuilder CreateEntry()
-        {
-            return CreateEntryInternal();
-        }
+    public GenericKeyValueSectionBuilder CreateEntry()
+    {
+        return CreateEntryInternal();
     }
 }

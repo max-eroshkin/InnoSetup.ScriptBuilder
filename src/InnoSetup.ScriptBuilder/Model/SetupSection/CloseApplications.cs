@@ -1,9 +1,8 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum CloseApplications
 {
-    public enum CloseApplications
-    {
-        Yes,
-        No,
-        Force
-    }
+    Yes,
+    No,
+    Force
 }

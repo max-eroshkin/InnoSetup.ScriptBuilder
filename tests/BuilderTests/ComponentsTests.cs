@@ -1,22 +1,21 @@
-﻿namespace BuilderTests
+﻿namespace BuilderTests;
+
+using System.Collections.Generic;
+
+public class ComponentsTests : ParameterSectionTestsBase<ComponentEntry>
 {
-    using System.Collections.Generic;
+    protected override string SectionName => "Components";
 
-    public class ComponentsTests : ParameterSectionTestsBase<ComponentEntry>
+    protected override Dictionary<string, string> ReferenceData => new()
     {
-        protected override string SectionName => "Components";
-
-        protected override Dictionary<string, string> ReferenceData => new()
-        {
-            { "Name", "\"Name\"" },
-            { "Description", "\"Description\"" },
-            { "ExtraDiskSpaceRequired", "123456" },
-            { "Types", "\"Types\"" },
-            { "Languages", "\"Languages\"" },
-            { "MinVersion", "\"MinVersion\"" },
-            { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
-            { "Flags", "fixed exclusive" },
-            { "Check", "\"Check\"" },
-        };
-    }
+        { "Name", "\"Name\"" },
+        { "Description", "\"Description\"" },
+        { "ExtraDiskSpaceRequired", "123456" },
+        { "Types", "\"Types\"" },
+        { "Languages", "\"Languages\"" },
+        { "MinVersion", "\"MinVersion\"" },
+        { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
+        { "Flags", "fixed exclusive" },
+        { "Check", "\"Check\"" },
+    };
 }

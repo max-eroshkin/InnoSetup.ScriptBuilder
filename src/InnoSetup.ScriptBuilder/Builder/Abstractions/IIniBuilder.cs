@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IIniBuilder
 {
-    public interface IIniBuilder
-    {
-        IniBuilder CreateEntry(string filename, string section);
-    }
+    IniBuilder CreateEntry(string filename, string section);
 }

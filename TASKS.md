@@ -94,30 +94,30 @@
 
 ---
 
-## [ ] Коммит 3 — `[Files]`, `[Run]`/`[UninstallRun]`, новая секция `[ISSigKeys]`
+## [x] Коммит 3 — `[Files]`, `[Run]`/`[UninstallRun]`, новая секция `[ISSigKeys]`
 
-- [ ] **3.1** `Model/FileSection/FileEntry.cs` — 6 новых параметров (`string`)
+- [x] **3.1** `Model/FileSection/FileEntry.cs` — 6 новых параметров (`string`)
   - `ISSigAllowedKeys`, `Hash`, `ExtractArchivePassword`, `DownloadISSigSource`, `DownloadUserName`, `DownloadPassword`
   - порядок объявления — **после** `StrongAssemblyName`, **до** `Permissions`/`Flags`/`Components` (порядок = порядок вывода).
 
-- [ ] **3.2** `Constants/FileFlags.cs` — 4 новых бита (enum `ulong`, занято до `1ul << 40`)
+- [x] **3.2** `Constants/FileFlags.cs` — 4 новых бита (enum `ulong`, занято до `1ul << 40`)
   - `Download = 1ul << 41`, `ExtractArchive = 1ul << 42`, `ISSigVerify = 1ul << 43`, `NoTimestamp = 1ul << 44`
   - XML-doc: взаимоисключения (`download` требует `external` + `ignoreversion` + `DestName` + `ExternalSize`; `download` нельзя с `comparetimestamp`/`recursesubdirs`/`skipifsourcedoesntexist`; `issigverify` нельзя с `sign`/`signonce`; `notimestamp` нельзя с `comparetimestamp`/`touch`) — **только документация**, runtime-валидацию не вводить.
 
-- [ ] **3.3** `Builder/FilesBuilder.cs` — 6 one-liner'ов с именами **точно как у свойств** (`SetPropertyValue` резолвит по `[CallerMemberName]`).
+- [x] **3.3** `Builder/FilesBuilder.cs` — 6 one-liner'ов с именами **точно как у свойств** (`SetPropertyValue` резолвит по `[CallerMemberName]`).
 
-- [ ] **3.4** `Model/RunSection/RunEntry.cs` + `Builder/RunBuilder.cs` — параметр `OnLog` (`string`)
+- [x] **3.4** `Model/RunSection/RunEntry.cs` + `Builder/RunBuilder.cs` — параметр `OnLog` (`string`)
   - XML-doc: только `[Run]`, требует флаг `LogOutput`; `RunEntry` общий с `[UninstallRun]`, поэтому валидации нет.
 
-- [ ] **3.5** Новая секция `[ISSigKeys]`
+- [x] **3.5** Новая секция `[ISSigKeys]`
   - `Model/IssigKeysSection/IssigKeyEntry.cs` : **`ModelBase`** (не `CommonParameterSectionEntryBase` — у секции нет `Languages`/`MinVersion`/`Check`), свойства: `Name`, `Group`, `KeyID`, `KeyFile`, `PublicX`, `PublicY`, `RuntimeID` (все `string`);
   - `Builder/IssigKeysBuilder.cs` : `ParameterSectionBuilderBase<IssigKeysBuilder, IssigKeyEntry>`, `SectionName => "ISSigKeys"`, методы `CreateEntry(string name, string keyFile)`, `CreateEntryFromPublicKey(string name, string publicX, string publicY)`, `Group/KeyID/KeyFile/PublicX/PublicY/RuntimeID`;
   - `Builder/Abstractions/IIssigKeyEntryBuilder.cs`;
   - `Builder/IssBuilder.cs`: поле `_issigKeys`, свойство **`ISSigKeys`** (такое написание обязательно — `BuilderTests.NamingConsistency` требует `SectionName == property.Name`), вызов `_issigKeys.Write(writer)` **после `_langOptionsBuilder`, до `_messages`**.
 
-- [ ] **3.6** Тесты
+- [x] **3.6** Тесты
   - `TestBuilder.cs`: заполнить 6 параметров `[Files]`, `OnLog`, создать запись в `[ISSigKeys]` (иначе упадёт `BuilderTests.TestBuilderContainsAllAvailableSections`);
-  - `FilesTests.cs`: +6 параметров и `Flags: external download extractarchive issigverify ignoreversion` в `ReferenceData`;
+  - `FilesTests.cs`: +6 параметров и `Flags: external ignoreversion download extractarchive issigverify` в `ReferenceData` (порядок битов, а не порядок объявления);
   - `RunSectionTests.cs`: +`OnLog`;
   - новый `IssigKeysTests.cs` : `ParameterSectionTestsBase<IssigKeyEntry>`, `SectionName => "ISSigKeys"`.
 

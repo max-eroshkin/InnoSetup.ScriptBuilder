@@ -1,6 +1,5 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public class KeyValueSection : ModelBase
 {
-    public class KeyValueSection : ModelBase
-    {
-    }
 }

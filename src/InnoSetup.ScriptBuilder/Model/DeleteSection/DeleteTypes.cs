@@ -1,9 +1,8 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum DeleteTypes
 {
-    public enum DeleteTypes
-    {
-        Files,
-        FilesAndOrDirs,
-        DirIfEmpty
-    }
+    Files,
+    FilesAndOrDirs,
+    DirIfEmpty
 }

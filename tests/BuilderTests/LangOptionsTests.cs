@@ -1,25 +1,24 @@
-﻿namespace BuilderTests
+﻿namespace BuilderTests;
+
+using System.Collections.Generic;
+
+public class LangOptionsTests : KeyValueSectionTestsBase<LangOptionsSection>
 {
-    using System.Collections.Generic;
+    protected override string SectionName => "LangOptions";
 
-    public class LangOptionsTests : KeyValueSectionTestsBase<LangOptionsSection>
+    protected override Dictionary<string, string> ReferenceData => new()
     {
-        protected override string SectionName => "LangOptions";
-
-        protected override Dictionary<string, string> ReferenceData => new()
-        {
-            { "LanguageName", "LanguageName" },
-            { "DialogFontName", "DialogFontName" },
-            { "DialogFontSize", "1" },
-            { "WelcomeFontName", "WelcomeFontName" },
-            { "WelcomeFontSize", "2" },
-            { "TitleFontName", "TitleFontName" },
-            { "TitleFontSize", "3" },
-            { "CopyrightFontName", "CopyrightFontName" },
-            { "CopyrightFontSize", "4" },
-            { "RightToLeft", "yes" },
-            { "LanguageID", "en-us" },
-            { "LanguageCodePage", "1111" },
-        };
-    }
+        { "LanguageName", "LanguageName" },
+        { "DialogFontName", "DialogFontName" },
+        { "DialogFontSize", "1" },
+        { "WelcomeFontName", "WelcomeFontName" },
+        { "WelcomeFontSize", "2" },
+        { "TitleFontName", "TitleFontName" },
+        { "TitleFontSize", "3" },
+        { "CopyrightFontName", "CopyrightFontName" },
+        { "CopyrightFontSize", "4" },
+        { "RightToLeft", "yes" },
+        { "LanguageID", "en-us" },
+        { "LanguageCodePage", "1111" },
+    };
 }

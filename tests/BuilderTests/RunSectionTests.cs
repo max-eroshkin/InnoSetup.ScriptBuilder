@@ -1,46 +1,46 @@
-﻿namespace BuilderTests
+﻿namespace BuilderTests;
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+public class RunSectionTests : ParameterSectionTestsBase<RunEntry>
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text.RegularExpressions;
+    protected override string SectionName => "Run";
 
-    public class RunSectionTests : ParameterSectionTestsBase<RunEntry>
+    protected override Dictionary<string, string> ReferenceData => new()
     {
-        protected override string SectionName => "Run";
+        { "Filename", "\"FileName\"" },
+        { "Description", "\"Description\"" },
+        { "Parameters", "\"Parameters\"" },
+        { "WorkingDir", "\"WorkingDir\"" },
+        { "StatusMsg", "\"StatusMsg\"" },
+        { "RunOnceId", "\"RunOnceId\"" },
+        { "Verb", "\"Verb\"" },
+        { "OnLog", "\"MyOnLog\"" },
+        { "Components", "\"Components\"" },
+        { "Tasks", "\"Tasks\"" },
+        { "Languages", "\"Languages\"" },
+        { "MinVersion", "\"MinVersion\"" },
+        { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
+        { "Flags", "64bit runhidden" },
+        { "Check", "\"Check\"" },
+        { "BeforeInstall", "\"BeforeInstall\"" },
+        { "AfterInstall", "\"AfterInstall\"" },
+    };
 
-        protected override Dictionary<string, string> ReferenceData => new()
-        {
-            { "Filename", "\"FileName\"" },
-            { "Description", "\"Description\"" },
-            { "Parameters", "\"Parameters\"" },
-            { "WorkingDir", "\"WorkingDir\"" },
-            { "StatusMsg", "\"StatusMsg\"" },
-            { "RunOnceId", "\"RunOnceId\"" },
-            { "Verb", "\"Verb\"" },
-            { "Components", "\"Components\"" },
-            { "Tasks", "\"Tasks\"" },
-            { "Languages", "\"Languages\"" },
-            { "MinVersion", "\"MinVersion\"" },
-            { "OnlyBelowVersion", "\"OnlyBelowVersion\"" },
-            { "Flags", "64bit runhidden" },
-            { "Check", "\"Check\"" },
-            { "BeforeInstall", "\"BeforeInstall\"" },
-            { "AfterInstall", "\"AfterInstall\"" },
-        };
+    [Fact]
+    public void UninstallRunSection()
+    {
+        var iss = new TestBuilder().ToString();
 
-        [Fact]
-        public void UninstallRunSection()
-        {
-            var iss = new TestBuilder().ToString();
-
-            iss.Should().NotBeEmpty();
-            var sections = TestUtils.GetSections(iss).ToList();
-            var section = sections.FirstOrDefault(x => x.Name == "UninstallRun");
-            section.Should().NotBeNull();
-            var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
-            section.Entries.Should()
-                .HaveCount(1)
-                .And.OnlyContain(x => entryRegex.IsMatch(x));
-        }
+        iss.Should().NotBeEmpty();
+        var sections = TestUtils.GetSections(iss).ToList();
+        var section = sections.FirstOrDefault(x => x.Name == "UninstallRun");
+        section.Should().NotBeNull();
+        var entryRegex = new Regex(TestUtils.ParameterSectionEntryPattern);
+        section.Entries.Should()
+            .HaveCount(1)
+            .And.OnlyContain(x => entryRegex.IsMatch(x));
     }
 }

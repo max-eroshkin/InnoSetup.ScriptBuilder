@@ -1,8 +1,7 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public enum LzmaMatchFinder
 {
-    public enum LzmaMatchFinder
-    {
-        Hc,
-        Bt
-    }
+    Hc,
+    Bt
 }

@@ -1,27 +1,26 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+using System.IO;
+using System.Text;
+
+public class CodeBuilder : IBuilder
 {
-    using System.IO;
-    using System.Text;
+    private readonly StringBuilder _data = new();
 
-    public class CodeBuilder : IBuilder
+    public string SectionName => "Code";
+
+    public CodeBuilder CreateEntry(string script)
     {
-        private readonly StringBuilder _data = new();
+        _data.AppendLine(script);
+        return this;
+    }
 
-        public string SectionName => "Code";
-
-        public CodeBuilder CreateEntry(string script)
-        {
-            _data.AppendLine(script);
-            return this;
-        }
-
-        public void Write(TextWriter writer)
-        {
-            if (_data.Length == 0)
-                return;
-            writer.WriteLine();
-            writer.WriteLine($"[{SectionName}]");
-            writer.Write(_data);
-        }
+    public void Write(TextWriter writer)
+    {
+        if (_data.Length == 0)
+            return;
+        writer.WriteLine();
+        writer.WriteLine($"[{SectionName}]");
+        writer.Write(_data);
     }
 }

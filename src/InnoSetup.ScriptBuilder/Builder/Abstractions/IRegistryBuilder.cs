@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IRegistryBuilder
 {
-    public interface IRegistryBuilder
-    {
-        RegistryBuilder CreateEntry(RegistryKeys root, string subkey);
-    }
+    RegistryBuilder CreateEntry(RegistryKeys root, string subkey);
 }

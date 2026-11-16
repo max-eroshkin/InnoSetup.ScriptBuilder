@@ -1,19 +1,18 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public class GenericParameterSectionBuilder :
+    ParameterSectionBuilderBase<GenericParameterSectionBuilder, CommonParameterSectionEntryBase>,
+    IGenericParameterSectionBuilder
 {
-    public class GenericParameterSectionBuilder :
-        ParameterSectionBuilderBase<GenericParameterSectionBuilder, CommonParameterSectionEntryBase>,
-        IGenericParameterSectionBuilder
+    public GenericParameterSectionBuilder(string name)
     {
-        public GenericParameterSectionBuilder(string name)
-        {
-            SectionName = name;
-        }
+        SectionName = name;
+    }
 
-        public override string SectionName { get; }
+    public override string SectionName { get; }
 
-        public GenericParameterSectionBuilder CreateEntry()
-        {
-            return CreateEntryInternal();
-        }
+    public GenericParameterSectionBuilder CreateEntry()
+    {
+        return CreateEntryInternal();
     }
 }

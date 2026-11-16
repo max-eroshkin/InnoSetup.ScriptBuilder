@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface ITypesBuilder
 {
-    public interface ITypesBuilder
-    {
-        TypesBuilder CreateEntry(string name, string description);
-    }
+    TypesBuilder CreateEntry(string name, string description);
 }

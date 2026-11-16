@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface IDeleteBuilder
 {
-    public interface IDeleteBuilder
-    {
-        DeleteBuilder CreateEntry(DeleteTypes type, string name);
-    }
+    DeleteBuilder CreateEntry(DeleteTypes type, string name);
 }

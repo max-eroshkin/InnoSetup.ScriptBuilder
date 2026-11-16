@@ -1,19 +1,18 @@
-﻿namespace BuilderTests
+﻿namespace BuilderTests;
+
+using System.Collections.Generic;
+
+public class LanguagesTests : ParameterSectionTestsBase<LanguageEntry>
 {
-    using System.Collections.Generic;
+    protected override string SectionName => "Languages";
 
-    public class LanguagesTests : ParameterSectionTestsBase<LanguageEntry>
+    protected override Dictionary<string, string> ReferenceData => new()
     {
-        protected override string SectionName => "Languages";
-
-        protected override Dictionary<string, string> ReferenceData => new()
-        {
-            { "Name", "\"Name\"" },
-            { "MessagesFile", "\"MessagesFile\"" },
-            { "LicenseFile", "\"LicenseFile\"" },
-            { "InfoAfterFile", "\"InfoAfterFile\"" },
-            { "InfoBeforeFile", "\"InfoBeforeFile\"" },
-            { "Check", "\"Check\"" },
-        };
-    }
+        { "Name", "\"Name\"" },
+        { "MessagesFile", "\"MessagesFile\"" },
+        { "LicenseFile", "\"LicenseFile\"" },
+        { "InfoAfterFile", "\"InfoAfterFile\"" },
+        { "InfoBeforeFile", "\"InfoBeforeFile\"" },
+        { "Check", "\"Check\"" },
+    };
 }

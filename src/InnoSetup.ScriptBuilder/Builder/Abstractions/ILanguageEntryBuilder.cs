@@ -1,7 +1,6 @@
-﻿namespace InnoSetup.ScriptBuilder
+﻿namespace InnoSetup.ScriptBuilder;
+
+public interface ILanguageEntryBuilder
 {
-    public interface ILanguageEntryBuilder
-    {
-        LanguagesBuilder CreateEntry(string name, string messagesFile);
-    }
+    LanguagesBuilder CreateEntry(string name, string messagesFile);
 }
