@@ -79,18 +79,18 @@
 
 ---
 
-## [ ] Коммит 2 — Constants
+## [x] Коммит 2 — Constants
 
-- [ ] **2.1** `Constants/InnoConstants.cs`: новый вложенный статический класс **`Auto`** (14 констант)
+- [x] **2.1** `Constants/InnoConstants.cs`: новый вложенный статический класс **`Auto`** (14 констант)
   - `{autoappdata}`, `{autocf}`, `{autocf32}`, `{autocf64}`, `{autodesktop}`, `{autodocs}`, `{autofonts}`, `{autopf}`, `{autopf32}`, `{autopf64}`, `{autoprograms}`, `{autostartmenu}`, `{autostartup}`, `{autotemplates}`
   - XML-doc: «автоматически маппится на common-форму, кроме non administrative install mode, где маппится на user-форму; документация рекомендует использовать именно auto-константы».
 
-- [ ] **2.2** Там же, в legacy-класс с `[Obsolete("Use InnoConstants.Directories...")]`: добавить 8 алиасов
+- [x] **2.2** Там же, в legacy-класс с `[Obsolete("Use InnoConstants.Directories...")]`: добавить 8 алиасов
   - `{pf}`, `{pf32}`, `{pf64}`, `{cf}`, `{cf32}`, `{cf64}`, `{fonts}`, `{sendto}` — с указанием замены (`Auto.*` / `Directories.*` / `Shell.*`).
 
-- [ ] **2.3** `BuilderTests/ConstantTests.cs`: тесты значений `Auto.*` (все 14) и legacy-алиасов (8).
+- [x] **2.3** `BuilderTests/ConstantTests.cs`: тесты значений `Auto.*` (все 14) и legacy-алиасов (8).
 
-- [ ] **2.4** `README.md` / `examples/Examples/`: заменить литералы `"{autofonts}"`/`"{autopf}"` на `InnoConstants.Auto.*`.
+- [x] **2.4** `README.md` / `examples/Examples/`: заменить литералы `"{autofonts}"`/`"{autopf}"` на `InnoConstants.Auto.*`.
 
 ---
 

@@ -60,10 +60,10 @@ public class DemoBuilder : IssBuilder
         Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
             .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
         Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
-        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: @"{autofonts}")
+        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: InnoConstants.Auto.Fonts)
             .FontInstall("Graphik LCG")
             .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
-        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: @"{autofonts}")
+        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: InnoConstants.Auto.Fonts)
             .FontInstall("Graphik LCG")
             .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
     }
@@ -87,10 +87,10 @@ var builder = BuilderUtils.CreateBuilder(builder =>
     builder.Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
         .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
     builder.Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
-    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: @"{autofonts}")
+    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: InnoConstants.Auto.Fonts)
         .FontInstall("Graphik LCG")
         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
-    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: @"{autofonts}")
+    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: InnoConstants.Auto.Fonts)
         .FontInstall("Graphik LCG")
         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
 });
