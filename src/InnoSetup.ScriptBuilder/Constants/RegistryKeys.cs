@@ -1,4 +1,5 @@
 ﻿// ReSharper disable InconsistentNaming
+
 namespace InnoSetup.ScriptBuilder
 {
     /// <summary>

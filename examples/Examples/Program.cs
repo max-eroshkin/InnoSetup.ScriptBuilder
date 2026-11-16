@@ -1,23 +1,22 @@
-﻿using System;
-
-namespace Examples
+﻿namespace Examples
 {
+    using System;
     using InnoSetup.ScriptBuilder;
 
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             BuildFile();
 
             BuildFile2();
 
             BuildFInPlace();
-            
+
             BuildString();
         }
 
-        static void BuildString()
+        private static void BuildString()
         {
             var builder = BuilderUtils.CreateBuilder(builder =>
             {
@@ -33,22 +32,22 @@ namespace Examples
             Console.WriteLine(result);
         }
 
-        static void BuildFile()
+        private static void BuildFile()
         {
             var builder = new DemoBuilder();
             builder.Build("demo.iss");
-            
+
             Console.WriteLine("demo.iss built");
         }
 
-        static void BuildFile2()
+        private static void BuildFile2()
         {
             BuilderUtils.Build<DemoBuilder>("demo2.iss");
-            
+
             Console.WriteLine("demo2.iss built");
         }
 
-        static void BuildFInPlace()
+        private static void BuildFInPlace()
         {
             BuilderUtils.Build(
                 builder =>
@@ -58,9 +57,9 @@ namespace Examples
                         .DefaultDirName(@"{userappdata}\SupportTools");
                     builder.Files.CreateEntry(@"bin\*", InnoConstants.Directories.App)
                         .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
-                }, 
+                },
                 "inplace.iss");
-            
+
             Console.WriteLine("inplace.iss built");
         }
     }

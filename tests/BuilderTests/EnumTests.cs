@@ -1,22 +1,25 @@
 ﻿namespace BuilderTests
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using FluentAssertions;
-    using InnoSetup.ScriptBuilder;
-    using Xunit;
 
     public class EnumTests
     {
+        public static IEnumerable<object[]> GetFlagEnums()
+        {
+            return typeof(Architectures).Assembly.GetTypes()
+                .Where(x => x.IsEnum && x.GetCustomAttribute<FlagsAttribute>() != null)
+                .Select(x => new object[] { x });
+        }
+
         [Theory]
         [MemberData(nameof(GetFlagEnums))]
         public void ValueDuplicationTest(Type enumType)
         {
             if (!enumType.IsEnum)
                 throw new ArgumentException($"{enumType.Name} is not an enum");
-            
+
             var values = Enum
                 .GetValues(enumType)
                 .Cast<object>()
@@ -26,13 +29,6 @@
                 .ToList();
 
             values.Should().BeEmpty();
-        }
-
-        public static IEnumerable<object[]> GetFlagEnums()
-        {
-            return typeof(Architectures).Assembly.GetTypes()
-                .Where(x => x.IsEnum && x.GetCustomAttribute<FlagsAttribute>() != null)
-                .Select(x => new object[] { x });
         }
     }
 }

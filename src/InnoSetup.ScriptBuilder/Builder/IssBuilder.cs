@@ -55,6 +55,7 @@
         public IDeleteBuilder InstallDelete => _installDelete;
 
         public IGenericKeyValueSectionBuilder Messages => _messages;
+
         public IIniBuilder INI => _ini;
 
         public IGenericKeyValueSectionBuilder CustomMessages => _customMessages;

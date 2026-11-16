@@ -1,7 +1,6 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder;
 
     public class RegistryTests : ParameterSectionTestsBase<RegistryEntry>
     {

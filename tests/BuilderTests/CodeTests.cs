@@ -1,10 +1,5 @@
 ﻿namespace BuilderTests
 {
-    using System;
-    using FluentAssertions;
-    using InnoSetup.ScriptBuilder;
-    using Xunit;
-
     public class CodeTests
     {
         [Fact]
@@ -16,7 +11,7 @@
                 .ToString();
             iss.Should().Be(
                 Environment.NewLine + "[Code]" + Environment.NewLine + "code1" + Environment.NewLine +
-                            "code2" + Environment.NewLine);
+                "code2" + Environment.NewLine);
         }
     }
 }

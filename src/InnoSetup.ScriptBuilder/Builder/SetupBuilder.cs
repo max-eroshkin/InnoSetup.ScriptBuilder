@@ -5,6 +5,7 @@
     public class SetupBuilder : KeyValueSectionBuilderBase<SetupBuilder, SetupSection>, ISetupBuilder
     {
         public override string SectionName => "Setup";
+
         public SetupBuilder Create(string appName)
         {
             CreateEntryInternal();
@@ -61,18 +62,24 @@
         public SetupBuilder NumUninstallDeleteEntries(int value) => SetPropertyValue(value);
         public SetupBuilder NumRunEntries(int value) => SetPropertyValue(value);
         public SetupBuilder NumUninstallRunEntries(int value) => SetPropertyValue(value);
+
         [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public SetupBuilder BackColor(long value) => SetPropertyValue(value);
+
         [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public SetupBuilder BackColor2(long value) => SetPropertyValue(value);
+
         public SetupBuilder DirExistsWarning(YesNo value) => SetPropertyValue(value);
         public SetupBuilder ShowLanguageDialog(YesNo value) => SetPropertyValue(value);
         public SetupBuilder UninstallLogMode(UninstallLogMode value) => SetPropertyValue(value);
         public SetupBuilder WizardImageAlphaFormat(WizardImageAlphaFormat value) => SetPropertyValue(value);
+
         [Obsolete("Obsolete since Inno Setup 3.0.5: use WizardSizePercent (\"120,120\") instead")]
         public SetupBuilder WizardSizePercentX(int value) => SetPropertyValue(value);
+
         [Obsolete("Obsolete since Inno Setup 3.0.5: use WizardSizePercent (\"120,120\") instead")]
         public SetupBuilder WizardSizePercentY(int value) => SetPropertyValue(value);
+
         public SetupBuilder ExtraDiskSpaceRequired(long value) => SetPropertyValue(value);
         public SetupBuilder SlicesPerDisk(int value) => SetPropertyValue(value);
         public SetupBuilder UninstallDisplaySize(long value) => SetPropertyValue(value);
@@ -86,13 +93,14 @@
 
         [Obsolete("Obsolete since Inno Setup 6.0: use the individual [Setup] directives instead")]
         public SetupBuilder Options(SetupOption value) => SetPropertyValue(value);
+
         public SetupBuilder OutputDir(string value) => SetPropertyValue(value);
         public SetupBuilder OutputBaseFilename(string value) => SetPropertyValue(value);
         public SetupBuilder OutputManifestFile(string value) => SetPropertyValue(value);
         public SetupBuilder SetupIconFile(string value) => SetPropertyValue(value);
         public SetupBuilder WizardImageFile(string value) => SetPropertyValue(value);
         public SetupBuilder WizardSmallImageFile(string value) => SetPropertyValue(value);
-        
+
         public SetupBuilder AllowCancelDuringInstall(YesNo value) => SetPropertyValue(value);
 
         public SetupBuilder AllowNetworkDrive(YesNo value) => SetPropertyValue(value);
@@ -119,7 +127,8 @@
 
         public SetupBuilder ArchitecturesAllowed(Architectures value) => SetPropertyValue(value);
 
-        public SetupBuilder ArchitecturesInstallIn64BitMode(ArchitecturesInstallIn64BitMode value) => SetPropertyValue(value);
+        public SetupBuilder ArchitecturesInstallIn64BitMode(ArchitecturesInstallIn64BitMode value) =>
+            SetPropertyValue(value);
 
         public SetupBuilder ASLRCompatible(YesNo value) => SetPropertyValue(value);
 

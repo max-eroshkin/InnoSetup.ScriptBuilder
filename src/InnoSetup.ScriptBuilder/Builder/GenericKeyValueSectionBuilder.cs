@@ -1,6 +1,7 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    public class GenericKeyValueSectionBuilder : KeyValueSectionBuilderBase<GenericKeyValueSectionBuilder, KeyValueSection>, IGenericKeyValueSectionBuilder
+    public class GenericKeyValueSectionBuilder :
+        KeyValueSectionBuilderBase<GenericKeyValueSectionBuilder, KeyValueSection>, IGenericKeyValueSectionBuilder
     {
         public GenericKeyValueSectionBuilder(string name)
         {

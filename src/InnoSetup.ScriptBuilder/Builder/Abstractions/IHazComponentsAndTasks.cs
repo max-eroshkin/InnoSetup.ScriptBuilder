@@ -9,15 +9,15 @@
         /// <summary>
         /// A space separated list of component names.
         /// </summary>
-        public string Components { get; set; }
+        string Components { get; set; }
 
         /// <summary>
         /// A space separated list of task names.
         /// </summary>
-        public string Tasks { get; set; }
+        string Tasks { get; set; }
 
-        public string BeforeInstall { get; set; }
+        string BeforeInstall { get; set; }
 
-        public string AfterInstall { get; set; }
+        string AfterInstall { get; set; }
     }
 }

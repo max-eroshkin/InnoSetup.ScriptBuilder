@@ -6,7 +6,6 @@
     using System.Linq;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using FluentAssertions;
     using FluentAssertions.Collections;
 
     internal static class TestUtils
@@ -63,7 +62,7 @@
                 dictionary = matches.ToDictionary(x => x.Groups[1].Value, x => x.Groups[2].Value);
             return dictionary;
         }
-        
+
         public static KeyValuePair<string, string> ParseKeyValue(string entry)
         {
             var parameterPattern = new Regex(@"^(\w+)\=(.+)$");

@@ -1,30 +1,9 @@
 ﻿namespace BuilderTests
 {
-    using System;
     using System.Linq;
-    using FluentAssertions;
-    using InnoSetup.ScriptBuilder;
-    using Xunit;
 
     public class CustomSectionAndParameterTests
     {
-        [Fact]
-        public void CustomKeyValueSection()
-        {
-            const string sectionName = "TestKeyValueSection";
-
-            var script = GetScript(x =>
-                x.Sections.CreateKeyValueSection(sectionName).CreateEntry()
-                    .Parameter("param1", 1)
-                    .Parameter("param2", "string parameter"));
-
-            var sections = TestUtils.GetSections(script).ToList();
-            var section = sections.FirstOrDefault(x => x.Name == sectionName);
-            section.Should().NotBeNull();
-
-            section!.Entries.Count.Should().Be(2);
-        }
-
         [Theory]
         [InlineData("string", "string")]
         [InlineData(1, "1")]
@@ -48,23 +27,6 @@
             section!.Entries.Last().Should().Be($"param2={scriptValue}");
         }
 
-        [Fact]
-        public void CustomParameterSection()
-        {
-            const string sectionName = "TestParameterSection";
-
-            var script = GetScript(x =>
-                x.Sections.CreateParameterSection(sectionName)
-                    .CreateEntry().Parameter("param1", 1).Parameter("param2", "string parameter")
-                    .CreateEntry().Parameter("param1", 2).Parameter("param2", "string parameter"));
-
-            var sections = TestUtils.GetSections(script).ToList();
-            var section = sections.FirstOrDefault(x => x.Name == sectionName);
-            section.Should().NotBeNull();
-
-            section!.Entries.Count.Should().Be(2);
-        }
-
         [Theory]
         [InlineData("string parameter", "string parameter")]
         [InlineData(1, "1")]
@@ -86,23 +48,47 @@
 
             section!.Entries.Last().Should().Be($"param1: 1; param2: {scriptValue}; ");
         }
-        
+
+        private string GetScript(Action<IssBuilder> config)
+        {
+            var builder = BuilderUtils.CreateBuilder(config);
+            return builder.ToString();
+        }
+
         [Fact]
-        public void KeyValueEmptyParameterValue()
+        public void CustomKeyValueSection()
         {
             const string sectionName = "TestKeyValueSection";
 
             var script = GetScript(x =>
                 x.Sections.CreateKeyValueSection(sectionName).CreateEntry()
-                    .Parameter("param1", null));
+                    .Parameter("param1", 1)
+                    .Parameter("param2", "string parameter"));
 
             var sections = TestUtils.GetSections(script).ToList();
             var section = sections.FirstOrDefault(x => x.Name == sectionName);
             section.Should().NotBeNull();
 
-            section!.Entries.Should().BeEmpty();
+            section!.Entries.Count.Should().Be(2);
         }
-        
+
+        [Fact]
+        public void CustomParameterSection()
+        {
+            const string sectionName = "TestParameterSection";
+
+            var script = GetScript(x =>
+                x.Sections.CreateParameterSection(sectionName)
+                    .CreateEntry().Parameter("param1", 1).Parameter("param2", "string parameter")
+                    .CreateEntry().Parameter("param1", 2).Parameter("param2", "string parameter"));
+
+            var sections = TestUtils.GetSections(script).ToList();
+            var section = sections.FirstOrDefault(x => x.Name == sectionName);
+            section.Should().NotBeNull();
+
+            section!.Entries.Count.Should().Be(2);
+        }
+
         [Fact]
         public void EmptyParameterValue()
         {
@@ -119,10 +105,20 @@
             section!.Entries.Should().BeEmpty();
         }
 
-        private string GetScript(Action<IssBuilder> config)
+        [Fact]
+        public void KeyValueEmptyParameterValue()
         {
-            var builder = BuilderUtils.CreateBuilder(config);
-            return builder.ToString();
+            const string sectionName = "TestKeyValueSection";
+
+            var script = GetScript(x =>
+                x.Sections.CreateKeyValueSection(sectionName).CreateEntry()
+                    .Parameter("param1", null));
+
+            var sections = TestUtils.GetSections(script).ToList();
+            var section = sections.FirstOrDefault(x => x.Name == sectionName);
+            section.Should().NotBeNull();
+
+            section!.Entries.Should().BeEmpty();
         }
     }
 }

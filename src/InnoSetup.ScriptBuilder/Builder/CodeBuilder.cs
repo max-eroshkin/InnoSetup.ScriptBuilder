@@ -8,7 +8,7 @@
         private readonly StringBuilder _data = new();
 
         public string SectionName => "Code";
-        
+
         public CodeBuilder CreateEntry(string script)
         {
             _data.AppendLine(script);

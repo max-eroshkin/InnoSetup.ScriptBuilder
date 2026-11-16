@@ -10,10 +10,13 @@ You can find the official Inno Setup documentation on the [Inno Setup website](h
 ## Installation
 
 .NET CLI
+
 ```ps1
 dotnet add package InnoSetup.ScriptBuilder
 ```
+
 Package Manager
+
 ```ps1
 Install-Package InnoSetup.ScriptBuilder
 ```
@@ -21,6 +24,7 @@ Install-Package InnoSetup.ScriptBuilder
 ## Examples
 
 ### Creating a Builder
+
 To generate a script that looks like this:
 
 ```iss
@@ -99,12 +103,14 @@ var builder = BuilderUtils.CreateBuilder(builder =>
 ## Getting Results
 
 ### String Result
+
 ```c#
 var builder = new DemoBuilder();
 var result = builder.ToString();
 ```
 
 ### Script File
+
 ```c#
 var builder = new DemoBuilder();
 builder.Build("demo.iss");
@@ -144,7 +150,8 @@ The `FreeText()` method allows you to insert any text into the script as is.
 
 ## Custom Sections and Parameters
 
-If a section you want to insert is not implemented out of the box, you can use either the `Sections.CreateKeyValueSection()` or `Sections.CreateParameterSection()` methods.
+If a section you want to insert is not implemented out of the box, you can use either the
+`Sections.CreateKeyValueSection()` or `Sections.CreateParameterSection()` methods.
 
 To insert unsupported parameters or directives into any type of section, use the `Parameter()` method:
 

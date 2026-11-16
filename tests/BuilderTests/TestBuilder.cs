@@ -1,7 +1,5 @@
 ﻿namespace BuilderTests
 {
-    using InnoSetup.ScriptBuilder;
-
     public class TestBuilder : IssBuilder
     {
         public TestBuilder()

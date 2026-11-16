@@ -4,7 +4,7 @@
 
     /// <summary>
     /// Specifies the flags of an <c>[Icons]</c> entry.
-    /// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=iconssection">[Icons] section</a>.
+    /// See <a href="https://jrsoftware.org/ishelp/index.php?topic=iconssection">[Icons] section</a>.
     /// </summary>
     [Flags]
     public enum IconFlags
@@ -16,6 +16,7 @@
         CloseOnExit = 1 << 4,
         DontCloseOnExit = 1 << 5,
         RunMaximized = 1 << 6,
+
         [Obsolete("Removed in Inno Setup 6.3")]
         FolderShortcut = 1 << 7,
         ExcludeFromShowInNewInstall = 1 << 8,

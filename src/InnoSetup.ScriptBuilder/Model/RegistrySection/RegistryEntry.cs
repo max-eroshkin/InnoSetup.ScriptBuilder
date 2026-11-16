@@ -15,8 +15,11 @@
         public string ValueData { get; set; }
 
         public List<GroupPermission> Permissions { get; set; }
+
         public RegistryFlags? Flags { get; set; }
+
         public string Components { get; set; }
+
         public string Tasks { get; set; }
 
         public string BeforeInstall { get; set; }

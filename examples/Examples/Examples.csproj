@@ -9,5 +9,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
   </ItemGroup>
-  
+
 </Project>

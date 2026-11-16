@@ -8,6 +8,7 @@
         where TBuilder : class
     {
         public abstract string SectionName { get; }
+
         protected TData Data { get; set; }
 
         public TBuilder Parameter(string name, string value, bool needQuotes = true)

@@ -1,9 +1,8 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder;
 
-    public class TasksTests: ParameterSectionTestsBase<TaskEntry>
+    public class TasksTests : ParameterSectionTestsBase<TaskEntry>
     {
         protected override string SectionName => "Tasks";
 

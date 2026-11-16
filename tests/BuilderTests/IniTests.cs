@@ -1,9 +1,8 @@
 ﻿namespace BuilderTests
 {
     using System.Collections.Generic;
-    using InnoSetup.ScriptBuilder;
 
-    public class IniTests: ParameterSectionTestsBase<IniEntry>
+    public class IniTests : ParameterSectionTestsBase<IniEntry>
     {
         protected override string SectionName => "INI";
 

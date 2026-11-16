@@ -6,5 +6,9 @@
     <IsPackable>true</IsPackable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  
+
+  <ItemGroup>
+    <Using Include="System" />
+  </ItemGroup>
+
 </Project>

@@ -46,5 +46,5 @@
         UninsRestartDelete = 1ul << 38,
         UninsNeverUninstall = 1ul << 39,
         UnsetNtfsCompression = 1ul << 40,
-     }
+    }
 }

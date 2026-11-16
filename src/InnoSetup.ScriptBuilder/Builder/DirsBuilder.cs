@@ -16,12 +16,12 @@
 
             return this;
         }
-        
+
         public DirsBuilder Attribs(AttribsFlags value) => SetPropertyValue(value);
         public DirsBuilder Flags(DirFlags value) => SetPropertyValue(value);
         public DirsBuilder Components(string value) => SetPropertyValue(value);
         public DirsBuilder Tasks(string value) => SetPropertyValue(value);
-        
+
         /// <inheritdoc />
         public DirsBuilder BeforeInstall(string value) => SetPropertyValue(value);
 
@@ -34,7 +34,7 @@
             Data.Permissions.Add(new GroupPermission(group, permission));
             return this;
         }
-        
+
         private DirsBuilder Name(string value) => SetPropertyValue(value);
     }
 }

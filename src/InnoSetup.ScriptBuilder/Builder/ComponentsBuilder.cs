@@ -1,6 +1,7 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    public class ComponentsBuilder : CommonParameterSectionBuilderBase<ComponentsBuilder, ComponentEntry>, IComponentEntryBuilder
+    public class ComponentsBuilder : CommonParameterSectionBuilderBase<ComponentsBuilder, ComponentEntry>,
+        IComponentEntryBuilder
     {
         public override string SectionName => "Components";
 

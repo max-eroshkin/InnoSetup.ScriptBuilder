@@ -1,18 +1,20 @@
 ﻿namespace BuilderTests
 {
-    using System;
     using System.Linq;
     using System.Reflection;
-    using FluentAssertions;
-    using InnoSetup.ScriptBuilder;
-    using Xunit;
 
     public class ValueFormattingTests
     {
-        [Fact]
-        public void FlagsCombinationRemovesUnderscores()
+        [Flags]
+        private enum TestEnum
         {
-            (FileFlags.Sign | FileFlags._32bit).GetString().Should().Be("32bit sign");
+            Plain = 1,
+
+            [IssValue("enhanced/nopassword")] EnhancedNoPassword = 1 << 1,
+
+            [IssValue("pbkdf2/220000")] Pbkdf2Default = 1 << 2,
+
+            WithUnderscore = 1 << 3
         }
 
         [Fact]
@@ -25,19 +27,9 @@
         }
 
         [Fact]
-        public void IssColorFromTColorInteger()
+        public void FlagsCombinationRemovesUnderscores()
         {
-            IssColor color = 255L;
-
-            color.Value.Should().Be("$0000ff");
-            color.ToString().Should().Be("$0000ff");
-            ((object)color).GetString().Should().Be("$0000ff");
-
-            IssColor intColor = 255;
-            intColor.Should().Be(color);
-
-            IssColor pureGreenTColor = 0x00FF00L;
-            pureGreenTColor.Value.Should().Be("$00ff00");
+            (FileFlags.Sign | FileFlags._32bit).GetString().Should().Be("32bit sign");
         }
 
         [Fact]
@@ -60,6 +52,22 @@
         }
 
         [Fact]
+        public void IssColorFromTColorInteger()
+        {
+            IssColor color = 255L;
+
+            color.Value.Should().Be("$0000ff");
+            color.ToString().Should().Be("$0000ff");
+            ((object)color).GetString().Should().Be("$0000ff");
+
+            IssColor intColor = 255;
+            intColor.Should().Be(color);
+
+            IssColor pureGreenTColor = 0x00FF00L;
+            pureGreenTColor.Value.Should().Be("$00ff00");
+        }
+
+        [Fact]
         public void IssColorHexProducesRgbNotation()
         {
             IssColor.Hex(0, 0, 0).Value.Should().Be("#000000");
@@ -71,15 +79,19 @@
         }
 
         [Fact]
-        public void StaticColorNamesMatchMemberNames()
+        public void IssValueAttributeIsWrittenVerbatim()
         {
-            var colors = typeof(IssColor)
-                .GetFields(BindingFlags.Public | BindingFlags.Static)
-                .Where(x => x.FieldType == typeof(IssColor))
-                .ToList();
+            TestEnum.EnhancedNoPassword.GetString().Should().Be("enhanced/nopassword");
+            TestEnum.Pbkdf2Default.GetString().Should().Be("pbkdf2/220000");
+            TestEnum.WithUnderscore.GetString().Should().Be("withunderscore");
+            TestEnum.Plain.GetString().Should().Be("plain");
+        }
 
-            colors.Should().HaveCount(18);
-            colors.Should().OnlyContain(x => ((IssColor)x.GetValue(null)).Value == x.Name.ToLower());
+        [Fact]
+        public void IssValueAttributeWorksInsideFlagsCombination()
+        {
+            (TestEnum.Plain | TestEnum.EnhancedNoPassword | TestEnum.WithUnderscore).GetString()
+                .Should().Be("plain enhanced/nopassword withunderscore");
         }
 
         [Fact]
@@ -105,33 +117,15 @@
         }
 
         [Fact]
-        public void IssValueAttributeIsWrittenVerbatim()
+        public void StaticColorNamesMatchMemberNames()
         {
-            TestEnum.EnhancedNoPassword.GetString().Should().Be("enhanced/nopassword");
-            TestEnum.Pbkdf2Default.GetString().Should().Be("pbkdf2/220000");
-            TestEnum.WithUnderscore.GetString().Should().Be("withunderscore");
-            TestEnum.Plain.GetString().Should().Be("plain");
-        }
+            var colors = typeof(IssColor)
+                .GetFields(BindingFlags.Public | BindingFlags.Static)
+                .Where(x => x.FieldType == typeof(IssColor))
+                .ToList();
 
-        [Fact]
-        public void IssValueAttributeWorksInsideFlagsCombination()
-        {
-            (TestEnum.Plain | TestEnum.EnhancedNoPassword | TestEnum.WithUnderscore).GetString()
-                .Should().Be("plain enhanced/nopassword withunderscore");
-        }
-
-        [Flags]
-        private enum TestEnum
-        {
-            Plain = 1,
-
-            [IssValue("enhanced/nopassword")]
-            EnhancedNoPassword = 1 << 1,
-
-            [IssValue("pbkdf2/220000")]
-            Pbkdf2Default = 1 << 2,
-
-            WithUnderscore = 1 << 3
+            colors.Should().HaveCount(18);
+            colors.Should().OnlyContain(x => ((IssColor)x.GetValue(null)).Value == x.Name.ToLower());
         }
     }
 }

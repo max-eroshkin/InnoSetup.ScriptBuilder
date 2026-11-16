@@ -1,6 +1,5 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
-    using System;
     using System.IO;
     using System.Reflection;
 

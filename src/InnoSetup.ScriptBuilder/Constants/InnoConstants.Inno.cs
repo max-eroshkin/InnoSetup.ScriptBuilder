@@ -128,7 +128,11 @@
             /// an actual "%" character, use "%25".
             /// </remarks>
             /// <example>{ini:{win}\MyProg.ini,Settings,Path|{autopf}\My Program}</example>
-            public static string GetIniVariable(string filename, string section, string key, string defaultValue = null)
+            public static string GetIniVariable(
+                string filename,
+                string section,
+                string key,
+                string defaultValue = null)
             {
                 var val = $"{filename},{section},{key}";
                 if (!string.IsNullOrWhiteSpace(defaultValue))

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class RegistryBuilder : 
+    public class RegistryBuilder :
         CommonParameterSectionBuilderBase<RegistryBuilder, RegistryEntry>,
         IRegistryBuilder,
         IComponentsAndTasksBuilder<RegistryBuilder>
