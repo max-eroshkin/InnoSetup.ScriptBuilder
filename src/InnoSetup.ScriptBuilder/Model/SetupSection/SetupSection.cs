@@ -1,5 +1,7 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
+    using System;
+
     public class SetupSection : KeyValueSection
     {
         public string AppName { get; set; }
@@ -104,8 +106,10 @@
 
         public int? NumUninstallRunEntries { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public long? BackColor { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public long? BackColor2 { get; set; }
 
         public YesNo? DirExistsWarning { get; set; }
@@ -116,8 +120,10 @@
 
         public WizardImageAlphaFormat? WizardImageAlphaFormat { get; set; }
 
+        [Obsolete("Obsolete since Inno Setup 3.0.5: use WizardSizePercent (\"120,120\") instead")]
         public int? WizardSizePercentX { get; set; }
 
+        [Obsolete("Obsolete since Inno Setup 3.0.5: use WizardSizePercent (\"120,120\") instead")]
         public int? WizardSizePercentY { get; set; }
 
         public long? ExtraDiskSpaceRequired { get; set; }
@@ -136,6 +142,7 @@
 
         public SetupPrivilegesRequiredOverrides? PrivilegesRequiredOverridesAllowed { get; set; }
 
+        [Obsolete("Obsolete since Inno Setup 6.0: use the individual [Setup] directives instead")]
         public SetupOption? Options { get; set; }
 
         public string OutputDir { get; set; }
@@ -180,8 +187,10 @@
 
         public YesNo? ASLRCompatible { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public BackColorDirection? BackColorDirection { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public YesNo? BackSolid { get; set; }
 
         public CloseApplications? CloseApplications { get; set; }
@@ -266,6 +275,7 @@
 
         public YesNo? ShowTasksTreeLines { get; set; }
 
+        [Obsolete("Has no effect since Inno Setup 6.0 (Unicode-only builds)")]
         public YesNo? ShowUndisplayableLanguages { get; set; }
 
         public YesNo? SignedUninstaller { get; set; }
@@ -340,16 +350,21 @@
 
         public string VersionInfoVersion { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public YesNo? WindowResizable { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public YesNo? WindowShowCaption { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public YesNo? WindowStartMaximized { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public YesNo? WindowVisible { get; set; }
 
         public YesNo? WizardImageStretch { get; set; }
 
+        [Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")]
         public YesNo? WizardResizable { get; set; }
 
         public string WizardSizePercent { get; set; }

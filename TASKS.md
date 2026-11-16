@@ -32,7 +32,7 @@
   - закэшировать `(Type, memberName) -> string` (обычный `static Dictionary` под `lock` — `netstandard2.0`);
   - **не менять** поведение для `int`/`uint`/`long`/`ulong`/`string`/`List<GroupPermission>`.
 
-- [ ] **1.3** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssColor.cs`
+- [x] **1.3** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssColor.cs`
   - `public readonly struct IssColor : IEquatable<IssColor>`, свойство `public string Value { get; }`, `ToString() => Value`;
   - `implicit operator IssColor(long)` и `(int)` → `"$" + значение как 6 hex-цифр` (`$bbggrr`, Delphi `TColor`);
   - `implicit operator IssColor(string)` → как есть (`"#fff"`, `"#rrggbb"`, `"cornflowerblue"`, `"none"`, `"window"`);
@@ -40,17 +40,17 @@
   - `static IssColor Named(string)` → имя без валидации;
   - статические `None`, `Window` + 16 базовых имён (black, maroon, green, olive, navy, purple, teal, gray, silver, red, lime, yellow, blue, fuchsia, aqua, white).
 
-- [ ] **1.4** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssYesNo.cs`
+- [x] **1.4** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssYesNo.cs`
   - `public readonly struct IssYesNo`, `public string Value { get; }`, `ToString() => Value`;
   - `implicit operator IssYesNo(YesNo)` → `yes`/`no`/`auto` (через существующий `GetString`);
   - `implicit operator IssYesNo(string)` → как есть, **без кавычек** (scripted boolean expression, например `{code:IsSomething}`);
   - нужен для 9 директив `[Setup]` с формулировкой `yes or no, or a scripted boolean expression`.
 
-- [ ] **1.5** `ValueExtensions.GetString(this object value, bool needQuotes = true)` — добавить ветки
+- [x] **1.5** `ValueExtensions.GetString(this object value, bool needQuotes = true)` — добавить ветки
   - `IssColor color => color.Value`
   - `IssYesNo flag => flag.Value`
 
-- [ ] **1.6** `[Obsolete]`-чистка существующего API (без удаления членов — кроме 1.7)
+- [x] **1.6** `[Obsolete]`-чистка существующего API (без удаления членов — кроме 1.7)
   - `Model/SetupSection/SetupSection.cs`: `BackColor`, `BackColor2`, `BackColorDirection`, `BackSolid`, `WindowResizable`, `WindowShowCaption`, `WindowStartMaximized`, `WindowVisible`, `WizardResizable` → `Obsolete("Removed in Inno Setup 6.4: use WizardImageBackColor / WizardStyle instead")`;
   - там же: `Options` + весь `Model/SetupSection/SetupOption.cs` → `Obsolete("Obsolete since Inno Setup 6.0: use the individual [Setup] directives instead")`;
   - там же: `WizardSizePercentX`, `WizardSizePercentY` → `Obsolete("Obsolete since Inno Setup 3.0.5: use WizardSizePercent (\"120,120\") instead")`;
@@ -59,14 +59,14 @@
   - `Constants/InnoConstants.cs`: `Inno.Hwnd` → `Obsolete("Removed in Inno Setup 6.4")`;
   - `Model/SetupSection/BackColorDirection.cs` — enum оставить, но пометить `Obsolete` вместе со свойством.
 
-- [ ] **1.7** Баг-фикс: `Model/SetupSection/WizardImageAlphaFormat.cs`
+- [x] **1.7** Баг-фикс: `Model/SetupSection/WizardImageAlphaFormat.cs`
   - `Ignored` → **`None`** (документация и в 6.3.3, и в 7.1.1: `none | defined | premultiplied`; `ignored` — невалидное значение ISS, свойство никогда не работало корректно);
   - член не оставлять как алиас (дубликат значения делает `Enum.ToString()` недетерминированным) — это осознанное breaking rename, отразить в release notes.
 
-- [ ] **1.8** Баг-фикс: `Model/IconsSection/IconFlags.cs`
+- [x] **1.8** Баг-фикс: `Model/IconsSection/IconFlags.cs`
   - `FolderShortcut` (флаг `foldershortcut` удалён в Inno Setup 6.3.0) → `[Obsolete("Removed in Inno Setup 6.3")]`, бит `1 << 7` пометить как «не переиспользовать».
 
-- [ ] **1.9** Тесты
+- [x] **1.9** Тесты
   - новый `tests/BuilderTests/ValueFormattingTests.cs`:
     - `FileFlags.Sign | FileFlags._32bit` → `"sign 32bit"` (регресс на `_`-хендлинг);
     - `Permissions`, `Sids`, `RegistryKeys`, `DeleteTypes` — по одному представителю (регресс lower-case);
@@ -75,7 +75,7 @@
     - `IssValueAttribute` — на private тестовом enum + в `[Flags]`-комбинации.
   - в `tests/BuilderTests/BuilderTests.csproj` добавить `<NoWarn>$(NoWarn);CS0618</NoWarn>` (иначе `TestBuilder` не соберётся после 1.6).
 
-- [ ] **1.10** `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj`: `PackageReleaseNotes` → `Upgraded to Inno Setup 7.1.1` (версию **не** менять до Коммита 6).
+- [x] **1.10** `src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj`: `PackageReleaseNotes` → `Upgraded to Inno Setup 7.1.1` (версию **не** менять до Коммита 6).
 
 ---
 

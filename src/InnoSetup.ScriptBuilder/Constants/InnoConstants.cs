@@ -614,6 +614,10 @@
             /// <summary>
             /// (Special-purpose) Translates to the window handle of the Setup program's background window.
             /// </summary>
+            /// <remarks>
+            /// Removed in Inno Setup 6.4: use <see cref="WizardHwnd"/> instead.
+            /// </remarks>
+            [Obsolete("Removed in Inno Setup 6.4")]
             public const string Hwnd = "{hwnd}";
 
             /// <summary>

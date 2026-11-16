@@ -1,5 +1,7 @@
 ﻿namespace InnoSetup.ScriptBuilder
 {
+    using System;
+
     public class LangOptionsBuilder :
         KeyValueSectionBuilderBase<LangOptionsBuilder, LangOptionsSection>,
         ILangOptionsBuilder
@@ -22,12 +24,16 @@
 
         public LangOptionsBuilder WelcomeFontSize(int value) => SetPropertyValue(value);
 
+        [Obsolete("Removed in Inno Setup 6.4")]
         public LangOptionsBuilder TitleFontName(string value) => SetPropertyValue(value);
 
+        [Obsolete("Removed in Inno Setup 6.4")]
         public LangOptionsBuilder TitleFontSize(int value) => SetPropertyValue(value);
 
+        [Obsolete("Removed in Inno Setup 6.4")]
         public LangOptionsBuilder CopyrightFontName(string value) => SetPropertyValue(value);
 
+        [Obsolete("Removed in Inno Setup 6.4")]
         public LangOptionsBuilder CopyrightFontSize(int value) => SetPropertyValue(value);
 
         public LangOptionsBuilder RightToLeft(YesNo value) => SetPropertyValue(value);

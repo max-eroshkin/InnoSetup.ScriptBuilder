@@ -2,7 +2,12 @@
 {
     using System;
 
+    /// <summary>
+    /// Represents the removed <c>[Setup]</c> <c>Options</c> directive, which is superseded by individual
+    /// <c>[Setup]</c> directives since Inno Setup 6.0.
+    /// </summary>
     [Flags]
+    [Obsolete("Obsolete since Inno Setup 6.0: use the individual [Setup] directives instead")]
     public enum SetupOption : ulong
     {
         DisableStartupPrompt = 1,

@@ -25,6 +25,8 @@
                 long number => number.ToString(NumberFormatInfo.InvariantInfo),
                 ulong number => number.ToString(NumberFormatInfo.InvariantInfo),
                 List<GroupPermission> permissions => GetString(permissions),
+                IssColor color => color.Value,
+                IssYesNo flag => flag.Value,
                 _ => null
             };
         }
