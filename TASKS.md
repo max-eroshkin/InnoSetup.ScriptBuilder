@@ -21,12 +21,12 @@
 
 Цель: научиться печатать значения, которые нельзя вывести из имени члена enum, и типы с неявными преобразованиями. Публичный API секций на этом шаге **не** расширяется.
 
-- [ ] **1.1** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssValueAttribute.cs`
+- [x] **1.1** Новый файл `src/InnoSetup.ScriptBuilder/Constants/IssValueAttribute.cs`
   - `[AttributeUsage(AttributeTargets.Field)] public sealed class IssValueAttribute : Attribute`
   - `public IssValueAttribute(string value)`, `public string Value { get; }`
   - Назначение: значения вида `enhanced/nopassword`, `pbkdf2/220000`.
 
-- [ ] **1.2** Переписать `src/InnoSetup.ScriptBuilder/Utils/ValueExtensions.cs` → `GetString(this Enum e)`
+- [x] **1.2** Переписать `src/InnoSetup.ScriptBuilder/Utils/ValueExtensions.cs` → `GetString(this Enum e)`
   - разбить `e.ToString("g")` по `", "`;
   - для каждого токена: если у члена есть `IssValueAttribute` — взять `Value` как есть; иначе прежняя трансформация (`Replace("_", "")` + `ToLower()`);
   - закэшировать `(Type, memberName) -> string` (обычный `static Dictionary` под `lock` — `netstandard2.0`);
