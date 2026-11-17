@@ -9,6 +9,7 @@ public enum Sids
     Guests,
     IisiUsrs,
     NetworkService,
+    [Obsolete]
     PowerUsers,
     Service,
     System,
