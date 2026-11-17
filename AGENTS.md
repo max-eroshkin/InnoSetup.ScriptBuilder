@@ -4,8 +4,7 @@ Fluent C# API that **generates Inno Setup (`.iss`) scripts**. The deliverable is
 (`InnoSetup.ScriptBuilder`); there is no app, server, or DB — everything is fluent builders plus reflection-based text output.
 
 The library tracks **Inno Setup 7.1.1**: every `[Setup]`, `[Files]`, `[Run]`, `[ISSigKeys]` and common-parameter
-directive of that version is either exposed as a typed member or listed as `[Obsolete]`. `TASKS.md` holds the
-migration history (one commit per section of that file; commits 1-6 are done).
+directive of that version is either exposed as a typed member or listed as `[Obsolete]`.
 
 ## Layout
 
