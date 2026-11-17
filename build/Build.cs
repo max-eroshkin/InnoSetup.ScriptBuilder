@@ -18,7 +18,7 @@ using Isotopes;
     ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
 [GitHubActions(
     "Publish",
-    GitHubActionsImage.WindowsLatest,
+    GitHubActionsImage.WindowsLatest, 
     FetchDepth = 0,
     OnPushBranches = new[] { MasterBranch, "release/**" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPublish.Publish) },

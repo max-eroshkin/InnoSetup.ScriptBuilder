@@ -9,7 +9,8 @@
     <UseWPF>true</UseWPF>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
-    <IncludeNativeLibrariesInSingleFile>true</IncludeNativeLibrariesInSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType>none</DebugType>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

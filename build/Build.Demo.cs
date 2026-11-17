@@ -1,12 +1,12 @@
 namespace Ci;
 
 using System.IO;
+using System.Linq;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Tools.InnoSetup;
-using Fallout.Solutions;
 using InnoSetup.ScriptBuilder;
 using Isotopes;
 
@@ -42,7 +42,7 @@ partial class Build
                         .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
 
                     builder.Registry
-                        .CreateEntry(RegistryKeys.HKCU, @"SOFTWARE\Microsoft\Windows\CurrentVersion\InnoSetupDemoApp")
+                        .CreateEntry(RegistryKeys.HKLM, @"SOFTWARE\Microsoft\Windows\CurrentVersion\InnoSetupDemoApp")
                         .ValueName("DemoAppData")
                         .ValueType(ValueTypes.String)
                         .ValueData("Test Data")
@@ -67,7 +67,7 @@ partial class Build
         .Executes(() =>
         {
             InnoSetupTasks.InnoSetup(config => config
-                .SetProcessToolPath(NuGetToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe", "6.3.1"))
+                .SetProcessToolPath(NuGetToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe", "7.1.0"))
                 .SetScriptFile(IssPath)
                 .SetOutputDir(From<IPack>().ArtifactsDirectory));
         });
@@ -79,6 +79,6 @@ partial class Build
             DotNetTasks.DotNetPublish(x => x
                 .SetConfiguration("Release")
                 .SetOutput(OutputDir)
-                .SetProject(From<IHazSolution>().Solution.GetProject("DemoApp")!.Path));
+                .SetProject(From<IHazSolution>().Solution.AllProjects.First(x => x.Name == "DemoApp")!.Path));
         });
 }
