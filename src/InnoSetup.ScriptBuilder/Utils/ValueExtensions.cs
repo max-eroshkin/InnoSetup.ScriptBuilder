@@ -92,6 +92,6 @@ public static class ValueExtensions
 
         return attribute != null
             ? attribute.Value
-            : memberName.Replace("_", string.Empty).ToLower();
+            : memberName.Replace("_", string.Empty).ToLowerInvariant();
     }
 }

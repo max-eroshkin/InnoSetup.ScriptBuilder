@@ -125,6 +125,6 @@ public class ValueFormattingTests
             .ToList();
 
         colors.Should().HaveCount(18);
-        colors.Should().OnlyContain(x => ((IssColor)x.GetValue(null)).Value == x.Name.ToLower());
+        colors.Should().OnlyContain(x => ((IssColor)x.GetValue(null)).Value == x.Name.ToLowerInvariant());
     }
 }
