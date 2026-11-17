@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/examples/">
+    <Project Path="examples/DemoApp/DemoApp.csproj" />
+    <Project Path="examples/Examples/Examples.csproj" />
+  </Folder>
+  <Folder Name="/SolutionItems/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
+    <File Path="CodeStyle.DotSettings" />
+    <File Path="Inspections.DotSettings" />
+    <File Path="README.md" />
+    <File Path="stylecop.ruleset" />
+  </Folder>
+  <Folder Name="/src/">
+    <File Path="src/Directory.Build.props" />
+    <Project Path="src/InnoSetup.ScriptBuilder/InnoSetup.ScriptBuilder.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <File Path="tests/Directory.Build.props" />
+    <Project Path="tests/BuilderTests/BuilderTests.csproj" />
+  </Folder>
+  <Project Path="build/_build.csproj">
+    <Build Project="false" />
+  </Project>
+</Solution>

@@ -1,0 +1,445 @@
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+
+###############################
+# Core EditorConfig Options   #
+###############################
+
+# top-most EditorConfig file
+root = true
+
+# All files
+[*]
+indent_style = space
+max_line_length = 120
+end_of_line = lf
+indent_size = 2
+charset = utf-8
+insert_final_newline = false
+
+[*.{cs,vb}]
+file_header_template = Copyright (c) 2023-2026 Max Eroshkin. All rights reserved.
+indent_size = 4
+tab_width = 4
+
+# https://learn.microsoft.com/en-us/visualstudio/ide/text-spell-checker
+spelling_languages = en-us, ru-ru
+
+# Microsoft .NET properties
+csharp_new_line_before_members_in_object_initializers = false
+csharp_preferred_modifier_order = public, private, protected, internal, file, new, static, abstract, virtual, sealed, readonly, override, extern, unsafe, volatile, async, required:suggestion
+csharp_style_prefer_utf8_string_literals = true:suggestion
+csharp_style_var_elsewhere = true:suggestion
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_using_directive_placement = inside_namespace:silent
+
+dotnet_naming_rule.interfaces_rule.import_to_resharper = True
+dotnet_naming_rule.interfaces_rule.resharper_description = Interfaces
+dotnet_naming_rule.interfaces_rule.resharper_guid = a7a3339e-4e89-4319-9735-a9dc4cb74cc7
+dotnet_naming_rule.interfaces_rule.severity = warning
+dotnet_naming_rule.interfaces_rule.style = i_upper_camel_case_style
+dotnet_naming_rule.interfaces_rule.symbols = interfaces_symbols
+dotnet_naming_rule.private_constants_rule.import_to_resharper = True
+dotnet_naming_rule.private_constants_rule.resharper_description = Constant fields (private)
+dotnet_naming_rule.private_constants_rule.resharper_guid = 236f7aa5-7b06-43ca-bf2a-9b31bfcff09a
+dotnet_naming_rule.private_constants_rule.severity = warning
+dotnet_naming_rule.private_constants_rule.style = upper_camel_case_style
+dotnet_naming_rule.private_constants_rule.symbols = private_constants_symbols
+dotnet_naming_rule.private_instance_fields_rule.import_to_resharper = True
+dotnet_naming_rule.private_instance_fields_rule.resharper_description = Instance fields (private)
+dotnet_naming_rule.private_instance_fields_rule.resharper_guid = 4a98fdf6-7d98-4f5a-afeb-ea44ad98c70c
+dotnet_naming_rule.private_instance_fields_rule.severity = warning
+dotnet_naming_rule.private_instance_fields_rule.style = lower_camel_case_style
+dotnet_naming_rule.private_instance_fields_rule.symbols = private_instance_fields_symbols
+dotnet_naming_rule.private_static_fields_rule.import_to_resharper = True
+dotnet_naming_rule.private_static_fields_rule.resharper_description = Static fields (private)
+dotnet_naming_rule.private_static_fields_rule.resharper_exclusive_prefixes_suffixes = true
+dotnet_naming_rule.private_static_fields_rule.resharper_guid = f9fce829-e6f4-4cb2-80f1-5497c44f51df
+dotnet_naming_rule.private_static_fields_rule.severity = warning
+dotnet_naming_rule.private_static_fields_rule.style = lower_camel_case_style
+dotnet_naming_rule.private_static_fields_rule.symbols = private_static_fields_symbols
+dotnet_naming_rule.private_static_readonly_rule.import_to_resharper = True
+dotnet_naming_rule.private_static_readonly_rule.resharper_description = Static readonly fields (private)
+dotnet_naming_rule.private_static_readonly_rule.resharper_guid = 15b5b1f1-457c-4ca6-b278-5615aedc07d3
+dotnet_naming_rule.private_static_readonly_rule.severity = warning
+dotnet_naming_rule.private_static_readonly_rule.style = upper_camel_case_style
+dotnet_naming_rule.private_static_readonly_rule.symbols = private_static_readonly_symbols
+dotnet_naming_rule.type_parameters_rule.import_to_resharper = True
+dotnet_naming_rule.type_parameters_rule.resharper_description = Type parameters
+dotnet_naming_rule.type_parameters_rule.resharper_guid = 2c62818f-621b-4425-adc9-78611099bfcb
+dotnet_naming_rule.type_parameters_rule.severity = warning
+dotnet_naming_rule.type_parameters_rule.style = upper_camel_case_style
+dotnet_naming_rule.type_parameters_rule.symbols = type_parameters_symbols
+dotnet_naming_rule.unity_serialized_field_rule.import_to_resharper = True
+dotnet_naming_rule.unity_serialized_field_rule.resharper_description = Unity serialized field
+dotnet_naming_rule.unity_serialized_field_rule.resharper_guid = 5f0fdb63-c892-4d2c-9324-15c80b22a7ef
+dotnet_naming_rule.unity_serialized_field_rule.severity = warning
+dotnet_naming_rule.unity_serialized_field_rule.style = lower_camel_case_style_1
+dotnet_naming_rule.unity_serialized_field_rule.symbols = unity_serialized_field_symbols
+dotnet_naming_style.i_upper_camel_case_style.capitalization = pascal_case
+dotnet_naming_style.i_upper_camel_case_style.required_prefix = I
+dotnet_naming_style.lower_camel_case_style.capitalization = camel_case
+dotnet_naming_style.lower_camel_case_style.required_prefix = _
+dotnet_naming_style.lower_camel_case_style_1.capitalization = camel_case
+dotnet_naming_style.upper_camel_case_style.capitalization = pascal_case
+dotnet_naming_symbols.interfaces_symbols.applicable_accessibilities = *
+dotnet_naming_symbols.interfaces_symbols.applicable_kinds = interface
+dotnet_naming_symbols.interfaces_symbols.resharper_applicable_kinds = interface
+dotnet_naming_symbols.interfaces_symbols.resharper_required_modifiers = any
+dotnet_naming_symbols.private_constants_symbols.applicable_accessibilities = private
+dotnet_naming_symbols.private_constants_symbols.applicable_kinds = field
+dotnet_naming_symbols.private_constants_symbols.required_modifiers = const
+dotnet_naming_symbols.private_constants_symbols.resharper_applicable_kinds = constant_field
+dotnet_naming_symbols.private_constants_symbols.resharper_required_modifiers = any
+dotnet_naming_symbols.private_instance_fields_symbols.applicable_accessibilities = private
+dotnet_naming_symbols.private_instance_fields_symbols.applicable_kinds = field
+dotnet_naming_symbols.private_instance_fields_symbols.resharper_applicable_kinds = field, readonly_field
+dotnet_naming_symbols.private_instance_fields_symbols.resharper_required_modifiers = instance
+dotnet_naming_symbols.private_static_fields_symbols.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_fields_symbols.applicable_kinds = field
+dotnet_naming_symbols.private_static_fields_symbols.required_modifiers = static
+dotnet_naming_symbols.private_static_fields_symbols.resharper_applicable_kinds = field
+dotnet_naming_symbols.private_static_fields_symbols.resharper_required_modifiers = static
+dotnet_naming_symbols.private_static_readonly_symbols.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_readonly_symbols.applicable_kinds = field
+dotnet_naming_symbols.private_static_readonly_symbols.required_modifiers = readonly, static
+dotnet_naming_symbols.private_static_readonly_symbols.resharper_applicable_kinds = readonly_field
+dotnet_naming_symbols.private_static_readonly_symbols.resharper_required_modifiers = static
+dotnet_naming_symbols.type_parameters_symbols.applicable_accessibilities = *
+dotnet_naming_symbols.type_parameters_symbols.applicable_kinds = type_parameter
+dotnet_naming_symbols.type_parameters_symbols.resharper_applicable_kinds = type_parameter
+dotnet_naming_symbols.type_parameters_symbols.resharper_required_modifiers = any
+dotnet_naming_symbols.unity_serialized_field_symbols.applicable_accessibilities = *
+dotnet_naming_symbols.unity_serialized_field_symbols.applicable_kinds =
+dotnet_naming_symbols.unity_serialized_field_symbols.resharper_applicable_kinds = unity_serialised_field
+dotnet_naming_symbols.unity_serialized_field_symbols.resharper_required_modifiers = instance
+
+dotnet_style_parentheses_in_arithmetic_binary_operators = never_if_unnecessary:none
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:none
+dotnet_style_parentheses_in_relational_binary_operators = never_if_unnecessary:none
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+dotnet_style_qualification_for_event = false:suggestion
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggestion
+
+# ReSharper properties
+resharper_autodetect_indent_settings = true
+resharper_blank_lines_around_single_line_auto_property = 1
+resharper_blank_lines_around_single_line_property = 1
+resharper_csharp_insert_final_newline = true
+resharper_csharp_keep_blank_lines_in_code = 1
+resharper_csharp_keep_blank_lines_in_declarations = 1
+
+resharper_csharp_wrap_before_primary_constructor_declaration_lpar = false
+resharper_csharp_wrap_before_primary_constructor_declaration_rpar = false
+resharper_csharp_wrap_chained_method_calls = wrap_if_long
+resharper_csharp_wrap_after_declaration_lpar = true
+resharper_csharp_wrap_after_invocation_lpar = true
+resharper_csharp_wrap_arguments_style = chop_if_long
+resharper_csharp_wrap_parameters_style = chop_if_long
+
+resharper_formatter_off_tag = @formatter:off
+resharper_formatter_on_tag = @formatter:on
+resharper_formatter_tags_enabled = true
+resharper_instance_members_qualify_declared_in =
+resharper_max_array_initializer_elements_on_line = 5
+resharper_max_formal_parameters_on_line = 3
+resharper_max_initializer_elements_on_line = 1
+resharper_new_line_before_while = true
+resharper_place_accessorholder_attribute_on_same_line = false
+resharper_place_constructor_initializer_on_same_line = false
+resharper_qualified_using_at_nested_scope = true
+resharper_use_indent_from_vs = false
+resharper_wrap_array_initializer_style = chop_if_long
+
+# ReSharper inspection severities
+resharper_arrange_redundant_parentheses_highlighting = hint
+resharper_arrange_this_qualifier_highlighting = hint
+resharper_arrange_type_member_modifiers_highlighting = hint
+resharper_arrange_type_modifiers_highlighting = hint
+resharper_built_in_type_reference_style_for_member_access_highlighting = hint
+resharper_built_in_type_reference_style_highlighting = hint
+resharper_convert_constructor_to_member_initializers_highlighting = hint
+resharper_convert_to_primary_constructor_highlighting = hint
+resharper_mvc_action_not_resolved_highlighting = warning
+resharper_mvc_area_not_resolved_highlighting = warning
+resharper_mvc_controller_not_resolved_highlighting = warning
+resharper_mvc_masterpage_not_resolved_highlighting = warning
+resharper_mvc_partial_view_not_resolved_highlighting = warning
+resharper_mvc_template_not_resolved_highlighting = warning
+resharper_mvc_view_component_not_resolved_highlighting = warning
+resharper_mvc_view_component_view_not_resolved_highlighting = warning
+resharper_mvc_view_not_resolved_highlighting = warning
+resharper_razor_assembly_not_resolved_highlighting = warning
+resharper_redundant_base_qualifier_highlighting = warning
+resharper_simplify_linq_expression_use_all_highlighting = none
+resharper_simplify_linq_expression_use_any_highlighting = none
+resharper_suggest_var_or_type_built_in_types_highlighting = hint
+resharper_suggest_var_or_type_elsewhere_highlighting = hint
+resharper_suggest_var_or_type_simple_types_highlighting = hint
+resharper_unused_parameter_local_highlighting = suggestion
+resharper_web_config_module_not_resolved_highlighting = warning
+resharper_web_config_type_not_resolved_highlighting = warning
+resharper_web_config_wrong_module_highlighting = warning
+
+
+# csharp_indent_labels = flush_left
+# csharp_prefer_braces = true:silent
+# 
+# csharp_qualified_using_at_nested_scope = true
+# csharp_style_expression_bodied_methods = false:silent
+# csharp_style_expression_bodied_constructors = false:silent
+# csharp_style_expression_bodied_operators = false:silent
+# csharp_style_expression_bodied_properties = true:silent
+# csharp_style_expression_bodied_indexers = true:silent
+# csharp_style_expression_bodied_accessors = true:silent
+# csharp_style_expression_bodied_lambdas = true:silent
+# csharp_style_expression_bodied_local_functions = false:silent
+# csharp_style_throw_expression = true:suggestion
+# csharp_style_prefer_null_check_over_type_check = true:suggestion
+# csharp_prefer_simple_default_expression = true:suggestion
+# csharp_style_prefer_unbound_generic_type_in_nameof = true:suggestion
+# csharp_using_directive_placement = inside_namespace:warning
+# csharp_prefer_simple_using_statement = true:suggestion
+# csharp_style_namespace_declarations = file_scoped:warning
+# csharp_style_prefer_method_group_conversion = true:silent
+# csharp_style_prefer_top_level_statements = true:silent
+# csharp_style_prefer_primary_constructors = false:suggestion
+# csharp_prefer_system_threading_lock = true:suggestion
+# csharp_style_implicit_object_creation_when_type_is_apparent = true:suggestion
+# csharp_style_prefer_utf8_string_literals = true:suggestion
+# csharp_prefer_static_local_function = false:suggestion
+# csharp_prefer_static_anonymous_function = false:suggestion
+# csharp_style_prefer_readonly_struct = true:suggestion
+# csharp_style_prefer_readonly_struct_member = true:suggestion
+# csharp_style_allow_embedded_statements_on_same_line_experimental = true:silent
+# csharp_style_allow_blank_lines_between_consecutive_braces_experimental = true:silent
+# csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = true:silent
+# csharp_style_allow_blank_line_after_token_in_conditional_expression_experimental = true:silent
+# csharp_style_allow_blank_line_after_token_in_arrow_expression_clause_experimental = true:silent
+# csharp_style_prefer_switch_expression = true:suggestion
+# csharp_style_prefer_not_pattern = true:suggestion
+# csharp_space_around_binary_operators = before_and_after
+
+# Naming rules
+
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
+
+dotnet_naming_rule.types_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.types_should_be_pascal_case.symbols = types
+dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
+
+dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
+dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
+
+# Symbol specifications
+
+dotnet_naming_symbols.interface.applicable_kinds = interface
+dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.interface.required_modifiers =
+
+dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
+dotnet_naming_symbols.types.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.types.required_modifiers =
+
+dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, method
+dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.non_field_members.required_modifiers =
+
+# Naming styles
+dotnet_naming_style.begins_with_i.required_prefix = I
+dotnet_naming_style.begins_with_i.required_suffix =
+dotnet_naming_style.begins_with_i.word_separator =
+dotnet_naming_style.begins_with_i.capitalization = pascal_case
+
+dotnet_naming_style.pascal_case.required_prefix =
+dotnet_naming_style.pascal_case.required_suffix =
+dotnet_naming_style.pascal_case.word_separator =
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+# # Parentheses preferences
+# dotnet_style_parentheses_in_other_operators = never_if_unnecessary:silent
+# 
+# # Modifier preferences
+# dotnet_style_readonly_field = true:suggestion
+
+# # Expression-level preferences
+# dotnet_style_object_initializer = true:suggestion
+# dotnet_style_collection_initializer = true:suggestion
+# dotnet_style_explicit_tuple_names = true:suggestion
+# dotnet_style_null_propagation = true:suggestion
+# dotnet_style_coalesce_expression = true:suggestion
+# dotnet_style_prefer_is_null_check_over_reference_equality_method = true:silent
+# dotnet_style_prefer_auto_properties = true:silent
+# dotnet_style_prefer_conditional_expression_over_assignment = true:silent
+# dotnet_style_prefer_conditional_expression_over_return = true:silent
+# dotnet_style_prefer_collection_expression = when_types_exactly_match:suggestion
+# dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
+# dotnet_style_prefer_inferred_tuple_names = true:suggestion
+# dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
+# dotnet_style_prefer_compound_assignment = true:suggestion
+# dotnet_style_prefer_simplified_interpolation = true:suggestion
+# dotnet_style_namespace_match_folder = true:warning
+# dotnet_style_operator_placement_when_wrapping = beginning_of_line
+# dotnet_sort_system_directives_first = true
+# dotnet_separate_import_directive_groups = false
+
+# Diagnostic suppressions
+# code quality
+dotnet_diagnostic.ca1852.severity = suggestion
+dotnet_code_quality.ca1852.ignore_internalsvisibleto = true
+
+# DotnetRules https://github.com/dotnet/docs/blob/main/docs/fundamentals/code-analysis/style-rules
+dotnet_diagnostic.ide0052.severity = error # Remove unread private member (IDE0052)
+dotnet_diagnostic.IDE0005.severity = suggestion # Remove unnecessary using directives (IDE0005)
+dotnet_diagnostic.IDE0073.severity = none # Require file header
+dotnet_diagnostic.IDE0130.severity = none # Require file header
+
+# https://learn.microsoft.com/ru-ru/dotnet/fundamentals/code-analysis/categories
+dotnet_diagnostic.ca1812.severity = none
+dotnet_diagnostic.ca1822.severity = none
+dotnet_diagnostic.ca1822.severity = none
+
+# Compiler
+dotnet_diagnostic.CS1573.severity = error # Parameter 'parameter' has no matching param tag in the XML comment for 'parameter' (but other parameters do)
+dotnet_diagnostic.CS8625.severity = error # Possible null assigned to a nonnullable reference
+dotnet_diagnostic.CS8604.severity = error # Possible null reference argument for parameter.
+dotnet_diagnostic.CS1574.severity = error # XML comment on 'construct' has syntactically incorrect cref attribute 'name'
+dotnet_diagnostic.CS1587.severity = error # XML comment is not placed on a valid language element
+dotnet_diagnostic.CS1591.severity = error # Missing XML comment for publicly visible type or member 'Type_or_Member'
+dotnet_diagnostic.CS8019.severity = error # Unnecessary using directive.
+
+# https://microsoft.github.io/vs-threading/analyzers/
+dotnet_diagnostic.VSTHRD200.severity = none
+
+# https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/README.md
+dotnet_diagnostic.MA0002.severity = none
+dotnet_diagnostic.MA0006.severity = none
+dotnet_diagnostic.MA0026.severity = none
+dotnet_diagnostic.MA0004.severity = suggestion # Use Task.ConfigureAwait
+dotnet_diagnostic.MA0009.severity = suggestion
+dotnet_diagnostic.MA0012.severity = none # Do not raise reserved exception type
+dotnet_diagnostic.MA0011.severity = suggestion
+dotnet_diagnostic.MA0026.severity = suggestion # Fix TODO comment
+dotnet_diagnostic.MA0025.severity = none # 
+dotnet_diagnostic.MA0048.severity = warning # File name must match type name
+dotnet_diagnostic.MA0049.severity = suggestion # Type name should not match containing namespace
+dotnet_diagnostic.MA0051.severity = warning # Method is too long
+dotnet_diagnostic.MA0169.severity = error # Use Equals method instead of == or != operator
+dotnet_diagnostic.MA0003.severity = none # Add parameter name to improve readability
+MA0051.maximum_lines_per_method = 80
+
+dotnet_diagnostic.VSTHRD003.severity = none # Avoid awaiting or returning a Task representing work that was not started within your context as that can lead to deadlocks
+
+# Roslynator
+# dotnet_diagnostic.<ANALYZER_ID>.severity = default|none|silent|suggestion|warning|error
+dotnet_analyzer_diagnostic.category-roslynator.severity = warning
+roslynator_analyzers.enabled_by_default = true
+dotnet_diagnostic.RCS1124.severity = none # Inline local variable
+dotnet_diagnostic.RCS1140.severity = none # Add exception to documentation comment
+dotnet_diagnostic.RCS1165.severity = default # Unconstrained type parameter checked for null
+dotnet_diagnostic.RCS1194.severity = none # Implement exception constructors
+dotnet_diagnostic.RCS1021.severity = none # Convert lambda expression body to expression body
+dotnet_diagnostic.RCS1031.severity = none # Remove unnecessary braces in switch section
+dotnet_diagnostic.RCS1201.severity = suggestion # Use method chaining
+dotnet_diagnostic.RCS1212.severity = silent # Remove redundant assignment
+dotnet_diagnostic.RCS1181.severity = suggestion # Convert comment to documentation comment
+dotnet_diagnostic.RCS1112.severity = default # RCS1112: Combine 'Enumerable.Where' method chain
+# !Устал
+dotnet_diagnostic.RCS1141.severity = default # Add 'param' element to documentation comment
+dotnet_diagnostic.RCS1036.severity = none # obsolete analyzer
+
+# # Organize usings
+# dotnet_code_quality_unused_parameters = all:warning
+# 
+# # Microsoft .NET properties
+# csharp_new_line_before_members_in_object_initializers = false
+# csharp_style_var_elsewhere = true:suggestion
+# csharp_style_var_for_built_in_types = true:suggestion
+# csharp_style_var_when_type_is_apparent = true:suggestion
+# dotnet_naming_symbols.method_symbols.resharper_applicable_kinds = method
+# dotnet_naming_symbols.method_symbols.resharper_required_modifiers = any
+# 
+# # Microsoft .NET properties
+# csharp_preferred_modifier_order = public, private, protected, internal, file, new, static, abstract, virtual, sealed, readonly, override, extern, unsafe, volatile, async, required:suggestion
+# 
+# # Pattern matching preferences
+# csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+# csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+# 
+# # Null-checking preferences
+# csharp_style_conditional_delegate_call = true:suggestion
+# 
+# # Expression-level preferences
+# csharp_style_deconstructed_variable_declaration = true:suggestion
+# csharp_style_pattern_local_over_anonymous_function = true:suggestion
+# csharp_style_inlined_variable_declaration = true:suggestion
+# 
+# csharp_new_line_before_members_in_anonymous_types = true
+# 
+# # Indentation preferences
+# csharp_indent_case_contents = true
+# 
+# # Space preferences
+# 
+# # Wrapping preferences
+# csharp_preserve_single_line_statements = true
+# csharp_style_prefer_index_operator = true:suggestion
+# csharp_style_prefer_range_operator = true:suggestion
+# csharp_style_unused_value_assignment_preference = discard_variable:suggestion
+# csharp_style_unused_value_expression_statement_preference = discard_variable:silent
+# csharp_style_prefer_pattern_matching = false:suggestion
+# csharp_style_prefer_method_group_conversion = true:silent
+# csharp_style_prefer_top_level_statements = true:silent
+# csharp_style_prefer_primary_constructors = false:suggestion
+# csharp_style_prefer_null_check_over_type_check = true:suggestion
+# csharp_style_prefer_local_over_anonymous_function = true:suggestion
+# csharp_style_prefer_tuple_swap = true:suggestion
+
+[{*.yaml,*.yml}]
+indent_style = space
+indent_size = 2
+
+[*.{bash,sh,zsh}]
+indent_style = space
+indent_size = 2
+
+[*.md]
+indent_style = space
+indent_size = 4
+
+[*.{ps1,psd1,psm1}]
+indent_style = space
+indent_size = 4
+
+[{*.har,*.jsb2,*.jsb3,*.json,*.jsonc,*.postman_collection,*.postman_collection.json,*.postman_environment,*.postman_environment.json,.babelrc,.eslintrc,.prettierrc,.stylelintrc,.ws-context,jest.config}]
+indent_style = space
+indent_size = 2
+
+[*.{appxmanifest,asax,ascx,aspx,axaml,blockshader,c,c++,c++m,cc,ccm,cginc,compute,cp,cpp,cppm,cshtml,csproj,cu,cuh,cxx,cxxm,dtd,fs,fsi,fsscript,fsx,fx,fxh,h,h++,hh,hlsl,hlsli,hlslinc,hp,hpp,hxx,icc,inc,inl,ino,ipp,ixx,master,ml,mli,mpp,mq4,mq5,mqh,mxx,nuspec,paml,props,razor,resw,resx,shader,shaderFoundry,skin,tcc,tpp,urtshader,usf,ush,uxml,vb,xaml,xamlx,xoml,xsd}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+ij_xml_align_attributes = true
+ij_xml_align_text = false
+ij_xml_attribute_wrap = normal
+ij_xml_block_comment_add_space = false
+ij_xml_block_comment_at_first_column = true
+ij_xml_keep_blank_lines = 2
+ij_xml_keep_indents_on_empty_lines = false
+ij_xml_keep_line_breaks = true
+ij_xml_keep_line_breaks_in_text = true
+ij_xml_keep_whitespaces = false
+ij_xml_keep_whitespaces_around_cdata = preserve
+ij_xml_keep_whitespaces_inside_cdata = false
+ij_xml_line_comment_at_first_column = true
+ij_xml_space_after_tag_name = false
+ij_xml_space_around_equals_in_attribute = false
+ij_xml_space_inside_empty_tag = true
+ij_xml_text_wrap = normal

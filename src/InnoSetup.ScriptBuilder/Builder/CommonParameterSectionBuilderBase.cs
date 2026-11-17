@@ -1,0 +1,15 @@
+namespace InnoSetup.ScriptBuilder;
+
+/// <summary>
+/// See <a href="https://jrsoftware.org/inno-setup/documentation/?topic=commonparams">ISS documentation.</a>
+/// </summary>
+public abstract class
+    CommonParameterSectionBuilderBase<TBuilder, TData> : ParameterSectionBuilderBase<TBuilder, TData>
+    where TBuilder : class
+    where TData : CommonParameterSectionEntryBase, new()
+{
+    public TBuilder Languages(string value) => SetPropertyValue(value);
+    public TBuilder MinVersion(string value) => SetPropertyValue(value);
+    public TBuilder OnlyBelowVersion(string value) => SetPropertyValue(value);
+    public TBuilder Check(string value) => SetPropertyValue(value);
+}

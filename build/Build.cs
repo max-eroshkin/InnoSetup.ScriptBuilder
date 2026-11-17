@@ -1,27 +1,23 @@
-using System;
+namespace Ci;
+
 using System.Text;
 using Fallout.Common;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
-using Fallout.Solutions;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
-
-namespace Ci;
-
 using Isotopes;
 
 [UnsetVisualStudioEnvironmentVariables]
-[GitHubActions("CI",
+[GitHubActions(
+    "CI",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
     OnPushBranches = new[] { DevelopBranch, "feature/**" },
     OnPullRequestBranches = new[] { DevelopBranch, "feature/**" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPublish.Publish) },
     ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
-[GitHubActions("Publish",
+[GitHubActions(
+    "Publish",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
     OnPushBranches = new[] { MasterBranch, "release/**" },
@@ -41,7 +37,7 @@ partial class Build : FalloutBuild, IPublish, ITest
     }
 
     static int Main() => Execute<Build>(x => x.BuildSetup);
-    
+
     T From<T>()
         where T : IFalloutBuild
         => (T)(object)this;

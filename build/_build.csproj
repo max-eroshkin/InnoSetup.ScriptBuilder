@@ -8,22 +8,22 @@
     <NoWarn>CS0649;CS0169</NoWarn>
     <LangVersion>13</LangVersion>
     <IsPackable>false</IsPackable>
-      <Nullable>enable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Isotopes" Version="10.0.0" />
-    <PackageReference Include="Tools.InnoSetup" Version="6.3.1" IncludeAssets="All" />
-      <PackageReference Include="JetBrains.Annotations" Version="2026.2.0">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
+    <PackageReference Include="Tools.InnoSetup" Version="7.1.0" IncludeAssets="All" />
+    <PackageReference Include="JetBrains.Annotations" Version="2026.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
-    <ItemGroup>
-        <Using Include="System" />
-        <Using Include="JetBrains.Annotations" />
-    </ItemGroup>
+  <ItemGroup>
+    <Using Include="System" />
+    <Using Include="JetBrains.Annotations" />
+  </ItemGroup>
 
   <ItemGroup>
     <FalloutSpecificationFiles Include="**\*.json" Exclude="bin\**;obj\**" />
@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\source\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
+    <ProjectReference Include="..\src\InnoSetup.ScriptBuilder\InnoSetup.ScriptBuilder.csproj" />
   </ItemGroup>
-  
+
 </Project>

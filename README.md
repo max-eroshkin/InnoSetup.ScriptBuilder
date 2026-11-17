@@ -10,10 +10,13 @@ You can find the official Inno Setup documentation on the [Inno Setup website](h
 ## Installation
 
 .NET CLI
+
 ```ps1
 dotnet add package InnoSetup.ScriptBuilder
 ```
+
 Package Manager
+
 ```ps1
 Install-Package InnoSetup.ScriptBuilder
 ```
@@ -21,6 +24,7 @@ Install-Package InnoSetup.ScriptBuilder
 ## Examples
 
 ### Creating a Builder
+
 To generate a script that looks like this:
 
 ```iss
@@ -28,17 +32,20 @@ To generate a script that looks like this:
 AppName=BimTools.Support
 AppVersion=1.2.5.1634640046
 DefaultDirName={userappdata}\SupportTools
+UninstallDisplayIcon=ToolsIcon.ico
+DisableDirPage=yes
 PrivilegesRequired=lowest
 OutputBaseFilename=Tools.Support_2021_1.2.5.1634640046
 SetupIconFile=ToolsIcon.ico
-UninstallDisplayIcon=ToolsIcon.ico
-DisableDirPage=yes
+SetupArchitecture=x64
+WizardImageBackColor=none
+WizardStyle=modern dynamic
 
 [Files]
 Source: "bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs; 
 Source: "SupportTools.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019"; 
-Source: "bin\Fonts\GraphikLCG-Medium.ttf"; DestDir: "{autofonts}"; Flags: onlyifdestfileexists uninsneveruninstall; FontInstall: "Graphik LCG"; 
-Source: "bin\Fonts\GraphikLCG-Regular.ttf"; DestDir: "{autofonts}"; Flags: onlyifdestfileexists uninsneveruninstall; FontInstall: "Graphik LCG";
+Source: "bin\Fonts\GraphikLCG-Medium.ttf"; DestDir: "{autofonts}"; FontInstall: "Graphik LCG"; Flags: onlyifdestfileexists uninsneveruninstall; 
+Source: "bin\Fonts\GraphikLCG-Regular.ttf"; DestDir: "{autofonts}"; FontInstall: "Graphik LCG"; Flags: onlyifdestfileexists uninsneveruninstall;
 ```
 
 Inherit your builder class from the `IssBuilder` base class:
@@ -55,15 +62,18 @@ public class DemoBuilder : IssBuilder
             .OutputBaseFilename("Tools.Support_2021_1.2.5.1634640046")
             .SetupIconFile("ToolsIcon.ico")
             .UninstallDisplayIcon("ToolsIcon.ico")
+            .SetupArchitecture(SetupArchitecture.X64)
+            .WizardStyle(WizardStyle.Modern | WizardStyle.Dynamic)
+            .WizardImageBackColor(IssColor.None)
             .DisableDirPage(YesNo.Yes);
     
-        Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
+        Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.Directories.App)
             .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
         Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
-        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: @"{autofonts}")
+        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: InnoConstants.Auto.Fonts)
             .FontInstall("Graphik LCG")
             .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
-        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: @"{autofonts}")
+        Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: InnoConstants.Auto.Fonts)
             .FontInstall("Graphik LCG")
             .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
     }
@@ -82,15 +92,18 @@ var builder = BuilderUtils.CreateBuilder(builder =>
         .OutputBaseFilename("Tools.Support_2021_1.2.5.1634640046")
         .SetupIconFile("ToolsIcon.ico")
         .UninstallDisplayIcon("ToolsIcon.ico")
+        .SetupArchitecture(SetupArchitecture.X64)
+        .WizardStyle(WizardStyle.Modern | WizardStyle.Dynamic)
+        .WizardImageBackColor(IssColor.None)
         .DisableDirPage(YesNo.Yes);
         
-    builder.Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.App)
+    builder.Files.CreateEntry(source: @"bin\*", destDir: InnoConstants.Directories.App)
         .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
     builder.Files.CreateEntry(source: "SupportTools.addin", destDir: @"{userappdata}\Autodesk\Revit\Addins\2019");
-    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: @"{autofonts}")
+    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Medium.ttf", destDir: InnoConstants.Auto.Fonts)
         .FontInstall("Graphik LCG")
         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
-    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: @"{autofonts}")
+    builder.Files.CreateEntry(source: @"bin\Fonts\GraphikLCG-Regular.ttf", destDir: InnoConstants.Auto.Fonts)
         .FontInstall("Graphik LCG")
         .Flags(FileFlags.OnlyIfDestFileExists | FileFlags.UninsNeverUninstall);
 });
@@ -99,12 +112,14 @@ var builder = BuilderUtils.CreateBuilder(builder =>
 ## Getting Results
 
 ### String Result
+
 ```c#
 var builder = new DemoBuilder();
 var result = builder.ToString();
 ```
 
 ### Script File
+
 ```c#
 var builder = new DemoBuilder();
 builder.Build("demo.iss");
@@ -121,7 +136,7 @@ BuilderUtils.Build(
         builder.Setup.Create("BimTools.Support")
             .AppVersion("1.2.5.1634640046")
             .DefaultDirName(@"{userappdata}\SupportTools");
-        builder.Files.CreateEntry(@"bin\*", InnoConstants.App)
+        builder.Files.CreateEntry(@"bin\*", InnoConstants.Directories.App)
             .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
     }, 
     "demo.iss");
@@ -144,7 +159,8 @@ The `FreeText()` method allows you to insert any text into the script as is.
 
 ## Custom Sections and Parameters
 
-If a section you want to insert is not implemented out of the box, you can use either the `Sections.CreateKeyValueSection()` or `Sections.CreateParameterSection()` methods.
+If a section you want to insert is not implemented out of the box, you can use either the
+`Sections.CreateKeyValueSection()` or `Sections.CreateParameterSection()` methods.
 
 To insert unsupported parameters or directives into any type of section, use the `Parameter()` method:
 
