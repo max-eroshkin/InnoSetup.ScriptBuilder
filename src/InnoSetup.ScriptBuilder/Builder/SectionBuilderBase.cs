@@ -12,12 +12,16 @@ public abstract class SectionBuilderBase<TBuilder, TData>
 
     public TBuilder Parameter(string name, string value, bool needQuotes = true)
     {
+        if (Data.Aux.ContainsKey(name))
+            throw new IssBuilderException($"The section '{SectionName}' already contains parameter '{name}'");
         Data.Aux.Add(name, (value, needQuotes));
         return this as TBuilder;
     }
 
     public TBuilder Parameter(string name, object value)
     {
+        if (Data.Aux.ContainsKey(name))
+            throw new IssBuilderException($"The section '{SectionName}' already contains parameter '{name}'");
         Data.Aux.Add(name, (value, false));
         return this as TBuilder;
     }
@@ -32,7 +36,7 @@ public abstract class SectionBuilderBase<TBuilder, TData>
         var propertyName = method;
         var type = instance.GetType();
         var property = type.GetProperty(propertyName) ??
-                       throw new NullReferenceException(
+                       throw new IssBuilderException(
                            $"Property '{propertyName}' in class {type.Name} not found");
         property.SetValue(instance, value);
         return this as TBuilder;
