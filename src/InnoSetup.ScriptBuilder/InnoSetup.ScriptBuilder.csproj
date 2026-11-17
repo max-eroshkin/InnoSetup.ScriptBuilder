@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>InnoSetup.ScriptBuilder</RootNamespace>
-    <Version>7.1.0</Version>
+    <Version>7.1.0-rc01</Version>
     <Product>InnoSetup Script Builder</Product>
     <PackageTags>installer innosetup inno script builder</PackageTags>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
