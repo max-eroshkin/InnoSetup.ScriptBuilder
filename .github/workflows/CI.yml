@@ -32,6 +32,9 @@ jobs:
   windows-latest:
     name: windows-latest
     runs-on: windows-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v7
         with:
