@@ -20,7 +20,9 @@ on:
   push:
     branches:
       - develop
+      - master
       - 'feature/**'
+      - 'release/**'
   pull_request:
     branches:
       - develop
@@ -47,12 +49,17 @@ jobs:
           global-json-file: global.json
       - name: 'Restore: dotnet tools'
         run: dotnet tool restore
+      - name: NuGet Login
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
       - name: 'Run: Test, Publish'
         run: dotnet fallout Test Publish
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
           ALL_PACKAGES: ${{ secrets.ALL_PACKAGES }}
-      - name: 'Publish: packages'
+      - name: 'Publish: artifacts'
         uses: actions/upload-artifact@v7
         with:
           name: packages

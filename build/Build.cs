@@ -7,7 +7,7 @@ using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Isotopes;
 
-[UnsetVisualStudioEnvironmentVariables]
+/*[UnsetVisualStudioEnvironmentVariables]
 [GitHubActions(
     "CI",
     GitHubActionsImage.WindowsLatest,
@@ -15,14 +15,14 @@ using Isotopes;
     OnPushBranches = new[] { DevelopBranch, "feature/**" },
     OnPullRequestBranches = new[] { DevelopBranch, "feature/**" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPublish.Publish) },
-    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
-[GitHubActions(
+    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]*/
+/*[GitHubActions(
     "Publish",
     GitHubActionsImage.WindowsLatest, 
     FetchDepth = 0,
     OnPushBranches = new[] { MasterBranch, "release/**" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPublish.Publish) },
-    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]
+    ImportSecrets = new[] { "NUGET_API_KEY", "ALL_PACKAGES" })]*/
 partial class Build : FalloutBuild, IPublish, ITest
 {
     const string MasterBranch = "master";
